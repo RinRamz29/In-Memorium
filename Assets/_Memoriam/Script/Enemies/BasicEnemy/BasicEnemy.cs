@@ -15,6 +15,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             SetUpBehaviorSelector();
         }
 
+        private void OnEnable()
+        {
+            GameStateManager.OnGameStateChanged += OnStateChanged;
+        }
+
         private void SetUpBehaviorSelector()
         {
             _behaviourTree = new Parallel("BaseEnemySelector");
@@ -68,6 +73,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 Destroy(gameObject);
+        }
+
+        private void OnDisable()
+        {
+            GameStateManager.OnGameStateChanged -= OnStateChanged;
         }
     }
 }

@@ -3,6 +3,7 @@ using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Memoriam.Script.Player
@@ -36,6 +37,27 @@ namespace _Memoriam.Script.Player
         [Inject] public GameStateManager GameStateManager { get; set; }
         [Inject] public GameManager GameManager { get; set; }
         
+        //Delegates
+        private void OnStateChanged(GameStateManager.GameState state)
+        {
+            switch (state)
+            {
+                case GameStateManager.GameState.OnGameplay:
+                    Rigidbody2D.gravityScale = 2f;
+                    break;
+                case GameStateManager.GameState.OnLose:
+                    break;
+                case GameStateManager.GameState.OnPause:
+                    Animator.SetFloat(SpeedXHash, 0);
+                    Movement = Vector2.zero;
+                    Rigidbody2D.linearVelocity = Vector2.zero;
+                    Rigidbody2D.gravityScale = 0f;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+        }
+        
         // Combo tracking
         public bool IsAttacking { get; set; }
         public bool ComboInputReceived { get; set; }
@@ -48,18 +70,28 @@ namespace _Memoriam.Script.Player
         public int Combo1AttackHash { get;  } = Animator.StringToHash("Combo1");
         public int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
         public int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
-
+        public int SpeedXHash  { get; } = Animator.StringToHash("SpeedX");
+        public int SpeedYHash  { get; } = Animator.StringToHash("SpeedY");
+        
+        // Movement parameters
+        public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
 
-        private void Start()
+        private void Awake()
         {
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
         }
+
+        private void OnEnable()
+        {
+            GameStateManager.OnGameStateChanged += OnStateChanged;
+        }
+
         private void Update()
         {
-            if (GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay) 
+            if (GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
             
             StateMachine?.Tick();
@@ -68,6 +100,11 @@ namespace _Memoriam.Script.Player
             {
                 Die();
             }
+        }
+
+        private void OnDisable()
+        {
+            GameStateManager.OnGameStateChanged -= OnStateChanged;
         }
 
         private void LateUpdate()
@@ -90,7 +127,8 @@ namespace _Memoriam.Script.Player
 
             GameManager.OnLose();
         }
-        
+
+        #region CombosLogic
         public void OpenComboWindow()
         {
             ComboWindowOpen = true;
@@ -119,6 +157,9 @@ namespace _Memoriam.Script.Player
 
         private void ResetComboState()
         {
+            IsAttacking = false;
+            CurrentAttackType = AttackType.None;
+            
             Animator.SetBool(ComboTriggeredHash, false);
         }
 
@@ -128,5 +169,7 @@ namespace _Memoriam.Script.Player
             Light,
             Heavy
         }
+        #endregion
+
     }
 }

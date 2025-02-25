@@ -13,11 +13,6 @@ namespace _Memoriam.Script.Player.States
     public class PlayerCombatState : IState
     {
         private Player _player;
-        
-        // Movement parameters
-        private Vector2 _movement;
-        private readonly int _speedXHash = Animator.StringToHash("SpeedX");
-        private readonly int _speedYHash = Animator.StringToHash("SpeedY");
 
         public PlayerCombatState(Player player)
         {
@@ -49,14 +44,6 @@ namespace _Memoriam.Script.Player.States
 
         public void Tick()
         {
-            if (_player.GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
-            {
-                _movement = Vector2.zero;
-                _player.Animator.SetFloat(_speedXHash, 0);
-                _player.Animator.SetFloat(_speedYHash, 0);
-                return;
-            }
-            
             Move();
             
             // Check if we need to execute the combo
@@ -72,8 +59,7 @@ namespace _Memoriam.Script.Player.States
 
         private void LightAttack(InputAction.CallbackContext context)
         {
-            if (!context.performed || 
-                _player.GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed)
                 return;
             
             if (!_player.IsAttacking)
@@ -88,8 +74,7 @@ namespace _Memoriam.Script.Player.States
         
         private void HeavyAttack(InputAction.CallbackContext context)
         {
-            if (!context.performed || 
-                _player.GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed)
                 return;
             
             if (!_player.IsAttacking)
@@ -125,12 +110,12 @@ namespace _Memoriam.Script.Player.States
 
         private void Move()
         {
-            _movement = _player.PlayerActions.Player.Move.ReadValue<Vector2>();
-            _player.Rigidbody2D.linearVelocity = new Vector2(_movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+            _player.Movement = _player.PlayerActions.Player.Move.ReadValue<Vector2>();
+            _player.Rigidbody2D.linearVelocity = new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
 
             _player.IsGrounded = Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
 
-            switch (_movement.normalized.x)
+            switch (_player.Movement.normalized.x)
             {
                 case > 0.1f:
                     _player.SpriteRenderer.flipX = false; 
@@ -142,31 +127,30 @@ namespace _Memoriam.Script.Player.States
 
             if (_player.IsGrounded)
             {
-                _player.Animator.SetFloat(_speedXHash, _movement.x);
+                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
             }
             else
             {
-                _player.Animator.SetFloat(_speedXHash, 0);
+                _player.Animator.SetFloat(_player.SpeedXHash, 0);
             }
 
             switch (_player.Rigidbody2D.linearVelocity.y)
             {
                 case > 0.1f:
-                    _player.Animator.SetFloat(_speedYHash, 1);
+                    _player.Animator.SetFloat(_player.SpeedYHash, 1);
                     break;
                 case < -0.1f:
-                    _player.Animator.SetFloat(_speedYHash, -1);
+                    _player.Animator.SetFloat(_player.SpeedYHash, -1);
                     break;
                 default:
-                    _player.Animator.SetFloat(_speedYHash, 0);
+                    _player.Animator.SetFloat(_player.SpeedYHash, 0);
                     break;
             }
         }
 
         private void Jump(InputAction.CallbackContext context)
         {
-            if (!context.performed || 
-                _player.GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed)
                 return;
 
             if (!_player.IsGrounded) 
@@ -183,8 +167,6 @@ namespace _Memoriam.Script.Player.States
             {
                 if (result.TryGetComponent<IEnemy>(out var enemy))
                 {
-                    Debug.DrawLine(_player.SwordCollider.transform.position, _player.SwordCollider.transform.position, Color.red);
-                    Debug.Log($"Damage {_player.Damage} was made");
                     enemy.ReceiveDamage(_player.Damage);
                 }
             }

@@ -13,6 +13,7 @@ namespace _Memoriam.Script.Managers
         private void OnEnable()
         {
             _playerActionsScript.Player.Pause.performed += OnPause;
+            _playerActionsScript.UI.Pause.performed += OnPause;
         }
 
         public void OnPause(InputAction.CallbackContext ctx)
@@ -43,6 +44,7 @@ namespace _Memoriam.Script.Managers
         private void OnDisable()
         {
             _playerActionsScript.Player.Pause.performed -= OnPause;
+            _playerActionsScript.UI.Pause.performed -= OnPause;
         }
     }
 }

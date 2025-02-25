@@ -1,4 +1,5 @@
-﻿using _Memoriam.Script.Enemies.BT;
+﻿using System;
+using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player;
@@ -27,11 +28,15 @@ namespace _Memoriam.Script.Enemies
         [Inject] protected GameManager GameManager { get; set; }
         [Inject] protected GameStateManager GameStateManager { get; set; }
         
+        //Delegates
+        protected void OnStateChanged(GameStateManager.GameState state)
+        {
+            if (state == GameStateManager.GameState.OnPause)
+                Animator.SetFloat(_moveXHash, 0f);
+        }
+        
         protected bool EnemyDetected;
         
-        private readonly Collider2D[] _results = new Collider2D[MaxColliders];
-        private const int MaxColliders = 10;
-
         private Vector2 _playerPos;
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");

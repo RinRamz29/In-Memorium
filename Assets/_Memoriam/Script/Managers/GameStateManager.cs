@@ -48,14 +48,18 @@ namespace _Memoriam.Script.Managers
         }
         #endregion
 
+        [Inject] private PlayerActionsScript _playerActionsScript;
+        
         private void PauseLogic()
         {
-            
+            _playerActionsScript.Player.Disable();
+            _playerActionsScript.UI.Enable();
         }
 
         private void GameplayLogic()
         {
-            
+            _playerActionsScript.Player.Enable();
+            _playerActionsScript.UI.Disable();
         }
 
         private void LoseLogic()
