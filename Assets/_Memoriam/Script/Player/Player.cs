@@ -21,7 +21,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float GroundDistance { get; set; } = 0.1f;
         [field: SerializeField] public LayerMask GroundMask { get; set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; set; }
-        [field: SerializeField] public GameObject SwordCollider { get; set; }
+        [field: SerializeField] public Collider2D SwordCollider { get; set; }
 
 
         [Header("Stats")]

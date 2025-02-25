@@ -1121,6 +1121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <SwordCollider>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.75
