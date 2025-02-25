@@ -1,0 +1,1706 @@
+fileFormatVersion: 2
+guid: 5c72aa4e4bc060c4fb63690bb59282d2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Blood Portal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b43552462a37d34f912f1fe392b6317
+      internalID: -578466419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f897ec1eb00aba24a941b070bf5ae8f4
+      internalID: 336662001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_2
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3be478237728c645b4e780dac05a5bd
+      internalID: 333285188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_3
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378d706196d9e484685649ddebea727e
+      internalID: -692141922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_4
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db25b933172874b4fb3cfeab425c693e
+      internalID: 312570159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_5
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97480f6c203248408f4082642de68fa
+      internalID: 1114520606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_6
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6301f34b4035dfd4b9c8d5a6d70d7274
+      internalID: 1126810920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_7
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ae9dbae915243489af2570ec59f438
+      internalID: -669439983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_8
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce915156b499b54aa055824b1474c1d
+      internalID: 182557852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_9
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 591dc56e8202f43499aa3ee745b84da2
+      internalID: -2084642920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_10
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a3009bd65189834d975c8e4caaa79c8
+      internalID: 171148648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_11
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf2f8a9020e1de498252fd1c19385fb
+      internalID: 52353777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_12
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4359a68eee4954c9a62f24fa5d0b54
+      internalID: 99652212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_13
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff70b592688e844e815adc9a3d086a3
+      internalID: 636508470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_14
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a9e3e2dd65c064c861a7ef7520fe6a
+      internalID: -737488511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_15
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638627a64c673064db098e1cfc2e108e
+      internalID: 1868388620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_16
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520354333a377ea44a4973d1078a4a69
+      internalID: 2051329302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_17
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f30f5277852314a9933d959f9b4a9c
+      internalID: -1248726815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_18
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4600bf0e6c91b9243a1298408aa6e1f0
+      internalID: -559244963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_19
+      rect:
+        serializedVersion: 2
+        x: 3591
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13529979e1ecee343b41e651635593d6
+      internalID: 770463762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_20
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2defaa0d0b582744b9502c60794308cf
+      internalID: -1220525534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_21
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ec4695a888afb45a31ab546470df23
+      internalID: 12654171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_22
+      rect:
+        serializedVersion: 2
+        x: 4158
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad1aa18f2ab4af478d03aaa6ca6f746
+      internalID: 96585885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_23
+      rect:
+        serializedVersion: 2
+        x: 4347
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f11b836ec5e5c469c336b28f5b5aaa
+      internalID: -1941493513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcbda2ce0cadd74f8397f48a1365a10
+      internalID: 1019072566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_25
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22362398adacf2746890c4e550c15526
+      internalID: 863996459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_26
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a1278882df02a8438eff080a48e3c84
+      internalID: 1837455395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_27
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b41912449546c47987c7ba14a90d43
+      internalID: 59317079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_28
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fb887248846ed4291511bf2c825cc4
+      internalID: 1348062388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_29
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb66c9cc90689c48af9cbaf858b616d
+      internalID: -1774697577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_30
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8db551b6b5d6a4aaeef7e3a8a5995f
+      internalID: -1791782271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_31
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f59ea0228048234d8197a9f13b98213
+      internalID: -870061399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_32
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f2cdc9a442f2b47b169cb4f5699fef
+      internalID: 34583746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_33
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6adbb189dd1838e46824ec91cc9acb7d
+      internalID: 2016178577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_34
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bdfdc684b10a649b9895eeb0b1e734
+      internalID: -2144607183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_35
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa92edde3652bd944bc9f31e47a78a14
+      internalID: 1990255697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_36
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b76924b1717c64b8103755fe5dd8cb
+      internalID: -222357794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_37
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2d9da7f418df74c9f8cbf7dd7cdbfe
+      internalID: 772396864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_38
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9dc0d3b98a1ca46a573449a3cb8630
+      internalID: -2022247597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_39
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f0c462f4f151a42ad381cf4a405ea2
+      internalID: -934187101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_40
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05529f0204c12c438648478253d78e2
+      internalID: 699069860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_41
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77c1391316d2fd479a50e0990c2c10c
+      internalID: -1988093061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_42
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0adc2c8f49884489f2e69ad38de372
+      internalID: 1364798895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_43
+      rect:
+        serializedVersion: 2
+        x: 3591
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5523b85fa4f47c46b3ac3ad80411cb9
+      internalID: -638497195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_44
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463dba8196b0feb438ad38449a0c6537
+      internalID: 1876277051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_45
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434aaa5bf171ca24bb448981381a0b84
+      internalID: 1276744951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_46
+      rect:
+        serializedVersion: 2
+        x: 4158
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed2e1c8800adfb42b60ab5702dc3412
+      internalID: -490221887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_47
+      rect:
+        serializedVersion: 2
+        x: 4347
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2224afe86a3e3ae4f99c8df4139f9053
+      internalID: 1362110694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1e4c681f8010d4eb2caf7da88f8e10
+      internalID: -859527204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_49
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7daddab92258f104ba591a2a8a1fafb2
+      internalID: -622730578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_50
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c156bf3f286d404aa7a87f795752f8e
+      internalID: -496236730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_51
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd8b5130b94a064a984d5d4d17abe4b
+      internalID: 1515405558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_52
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e626c4b585dc794a887b5b7c07ac9ce
+      internalID: -233721898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_53
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfcaf96a51cb4949b1953f987e877d6
+      internalID: 255574028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_54
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfca1af3905d889459c974720480e193
+      internalID: -1335277823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_55
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ad0bb56359b2340b1224ffaacd194d
+      internalID: 178023522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_56
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77de7c55f877c8e48a67e23c7f0120fe
+      internalID: -1483281637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_57
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4849a40baa226a140945c09358e09f93
+      internalID: -1013591909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_58
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5373967acefd7b14b8fffd77d65e50e0
+      internalID: -785893913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_59
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b517af3e9e01a4f488baa9580df406f1
+      internalID: 462495406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_60
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dff863e20bf7104ba3db1096dfe6a23
+      internalID: -1946219590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_61
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e170845b8d47d040b4a789a47e57243
+      internalID: 802635187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_62
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba70dc774904754d9a9a2f6f272babc
+      internalID: -1886421685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_63
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aeb66410d3346f43ab90d64d149c8bb
+      internalID: -1091596068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_64
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adb78754bb114d428b9c55dc0a172ef
+      internalID: 224082781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_65
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316a21fc1d92ea34587a9c41aae3210d
+      internalID: 679831237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_66
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f49e6915dbf284abcc8b47e273c86d
+      internalID: -179586066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_67
+      rect:
+        serializedVersion: 2
+        x: 3591
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71125c0680461144da6cc5c39f832527
+      internalID: 1181149851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_68
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5eca6939ac383a4dbbbaab2a3577b05
+      internalID: 1097674617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_69
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ccfad0bbbc69c74d891fdf6a8253a1a
+      internalID: -1359312601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_70
+      rect:
+        serializedVersion: 2
+        x: 4158
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda9e3ef7ca95d94b897fdbd753884df
+      internalID: 1584845184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Portal_71
+      rect:
+        serializedVersion: 2
+        x: 4347
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1052cb620ea9f7042bbf644a687e348d
+      internalID: -1282313095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Blood Portal_0: -578466419
+      Blood Portal_1: 336662001
+      Blood Portal_10: 171148648
+      Blood Portal_11: 52353777
+      Blood Portal_12: 99652212
+      Blood Portal_13: 636508470
+      Blood Portal_14: -737488511
+      Blood Portal_15: 1868388620
+      Blood Portal_16: 2051329302
+      Blood Portal_17: -1248726815
+      Blood Portal_18: -559244963
+      Blood Portal_19: 770463762
+      Blood Portal_2: 333285188
+      Blood Portal_20: -1220525534
+      Blood Portal_21: 12654171
+      Blood Portal_22: 96585885
+      Blood Portal_23: -1941493513
+      Blood Portal_24: 1019072566
+      Blood Portal_25: 863996459
+      Blood Portal_26: 1837455395
+      Blood Portal_27: 59317079
+      Blood Portal_28: 1348062388
+      Blood Portal_29: -1774697577
+      Blood Portal_3: -692141922
+      Blood Portal_30: -1791782271
+      Blood Portal_31: -870061399
+      Blood Portal_32: 34583746
+      Blood Portal_33: 2016178577
+      Blood Portal_34: -2144607183
+      Blood Portal_35: 1990255697
+      Blood Portal_36: -222357794
+      Blood Portal_37: 772396864
+      Blood Portal_38: -2022247597
+      Blood Portal_39: -934187101
+      Blood Portal_4: 312570159
+      Blood Portal_40: 699069860
+      Blood Portal_41: -1988093061
+      Blood Portal_42: 1364798895
+      Blood Portal_43: -638497195
+      Blood Portal_44: 1876277051
+      Blood Portal_45: 1276744951
+      Blood Portal_46: -490221887
+      Blood Portal_47: 1362110694
+      Blood Portal_48: -859527204
+      Blood Portal_49: -622730578
+      Blood Portal_5: 1114520606
+      Blood Portal_50: -496236730
+      Blood Portal_51: 1515405558
+      Blood Portal_52: -233721898
+      Blood Portal_53: 255574028
+      Blood Portal_54: -1335277823
+      Blood Portal_55: 178023522
+      Blood Portal_56: -1483281637
+      Blood Portal_57: -1013591909
+      Blood Portal_58: -785893913
+      Blood Portal_59: 462495406
+      Blood Portal_6: 1126810920
+      Blood Portal_60: -1946219590
+      Blood Portal_61: 802635187
+      Blood Portal_62: -1886421685
+      Blood Portal_63: -1091596068
+      Blood Portal_64: 224082781
+      Blood Portal_65: 679831237
+      Blood Portal_66: -179586066
+      Blood Portal_67: 1181149851
+      Blood Portal_68: 1097674617
+      Blood Portal_69: -1359312601
+      Blood Portal_7: -669439983
+      Blood Portal_70: 1584845184
+      Blood Portal_71: -1282313095
+      Blood Portal_8: 182557852
+      Blood Portal_9: -2084642920
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307279
+  packageName: The DARK Series Mega Pack 2
+  packageVersion: 1.0
+  assetPath: Assets/DARK Series Mega Pack 2/16 DARK- Portal and Shops/Portals/Sprite
+    Sheets/Blood Portal.png
+  uploadId: 722180

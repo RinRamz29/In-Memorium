@@ -1,0 +1,1574 @@
+fileFormatVersion: 2
+guid: 81014fcbee701a04f84412e5ed4e2564
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Normal Portal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81119d0f5bda3fa48a5633bba2d81f20
+      internalID: -1438813017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8b678b20ce83346a3e40d481b19e50
+      internalID: -1695068849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_2
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058d1bd617a4fe444bdea8943f373cc3
+      internalID: -1115382154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_3
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4769873d812ada9459437e833a3b0d8f
+      internalID: -1559171930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_4
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d49cfe4c54ad056409f4d3d0ad1f5cff
+      internalID: -1541586330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_5
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa691882d3470c428da5b813737ea06
+      internalID: -65304183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_6
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0016c691af7f1ba40bacd00afd893d0c
+      internalID: -642052411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_7
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f99df646144fd43b465448a8a88afd
+      internalID: 517025044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_8
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea4ad09a2f1ece4199b0fa20f91b806
+      internalID: 1725988598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_9
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e87bafb4e504547ac99ae66073019b
+      internalID: 1933216610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_10
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7221381e971bc95428fd899d06fb4e8e
+      internalID: 1949505496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_11
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b520229c9a58b7f45953e996d69cbba7
+      internalID: -89309374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_12
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333998f3ca3860b48ae26d82193950e4
+      internalID: -157994630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_13
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19ea0201b35bb94cbe7ba97d6108eb4
+      internalID: 705747817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_14
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c28082254969cd4980a46a2225bc1b4
+      internalID: -926570187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_15
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf277fb04c21394b9f4aaca487f4d06
+      internalID: -1396237091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_16
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e570978b4b2dcf84e8dd63add693f4b3
+      internalID: 340246809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_17
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61accf21124e61b4ca4d2ff547a850aa
+      internalID: -950998169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_18
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3404ad8ebe3a824e9c95ea77a92b3fe
+      internalID: 501531280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_19
+      rect:
+        serializedVersion: 2
+        x: 3591
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b37a187b194ea342bce0e46e8e476f7
+      internalID: -1907387554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_20
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6ca1876951fbe4c9e2b4f83c3d30d3
+      internalID: 83291213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_21
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ddaf0525571b2341877e7fb04bb766a
+      internalID: 1432869184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_22
+      rect:
+        serializedVersion: 2
+        x: 4158
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f3069ee79e3f7d49adcafbe0cc8b17f
+      internalID: 757719195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_23
+      rect:
+        serializedVersion: 2
+        x: 4347
+        y: 180
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a392eb028e96840839022d24a68834
+      internalID: 474601086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d8b0c52f1813c4eb5e59822b7b2619
+      internalID: 734180443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_25
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8b95e3910d49046889952719d4d703
+      internalID: -191805190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_26
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a2765ab85029c4db54058368338f3c
+      internalID: -1428713328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_27
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8cc22207cfd1a4fbe519542bd1a96f
+      internalID: -403814014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_28
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1752a89c768d9874e8e5fa9f679e0f8e
+      internalID: 1709661466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_29
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2137b589256e448a33b2ec9e22def1
+      internalID: 1564150853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_30
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f40e34475fad344950aa5b414887be
+      internalID: 925037703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_31
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f23b3841fe9d9a48bf50ac05496ebf5
+      internalID: -694373282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_32
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e18f56c53c4b2e74fb7455612a64c5cb
+      internalID: -767117820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_33
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a62fdc42b55ed794ebd63d8c97def0b5
+      internalID: -2137376538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_34
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 738bd516515d8ce47b37955c0f9d81b3
+      internalID: -1248913203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_35
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94a050cc7882034686dcd3ef972f5c5
+      internalID: -1882407548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_36
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461b00fd4ce2b7748be345abe3fde0bb
+      internalID: 1226554166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_37
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0be2a39266cbb4f8075395d2f1060d
+      internalID: 956185458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_38
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3439a0e14e3dbf444af0229f1a41d06a
+      internalID: -852153850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_39
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56795e8aa589af428c65a593b78190c
+      internalID: -925755871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_40
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c5224f2f690d9d41bdeaf4f2cb4190e
+      internalID: -1168928109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_41
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706c37677dc9d7641847b8d6603319cc
+      internalID: 105973247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_42
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50016561e699c1346bb096d4a25e9148
+      internalID: -908991109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_43
+      rect:
+        serializedVersion: 2
+        x: 3591
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911eb2b5e12d16845ae1c3467dab74aa
+      internalID: 39601445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_44
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ea904601d2d0f4b99a90f37a69514b
+      internalID: -1314568491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_45
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e08afef6f17e54e80eafe836a0a089
+      internalID: -1082240535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_46
+      rect:
+        serializedVersion: 2
+        x: 4158
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e88bfb9810f0247a1656092336e876
+      internalID: 608652538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_47
+      rect:
+        serializedVersion: 2
+        x: 4347
+        y: 90
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1f698ff2030f5418376bc320de062b
+      internalID: 1288417461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f6c8f061b239d4418cfad7b59f7bcfc
+      internalID: 453005016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_49
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6afc1e689e199ce4cb598f4d7eef43c3
+      internalID: 83234780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_50
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a555acee71972454b87485c95a2c21ef
+      internalID: 988955623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_51
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2529d9c38c7be014285b1af2b2b888e9
+      internalID: 116119219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_52
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25ed9e3ab7fe46439fa3480c30ec6d8
+      internalID: -100263533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_53
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f894cad431d9e44c8d939e01d9df2b7
+      internalID: 1142198732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_54
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ead8bb305e895449ef5589f7de11f3
+      internalID: -2131300395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_55
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22441e9a0040fea4eb51ac9829e3ed8c
+      internalID: 167038926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_56
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd7c1321f2295a14fb6d20584b8f2f93
+      internalID: 185390476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_57
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a70b88163e553c647b57410446e074c2
+      internalID: -645590330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_58
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab0d4f3cd97bd741b86d3a1a9ab0f40
+      internalID: 1176105362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_59
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7bf3be090b1e3498bdf7083d6772e1
+      internalID: 837091103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_60
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec34d78c56553d1449cb42fa8962ae62
+      internalID: 462204575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_61
+      rect:
+        serializedVersion: 2
+        x: 2457
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8acec8b193fc12a47acd677cafa45f0f
+      internalID: -346665496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_62
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec7b835e0c412a46a9d5a4c8577b115
+      internalID: 1188380161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_63
+      rect:
+        serializedVersion: 2
+        x: 2835
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ddf662326793440be14ae368245c7e
+      internalID: 594998822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_64
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13f4567ddfd30947a14a09cc181da50
+      internalID: 1332824069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Normal Portal_65
+      rect:
+        serializedVersion: 2
+        x: 3213
+        y: 0
+        width: 189
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eff72746ebe1734ba23afc7986ad450
+      internalID: -1239625763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Normal Portal_0: -1438813017
+      Normal Portal_1: -1695068849
+      Normal Portal_10: 1949505496
+      Normal Portal_11: -89309374
+      Normal Portal_12: -157994630
+      Normal Portal_13: 705747817
+      Normal Portal_14: -926570187
+      Normal Portal_15: -1396237091
+      Normal Portal_16: 340246809
+      Normal Portal_17: -950998169
+      Normal Portal_18: 501531280
+      Normal Portal_19: -1907387554
+      Normal Portal_2: -1115382154
+      Normal Portal_20: 83291213
+      Normal Portal_21: 1432869184
+      Normal Portal_22: 757719195
+      Normal Portal_23: 474601086
+      Normal Portal_24: 734180443
+      Normal Portal_25: -191805190
+      Normal Portal_26: -1428713328
+      Normal Portal_27: -403814014
+      Normal Portal_28: 1709661466
+      Normal Portal_29: 1564150853
+      Normal Portal_3: -1559171930
+      Normal Portal_30: 925037703
+      Normal Portal_31: -694373282
+      Normal Portal_32: -767117820
+      Normal Portal_33: -2137376538
+      Normal Portal_34: -1248913203
+      Normal Portal_35: -1882407548
+      Normal Portal_36: 1226554166
+      Normal Portal_37: 956185458
+      Normal Portal_38: -852153850
+      Normal Portal_39: -925755871
+      Normal Portal_4: -1541586330
+      Normal Portal_40: -1168928109
+      Normal Portal_41: 105973247
+      Normal Portal_42: -908991109
+      Normal Portal_43: 39601445
+      Normal Portal_44: -1314568491
+      Normal Portal_45: -1082240535
+      Normal Portal_46: 608652538
+      Normal Portal_47: 1288417461
+      Normal Portal_48: 453005016
+      Normal Portal_49: 83234780
+      Normal Portal_5: -65304183
+      Normal Portal_50: 988955623
+      Normal Portal_51: 116119219
+      Normal Portal_52: -100263533
+      Normal Portal_53: 1142198732
+      Normal Portal_54: -2131300395
+      Normal Portal_55: 167038926
+      Normal Portal_56: 185390476
+      Normal Portal_57: -645590330
+      Normal Portal_58: 1176105362
+      Normal Portal_59: 837091103
+      Normal Portal_6: -642052411
+      Normal Portal_60: 462204575
+      Normal Portal_61: -346665496
+      Normal Portal_62: 1188380161
+      Normal Portal_63: 594998822
+      Normal Portal_64: 1332824069
+      Normal Portal_65: -1239625763
+      Normal Portal_7: 517025044
+      Normal Portal_8: 1725988598
+      Normal Portal_9: 1933216610
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307279
+  packageName: The DARK Series Mega Pack 2
+  packageVersion: 1.0
+  assetPath: Assets/DARK Series Mega Pack 2/16 DARK- Portal and Shops/Portals/Sprite
+    Sheets/Normal Portal.png
+  uploadId: 722180
