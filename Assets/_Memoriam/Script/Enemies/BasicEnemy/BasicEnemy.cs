@@ -63,6 +63,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         public override void ReceiveDamage(float damage)
         {
+            Animator.SetTrigger(_damagedHash);
             Health -= damage;
         }
 

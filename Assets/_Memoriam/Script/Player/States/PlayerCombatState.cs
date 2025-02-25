@@ -13,6 +13,7 @@ namespace _Memoriam.Script.Player.States
     public class PlayerCombatState : IState
     {
         private Player _player;
+        private float _damage;
 
         public PlayerCombatState(Player player)
         {
@@ -27,6 +28,8 @@ namespace _Memoriam.Script.Player.States
             _player.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             _player.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             _player.PlayerActions.Player.Jump.performed += Jump;
+
+            _damage = _player.Damage;
         }
 
         public void Exit()
@@ -167,7 +170,21 @@ namespace _Memoriam.Script.Player.States
             {
                 if (result.TryGetComponent<IEnemy>(out var enemy))
                 {
-                    enemy.ReceiveDamage(_player.Damage);
+                    switch (_player.CurrentAttackType)
+                    {
+                        case Player.AttackType.Heavy:
+                            _damage = _player.Damage * 1.5f;
+                            enemy.ReceiveDamage(_damage);
+                            break;
+                        case Player.AttackType.Light:
+                            _damage = _player.Damage * 1.0f;
+                            enemy.ReceiveDamage(_damage);
+                            break;
+                        case Player.AttackType.None:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
             }
         }

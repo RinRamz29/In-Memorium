@@ -42,6 +42,7 @@ namespace _Memoriam.Script.Enemies
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
         protected readonly int _dieHash = Animator.StringToHash("Die");
+        protected readonly int _damagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
         private float _lastAttackTime = 0f;

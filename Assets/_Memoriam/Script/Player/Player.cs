@@ -30,7 +30,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float Stamina { get; private set; }
         [field: SerializeField] public float MaxStamina { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
-        [field: SerializeField] public float Damage { get; private set; } = 10f;
+        [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         
         [Inject] public PlayerActionsScript PlayerActions { get; set; }
