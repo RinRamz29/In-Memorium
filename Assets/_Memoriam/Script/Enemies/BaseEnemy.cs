@@ -20,23 +20,23 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public Transform[] PatrolPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
-        
+
         [field: SerializeField] public float DetectRadius { get; set; }
         [field: SerializeField] public LayerMask PlayerLayer { get; set; }
         [field: SerializeField] public Animator Animator { get; set; }
-        
+
         [Inject] protected GameManager GameManager { get; set; }
         [Inject] protected GameStateManager GameStateManager { get; set; }
-        
+
         //Delegates
         protected void OnStateChanged(GameStateManager.GameState state)
         {
             if (state == GameStateManager.GameState.OnPause)
                 Animator.SetFloat(_moveXHash, 0f);
         }
-        
+
         protected bool EnemyDetected;
-        
+
         private Vector2 _playerPos;
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
@@ -46,24 +46,29 @@ namespace _Memoriam.Script.Enemies
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
         private float _lastAttackTime = 0f;
-        
+        private bool _isFlipped;
+
 
         public Node.Status Attack()
         {
             if (_player == null)
                 return Node.Status.Failure;
-            
-            var results = Physics2D.OverlapCircleAll(AttackPoint.transform.position, AttackDistance, PlayerLayer);
 
-            SpriteRenderer.flipX = _playerPos.x - transform.position.x < 0;
-            
+            var sizeOfCapsule = _isFlipped ? new Vector2(-AttackDistance, 1f) : new Vector2(AttackDistance, 1f);
+            AttackPoint.transform.localPosition = _isFlipped
+                ? new Vector3(-1f, AttackPoint.transform.localPosition.y, AttackPoint.transform.localPosition.z)
+                : new Vector3(1f, AttackPoint.transform.localPosition.y, AttackPoint.transform.localPosition.z);
+
+            var results = Physics2D.OverlapCapsuleAll(AttackPoint.transform.position, sizeOfCapsule,
+                CapsuleDirection2D.Horizontal, PlayerLayer);
+
             foreach (var result in results)
             {
-                if (result.TryGetComponent<IPlayer>(out var player) )
+                if (result.TryGetComponent<IPlayer>(out var player))
                 {
                     if (Time.time - _lastAttackTime > AttackTimeOut)
                     {
-                        Animator.SetTrigger(_attackHash);  
+                        Animator.SetTrigger(_attackHash);
                         player.ReceiveDamage(Damage);
                         _lastAttackTime = Time.time;
                         return Node.Status.Success;
@@ -81,7 +86,7 @@ namespace _Memoriam.Script.Enemies
         {
             if (_player == null)
                 return Node.Status.Failure;
-            
+
             var distance = Vector2.Distance(transform.position, _playerPos);
 
             if (distance < AttackDistance)
@@ -89,18 +94,23 @@ namespace _Memoriam.Script.Enemies
                 Animator.SetFloat(_moveXHash, 0f);
                 return Node.Status.Success;
             }
-            
-            SpriteRenderer.flipX = _playerPos.x - transform.position.x < 0;
 
-            if (_playerPos.x - transform.position.x > 0)
+            var diff = _playerPos.x - transform.position.x;
+
+            switch (diff)
             {
-                transform.position += transform.right * (Speed * Time.deltaTime);
+                case > 0.1f:
+                    transform.position += transform.right * (Speed * Time.deltaTime);
+                    SpriteRenderer.flipX = false;
+                    _isFlipped = false;
+                    break;
+                case < -0.1f:
+                    transform.position -= transform.right * (Speed * Time.deltaTime);
+                    SpriteRenderer.flipX = true;
+                    _isFlipped = true;
+                    break;
             }
-            else
-            {
-                transform.position -= transform.right * (Speed * Time.deltaTime);
-            }
-            
+
             Animator.SetFloat(_moveXHash, 1f);
             return Node.Status.Running;
         }
@@ -109,9 +119,9 @@ namespace _Memoriam.Script.Enemies
         {
             if (PatrolPoints == null || PatrolPoints.Length == 0)
                 return Node.Status.Failure;
-            
+
             var currentPoint = PatrolPoints[_currentPatrolIndex];
-            
+
             var distance = Vector2.Distance(transform.position, currentPoint.position);
 
             if (_waitTimer > 0)
@@ -127,7 +137,7 @@ namespace _Memoriam.Script.Enemies
                 _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Length;
                 return Node.Status.Running;
             }
-            
+
             SpriteRenderer.flipX = currentPoint.transform.position.x - transform.position.x < 0;
 
             if (currentPoint.transform.position.x - transform.position.x > 0)
@@ -138,15 +148,15 @@ namespace _Memoriam.Script.Enemies
             {
                 transform.position -= transform.right * (Speed * Time.deltaTime);
             }
-            
+
             Animator.SetFloat(_moveXHash, 1f);
             return Node.Status.Running;
         }
 
         public Node.Status Detect()
         {
-            var results = Physics2D.OverlapCircleAll(transform.position, DetectRadius, PlayerLayer);
-            
+            var results = Physics2D.OverlapCircleAll(AttackPoint.transform.position, DetectRadius, PlayerLayer);
+
             foreach (var coll in results)
             {
                 if (coll.TryGetComponent<IPlayer>(out var player))
@@ -157,11 +167,11 @@ namespace _Memoriam.Script.Enemies
                     return Node.Status.Success;
                 }
             }
-            
+
             EnemyDetected = false;
             return Node.Status.Failure;
         }
-        
+
         public virtual void ReceiveDamage(float damage)
         {
         }

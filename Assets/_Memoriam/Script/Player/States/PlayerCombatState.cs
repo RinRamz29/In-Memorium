@@ -48,8 +48,6 @@ namespace _Memoriam.Script.Player.States
 
         public void Tick()
         {
-            Move();
-
             // Check if we need to execute the combo
             if (_player.ComboInputReceived && _player.ComboWindowOpen)
             {
@@ -59,6 +57,7 @@ namespace _Memoriam.Script.Player.States
 
         public void LateTick()
         {
+            Move();
         }
 
         private void LightAttack(InputAction.CallbackContext context)
@@ -168,11 +167,16 @@ namespace _Memoriam.Script.Player.States
 
         private void CheckForSwordCollisions()
         {
-            var sizeOfCapsule = _isFlipped ? new Vector2(1f, -2.0f) : new Vector2(1f, 2.0f);
+            var sizeOfCapsule = _isFlipped ? new Vector2(-2.0f, 1f) : new Vector2(2.0f, 1.0f);
 
+            _player.SwordCollider.transform.localPosition = _isFlipped
+                ? new Vector3(-1f, _player.SwordCollider.transform.localPosition.y,
+                    _player.SwordCollider.transform.localPosition.z)
+                : new Vector3(1f, _player.SwordCollider.transform.localPosition.y,
+                    _player.SwordCollider.transform.localPosition.z);
 
-            var results = Physics2D.OverlapCapsuleAll(_player.transform.position, sizeOfCapsule,
-                CapsuleDirection2D.Vertical, _player.EnemyLayer);
+            var results = Physics2D.OverlapCapsuleAll(_player.SwordCollider.transform.position, sizeOfCapsule,
+                CapsuleDirection2D.Horizontal, _player.EnemyLayer);
 
             foreach (var result in results)
             {

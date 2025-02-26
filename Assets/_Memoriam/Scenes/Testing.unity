@@ -384,6 +384,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1 &381833569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4888445375247080529, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+  m_PrefabInstance: {fileID: 786469079051198042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &387465773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
@@ -719,14 +724,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
-      propertyPath: <AttackTimeOut>k__BackingField
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
-      propertyPath: <AttackDistance>k__BackingField
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
       propertyPath: '<PatrolPoints>k__BackingField.Array.data[0]'
       value: 
@@ -1121,10 +1118,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4674546240718080718, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674546240718080718, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674546240718080718, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674546240718080718, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674546240718080718, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: <SwordCollider>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 381833569}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.75
@@ -1178,14 +1195,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
-      propertyPath: <AttackTimeOut>k__BackingField
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
-      propertyPath: <AttackDistance>k__BackingField
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 671568228372465365, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
       propertyPath: '<PatrolPoints>k__BackingField.Array.data[0]'
       value: 
