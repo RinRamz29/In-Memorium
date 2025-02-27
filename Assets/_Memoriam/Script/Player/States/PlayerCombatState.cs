@@ -15,7 +15,12 @@ namespace _Memoriam.Script.Player.States
         private Player _player;
         private float _damage;
         private bool _isFlipped;
+        private Vector2 _direction;
 
+        private bool _isDashing;
+        private float _dashCooldown;
+        
+        
         public PlayerCombatState(Player player)
         {
             _player = player;
@@ -26,10 +31,12 @@ namespace _Memoriam.Script.Player.States
         {
             _player.PlayerActions.Player.LightAttack.performed += LightAttack;
             _player.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
+            _player.PlayerActions.Player.Dash.performed += Dash;
             _player.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             _player.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             _player.PlayerActions.Player.Jump.performed += Jump;
 
+            
             _damage = _player.Damage;
         }
 
@@ -37,6 +44,7 @@ namespace _Memoriam.Script.Player.States
         {
             _player.PlayerActions.Player.LightAttack.performed -= LightAttack;
             _player.PlayerActions.Player.HeavyAttack.performed -= HeavyAttack;
+            _player.PlayerActions.Player.Dash.performed -= Dash;
             _player.PlayerActions.Player.Jump.performed -= Jump;
 
             // Reset attack state
@@ -119,6 +127,21 @@ namespace _Memoriam.Script.Player.States
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
 
+            if (_isDashing)
+            {
+                _player.Rigidbody2D.linearVelocity =
+                    new Vector2( _player.Rigidbody2D.linearVelocity.y, _player.Rigidbody2D.linearVelocity.y);
+                _direction = _isFlipped ? Vector2.left : Vector2.right;
+                _player.Rigidbody2D.AddForce(_direction * _player.DashForce, ForceMode2D.Impulse);
+                
+                _dashCooldown -= Time.deltaTime;
+                if (_dashCooldown <= 0)
+                {
+                    _isDashing = false;
+                    _player.CanDash = false;
+                }
+            }
+
             switch (_player.Movement.normalized.x)
             {
                 case > 0.1f:
@@ -130,7 +153,7 @@ namespace _Memoriam.Script.Player.States
                     _isFlipped = true;
                     break;
             }
-
+            
             if (_player.IsGrounded)
             {
                 _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
@@ -158,11 +181,24 @@ namespace _Memoriam.Script.Player.States
         {
             if (!context.performed)
                 return;
+            
+            if (context.performed && _player.IsGrounded)
+                _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
 
-            if (!_player.IsGrounded)
+            if (!context.performed || _player.IsGrounded || !_player.CanDoubleJump) 
                 return;
-
+            
             _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
+            _player.CanDoubleJump = false;
+        }
+
+        private void Dash(InputAction.CallbackContext context)
+        {
+            if (!context.performed || !_player.CanDash)
+                return;
+            
+            _isDashing = true;
+            _dashCooldown = 0.2f;
         }
 
         private void CheckForSwordCollisions()

@@ -2,6 +2,7 @@ using System;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
+using _Memoriam.Script.Powerups;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -30,6 +31,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float Stamina { get; private set; }
         [field: SerializeField] public float MaxStamina { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
+        [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         
@@ -57,6 +59,10 @@ namespace _Memoriam.Script.Player
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
+        
+        // PowerUps
+        public bool CanDoubleJump { get; set; }
+        public bool CanDash { get; set; }
         
         // Combo tracking
         public bool IsAttacking { get; set; }
@@ -127,6 +133,29 @@ namespace _Memoriam.Script.Player
 
             GameManager.OnLose();
         }
+        
+        #region PowerUps
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<IPickable>(out var pickUp))
+            {
+                switch (pickUp.TypeOfPowerUp)
+                {
+                    case TypeOfPowerUp.Dash:
+                        CanDash = true;
+                        pickUp.Pick();
+                        break;
+                    case TypeOfPowerUp.DoubleJump:
+                        CanDoubleJump = true;
+                        pickUp.Pick();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        
+        #endregion
 
         #region CombosLogic
         public void OpenComboWindow()
