@@ -6,9 +6,20 @@ using Zenject;
 
 namespace _Memoriam.Script.InputLogic
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager
     {
-        [Inject] private PlayerActionsScript _playerActions;
+        private PlayerActionsScript _playerActions;
+        
+        //Subscribe
+        [Inject]
+        private InputManager(PlayerActionsScript playerActions)
+        {
+            _playerActions = playerActions;
+            _playerActions.Enable();
+
+            InputSystem.onDeviceChange += SetController;
+            InputSystem.onAnyButtonPress.Call(control => { OnButtonPress?.Invoke(control); });
+        }
 
         public Action<InputControl> OnButtonPress;
         public Action<InputDevice, InputDeviceChange> TypeOfController;
@@ -19,17 +30,11 @@ namespace _Memoriam.Script.InputLogic
             TypeOfController.Invoke(device, change);
         }
 
-        //Subscribe
-        private void Awake()
-        {
-            InputSystem.onDeviceChange += SetController;
-
-            InputSystem.onAnyButtonPress.Call(control => { OnButtonPress?.Invoke(control); });
-        }
-
         //Unsubscribe
-        private void OnDisable()
+        ~InputManager()
         {
+            _playerActions.Disable();
+
             InputSystem.onDeviceChange -= SetController;
         }
     }

@@ -1,20 +1,23 @@
 using System;
+using _Memoriam.Script.General;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
 namespace _Memoriam.Script.Managers
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager : MonoSingleton<GameStateManager>
     {
-        #region Internal
         [Serializable]
         public enum GameState
         {
             OnGameplay,
+            OnMenu,
             OnPause,
             OnLose,
+            OnLoading,
         } 
-        public GameState GameCurrentState { get; set; }
+        [field: SerializeField] public GameState GameCurrentState { get; private set; }
         public Action<GameState> OnGameStateChanged { get; set; }
 
         private void OnEnable()
@@ -30,41 +33,7 @@ namespace _Memoriam.Script.Managers
         private void ChangeState(GameState newState)
         {
             GameCurrentState = newState;
-
-            switch (GameCurrentState)
-            {
-                case GameState.OnGameplay:
-                    GameplayLogic();
-                    break;
-                case GameState.OnPause:
-                    PauseLogic();
-                    break;
-                case GameState.OnLose:
-                    LoseLogic();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-        #endregion
-
-        [Inject] private PlayerActionsScript _playerActionsScript;
-        
-        private void PauseLogic()
-        {
-            _playerActionsScript.Player.Disable();
-            _playerActionsScript.UI.Enable();
-        }
-
-        private void GameplayLogic()
-        {
-            _playerActionsScript.Player.Enable();
-            _playerActionsScript.UI.Disable();
-        }
-
-        private void LoseLogic()
-        {
-            
+            Debug.Log("Game state changed to: " + GameCurrentState);
         }
     }
 }

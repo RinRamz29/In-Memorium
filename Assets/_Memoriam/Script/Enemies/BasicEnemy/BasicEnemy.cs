@@ -17,7 +17,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         private void OnEnable()
         {
-            GameStateManager.OnGameStateChanged += OnStateChanged;
+            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 
         private void SetUpBehaviorSelector()
@@ -50,7 +50,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         private void Update()
         {
-            if (GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
             
             _behaviourTree?.Process();
@@ -78,7 +78,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         private void OnDisable()
         {
-            GameStateManager.OnGameStateChanged -= OnStateChanged;
+            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
         }
     }
 }

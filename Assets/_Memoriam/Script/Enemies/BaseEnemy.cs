@@ -25,9 +25,6 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public LayerMask PlayerLayer { get; set; }
         [field: SerializeField] public Animator Animator { get; set; }
 
-        [Inject] protected GameManager GameManager { get; set; }
-        [Inject] protected GameStateManager GameStateManager { get; set; }
-
         //Delegates
         protected void OnStateChanged(GameStateManager.GameState state)
         {
