@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
@@ -17,7 +18,7 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float AttackDistance { get; set; } = 1.5f;
         [field: SerializeField] public float WaitTimeAtPoint { get; set; } = 2f;
         [field: SerializeField] public float AttackTimeOut { get; set; } = 2f;
-        [field: SerializeField] public Transform[] PatrolPoints { get; set; }
+        [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
 
@@ -33,7 +34,7 @@ namespace _Memoriam.Script.Enemies
         }
 
         protected bool EnemyDetected;
-
+        protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
         private Vector2 _playerPos;
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
@@ -114,12 +115,12 @@ namespace _Memoriam.Script.Enemies
 
         public Node.Status Patrol()
         {
-            if (PatrolPoints == null || PatrolPoints.Length == 0)
+            if (PatrolPoints == null || PatrolPoints.Count == 0)
                 return Node.Status.Failure;
 
             var currentPoint = PatrolPoints[_currentPatrolIndex];
 
-            var distance = Vector2.Distance(transform.position, currentPoint.position);
+            var distance = Vector2.Distance(transform.position, currentPoint);
 
             if (_waitTimer > 0)
             {
@@ -131,13 +132,13 @@ namespace _Memoriam.Script.Enemies
             {
                 Animator.SetFloat(_moveXHash, 0f);
                 _waitTimer = WaitTimeAtPoint;
-                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Length;
+                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
                 return Node.Status.Running;
             }
 
-            SpriteRenderer.flipX = currentPoint.transform.position.x - transform.position.x < 0;
+            SpriteRenderer.flipX = currentPoint.x - transform.position.x < 0;
 
-            if (currentPoint.transform.position.x - transform.position.x > 0)
+            if (currentPoint.x - transform.position.x > 0)
             {
                 transform.position += transform.right * (Speed * Time.deltaTime);
             }

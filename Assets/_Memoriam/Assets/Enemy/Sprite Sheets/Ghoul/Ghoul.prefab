@@ -56,9 +56,9 @@ MonoBehaviour:
   <AttackDistance>k__BackingField: 2
   <WaitTimeAtPoint>k__BackingField: 2
   <AttackTimeOut>k__BackingField: 1.5
-  <PatrolPoints>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
+  <OffsetPoints>k__BackingField:
+  - {x: 5, y: 0}
+  - {x: 4, y: 0}
   <SpriteRenderer>k__BackingField: {fileID: 6936911284584182044}
   <AttackPoint>k__BackingField: {fileID: 7122204583798220164}
   <DetectRadius>k__BackingField: 5

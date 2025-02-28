@@ -1,5 +1,6 @@
 ﻿using System;
 using _Memoriam.Script.Enemies.BT;
+using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using UnityEngine;
 
@@ -13,6 +14,18 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Health = MaxHealth;
             SetUpBehaviorSelector();
+        }
+
+        private void Start()
+        {
+            PatrolPoints.Add(transform.position);
+
+            foreach (var offset in OffsetPoints)
+            {
+                var offsetX = (transform.position.x + offset.x);
+                var offsetY = (transform.position.y + offset.y);
+                PatrolPoints.Add(new Vector2(offsetX, offsetY));
+            }
         }
 
         private void OnEnable()
@@ -73,7 +86,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             _behaviourTree = null;
             
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                Destroy(gameObject);
+                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForEnemyPool, this.gameObject);
         }
 
         private void OnDisable()
