@@ -28,7 +28,7 @@
                 _currentState?.Tick();
             }
     
-            public void LateTick()
+            public void FixedTick()
             {
                 _currentState?.LateTick();
             }

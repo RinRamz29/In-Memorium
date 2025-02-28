@@ -153,6 +153,33 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""54cf3815-1a80-4ae7-96b9-ce5c4d141170"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargedHeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""231bdac5-aec0-4ecd-9865-ce69bc3cace9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargedLightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f3468d9-9175-4c32-8478-7c4fed9290cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -461,6 +488,72 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c30fee8-577c-4ea3-bdf4-a8382edb2758"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e772fa14-7348-47d7-b684-2a3c4c909db2"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a2ef6cd-99d4-46d6-9dba-fee93afdf52f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ChargedHeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed5fac4e-2991-4837-8a83-1ab4d4a5ddec"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargedHeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36d002eb-17e9-4a23-9267-17bc7e3c4723"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargedLightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""848c481f-af0b-4a0d-bd33-c607ed4be009"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargedLightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1086,6 +1179,9 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         m_Player_HeavyCombo = m_Player.FindAction("HeavyCombo", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_ChargedHeavyAttack = m_Player.FindAction("ChargedHeavyAttack", throwIfNotFound: true);
+        m_Player_ChargedLightAttack = m_Player.FindAction("ChargedLightAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1187,6 +1283,9 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_HeavyCombo;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_ChargedHeavyAttack;
+    private readonly InputAction m_Player_ChargedLightAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1226,6 +1325,18 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Dash".
+        /// </summary>
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ChargedHeavyAttack".
+        /// </summary>
+        public InputAction @ChargedHeavyAttack => m_Wrapper.m_Player_ChargedHeavyAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ChargedLightAttack".
+        /// </summary>
+        public InputAction @ChargedLightAttack => m_Wrapper.m_Player_ChargedLightAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1273,6 +1384,15 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @ChargedHeavyAttack.started += instance.OnChargedHeavyAttack;
+            @ChargedHeavyAttack.performed += instance.OnChargedHeavyAttack;
+            @ChargedHeavyAttack.canceled += instance.OnChargedHeavyAttack;
+            @ChargedLightAttack.started += instance.OnChargedLightAttack;
+            @ChargedLightAttack.performed += instance.OnChargedLightAttack;
+            @ChargedLightAttack.canceled += instance.OnChargedLightAttack;
         }
 
         /// <summary>
@@ -1305,6 +1425,15 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @ChargedHeavyAttack.started -= instance.OnChargedHeavyAttack;
+            @ChargedHeavyAttack.performed -= instance.OnChargedHeavyAttack;
+            @ChargedHeavyAttack.canceled -= instance.OnChargedHeavyAttack;
+            @ChargedLightAttack.started -= instance.OnChargedLightAttack;
+            @ChargedLightAttack.performed -= instance.OnChargedLightAttack;
+            @ChargedLightAttack.canceled -= instance.OnChargedLightAttack;
         }
 
         /// <summary>
@@ -1665,6 +1794,27 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChargedHeavyAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChargedHeavyAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChargedLightAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChargedLightAttack(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

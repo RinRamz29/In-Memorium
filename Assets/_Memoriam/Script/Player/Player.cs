@@ -2,6 +2,7 @@ using System;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
+using _Memoriam.Script.Powerups;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -30,12 +31,11 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float Stamina { get; private set; }
         [field: SerializeField] public float MaxStamina { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
+        [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         
         [Inject] public PlayerActionsScript PlayerActions { get; set; }
-        [Inject] public GameStateManager GameStateManager { get; set; }
-        [Inject] public GameManager GameManager { get; set; }
         
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
@@ -58,9 +58,14 @@ namespace _Memoriam.Script.Player
             }
         }
         
+        // PowerUps
+        public bool CanDoubleJump { get; set; }
+        public bool CanDash { get; set; }
+        
         // Combo tracking
         public bool IsAttacking { get; set; }
         public bool ComboInputReceived { get; set; }
+        public bool ChargedInputReceived { get; set; }
         public AttackType CurrentAttackType { get; set; }
         public bool ComboWindowOpen { get; set; }
         
@@ -70,6 +75,8 @@ namespace _Memoriam.Script.Player
         public int Combo1AttackHash { get;  } = Animator.StringToHash("Combo1");
         public int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
         public int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
+        public int ChargedHeavyTriggeredHash { get; } = Animator.StringToHash("ChargedHeavyTrigger");
+        public int ChargedTriggeredHash { get; } = Animator.StringToHash("ChargedTriggered");
         public int SpeedXHash  { get; } = Animator.StringToHash("SpeedX");
         public int SpeedYHash  { get; } = Animator.StringToHash("SpeedY");
         
@@ -86,12 +93,12 @@ namespace _Memoriam.Script.Player
 
         private void OnEnable()
         {
-            GameStateManager.OnGameStateChanged += OnStateChanged;
+            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 
         private void Update()
         {
-            if (GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
             
             StateMachine?.Tick();
@@ -104,15 +111,15 @@ namespace _Memoriam.Script.Player
 
         private void OnDisable()
         {
-            GameStateManager.OnGameStateChanged -= OnStateChanged;
+            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
         }
 
-        private void LateUpdate()
+        private void FixedUpdate()
         {
-            if (GameStateManager.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
                 
-            StateMachine?.LateTick();
+            StateMachine?.FixedTick();
         }
 
         public float ReceiveDamage(float damage)
@@ -124,9 +131,30 @@ namespace _Memoriam.Script.Player
         {
             //TO DO
             //Implement animation trigger
-
-            GameManager.OnLose();
         }
+        
+        #region PowerUps
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<IPickable>(out var pickUp))
+            {
+                switch (pickUp.TypeOfPowerUp)
+                {
+                    case TypeOfPowerUp.Dash:
+                        CanDash = true;
+                        pickUp.Pick();
+                        break;
+                    case TypeOfPowerUp.DoubleJump:
+                        CanDoubleJump = true;
+                        pickUp.Pick();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        
+        #endregion
 
         #region CombosLogic
         public void OpenComboWindow()

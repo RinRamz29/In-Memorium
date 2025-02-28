@@ -1,8 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Memoriam.Script.InputLogic
