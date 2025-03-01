@@ -1,11 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
+using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace _Memoriam.Script.InputLogic
 {
-    public class InputReader : MonoBehaviour
+    public class InputReader : MonoSingleton<InputReader>
     {
         //Enum for control type
         public enum ControlType
@@ -17,6 +19,8 @@ namespace _Memoriam.Script.InputLogic
         [field: SerializeField] public ControlType ControlTypes { get; set; }
         [Inject] private InputManager _inputManager;
 
+        public Action<ControlType> OnControlTypeChanged;
+        
         //Regex Pattern
         private const string PatternForController = @"Control";
 
@@ -68,12 +72,14 @@ namespace _Memoriam.Script.InputLogic
             if (device.name.Contains("Keyboard") || device.name.Contains("Mouse"))
             {
                 ControlTypes = ControlType.KeyboardMouse;
+                OnControlTypeChanged?.Invoke(ControlTypes);
                 Debug.Log(device.name);
             }
 
             if (match.Success)
             {
                 ControlTypes = ControlType.Control;
+                OnControlTypeChanged?.Invoke(ControlTypes);
                 Debug.Log(device.name);
             }
         }
