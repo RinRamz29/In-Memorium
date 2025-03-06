@@ -1,4 +1,5 @@
 using System;
+using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -35,6 +36,11 @@ namespace _Memoriam.Script.Managers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public void Save()
+        {
+            DataPersistentManager.Instance.SaveGame();
         }
 
         private void OnDisable()

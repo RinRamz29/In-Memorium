@@ -48,7 +48,7 @@ MonoBehaviour:
   <ObjectsPool>k__BackingField:
   - prefab: {fileID: 5559703034287951607, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
     id: Enemies
-    size: 3
+    size: 11
 --- !u!114 &4020676678074504670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +61,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e51592021647deb38393d4768d96bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemiesToSpawn:
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: dd1d0be0-d0d6-4e7f-a82e-ad5c27538bed
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: ebc377b3-f219-461d-9dc8-1ed0183b69be
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: 9529dbf9-39e5-447d-9bb5-7b5d118bc62f
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: 8f01fa21-a4c5-4408-a64e-d34f55c00806
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: a2f4949f-7891-4fb0-80e3-febf8abfb3b9
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: 699798b7-5b4c-4c2b-82d0-c39464578122
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: e8153a8f-8bab-410d-8539-5839cb5ec75b
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: c301f67e-f994-462d-8e90-fc1249b4956a
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: 1736faeb-6c9a-4eb7-a067-464cc546eaba
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: 8822ce30-d775-4041-b847-66e2486bd348
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 0}
+    id: d76270b3-5fa5-43ee-8b44-91b1d51efb56
   idForEnemyPool: Enemies
-  enemiesSpawned: []

@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using _Memoriam.Script.General;
+using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -37,7 +38,7 @@ namespace _Memoriam.Script.Managers
                     GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
             });
         }
-        
+
         private async void LoadMenu()
         {
             await LoadSceneAsync(sceneData.MainMenuSceneName, progress =>
@@ -61,7 +62,7 @@ namespace _Memoriam.Script.Managers
             while (!loadOperation.isDone)
             {
                 onProgress?.Invoke(loadOperation.progress);
-                await Task.Yield(); 
+                await Task.Yield();
             }
 
             onProgress?.Invoke(1.0f);

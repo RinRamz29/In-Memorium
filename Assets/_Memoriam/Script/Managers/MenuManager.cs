@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,18 +10,12 @@ using Zenject;
 
 namespace _Memoriam.Script.Managers
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
         [Inject] private PlayerActionsScript _playerActionsScript;
-
-        [SerializeField] private GameObject firstSelected;
         
-        private void Start()
-        {
-            EventSystem.current.SetSelectedGameObject(firstSelected);
-        }
-
+            
         private void OnEnable()
         {
             _playerActionsScript.UI.Enable();
@@ -30,11 +25,18 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
         }
 
-        public async void LoadLoadingScene()
+        public async void NewGame()
         {
+            DataPersistentManager.Instance.isNewGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
-
+        
+        public async void LoadGame()
+        {
+            DataPersistentManager.Instance.isNewGame = false;
+            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
+        }
+        
         public void QuitGame()
         {
             Application.Quit();

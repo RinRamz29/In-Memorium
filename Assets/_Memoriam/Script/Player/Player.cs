@@ -3,13 +3,15 @@ using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
+using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Memoriam.Script.Player
 {
-    public class Player : MonoBehaviour, IPlayer
+    public class Player : MonoBehaviour, IPlayer, ISaveableObject
     {
         public StateMachineBase StateMachine { get; private set; } = new();
         
@@ -200,5 +202,14 @@ namespace _Memoriam.Script.Player
         }
         #endregion
 
+        public void LoadData(GameData data)
+        {
+            transform.position = data.playerPosition;
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            data.playerPosition = transform.position;
+        }
     }
 }

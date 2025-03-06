@@ -1,5 +1,4 @@
-﻿using System;
-using _Memoriam.Script.Enemies.BT;
+﻿using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using UnityEngine;
@@ -19,7 +18,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         private void Start()
         {
             PatrolPoints.Add(transform.position);
-
             foreach (var offset in OffsetPoints)
             {
                 var offsetX = (transform.position.x + offset.x);
@@ -84,9 +82,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Animator.SetTrigger(_dieHash);
             _behaviourTree = null;
-            
+
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForEnemyPool, this.gameObject);
+            }
         }
 
         private void OnDisable()
