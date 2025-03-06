@@ -229,7 +229,6 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
-            _player.CanDoubleJump = false;
         }
 
         private void Dash(InputAction.CallbackContext context)

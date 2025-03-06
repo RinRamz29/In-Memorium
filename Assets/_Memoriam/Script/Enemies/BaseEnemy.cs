@@ -21,8 +21,9 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
+        [field: SerializeField] public GameObject DetectPoint { get; set; }
 
-        [field: SerializeField] public float DetectRadius { get; set; }
+        [field: SerializeField] public Vector2 DetectRadius { get; set; }
         [field: SerializeField] public LayerMask PlayerLayer { get; set; }
         [field: SerializeField] public Animator Animator { get; set; }
 
@@ -34,7 +35,7 @@ namespace _Memoriam.Script.Enemies
         }
 
         protected bool EnemyDetected;
-        protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
+        [field: SerializeField] protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
         private Vector2 _playerPos;
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
@@ -153,7 +154,7 @@ namespace _Memoriam.Script.Enemies
 
         public Node.Status Detect()
         {
-            var results = Physics2D.OverlapCircleAll(AttackPoint.transform.position, DetectRadius, PlayerLayer);
+            var results = Physics2D.OverlapCapsuleAll(DetectPoint.transform.position, DetectRadius, CapsuleDirection2D.Horizontal,PlayerLayer);
 
             foreach (var coll in results)
             {

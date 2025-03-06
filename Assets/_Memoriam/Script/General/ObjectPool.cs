@@ -33,7 +33,6 @@ namespace _Memoriam.Script.General
 
                 Debug.Log(objc.id);
                 _poolDictionary.Add(objc.id, objectPool);
-                
             }
         }
 

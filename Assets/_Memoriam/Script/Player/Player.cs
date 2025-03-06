@@ -86,6 +86,7 @@ namespace _Memoriam.Script.Player
 
         private void Awake()
         {
+            PlayerActions.Player.Enable();
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
