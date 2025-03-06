@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
@@ -8,7 +6,6 @@ using _Memoriam.Script.Player;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
-using Zenject;
 
 namespace _Memoriam.Script.Enemies
 {

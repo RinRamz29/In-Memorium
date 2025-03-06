@@ -1,10 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using _Memoriam.Script.General;
-using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace _Memoriam.Script.Managers
 {

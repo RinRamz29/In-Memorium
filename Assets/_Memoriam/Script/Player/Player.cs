@@ -1,4 +1,5 @@
 using System;
+using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
@@ -6,8 +7,6 @@ using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace _Memoriam.Script.Player
 {
@@ -36,8 +35,6 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
-        
-        [Inject] public PlayerActionsScript PlayerActions { get; set; }
         
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
@@ -88,7 +85,7 @@ namespace _Memoriam.Script.Player
 
         private void Awake()
         {
-            PlayerActions.Player.Enable();
+            InputReader.Instance.PlayerActions.Player.Enable();
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
