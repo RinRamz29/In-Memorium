@@ -3,6 +3,7 @@ using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
@@ -10,6 +11,7 @@ namespace _Memoriam.Script.Managers
     {
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] private GameObject errorPopUp;
+        [SerializeField] private Button errorButton;
             
         private void OnEnable()
         {
@@ -32,6 +34,7 @@ namespace _Memoriam.Script.Managers
 
             if (DataPersistentManager.Instance.GameData == null)
             {
+                errorButton.Select();
                 errorPopUp.SetActive(true);
                 return;
             }
@@ -63,7 +66,7 @@ namespace _Memoriam.Script.Managers
 
         private void OnDisable()
         {
-            InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
+            InputReader.Instance.OnControlTypeChanged -= SwitchCursorMode;
             InputReader.Instance.PlayerActions.UI.Disable();
         }
     }

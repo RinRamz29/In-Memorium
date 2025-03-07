@@ -20,6 +20,7 @@ namespace _Memoriam.Script.Player.States
 
         private bool _isDashing;
         private float _dashCooldown;
+        private const float AirControlMultiplier = 0.75f;
 
 
         public PlayerCombatState(Player player)
@@ -162,12 +163,23 @@ namespace _Memoriam.Script.Player.States
         private void Move()
         {
             _player.Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
-            _player.Rigidbody2D.linearVelocity =
-                new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
 
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
-
+            
+            if (_player.IsGrounded)
+            {
+                _player.Rigidbody2D.linearVelocity =
+                    new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
+            }
+            else
+            {
+                _player.Rigidbody2D.linearVelocity =
+                    new Vector2((_player.Movement.x * AirControlMultiplier) * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+                _player.Animator.SetFloat(_player.SpeedXHash, 0);
+            }
+            
             if (_isDashing)
             {
                 _player.Rigidbody2D.linearVelocity =
@@ -210,15 +222,6 @@ namespace _Memoriam.Script.Player.States
                     _player.SpriteRenderer.flipX = true;
                     _isFlipped = true;
                     break;
-            }
-
-            if (_player.IsGrounded)
-            {
-                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
-            }
-            else
-            {
-                _player.Animator.SetFloat(_player.SpeedXHash, 0);
             }
 
             switch (_player.Rigidbody2D.linearVelocity.y)

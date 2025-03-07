@@ -85,9 +85,10 @@ namespace _Memoriam.Script.Player
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
         
-        // Dying logic
+        // Health/Dying logic
         public Vector3 LastCheckPoint { get; set; }
-
+        public static Action<float> OnHealthChanged { get; set; }
+        
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
@@ -131,6 +132,23 @@ namespace _Memoriam.Script.Player
         public void ReceiveDamage(float damage)
         {
             Health -= damage;
+
+            var clampedHealth = Health / MaxHealth;       
+            
+            Debug.Log(clampedHealth);
+            
+            OnHealthChanged?.Invoke(clampedHealth);
+        }
+
+        public void ReceiveHeal(float heal)
+        {
+            if (Health + heal >= MaxHealth)
+                Health = MaxHealth;
+            else
+                Health += heal;
+
+            var clampedHealth = Health / MaxHealth;            
+            OnHealthChanged?.Invoke(clampedHealth);
         }
 
         private void Die()
@@ -138,7 +156,8 @@ namespace _Memoriam.Script.Player
             //TO DO
             //Implement animation trigger
             this.transform.position = LastCheckPoint;
-            Health = (MaxHealth / 4);
+            Health = MaxHealth;
+            OnHealthChanged.Invoke(Health / MaxHealth);            
         }
         
         #region PowerUps
@@ -157,6 +176,7 @@ namespace _Memoriam.Script.Player
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:
+                    case TypeOfPickable.HealthPotion:
                         pickUp.Pick(this.gameObject);
                         break;
                 }

@@ -16,5 +16,6 @@ namespace _Memoriam.Script.Powerups
         DoubleJump,
         Dash,
         CheckPoint,
+        HealthPotion,
     }
 }
