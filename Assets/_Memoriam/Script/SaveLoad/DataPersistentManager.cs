@@ -15,8 +15,6 @@ namespace _Memoriam.Script.SaveLoad
         private FileDataHandler _fileDataHandler;
         public bool IsNewGame { get; set; }
         
-        public GameData GameData => _gameData;
-
         protected override void Awake()
         {
             base.Awake();
@@ -36,7 +34,7 @@ namespace _Memoriam.Script.SaveLoad
             if (_gameData == null)
             {
                 Debug.LogError("No save data found");
-                return;
+                NewGame();
             }
 
             var savesObjects = FindAllSaveableObjects();

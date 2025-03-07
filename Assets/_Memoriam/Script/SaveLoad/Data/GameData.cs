@@ -29,15 +29,11 @@ namespace _Memoriam.Script.SaveLoad.Data
     {
         public SavablePlayer player;
         public SerializableDictionary<string, SavableEnemy> EnemySavable;
-        public SerializableDictionary<TypeOfPickable, bool> powerUpSavable;
-        public SerializableDictionary<TypeOfPickable, bool> checkPointSavable;
-        public SerializableDictionary<TypeOfPickable, bool> healthPotionSavable;
+        public SerializableDictionary<string, bool> pickableSavable;
 
         public GameData()
         {
-            healthPotionSavable = new SerializableDictionary<TypeOfPickable, bool>();
-            powerUpSavable = new SerializableDictionary<TypeOfPickable, bool>();
-            checkPointSavable = new SerializableDictionary<TypeOfPickable, bool>();
+            pickableSavable = new SerializableDictionary<string, bool>();
             player = new SavablePlayer();
             EnemySavable = new SerializableDictionary<string, SavableEnemy>();
         }

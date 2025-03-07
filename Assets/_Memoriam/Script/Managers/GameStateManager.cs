@@ -26,8 +26,9 @@ namespace _Memoriam.Script.Managers
             OnGameStateChanged += ChangeState;
         }
 
-        private void OnDisable()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();   
             OnGameStateChanged -= ChangeState;
         }
 

@@ -10,9 +10,9 @@ namespace _Memoriam.Script.Managers
     public class GameplayMenuManager : MonoBehaviour
     {
         [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private Slider healthBar;
+        [field: SerializeField] public Slider HealthBar { get; private set; }
 
-        private void ChangeHealthValue(float health) => healthBar.value = health;
+        private void ChangeHealthValue(float health) => HealthBar.value = health;
 
         private void OnEnable()
         {

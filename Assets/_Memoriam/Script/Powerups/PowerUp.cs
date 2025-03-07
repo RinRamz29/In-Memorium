@@ -1,3 +1,4 @@
+using System;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
@@ -7,15 +8,23 @@ namespace _Memoriam.Script.Powerups
     public class PowerUp : MonoBehaviour, IPickable, ISaveableObject
     {
         [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
-        
+        [field: SerializeField] public string ID { get; private set; }
+
         public void Pick(GameObject player)
         {
             gameObject.SetActive(false);
         }
 
+
+        [ContextMenu("Generate ID")]
+        public void GenerateID()
+        {
+            ID = Guid.NewGuid().ToString();
+        }
+
         public void LoadData(GameData data)
         {
-            if (data.powerUpSavable.TryGetValue(TypeOfPickable, out var isActive))
+            if (data.pickableSavable.TryGetValue(ID, out var isActive))
             {
                 gameObject.SetActive(isActive);
             }
@@ -23,12 +32,12 @@ namespace _Memoriam.Script.Powerups
 
         public void SaveData(ref GameData data)
         {
-            if (data.powerUpSavable.ContainsKey(TypeOfPickable))
+            if (data.pickableSavable.ContainsKey(ID))
             {
-                data.powerUpSavable.Remove(TypeOfPickable);
+                data.pickableSavable.Remove(ID);
             }
-            
-            data.powerUpSavable.Add(TypeOfPickable, gameObject.activeInHierarchy);
+
+            data.pickableSavable.Add(ID, gameObject.activeInHierarchy);
         }
     }
 }

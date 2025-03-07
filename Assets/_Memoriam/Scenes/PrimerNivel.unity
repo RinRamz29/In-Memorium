@@ -1823,7 +1823,6 @@ GameObject:
   - component: {fileID: 68575855}
   - component: {fileID: 68575854}
   - component: {fileID: 68575857}
-  - component: {fileID: 68575859}
   - component: {fileID: 68575860}
   m_Layer: 0
   m_Name: Cube (62)
@@ -1913,33 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 0
---- !u!50 &68575859
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 68575852}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  <ID>k__BackingField: 5cc6adc7-9947-4e06-b9b7-ce64c27f860c
 --- !u!61 &68575860
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10567,7 +10540,7 @@ Transform:
   m_GameObject: {fileID: 505198027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.3, y: 24.75, z: -14.544001}
+  m_LocalPosition: {x: 40.33, y: 24.99, z: -14.544001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12390,6 +12363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 3
   healAmount: 75
+  <ID>k__BackingField: 9fd50d1e-9728-47ba-adfa-57d24397a4c2
 --- !u!1 &652511062
 GameObject:
   m_ObjectHideFlags: 0
@@ -13273,6 +13247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 3
   healAmount: 75
+  <ID>k__BackingField: b89f565f-5f8a-42ea-8392-843737967f36
 --- !u!1 &675434407
 GameObject:
   m_ObjectHideFlags: 0
@@ -14391,6 +14366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 2
+  <ID>k__BackingField: 8d363793-e19c-4024-90ad-90d7185a754c
 --- !u!1 &754587340
 GameObject:
   m_ObjectHideFlags: 0
@@ -15994,6 +15970,67 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
+--- !u!1001 &829049816
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: dontDestroyOnLoad
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659872246920475734, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_Name
+      value: EnemyManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
 --- !u!1 &832875360
 GameObject:
   m_ObjectHideFlags: 0
@@ -16581,6 +16618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 3
   healAmount: 75
+  <ID>k__BackingField: 
 --- !u!1 &877315964
 GameObject:
   m_ObjectHideFlags: 0
@@ -16876,6 +16914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 2
+  <ID>k__BackingField: faf2da4a-323b-4ae9-9e2d-6636d4c90d96
 --- !u!1 &896082341
 GameObject:
   m_ObjectHideFlags: 0
@@ -16965,7 +17004,7 @@ Transform:
   m_GameObject: {fileID: 896082341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.3, y: 24.75, z: -14.544001}
+  m_LocalPosition: {x: 40.33, y: 24.99, z: -14.544001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19552,6 +19591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 3
   healAmount: 75
+  <ID>k__BackingField: 03438af7-247d-4e32-b856-39c218cdd521
 --- !u!1 &1058995759
 GameObject:
   m_ObjectHideFlags: 0
@@ -23947,6 +23987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 2
+  <ID>k__BackingField: 4f7b0f8e-0c34-4a5f-a7cb-72189ed4e344
 --- !u!1 &1449564248
 GameObject:
   m_ObjectHideFlags: 0
@@ -27628,11 +27669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.3
+      value: 40.33
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.45
+      value: 24.69
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32933,7 +32974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1454910922}
-  healthBar: {fileID: 315763574}
+  <HealthBar>k__BackingField: {fileID: 315763574}
 --- !u!1 &2024129724
 GameObject:
   m_ObjectHideFlags: 0
@@ -34516,6 +34557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 1
+  <ID>k__BackingField: fb62e78a-a3aa-4fdc-bd2a-81197f374d82
 --- !u!1 &2065996786
 GameObject:
   m_ObjectHideFlags: 0
@@ -35860,3 +35902,4 @@ SceneRoots:
   - {fileID: 197343238}
   - {fileID: 896082344}
   - {fileID: 505198032}
+  - {fileID: 829049816}

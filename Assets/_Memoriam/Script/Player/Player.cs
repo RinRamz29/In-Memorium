@@ -156,7 +156,7 @@ namespace _Memoriam.Script.Player
             //TO DO
             //Implement animation trigger
             this.transform.position = LastCheckPoint;
-            Health = MaxHealth;
+            Health = MaxHealth / 2;
             OnHealthChanged.Invoke(Health / MaxHealth);            
         }
         
@@ -232,6 +232,7 @@ namespace _Memoriam.Script.Player
             DashPickedUp = data.player.canDash;
             DoubleJumpPickedUp = data.player.canDoubleJump;
             Health = data.player.health;
+            OnHealthChanged?.Invoke(Health);
         }
 
         public void SaveData(ref GameData data)

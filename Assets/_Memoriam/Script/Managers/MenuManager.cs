@@ -36,14 +36,6 @@ namespace _Memoriam.Script.Managers
         public async void LoadGame()
         {
             DataPersistentManager.Instance.IsNewGame = false;
-
-            if (DataPersistentManager.Instance.GameData == null)
-            {
-                errorButton.Select();
-                errorPopUp.SetActive(true);
-                return;
-            }
-            
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         

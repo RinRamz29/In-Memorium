@@ -1,3 +1,4 @@
+using System;
 using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
@@ -8,7 +9,8 @@ public class HealthPotion : MonoBehaviour, IPickable, ISaveableObject
 {
     [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
     [SerializeField] private float healAmount;
-    
+    [field: SerializeField] public string ID { get; private set; }
+
     public void Pick(GameObject player)
     {
         if (player.TryGetComponent(out IPlayer playerController))
@@ -19,9 +21,15 @@ public class HealthPotion : MonoBehaviour, IPickable, ISaveableObject
         gameObject.SetActive(false);
     }
 
+    [ContextMenu("Generate ID")]
+    public void GenerateID()
+    {
+        ID = Guid.NewGuid().ToString();
+    }
+
     public void LoadData(GameData data)
     {
-        if (data.healthPotionSavable.TryGetValue(TypeOfPickable, out var isActive))
+        if (data.pickableSavable.TryGetValue(ID, out var isActive))
         {
             gameObject.SetActive(isActive);
         }
@@ -29,11 +37,11 @@ public class HealthPotion : MonoBehaviour, IPickable, ISaveableObject
 
     public void SaveData(ref GameData data)
     {
-        if (data.healthPotionSavable.ContainsKey(TypeOfPickable))
+        if (data.pickableSavable.ContainsKey(ID))
         {
-            data.healthPotionSavable.Remove(TypeOfPickable);
+            data.pickableSavable.Remove(ID);
         }
-            
-        data.healthPotionSavable.Add(TypeOfPickable, gameObject.activeInHierarchy);
+
+        data.pickableSavable.Add(ID, gameObject.activeInHierarchy);
     }
 }
