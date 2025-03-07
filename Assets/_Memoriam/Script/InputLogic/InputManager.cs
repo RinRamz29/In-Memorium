@@ -2,17 +2,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using Zenject;
 
 namespace _Memoriam.Script.InputLogic
 {
-    public class InputManager
+    public class InputManager 
     {
         private PlayerActionsScript _playerActions;
         
         //Subscribe
-        [Inject]
-        private InputManager(PlayerActionsScript playerActions)
+        public InputManager(PlayerActionsScript playerActions)
         {
             _playerActions = playerActions;
             _playerActions.Enable();

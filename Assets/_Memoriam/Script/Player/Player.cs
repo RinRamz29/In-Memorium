@@ -1,15 +1,16 @@
 using System;
+using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
+using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace _Memoriam.Script.Player
 {
-    public class Player : MonoBehaviour, IPlayer
+    public class Player : MonoBehaviour, IPlayer, ISaveableObject
     {
         public StateMachineBase StateMachine { get; private set; } = new();
         
@@ -35,8 +36,6 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         
-        [Inject] public PlayerActionsScript PlayerActions { get; set; }
-        
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
         {
@@ -60,7 +59,9 @@ namespace _Memoriam.Script.Player
         
         // PowerUps
         public bool CanDoubleJump { get; set; }
+        public bool DoubleJumpPickedUp { get; set; }
         public bool CanDash { get; set; }
+        public bool DashPickedUp { get; set; }
         
         // Combo tracking
         public bool IsAttacking { get; set; }
@@ -86,7 +87,7 @@ namespace _Memoriam.Script.Player
 
         private void Awake()
         {
-            PlayerActions.Player.Enable();
+            InputReader.Instance.PlayerActions.Player.Enable();
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
@@ -142,11 +143,11 @@ namespace _Memoriam.Script.Player
                 switch (pickUp.TypeOfPowerUp)
                 {
                     case TypeOfPowerUp.Dash:
-                        CanDash = true;
+                        DashPickedUp = true;
                         pickUp.Pick();
                         break;
                     case TypeOfPowerUp.DoubleJump:
-                        CanDoubleJump = true;
+                        DoubleJumpPickedUp = true;
                         pickUp.Pick();
                         break;
                     default:
@@ -166,11 +167,8 @@ namespace _Memoriam.Script.Player
         public void CloseComboWindow()
         {
             ComboWindowOpen = false;
-            
-            if (!ComboInputReceived)
-            {
-                ResetAttackState();
-            }
+            Animator.SetBool(ComboTriggeredHash, false);
+            ResetAttackState();
         }
 
         private void ResetAttackState()
@@ -179,6 +177,7 @@ namespace _Memoriam.Script.Player
             ComboInputReceived = false;
             ComboWindowOpen  = false;
             CurrentAttackType = AttackType.None;
+            
             
             Animator.SetBool(HeavyAttackHash, false);
             Animator.SetBool(LightAttackHash, false);
@@ -200,5 +199,24 @@ namespace _Memoriam.Script.Player
         }
         #endregion
 
+        public void LoadData(GameData data)
+        {
+            transform.position = data.player.position;
+            DashPickedUp = data.player.canDash;
+            DoubleJumpPickedUp = data.player.canDoubleJump;
+            Health = data.player.health;
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            var player = new SavablePlayer()
+            {
+                position = transform.position,
+                canDash = DashPickedUp,
+                canDoubleJump = DoubleJumpPickedUp,
+                health = Health,
+            };
+            data.player = player;
+        }
     }
 }

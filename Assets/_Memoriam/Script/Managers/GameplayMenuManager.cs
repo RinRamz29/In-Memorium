@@ -1,20 +1,18 @@
 using System;
+using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace _Memoriam.Script.Managers
 {
     public class GameplayMenuManager : MonoBehaviour
     {
-        [Inject] private PlayerActionsScript _playerActions;
-
         [SerializeField] private GameObject pauseMenu;
 
         private void OnEnable()
         {
-            _playerActions.Player.Pause.performed += OnPause;
+            InputReader.Instance.PlayerActions.Player.Pause.performed += OnPause;
         }
 
         private void OnPause(InputAction.CallbackContext context)
@@ -37,9 +35,14 @@ namespace _Memoriam.Script.Managers
             }
         }
 
+        public void Save()
+        {
+            DataPersistentManager.Instance.SaveGame();
+        }
+
         private void OnDisable()
         {
-            _playerActions.Player.Pause.performed -= OnPause;
+            InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;
         }
     }
 }
