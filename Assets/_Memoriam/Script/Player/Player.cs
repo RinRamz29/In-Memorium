@@ -112,6 +112,7 @@ namespace _Memoriam.Script.Player
             if (Health <= 0)
             {
                 Die();
+                Health = MaxHealth;
             }
         }
 
