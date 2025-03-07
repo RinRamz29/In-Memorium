@@ -1,16 +1,18 @@
+using _Memoriam.Script.Player;
 using UnityEngine;
 
-public class DamageTrigger : MonoBehaviour
+namespace _Memoriam.Script.Plataformas
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class DamageTrigger : MonoBehaviour
     {
+        [SerializeField] private float damage;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.TryGetComponent<IPlayer>(out var player))
+            {
+                player.ReceiveDamage(damage);
+            }
+        }
     }
 }
