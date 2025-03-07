@@ -167,11 +167,8 @@ namespace _Memoriam.Script.Player
         public void CloseComboWindow()
         {
             ComboWindowOpen = false;
-            
-            if (!ComboInputReceived)
-            {
-                ResetAttackState();
-            }
+            Animator.SetBool(ComboTriggeredHash, false);
+            ResetAttackState();
         }
 
         private void ResetAttackState()
@@ -180,6 +177,7 @@ namespace _Memoriam.Script.Player
             ComboInputReceived = false;
             ComboWindowOpen  = false;
             CurrentAttackType = AttackType.None;
+            
             
             Animator.SetBool(HeavyAttackHash, false);
             Animator.SetBool(LightAttackHash, false);
