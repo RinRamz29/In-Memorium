@@ -22,7 +22,7 @@ namespace _Memoriam.Script.SaveLoad
         private void Start()
         {
             _saveableObjects = FindAllSaveableObjects();
-            _fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+            _fileDataHandler = new FileDataHandler();
         }
 
         public void NewGame()

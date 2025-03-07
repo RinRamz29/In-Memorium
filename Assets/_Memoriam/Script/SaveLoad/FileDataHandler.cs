@@ -7,19 +7,13 @@ namespace _Memoriam.Script.SaveLoad
 {
     public class FileDataHandler
     {
-        private string dataDirthPath = "";
-        private string fileName = "";
-        private readonly string encryptionCodeWord = "rubenEsGay";
-
-        public FileDataHandler(string dataDirthPath, string fileName)
-        {
-            this.dataDirthPath = dataDirthPath;
-            this.fileName = fileName;
-        }
+        private string _dataDirthPath = Application.persistentDataPath;
+        private string _fileName = "saveData";
+        private readonly string _encryptionCodeWord = "rubenEsGay";
 
         public GameData LoadData()
         {
-            var fullPath = Path.Combine(dataDirthPath, fileName);
+            var fullPath = Path.Combine(_dataDirthPath, _fileName);
             GameData loadedData = null;
 
             if (File.Exists(fullPath))
@@ -52,7 +46,7 @@ namespace _Memoriam.Script.SaveLoad
 
         public void SaveData(GameData data)
         {
-            var fullPath = Path.Combine(dataDirthPath, fileName);
+            var fullPath = Path.Combine(_dataDirthPath, _fileName);
 
             try
             {
@@ -82,7 +76,7 @@ namespace _Memoriam.Script.SaveLoad
 
             for (int i = 0; i < data.Length; i++)
             {
-                modifiedData += (char)(data[i] ^ encryptionCodeWord[i % encryptionCodeWord.Length]);
+                modifiedData += (char)(data[i] ^ _encryptionCodeWord[i % _encryptionCodeWord.Length]);
             }
             return modifiedData;
         }

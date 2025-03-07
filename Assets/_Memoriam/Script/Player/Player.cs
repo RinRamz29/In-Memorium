@@ -59,7 +59,9 @@ namespace _Memoriam.Script.Player
         
         // PowerUps
         public bool CanDoubleJump { get; set; }
+        public bool DoubleJumpPickedUp { get; set; }
         public bool CanDash { get; set; }
+        public bool DashPickedUp { get; set; }
         
         // Combo tracking
         public bool IsAttacking { get; set; }
@@ -141,11 +143,11 @@ namespace _Memoriam.Script.Player
                 switch (pickUp.TypeOfPowerUp)
                 {
                     case TypeOfPowerUp.Dash:
-                        CanDash = true;
+                        DashPickedUp = true;
                         pickUp.Pick();
                         break;
                     case TypeOfPowerUp.DoubleJump:
-                        CanDoubleJump = true;
+                        DoubleJumpPickedUp = true;
                         pickUp.Pick();
                         break;
                     default:
@@ -201,12 +203,22 @@ namespace _Memoriam.Script.Player
 
         public void LoadData(GameData data)
         {
-            transform.position = data.playerPosition;
+            transform.position = data.player.position;
+            DashPickedUp = data.player.canDash;
+            DoubleJumpPickedUp = data.player.canDoubleJump;
+            Health = data.player.health;
         }
 
         public void SaveData(ref GameData data)
         {
-            data.playerPosition = transform.position;
+            var player = new SavablePlayer()
+            {
+                position = transform.position,
+                canDash = DashPickedUp,
+                canDoubleJump = DoubleJumpPickedUp,
+                health = Health,
+            };
+            data.player = player;
         }
     }
 }

@@ -183,6 +183,23 @@ namespace _Memoriam.Script.Player.States
                 }
             }
 
+            if (!_player.CanDoubleJump)
+            {
+                if (_player.IsGrounded && _player.DoubleJumpPickedUp)
+                {
+                    _player.CanDoubleJump = true;
+                }
+            }
+            
+            if (!_player.CanDash)
+            {
+                if (_player.IsGrounded && _player.DashPickedUp)
+                {
+                    _player.CanDash = true;
+                }
+            }
+            
+
             switch (_player.Movement.normalized.x)
             {
                 case > 0.1f:
@@ -229,6 +246,7 @@ namespace _Memoriam.Script.Player.States
             if (!context.performed || _player.IsGrounded || !_player.CanDoubleJump)
                 return;
 
+            _player.CanDoubleJump = false;
             _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
         }
 
