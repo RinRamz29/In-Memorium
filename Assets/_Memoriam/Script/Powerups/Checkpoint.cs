@@ -12,7 +12,7 @@ namespace _Memoriam.Script.Powerups
         {
             if (player.TryGetComponent(out Player.Player playerController))
             {
-                playerController.LastCheckPoint = transform;
+                playerController.LastCheckPoint = transform.position;
             }
             
             DataPersistentManager.Instance.SaveGame();

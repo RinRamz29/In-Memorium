@@ -9,6 +9,7 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
+        [SerializeField] private GameObject errorPopUp;
             
         private void OnEnable()
         {
@@ -28,6 +29,13 @@ namespace _Memoriam.Script.Managers
         public async void LoadGame()
         {
             DataPersistentManager.Instance.IsNewGame = false;
+
+            if (DataPersistentManager.Instance.GameData == null)
+            {
+                errorPopUp.SetActive(true);
+                return;
+            }
+            
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         

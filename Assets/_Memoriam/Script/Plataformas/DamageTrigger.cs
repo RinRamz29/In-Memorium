@@ -11,6 +11,7 @@ namespace _Memoriam.Script.Plataformas
         {
             if (other.TryGetComponent<IPlayer>(out var player))
             {
+                Debug.Log("Player received " + damage + " damage");
                 player.ReceiveDamage(damage);
             }
         }

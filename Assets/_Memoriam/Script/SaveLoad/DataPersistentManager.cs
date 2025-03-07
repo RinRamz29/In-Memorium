@@ -18,6 +18,8 @@ namespace _Memoriam.Script.SaveLoad
         private List<ISaveableObject> _saveableObjects; 
         private FileDataHandler _fileDataHandler;
         public bool IsNewGame { get; set; }
+        
+        public GameData GameData => _gameData;
 
         private void Start()
         {
@@ -36,8 +38,8 @@ namespace _Memoriam.Script.SaveLoad
             
             if (_gameData == null)
             {
-                Debug.Log("No save data found");
-                NewGame();
+                Debug.LogError("No save data found");
+                return;
             }
 
             var savesObjects = FindAllSaveableObjects();

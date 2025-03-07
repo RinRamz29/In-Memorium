@@ -86,7 +86,7 @@ namespace _Memoriam.Script.Player
         public bool IsGrounded { get; set; }
         
         // Dying logic
-        public Transform LastCheckPoint { get; set; }
+        public Vector3 LastCheckPoint { get; set; }
 
         private void Awake()
         {
@@ -94,7 +94,7 @@ namespace _Memoriam.Script.Player
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
-            LastCheckPoint = transform;
+            LastCheckPoint = transform.position;
         }
 
         private void OnEnable()
@@ -112,7 +112,6 @@ namespace _Memoriam.Script.Player
             if (Health <= 0)
             {
                 Die();
-                Health = MaxHealth;
             }
         }
 
@@ -129,16 +128,17 @@ namespace _Memoriam.Script.Player
             StateMachine?.FixedTick();
         }
 
-        public float ReceiveDamage(float damage)
+        public void ReceiveDamage(float damage)
         {
-            return Health -= damage;
+            Health -= damage;
         }
 
         private void Die()
         {
             //TO DO
             //Implement animation trigger
-            this.transform.position = LastCheckPoint.position;
+            this.transform.position = LastCheckPoint;
+            Health = (MaxHealth / 4);
         }
         
         #region PowerUps
