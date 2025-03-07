@@ -3,22 +3,27 @@ using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
+    [Preserve]
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] private GameObject errorPopUp;
         [SerializeField] private Button errorButton;
-            
+
+        protected override void Awake()
+        {
+            base.Awake();
+            InputReader.Instance.PlayerActions.UI.Enable();
+        }
+
         private void OnEnable()
         {
-            InputReader.Instance.PlayerActions.UI.Enable();
-
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
-            
             GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
         }
 

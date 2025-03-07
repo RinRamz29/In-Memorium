@@ -3,10 +3,12 @@ using System.Text.RegularExpressions;
 using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.InputLogic
 {
-    public class InputReader : MonoSingleton<InputReader>
+    [Preserve]
+    public class InputReader : Singleton<InputReader>
     {
         //Enum for control type
         public enum ControlType
@@ -16,7 +18,7 @@ namespace _Memoriam.Script.InputLogic
         }
 
         [field: SerializeField] public ControlType ControlTypes { get; set; }
-        public InputManager _inputManager { get; private set; }
+        private InputManager InputManager { get; set; }
         public PlayerActionsScript PlayerActions { get; private set; }
 
         public Action<ControlType> OnControlTypeChanged;
@@ -28,21 +30,21 @@ namespace _Memoriam.Script.InputLogic
         {
             base.Awake();
             PlayerActions = new PlayerActionsScript();
-            _inputManager = new InputManager(PlayerActions);
+            InputManager = new InputManager(PlayerActions);
         }
 
         //Subscribe
         private void OnEnable()
         {
-            _inputManager.TypeOfController += GetTypeOfController;
-            _inputManager.OnButtonPress += ChangeControllerType;
+            InputManager.TypeOfController += GetTypeOfController;
+            InputManager.OnButtonPress += ChangeControllerType;
         }
 
         //Unsubscribe
         private void OnDisable()
         {
-            _inputManager.TypeOfController -= GetTypeOfController;
-            _inputManager.OnButtonPress -= ChangeControllerType;
+            InputManager.TypeOfController -= GetTypeOfController;
+            InputManager.OnButtonPress -= ChangeControllerType;
         }
 
         //Get type of controller from change of device Delegate

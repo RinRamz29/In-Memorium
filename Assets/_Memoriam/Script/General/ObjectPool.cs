@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.General
 {
+    [Preserve]
     public class ObjectPool : Singleton<ObjectPool>
     {
         [Serializable]

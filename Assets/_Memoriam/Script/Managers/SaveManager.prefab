@@ -44,5 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d271c12dd34849e58e59f0f02c9ed31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: saveData
-  isNewGame: 0
+  dontDestroyOnLoad: 1

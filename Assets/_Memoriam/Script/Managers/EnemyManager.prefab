@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869e38ab5664ee886406b6a34af0349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   <ObjectsPool>k__BackingField:
   - prefab: {fileID: 5559703034287951607, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
     id: Enemies
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e51592021647deb38393d4768d96bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   enemiesToSpawn:
   - path:
     - {x: 2, y: 0}
