@@ -17,7 +17,7 @@ namespace _Memoriam.Script.SaveLoad
         private GameData _gameData;
         private List<ISaveableObject> _saveableObjects; 
         private FileDataHandler _fileDataHandler;
-        public bool isNewGame;
+        public bool IsNewGame { get; set; }
 
         private void Start()
         {

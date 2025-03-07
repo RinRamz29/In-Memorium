@@ -1924,7 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998dd2c4b45c43fd9eda5391862dfb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TypeOfPowerUp>k__BackingField: 0
+  <TypeOfPickable>k__BackingField: 0
 --- !u!50 &68575859
 Rigidbody2D:
   serializedVersion: 5
@@ -14451,7 +14451,8 @@ GameObject:
   - component: {fileID: 731993588}
   - component: {fileID: 731993587}
   - component: {fileID: 731993589}
-  m_Layer: 3
+  - component: {fileID: 731993590}
+  m_Layer: 0
   m_Name: Cube (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14572,6 +14573,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &731993590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731993584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933781ff14a94996b2dcd580b661fe99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TypeOfPickable>k__BackingField: 2
 --- !u!1 &754587340
 GameObject:
   m_ObjectHideFlags: 0
@@ -16909,7 +16923,8 @@ GameObject:
   - component: {fileID: 882973010}
   - component: {fileID: 882973009}
   - component: {fileID: 882973011}
-  m_Layer: 3
+  - component: {fileID: 882973012}
+  m_Layer: 0
   m_Name: Cube (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17030,6 +17045,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &882973012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882973006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933781ff14a94996b2dcd580b661fe99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TypeOfPickable>k__BackingField: 2
 --- !u!1 &896082341
 GameObject:
   m_ObjectHideFlags: 0
@@ -24816,6 +24844,7 @@ GameObject:
   - component: {fileID: 1435808935}
   - component: {fileID: 1435808934}
   - component: {fileID: 1435808936}
+  - component: {fileID: 1435808937}
   m_Layer: 3
   m_Name: Cube (57)
   m_TagString: Untagged
@@ -24937,6 +24966,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 0.99999994}
   m_EdgeRadius: 0
+--- !u!114 &1435808937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435808931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933781ff14a94996b2dcd580b661fe99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TypeOfPickable>k__BackingField: 2
 --- !u!1 &1449564248
 GameObject:
   m_ObjectHideFlags: 0
@@ -35702,6 +35744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2060550432}
+  - component: {fileID: 2060550433}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -35726,6 +35769,18 @@ Transform:
   - {fileID: 2023620695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060550433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060550431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5418bfd000732d84697af7b0cd8fb028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062665201
 GameObject:
   m_ObjectHideFlags: 0

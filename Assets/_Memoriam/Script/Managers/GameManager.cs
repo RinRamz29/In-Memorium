@@ -10,14 +10,14 @@ namespace _Memoriam.Script.Managers
     {
         private void OnEnable()
         {
-            EnemyManager.Instance.SpawnEnemies(DataPersistentManager.Instance.isNewGame);
-            
-            switch (DataPersistentManager.Instance.isNewGame)
+            switch (DataPersistentManager.Instance.IsNewGame)
             {
                 case true:
+                    EnemyManager.Instance.SpawnEnemies(true);
                     DataPersistentManager.Instance.NewGame();
                     break;
                 case false:
+                    EnemyManager.Instance.SpawnEnemies(false);
                     DataPersistentManager.Instance.LoadGame();
                     break;
             }

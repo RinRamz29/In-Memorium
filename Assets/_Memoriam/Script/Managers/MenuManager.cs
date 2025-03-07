@@ -21,13 +21,13 @@ namespace _Memoriam.Script.Managers
 
         public async void NewGame()
         {
-            DataPersistentManager.Instance.isNewGame = true;
+            DataPersistentManager.Instance.IsNewGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         
         public async void LoadGame()
         {
-            DataPersistentManager.Instance.isNewGame = false;
+            DataPersistentManager.Instance.IsNewGame = false;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         

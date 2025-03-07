@@ -6,16 +6,16 @@ namespace _Memoriam.Script.Powerups
 {
     public class PowerUp : MonoBehaviour, IPickable, ISaveableObject
     {
-        [field: SerializeField] public TypeOfPowerUp TypeOfPowerUp { get; private set; }
+        [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
         
-        public void Pick()
+        public void Pick(GameObject player)
         {
             gameObject.SetActive(false);
         }
 
         public void LoadData(GameData data)
         {
-            if (data.powerUpSavable.TryGetValue(TypeOfPowerUp, out var isActive))
+            if (data.powerUpSavable.TryGetValue(TypeOfPickable, out var isActive))
             {
                 gameObject.SetActive(isActive);
             }
@@ -23,12 +23,12 @@ namespace _Memoriam.Script.Powerups
 
         public void SaveData(ref GameData data)
         {
-            if (data.powerUpSavable.ContainsKey(TypeOfPowerUp))
+            if (data.powerUpSavable.ContainsKey(TypeOfPickable))
             {
-                data.powerUpSavable.Remove(TypeOfPowerUp);
+                data.powerUpSavable.Remove(TypeOfPickable);
             }
             
-            data.powerUpSavable.Add(TypeOfPowerUp, gameObject.activeInHierarchy);
+            data.powerUpSavable.Add(TypeOfPickable, gameObject.activeInHierarchy);
         }
     }
 }

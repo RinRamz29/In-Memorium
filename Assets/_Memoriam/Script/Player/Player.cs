@@ -84,6 +84,9 @@ namespace _Memoriam.Script.Player
         // Movement parameters
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
+        
+        // Dying logic
+        public Transform LastCheckPoint { get; set; }
 
         private void Awake()
         {
@@ -91,6 +94,7 @@ namespace _Memoriam.Script.Player
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
+            LastCheckPoint = transform;
         }
 
         private void OnEnable()
@@ -133,6 +137,7 @@ namespace _Memoriam.Script.Player
         {
             //TO DO
             //Implement animation trigger
+            this.transform.position = LastCheckPoint.position;
         }
         
         #region PowerUps
@@ -140,18 +145,19 @@ namespace _Memoriam.Script.Player
         {
             if (other.gameObject.TryGetComponent<IPickable>(out var pickUp))
             {
-                switch (pickUp.TypeOfPowerUp)
+                switch (pickUp.TypeOfPickable)
                 {
-                    case TypeOfPowerUp.Dash:
+                    case TypeOfPickable.Dash:
                         DashPickedUp = true;
-                        pickUp.Pick();
+                        pickUp.Pick(this.gameObject);
                         break;
-                    case TypeOfPowerUp.DoubleJump:
+                    case TypeOfPickable.DoubleJump:
                         DoubleJumpPickedUp = true;
-                        pickUp.Pick();
+                        pickUp.Pick(this.gameObject);
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    case TypeOfPickable.CheckPoint:
+                        pickUp.Pick(this.gameObject);
+                        break;
                 }
             }
         }
