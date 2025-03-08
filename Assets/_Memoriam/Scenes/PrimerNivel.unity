@@ -1906,7 +1906,7 @@ Transform:
   m_GameObject: {fileID: 68575852}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.2986, y: 12.8538, z: 0.0918684}
+  m_LocalPosition: {x: -46, y: 13.4, z: 0.0918684}
   m_LocalScale: {x: 2.8739054, y: 1.555385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4388,7 +4388,7 @@ GameObject:
   - component: {fileID: 172152110}
   m_Layer: 3
   m_Name: Cube (66)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10745,7 +10745,7 @@ Transform:
   m_GameObject: {fileID: 505198027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.60491, y: 25.9, z: -14.544001}
+  m_LocalPosition: {x: 41, y: 25.4, z: -14.544001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11195,6 +11195,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
+--- !u!1 &558004978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2617550798638163866, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+  m_PrefabInstance: {fileID: 1670771935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575230565
 GameObject:
   m_ObjectHideFlags: 0
@@ -17147,7 +17152,7 @@ Transform:
   m_GameObject: {fileID: 896082341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.60491, y: 25.9, z: -14.544001}
+  m_LocalPosition: {x: 41, y: 25.4, z: -14.544001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23622,7 +23627,7 @@ GameObject:
   - component: {fileID: 1314542481}
   m_Layer: 3
   m_Name: Cube (70)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23754,7 +23759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveTo: {x: 5, y: 0}
-  _moveTime: 1.5
+  _moveTime: 2
   ease: 23
 --- !u!1 &1315002786
 GameObject:
@@ -28939,11 +28944,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.60491
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.9
+      value: 24.4
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28980,13 +28985,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2617550798638163866, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1670771937}
   m_SourcePrefab: {fileID: 100100000, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
 --- !u!4 &1670771936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
   m_PrefabInstance: {fileID: 1670771935}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1670771937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558004978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee738152ddd8714eba54fac829a9fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1672513622
 GameObject:
   m_ObjectHideFlags: 0
@@ -29561,7 +29581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveTo: {x: 0, y: 10}
-  _moveTime: 1
+  _moveTime: 2
   ease: 25
 --- !u!1 &1699767069
 GameObject:
@@ -32793,7 +32813,7 @@ GameObject:
   - component: {fileID: 1915979980}
   m_Layer: 3
   m_Name: Cube (46)
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32807,7 +32827,7 @@ Transform:
   m_GameObject: {fileID: 1915979974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 146.82, y: 67.06, z: 0}
+  m_LocalPosition: {x: 146.82, y: 70.45, z: 0}
   m_LocalScale: {x: 3.0085287, y: 1.2236432, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32924,10 +32944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5112c784e24cd84a8c7062f523ddde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTime: 1
+  _moveTime: 3
   ease: 7
   pointA: {x: 10, y: -12}
-  pointB: {x: 25, y: -8}
+  pointB: {x: 30, y: -10}
   pointC: {x: 0, y: 0}
 --- !u!1 &1933499448
 GameObject:
