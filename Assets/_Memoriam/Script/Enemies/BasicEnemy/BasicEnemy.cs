@@ -12,6 +12,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         private void Awake()
         {
             Health = MaxHealth;
+            LastAttackTime = -AttackTimeOut;
             SetUpBehaviorSelector();
         }
 
@@ -74,13 +75,13 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         public override void ReceiveDamage(float damage)
         {
-            Animator.SetTrigger(_damagedHash);
+            Animator.SetTrigger(DamagedHash);
             Health -= damage;
         }
 
         private void Die()
         {
-            Animator.SetTrigger(_dieHash);
+            Animator.SetTrigger(DieHash);
             _behaviourTree = null;
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)

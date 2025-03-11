@@ -24,7 +24,10 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public LayerMask GroundMask { get; set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; set; }
         [field: SerializeField] public GameObject SwordCollider { get; set; }
-
+        [field: SerializeField] public Transform WallCheck { get; set; }
+        [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
+        [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
+        public bool IsTouchingWall { get; set; }
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }

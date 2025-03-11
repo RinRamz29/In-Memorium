@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 2600256}
   - component: {fileID: 2600255}
   - component: {fileID: 2600257}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 4869679}
   - component: {fileID: 4869684}
   - component: {fileID: 4869685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,6 @@ GameObject:
   - component: {fileID: 6876272}
   - component: {fileID: 6876271}
   - component: {fileID: 6876273}
-  - component: {fileID: 6876274}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -519,7 +518,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000038146973}
@@ -534,25 +533,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &6876274
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6876268}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &18180030
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +545,7 @@ GameObject:
   - component: {fileID: 18180034}
   - component: {fileID: 18180033}
   - component: {fileID: 18180035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +811,7 @@ GameObject:
   - component: {fileID: 19367006}
   - component: {fileID: 19367005}
   - component: {fileID: 19367007}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1078,6 @@ GameObject:
   - component: {fileID: 48294492}
   - component: {fileID: 48294491}
   - component: {fileID: 48294490}
-  - component: {fileID: 48294494}
   m_Layer: 3
   m_Name: Cube (95)
   m_TagString: Untagged
@@ -1167,7 +1146,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000076293945, y: -0.0000038146973}
@@ -1235,25 +1214,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48294488}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!251 &48294494
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48294488}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &50429575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1226,6 @@ GameObject:
   - component: {fileID: 50429578}
   - component: {fileID: 50429577}
   - component: {fileID: 50429582}
-  - component: {fileID: 50429583}
   m_Layer: 3
   m_Name: Cube (56)
   m_TagString: Untagged
@@ -1373,7 +1332,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0}
@@ -1388,25 +1347,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9999999, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &50429583
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50429575}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &51840819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1359,7 @@ GameObject:
   - component: {fileID: 51840823}
   - component: {fileID: 51840822}
   - component: {fileID: 51840824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1492,7 @@ GameObject:
   - component: {fileID: 52262762}
   - component: {fileID: 52262761}
   - component: {fileID: 52262763}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1971,7 +1911,6 @@ GameObject:
   - component: {fileID: 73208520}
   - component: {fileID: 73208519}
   - component: {fileID: 73208524}
-  - component: {fileID: 73208525}
   m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -2078,7 +2017,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0.0000019073486}
@@ -2093,25 +2032,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &73208525
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73208517}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &75528339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,8 +2123,7 @@ GameObject:
   - component: {fileID: 99990187}
   - component: {fileID: 99990186}
   - component: {fileID: 99990188}
-  - component: {fileID: 99990189}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2310,7 +2229,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000076293945}
@@ -2325,25 +2244,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000004}
   m_EdgeRadius: 0
---- !u!251 &99990189
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99990183}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &111601380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2256,7 @@ GameObject:
   - component: {fileID: 111601384}
   - component: {fileID: 111601383}
   - component: {fileID: 111601385}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2489,7 +2389,7 @@ GameObject:
   - component: {fileID: 114615271}
   - component: {fileID: 114615270}
   - component: {fileID: 114615272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2622,7 +2522,6 @@ GameObject:
   - component: {fileID: 118495374}
   - component: {fileID: 118495373}
   - component: {fileID: 118495375}
-  - component: {fileID: 118495376}
   m_Layer: 3
   m_Name: Cube (51)
   m_TagString: Untagged
@@ -2729,7 +2628,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000076293945}
@@ -2744,25 +2643,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &118495376
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118495370}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &119887465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,7 +2655,7 @@ GameObject:
   - component: {fileID: 119887469}
   - component: {fileID: 119887468}
   - component: {fileID: 119887470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2908,7 +2788,7 @@ GameObject:
   - component: {fileID: 120557725}
   - component: {fileID: 120557724}
   - component: {fileID: 120557726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3041,7 +2921,7 @@ GameObject:
   - component: {fileID: 122363161}
   - component: {fileID: 122363160}
   - component: {fileID: 122363165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3174,7 +3054,6 @@ GameObject:
   - component: {fileID: 142964815}
   - component: {fileID: 142964814}
   - component: {fileID: 142964819}
-  - component: {fileID: 142964820}
   m_Layer: 3
   m_Name: Cube (19)
   m_TagString: Untagged
@@ -3281,7 +3160,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0.0000019073486}
@@ -3296,25 +3175,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &142964820
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142964812}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &143185641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3187,7 @@ GameObject:
   - component: {fileID: 143185644}
   - component: {fileID: 143185643}
   - component: {fileID: 143185648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3460,7 +3320,7 @@ GameObject:
   - component: {fileID: 151169644}
   - component: {fileID: 151169643}
   - component: {fileID: 151169645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3593,7 +3453,7 @@ GameObject:
   - component: {fileID: 152570291}
   - component: {fileID: 152570290}
   - component: {fileID: 152570295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3726,7 +3586,7 @@ GameObject:
   - component: {fileID: 158254428}
   - component: {fileID: 158254427}
   - component: {fileID: 158254429}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3859,7 +3719,7 @@ GameObject:
   - component: {fileID: 159034553}
   - component: {fileID: 159034552}
   - component: {fileID: 159034557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (96)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3992,7 +3852,7 @@ GameObject:
   - component: {fileID: 161068150}
   - component: {fileID: 161068149}
   - component: {fileID: 161068151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4125,7 +3985,6 @@ GameObject:
   - component: {fileID: 172152108}
   - component: {fileID: 172152107}
   - component: {fileID: 172152109}
-  - component: {fileID: 172152110}
   - component: {fileID: 172152111}
   m_Layer: 3
   m_Name: Cube (66)
@@ -4233,7 +4092,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000038146973, y: 0}
@@ -4248,21 +4107,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &172152110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172152104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783b7b201669cbb4ba7c33088efd705c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveTo: {x: 10, y: 6}
-  _moveTime: 1
-  ease: 7
 --- !u!251 &172152111
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -4294,7 +4138,6 @@ GameObject:
   - component: {fileID: 180482332}
   - component: {fileID: 180482331}
   - component: {fileID: 180482333}
-  - component: {fileID: 180482334}
   m_Layer: 3
   m_Name: Cube (22)
   m_TagString: Untagged
@@ -4401,7 +4244,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.00000023841858, y: 0}
@@ -4416,25 +4259,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &180482334
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180482328}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &188809129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,7 +4272,7 @@ GameObject:
   - component: {fileID: 188809132}
   - component: {fileID: 188809131}
   - component: {fileID: 188809134}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4595,7 +4419,6 @@ GameObject:
   - component: {fileID: 189171631}
   - component: {fileID: 189171630}
   - component: {fileID: 189171632}
-  - component: {fileID: 189171633}
   m_Layer: 3
   m_Name: Cube (87)
   m_TagString: Untagged
@@ -4702,7 +4525,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000038146973}
@@ -4717,25 +4540,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &189171633
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189171627}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &197343237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4745,7 +4549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 197343238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Primeraopcion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4855,7 +4659,7 @@ GameObject:
   - component: {fileID: 201073644}
   - component: {fileID: 201073643}
   - component: {fileID: 201073645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4989,7 +4793,7 @@ GameObject:
   - component: {fileID: 203130465}
   - component: {fileID: 203130470}
   - component: {fileID: 203130471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +4940,6 @@ GameObject:
   - component: {fileID: 208388402}
   - component: {fileID: 208388401}
   - component: {fileID: 208388406}
-  - component: {fileID: 208388407}
   m_Layer: 3
   m_Name: Cube (35)
   m_TagString: Untagged
@@ -5243,7 +5046,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0}
@@ -5258,25 +5061,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &208388407
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208388399}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &209442177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,7 +5073,7 @@ GameObject:
   - component: {fileID: 209442181}
   - component: {fileID: 209442180}
   - component: {fileID: 209442182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5422,7 +5206,7 @@ GameObject:
   - component: {fileID: 221245715}
   - component: {fileID: 221245714}
   - component: {fileID: 221245716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5687,7 +5471,7 @@ GameObject:
   - component: {fileID: 233463941}
   - component: {fileID: 233463943}
   - component: {fileID: 233463942}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5763,7 +5547,6 @@ GameObject:
   - component: {fileID: 242592729}
   - component: {fileID: 242592728}
   - component: {fileID: 242592733}
-  - component: {fileID: 242592734}
   m_Layer: 3
   m_Name: Cube (17)
   m_TagString: Untagged
@@ -5870,7 +5653,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0.0000019073486}
@@ -5885,25 +5668,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &242592734
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242592726}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &249147298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,7 +5681,7 @@ GameObject:
   - component: {fileID: 249147300}
   - component: {fileID: 249147305}
   - component: {fileID: 249147306}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6064,7 +5828,6 @@ GameObject:
   - component: {fileID: 255942790}
   - component: {fileID: 255942789}
   - component: {fileID: 255942791}
-  - component: {fileID: 255942792}
   m_Layer: 3
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -6171,7 +5934,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0}
@@ -6186,25 +5949,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &255942792
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255942786}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &269265587
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,7 +5961,7 @@ GameObject:
   - component: {fileID: 269265591}
   - component: {fileID: 269265590}
   - component: {fileID: 269265592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6350,7 +6094,7 @@ GameObject:
   - component: {fileID: 270600713}
   - component: {fileID: 270600712}
   - component: {fileID: 270600714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6483,7 +6227,6 @@ GameObject:
   - component: {fileID: 291972701}
   - component: {fileID: 291972700}
   - component: {fileID: 291972705}
-  - component: {fileID: 291972706}
   m_Layer: 3
   m_Name: Cube (43)
   m_TagString: Untagged
@@ -6590,7 +6333,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.000002861023, y: 0}
@@ -6605,25 +6348,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &291972706
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291972698}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &296438355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6636,7 +6360,7 @@ GameObject:
   - component: {fileID: 296438359}
   - component: {fileID: 296438358}
   - component: {fileID: 296438360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7033,7 +6757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315763573}
   - component: {fileID: 315763574}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7124,7 +6848,7 @@ GameObject:
   - component: {fileID: 318951579}
   - component: {fileID: 318951578}
   - component: {fileID: 318951580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7257,7 +6981,7 @@ GameObject:
   - component: {fileID: 324667407}
   - component: {fileID: 324667406}
   - component: {fileID: 324667408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7390,7 +7114,7 @@ GameObject:
   - component: {fileID: 330463705}
   - component: {fileID: 330463704}
   - component: {fileID: 330463709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7523,7 +7247,6 @@ GameObject:
   - component: {fileID: 336645781}
   - component: {fileID: 336645780}
   - component: {fileID: 336645785}
-  - component: {fileID: 336645786}
   m_Layer: 3
   m_Name: Cube (97)
   m_TagString: Untagged
@@ -7630,7 +7353,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000038146973}
@@ -7645,25 +7368,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &336645786
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336645778}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &340399573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7676,7 +7380,6 @@ GameObject:
   - component: {fileID: 340399577}
   - component: {fileID: 340399576}
   - component: {fileID: 340399578}
-  - component: {fileID: 340399579}
   m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -7783,7 +7486,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.00000023841858, y: 0}
@@ -7798,25 +7501,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000001, y: 1}
   m_EdgeRadius: 0
---- !u!251 &340399579
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340399573}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &377313331
 GameObject:
   m_ObjectHideFlags: 0
@@ -7830,7 +7514,7 @@ GameObject:
   - component: {fileID: 377313334}
   - component: {fileID: 377313336}
   - component: {fileID: 377313337}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7977,7 +7661,6 @@ GameObject:
   - component: {fileID: 379521951}
   - component: {fileID: 379521950}
   - component: {fileID: 379521952}
-  - component: {fileID: 379521953}
   m_Layer: 3
   m_Name: Cube (36)
   m_TagString: Untagged
@@ -8084,7 +7767,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.00000047683716, y: -0.0000076293945}
@@ -8099,25 +7782,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &379521953
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379521947}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &380537661
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,7 +7794,7 @@ GameObject:
   - component: {fileID: 380537665}
   - component: {fileID: 380537664}
   - component: {fileID: 380537666}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8401,7 +8065,6 @@ GameObject:
   - component: {fileID: 396493480}
   - component: {fileID: 396493479}
   - component: {fileID: 396493478}
-  - component: {fileID: 396493481}
   m_Layer: 3
   m_Name: Cube (44)
   m_TagString: Untagged
@@ -8455,7 +8118,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -8523,25 +8186,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396493476}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!251 &396493481
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396493476}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &400180313
 GameObject:
   m_ObjectHideFlags: 0
@@ -8554,7 +8198,7 @@ GameObject:
   - component: {fileID: 400180316}
   - component: {fileID: 400180315}
   - component: {fileID: 400180320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8687,7 +8331,6 @@ GameObject:
   - component: {fileID: 403299261}
   - component: {fileID: 403299260}
   - component: {fileID: 403299262}
-  - component: {fileID: 403299263}
   m_Layer: 3
   m_Name: Cube (50)
   m_TagString: Untagged
@@ -8794,7 +8437,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000019073486, y: 0}
@@ -8809,25 +8452,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &403299263
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403299257}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &413202119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8840,7 +8464,6 @@ GameObject:
   - component: {fileID: 413202122}
   - component: {fileID: 413202121}
   - component: {fileID: 413202126}
-  - component: {fileID: 413202127}
   m_Layer: 3
   m_Name: Cube (20)
   m_TagString: Untagged
@@ -8947,7 +8570,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -8962,25 +8585,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &413202127
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413202119}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &418534754
 GameObject:
   m_ObjectHideFlags: 0
@@ -8994,7 +8598,7 @@ GameObject:
   - component: {fileID: 418534757}
   - component: {fileID: 418534759}
   - component: {fileID: 418534760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9141,7 +8745,6 @@ GameObject:
   - component: {fileID: 431530047}
   - component: {fileID: 431530046}
   - component: {fileID: 431530048}
-  - component: {fileID: 431530049}
   m_Layer: 3
   m_Name: Cube (72)
   m_TagString: Untagged
@@ -9248,7 +8851,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -9263,25 +8866,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &431530049
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431530043}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &434211212
 GameObject:
   m_ObjectHideFlags: 0
@@ -9294,7 +8878,7 @@ GameObject:
   - component: {fileID: 434211216}
   - component: {fileID: 434211215}
   - component: {fileID: 434211217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9427,7 +9011,7 @@ GameObject:
   - component: {fileID: 435795240}
   - component: {fileID: 435795239}
   - component: {fileID: 435795244}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9561,7 +9145,7 @@ GameObject:
   - component: {fileID: 447617091}
   - component: {fileID: 447617094}
   - component: {fileID: 447617093}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9708,7 +9292,6 @@ GameObject:
   - component: {fileID: 450815059}
   - component: {fileID: 450815058}
   - component: {fileID: 450815063}
-  - component: {fileID: 450815064}
   m_Layer: 3
   m_Name: Cube (26)
   m_TagString: Untagged
@@ -9815,7 +9398,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0}
@@ -9830,25 +9413,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &450815064
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 450815056}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &466055193
 GameObject:
   m_ObjectHideFlags: 0
@@ -9861,7 +9425,6 @@ GameObject:
   - component: {fileID: 466055197}
   - component: {fileID: 466055196}
   - component: {fileID: 466055198}
-  - component: {fileID: 466055199}
   m_Layer: 3
   m_Name: Cube (42)
   m_TagString: Untagged
@@ -9968,7 +9531,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -9983,25 +9546,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &466055199
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466055193}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &469996186
 GameObject:
   m_ObjectHideFlags: 0
@@ -10014,7 +9558,6 @@ GameObject:
   - component: {fileID: 469996189}
   - component: {fileID: 469996188}
   - component: {fileID: 469996193}
-  - component: {fileID: 469996194}
   m_Layer: 3
   m_Name: Cube (73)
   m_TagString: Untagged
@@ -10121,7 +9664,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0}
@@ -10136,25 +9679,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &469996194
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469996186}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &473201606
 GameObject:
   m_ObjectHideFlags: 0
@@ -10167,7 +9691,7 @@ GameObject:
   - component: {fileID: 473201609}
   - component: {fileID: 473201608}
   - component: {fileID: 473201613}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10300,7 +9824,7 @@ GameObject:
   - component: {fileID: 499006522}
   - component: {fileID: 499006521}
   - component: {fileID: 499006523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10559,7 +10083,6 @@ GameObject:
   - component: {fileID: 513998799}
   - component: {fileID: 513998801}
   - component: {fileID: 513998802}
-  - component: {fileID: 513998803}
   m_Layer: 3
   m_Name: Cube (71)
   m_TagString: Untagged
@@ -10666,7 +10189,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000038146973}
@@ -10697,25 +10220,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -30}
   waitTime: 2
---- !u!251 &513998803
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513998796}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &521035536
 GameObject:
   m_ObjectHideFlags: 0
@@ -10728,7 +10232,6 @@ GameObject:
   - component: {fileID: 521035540}
   - component: {fileID: 521035539}
   - component: {fileID: 521035541}
-  - component: {fileID: 521035542}
   m_Layer: 3
   m_Name: Cube (47)
   m_TagString: Untagged
@@ -10835,7 +10338,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000076293945}
@@ -10850,25 +10353,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &521035542
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521035536}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &549610951
 GameObject:
   m_ObjectHideFlags: 0
@@ -10882,7 +10366,7 @@ GameObject:
   - component: {fileID: 549610953}
   - component: {fileID: 549610958}
   - component: {fileID: 549610959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11029,7 +10513,6 @@ GameObject:
   - component: {fileID: 575230569}
   - component: {fileID: 575230568}
   - component: {fileID: 575230570}
-  - component: {fileID: 575230571}
   m_Layer: 3
   m_Name: Cube (13)
   m_TagString: Untagged
@@ -11136,7 +10619,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -11151,25 +10634,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &575230571
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575230565}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &581185297
 GameObject:
   m_ObjectHideFlags: 0
@@ -11182,7 +10646,6 @@ GameObject:
   - component: {fileID: 581185301}
   - component: {fileID: 581185300}
   - component: {fileID: 581185302}
-  - component: {fileID: 581185303}
   m_Layer: 3
   m_Name: Cube (34)
   m_TagString: Untagged
@@ -11289,7 +10752,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -11304,25 +10767,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &581185303
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581185297}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &583881954
 GameObject:
   m_ObjectHideFlags: 0
@@ -11335,7 +10779,7 @@ GameObject:
   - component: {fileID: 583881958}
   - component: {fileID: 583881957}
   - component: {fileID: 583881961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11468,7 +10912,6 @@ GameObject:
   - component: {fileID: 589486977}
   - component: {fileID: 589486976}
   - component: {fileID: 589486981}
-  - component: {fileID: 589486982}
   m_Layer: 3
   m_Name: Cube (80)
   m_TagString: Untagged
@@ -11575,7 +11018,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0.0000038146973}
@@ -11590,25 +11033,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &589486982
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589486974}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &589775119
 GameObject:
   m_ObjectHideFlags: 0
@@ -11621,7 +11045,7 @@ GameObject:
   - component: {fileID: 589775123}
   - component: {fileID: 589775122}
   - component: {fileID: 589775124}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11755,7 +11179,7 @@ GameObject:
   - component: {fileID: 605195906}
   - component: {fileID: 605195908}
   - component: {fileID: 605195909}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11903,7 +11327,7 @@ GameObject:
   - component: {fileID: 610341508}
   - component: {fileID: 610341513}
   - component: {fileID: 610341514}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12094,7 +11518,7 @@ GameObject:
   - component: {fileID: 643108985}
   - component: {fileID: 643108984}
   - component: {fileID: 643108989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12376,7 +11800,7 @@ GameObject:
   - component: {fileID: 652511066}
   - component: {fileID: 652511065}
   - component: {fileID: 652511067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12509,7 +11933,6 @@ GameObject:
   - component: {fileID: 655960155}
   - component: {fileID: 655960154}
   - component: {fileID: 655960156}
-  - component: {fileID: 655960157}
   m_Layer: 3
   m_Name: Cube (49)
   m_TagString: Untagged
@@ -12616,7 +12039,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -12631,25 +12054,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &655960157
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655960151}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &656375158
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,7 +12067,7 @@ GameObject:
   - component: {fileID: 656375161}
   - component: {fileID: 656375163}
   - component: {fileID: 656375164}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12811,7 +12215,7 @@ GameObject:
   - component: {fileID: 658070812}
   - component: {fileID: 658070817}
   - component: {fileID: 658070818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12958,7 +12362,6 @@ GameObject:
   - component: {fileID: 668464961}
   - component: {fileID: 668464960}
   - component: {fileID: 668464962}
-  - component: {fileID: 668464963}
   m_Layer: 3
   m_Name: Cube (101)
   m_TagString: Untagged
@@ -13065,7 +12468,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -13080,25 +12483,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &668464963
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668464957}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &672716047
 GameObject:
   m_ObjectHideFlags: 0
@@ -13260,7 +12644,7 @@ GameObject:
   - component: {fileID: 675434410}
   - component: {fileID: 675434409}
   - component: {fileID: 675434414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13526,7 +12910,6 @@ GameObject:
   - component: {fileID: 679603298}
   - component: {fileID: 679603297}
   - component: {fileID: 679603299}
-  - component: {fileID: 679603300}
   m_Layer: 3
   m_Name: Cube (30)
   m_TagString: Untagged
@@ -13633,7 +13016,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -13648,25 +13031,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &679603300
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679603294}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &687047028
 GameObject:
   m_ObjectHideFlags: 0
@@ -13679,7 +13043,7 @@ GameObject:
   - component: {fileID: 687047032}
   - component: {fileID: 687047031}
   - component: {fileID: 687047033}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13812,7 +13176,6 @@ GameObject:
   - component: {fileID: 689034958}
   - component: {fileID: 689034957}
   - component: {fileID: 689034959}
-  - component: {fileID: 689034960}
   m_Layer: 3
   m_Name: Cube (28)
   m_TagString: Untagged
@@ -13919,7 +13282,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: -0.0000076293945}
@@ -13934,25 +13297,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &689034960
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689034954}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &705953353
 GameObject:
   m_ObjectHideFlags: 0
@@ -14098,7 +13442,7 @@ GameObject:
   - component: {fileID: 709628201}
   - component: {fileID: 709628200}
   - component: {fileID: 709628205}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14379,7 +13723,7 @@ GameObject:
   - component: {fileID: 754587343}
   - component: {fileID: 754587342}
   - component: {fileID: 754587347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14513,7 +13857,7 @@ GameObject:
   - component: {fileID: 759616725}
   - component: {fileID: 759616728}
   - component: {fileID: 759616727}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14660,7 +14004,6 @@ GameObject:
   - component: {fileID: 784247603}
   - component: {fileID: 784247602}
   - component: {fileID: 784247607}
-  - component: {fileID: 784247608}
   m_Layer: 3
   m_Name: Cube (8)
   m_TagString: Untagged
@@ -14767,7 +14110,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0}
@@ -14782,25 +14125,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &784247608
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784247600}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &788981193
 GameObject:
   m_ObjectHideFlags: 0
@@ -14813,7 +14137,7 @@ GameObject:
   - component: {fileID: 788981197}
   - component: {fileID: 788981196}
   - component: {fileID: 788981198}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14946,7 +14270,6 @@ GameObject:
   - component: {fileID: 789571560}
   - component: {fileID: 789571559}
   - component: {fileID: 789571564}
-  - component: {fileID: 789571565}
   m_Layer: 3
   m_Name: Cube (11)
   m_TagString: Untagged
@@ -15053,7 +14376,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: -0.0000009536743}
@@ -15068,25 +14391,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &789571565
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789571557}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &792615334
 GameObject:
   m_ObjectHideFlags: 0
@@ -15099,7 +14403,7 @@ GameObject:
   - component: {fileID: 792615337}
   - component: {fileID: 792615336}
   - component: {fileID: 792615341}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15233,7 +14537,7 @@ GameObject:
   - component: {fileID: 800728927}
   - component: {fileID: 800728929}
   - component: {fileID: 800728930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15381,7 +14685,6 @@ GameObject:
   - component: {fileID: 808021227}
   - component: {fileID: 808021229}
   - component: {fileID: 808021230}
-  - component: {fileID: 808021231}
   m_Layer: 3
   m_Name: Cube (88)
   m_TagString: Untagged
@@ -15488,7 +14791,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000076293945, y: -0.0000038146973}
@@ -15518,25 +14821,6 @@ MonoBehaviour:
   _moveTo: {x: 0, y: 10}
   _moveTime: 1
   ease: 30
---- !u!251 &808021231
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808021224}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &810638554
 GameObject:
   m_ObjectHideFlags: 0
@@ -15696,7 +14980,6 @@ GameObject:
   - component: {fileID: 813843068}
   - component: {fileID: 813843067}
   - component: {fileID: 813843072}
-  - component: {fileID: 813843073}
   m_Layer: 3
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -15803,7 +15086,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: -0.0000019073486}
@@ -15818,25 +15101,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &813843073
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813843065}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &827490247
 GameObject:
   m_ObjectHideFlags: 0
@@ -15849,7 +15113,7 @@ GameObject:
   - component: {fileID: 827490251}
   - component: {fileID: 827490250}
   - component: {fileID: 827490254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16043,7 +15307,6 @@ GameObject:
   - component: {fileID: 832875363}
   - component: {fileID: 832875362}
   - component: {fileID: 832875367}
-  - component: {fileID: 832875368}
   m_Layer: 3
   m_Name: Cube (45)
   m_TagString: Untagged
@@ -16150,7 +15413,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0}
@@ -16165,25 +15428,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &832875368
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832875360}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &835353877
 GameObject:
   m_ObjectHideFlags: 0
@@ -16196,7 +15440,6 @@ GameObject:
   - component: {fileID: 835353881}
   - component: {fileID: 835353880}
   - component: {fileID: 835353882}
-  - component: {fileID: 835353883}
   m_Layer: 3
   m_Name: Cube (53)
   m_TagString: Untagged
@@ -16303,7 +15546,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -16318,25 +15561,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &835353883
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835353877}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &839747704
 GameObject:
   m_ObjectHideFlags: 0
@@ -16349,7 +15573,7 @@ GameObject:
   - component: {fileID: 839747707}
   - component: {fileID: 839747706}
   - component: {fileID: 839747711}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16632,7 +15856,7 @@ GameObject:
   - component: {fileID: 877315966}
   - component: {fileID: 877315971}
   - component: {fileID: 877315972}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17022,7 +16246,6 @@ GameObject:
   - component: {fileID: 898441671}
   - component: {fileID: 898441670}
   - component: {fileID: 898441675}
-  - component: {fileID: 898441676}
   m_Layer: 3
   m_Name: Cube (95)
   m_TagString: Untagged
@@ -17129,7 +16352,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000009536743, y: -0.0000076293945}
@@ -17144,25 +16367,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &898441676
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898441668}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &898451209
 GameObject:
   m_ObjectHideFlags: 0
@@ -17175,7 +16379,7 @@ GameObject:
   - component: {fileID: 898451213}
   - component: {fileID: 898451212}
   - component: {fileID: 898451214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17308,7 +16512,6 @@ GameObject:
   - component: {fileID: 899827359}
   - component: {fileID: 899827358}
   - component: {fileID: 899827362}
-  - component: {fileID: 899827363}
   m_Layer: 3
   m_Name: Cube (83)
   m_TagString: Untagged
@@ -17415,7 +16618,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0.0000038146973}
@@ -17430,25 +16633,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &899827363
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899827355}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &900269894
 GameObject:
   m_ObjectHideFlags: 0
@@ -17461,7 +16645,7 @@ GameObject:
   - component: {fileID: 900269897}
   - component: {fileID: 900269896}
   - component: {fileID: 900269901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17594,7 +16778,6 @@ GameObject:
   - component: {fileID: 905749701}
   - component: {fileID: 905749700}
   - component: {fileID: 905749702}
-  - component: {fileID: 905749703}
   m_Layer: 3
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -17701,7 +16884,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -17716,25 +16899,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &905749703
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905749697}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &923454034
 GameObject:
   m_ObjectHideFlags: 0
@@ -17748,7 +16912,7 @@ GameObject:
   - component: {fileID: 923454037}
   - component: {fileID: 923454036}
   - component: {fileID: 923454039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17895,7 +17059,6 @@ GameObject:
   - component: {fileID: 925350963}
   - component: {fileID: 925350962}
   - component: {fileID: 925350967}
-  - component: {fileID: 925350968}
   m_Layer: 3
   m_Name: Cube (55)
   m_TagString: Untagged
@@ -18017,25 +17180,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &925350968
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925350960}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &973736445
 GameObject:
   m_ObjectHideFlags: 0
@@ -18048,7 +17192,6 @@ GameObject:
   - component: {fileID: 973736448}
   - component: {fileID: 973736447}
   - component: {fileID: 973736452}
-  - component: {fileID: 973736453}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -18155,7 +17298,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000009536743, y: -0.0000019073486}
@@ -18170,25 +17313,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &973736453
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973736445}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 192
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &983373699
 GameObject:
   m_ObjectHideFlags: 0
@@ -18201,7 +17325,7 @@ GameObject:
   - component: {fileID: 983373703}
   - component: {fileID: 983373702}
   - component: {fileID: 983373704}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18334,7 +17458,7 @@ GameObject:
   - component: {fileID: 992600611}
   - component: {fileID: 992600610}
   - component: {fileID: 992600612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18467,7 +17591,7 @@ GameObject:
   - component: {fileID: 993622096}
   - component: {fileID: 993622095}
   - component: {fileID: 993622100}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18601,7 +17725,6 @@ GameObject:
   - component: {fileID: 1005435382}
   - component: {fileID: 1005435384}
   - component: {fileID: 1005435385}
-  - component: {fileID: 1005435386}
   m_Layer: 3
   m_Name: Cube (38)
   m_TagString: Untagged
@@ -18708,7 +17831,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000038146973}
@@ -18739,25 +17862,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -30}
   waitTime: 1.5
---- !u!251 &1005435386
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005435379}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1009222454
 GameObject:
   m_ObjectHideFlags: 0
@@ -18770,7 +17874,7 @@ GameObject:
   - component: {fileID: 1009222458}
   - component: {fileID: 1009222457}
   - component: {fileID: 1009222459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18903,7 +18007,7 @@ GameObject:
   - component: {fileID: 1014259465}
   - component: {fileID: 1014259464}
   - component: {fileID: 1014259466}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19302,7 +18406,6 @@ GameObject:
   - component: {fileID: 1031802663}
   - component: {fileID: 1031802662}
   - component: {fileID: 1031802664}
-  - component: {fileID: 1031802665}
   m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -19409,7 +18512,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000038146973}
@@ -19424,25 +18527,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1031802665
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031802659}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1041975822
 GameObject:
   m_ObjectHideFlags: 0
@@ -19605,7 +18689,7 @@ GameObject:
   - component: {fileID: 1058995762}
   - component: {fileID: 1058995764}
   - component: {fileID: 1058995765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19753,7 +18837,7 @@ GameObject:
   - component: {fileID: 1065759720}
   - component: {fileID: 1065759722}
   - component: {fileID: 1065759723}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19901,7 +18985,7 @@ GameObject:
   - component: {fileID: 1078019854}
   - component: {fileID: 1078019856}
   - component: {fileID: 1078019857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20048,7 +19132,6 @@ GameObject:
   - component: {fileID: 1084083942}
   - component: {fileID: 1084083941}
   - component: {fileID: 1084083943}
-  - component: {fileID: 1084083944}
   m_Layer: 3
   m_Name: Cube (33)
   m_TagString: Untagged
@@ -20155,7 +19238,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000019073486, y: -0.0000038146973}
@@ -20170,25 +19253,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1084083944
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084083938}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1109721731
 GameObject:
   m_ObjectHideFlags: 0
@@ -20201,7 +19265,6 @@ GameObject:
   - component: {fileID: 1109721735}
   - component: {fileID: 1109721734}
   - component: {fileID: 1109721736}
-  - component: {fileID: 1109721737}
   m_Layer: 3
   m_Name: Cube (73)
   m_TagString: Untagged
@@ -20308,7 +19371,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -20323,25 +19386,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000001, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1109721737
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109721731}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1136831815
 GameObject:
   m_ObjectHideFlags: 0
@@ -20354,7 +19398,6 @@ GameObject:
   - component: {fileID: 1136831819}
   - component: {fileID: 1136831818}
   - component: {fileID: 1136831820}
-  - component: {fileID: 1136831821}
   m_Layer: 3
   m_Name: Cube (32)
   m_TagString: Untagged
@@ -20461,7 +19504,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -20476,25 +19519,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1136831821
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136831815}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1146567893
 GameObject:
   m_ObjectHideFlags: 0
@@ -20507,7 +19531,7 @@ GameObject:
   - component: {fileID: 1146567896}
   - component: {fileID: 1146567895}
   - component: {fileID: 1146567900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20640,7 +19664,6 @@ GameObject:
   - component: {fileID: 1147403748}
   - component: {fileID: 1147403747}
   - component: {fileID: 1147403752}
-  - component: {fileID: 1147403753}
   m_Layer: 3
   m_Name: Cube (27)
   m_TagString: Untagged
@@ -20747,7 +19770,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.00000023841858, y: -0.0000038146973}
@@ -20762,25 +19785,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1147403753
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147403745}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1150189102
 GameObject:
   m_ObjectHideFlags: 0
@@ -20794,7 +19798,7 @@ GameObject:
   - component: {fileID: 1150189105}
   - component: {fileID: 1150189107}
   - component: {fileID: 1150189108}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21024,7 +20028,6 @@ GameObject:
   - component: {fileID: 1181563503}
   - component: {fileID: 1181563505}
   - component: {fileID: 1181563506}
-  - component: {fileID: 1181563507}
   m_Layer: 3
   m_Name: Cube (22)
   m_TagString: Untagged
@@ -21162,25 +20165,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -10}
   waitTime: 2
---- !u!251 &1181563507
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181563500}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1193458110
 GameObject:
   m_ObjectHideFlags: 0
@@ -21193,7 +20177,6 @@ GameObject:
   - component: {fileID: 1193458114}
   - component: {fileID: 1193458113}
   - component: {fileID: 1193458115}
-  - component: {fileID: 1193458116}
   m_Layer: 3
   m_Name: Cube (35)
   m_TagString: Untagged
@@ -21300,7 +20283,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -21315,25 +20298,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1193458116
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193458110}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1197697363
 GameObject:
   m_ObjectHideFlags: 0
@@ -21346,7 +20310,6 @@ GameObject:
   - component: {fileID: 1197697367}
   - component: {fileID: 1197697366}
   - component: {fileID: 1197697368}
-  - component: {fileID: 1197697369}
   m_Layer: 3
   m_Name: Cube (35)
   m_TagString: Untagged
@@ -21453,7 +20416,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000019073486, y: 0}
@@ -21468,25 +20431,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1197697369
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197697363}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1205916274
 GameObject:
   m_ObjectHideFlags: 0
@@ -21499,7 +20443,7 @@ GameObject:
   - component: {fileID: 1205916278}
   - component: {fileID: 1205916277}
   - component: {fileID: 1205916279}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21632,7 +20576,7 @@ GameObject:
   - component: {fileID: 1206059351}
   - component: {fileID: 1206059350}
   - component: {fileID: 1206059355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21855,7 +20799,6 @@ GameObject:
   - component: {fileID: 1234773202}
   - component: {fileID: 1234773201}
   - component: {fileID: 1234773206}
-  - component: {fileID: 1234773207}
   m_Layer: 3
   m_Name: Cube (10)
   m_TagString: Untagged
@@ -21962,7 +20905,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: -0.0000009536743}
@@ -21977,25 +20920,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &1234773207
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234773199}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1235288768
 GameObject:
   m_ObjectHideFlags: 0
@@ -22008,7 +20932,6 @@ GameObject:
   - component: {fileID: 1235288772}
   - component: {fileID: 1235288771}
   - component: {fileID: 1235288773}
-  - component: {fileID: 1235288774}
   m_Layer: 3
   m_Name: Cube (11)
   m_TagString: Untagged
@@ -22115,7 +21038,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000076293945, y: 0}
@@ -22130,25 +21053,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1235288774
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235288768}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1256905316
 GameObject:
   m_ObjectHideFlags: 0
@@ -22161,7 +21065,6 @@ GameObject:
   - component: {fileID: 1256905320}
   - component: {fileID: 1256905319}
   - component: {fileID: 1256905321}
-  - component: {fileID: 1256905322}
   m_Layer: 3
   m_Name: Cube (37)
   m_TagString: Untagged
@@ -22268,7 +21171,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000076293945}
@@ -22283,25 +21186,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1256905322
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256905316}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1285820380
 GameObject:
   m_ObjectHideFlags: 0
@@ -22315,7 +21199,6 @@ GameObject:
   - component: {fileID: 1285820384}
   - component: {fileID: 1285820383}
   - component: {fileID: 1285820382}
-  - component: {fileID: 1285820386}
   m_Layer: 3
   m_Name: Cube (45)
   m_TagString: Untagged
@@ -22453,25 +21336,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285820380}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!251 &1285820386
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285820380}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1308823500
 GameObject:
   m_ObjectHideFlags: 0
@@ -22484,7 +21348,7 @@ GameObject:
   - component: {fileID: 1308823504}
   - component: {fileID: 1308823503}
   - component: {fileID: 1308823505}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22617,7 +21481,7 @@ GameObject:
   - component: {fileID: 1313323840}
   - component: {fileID: 1313323839}
   - component: {fileID: 1313323844}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22751,7 +21615,6 @@ GameObject:
   - component: {fileID: 1314542478}
   - component: {fileID: 1314542480}
   - component: {fileID: 1314542481}
-  - component: {fileID: 1314542482}
   m_Layer: 3
   m_Name: Cube (70)
   m_TagString: Untagged
@@ -22858,7 +21721,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -22888,25 +21751,6 @@ MonoBehaviour:
   _moveTo: {x: 5, y: 0}
   _moveTime: 1.5
   ease: 23
---- !u!251 &1314542482
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314542475}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1315002786
 GameObject:
   m_ObjectHideFlags: 0
@@ -23068,7 +21912,7 @@ GameObject:
   - component: {fileID: 1341951171}
   - component: {fileID: 1341951176}
   - component: {fileID: 1341951177}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23347,7 +22191,7 @@ GameObject:
   - component: {fileID: 1389345988}
   - component: {fileID: 1389345990}
   - component: {fileID: 1389345989}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23424,7 +22268,7 @@ GameObject:
   - component: {fileID: 1400528475}
   - component: {fileID: 1400528477}
   - component: {fileID: 1400528478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23572,7 +22416,7 @@ GameObject:
   - component: {fileID: 1404430892}
   - component: {fileID: 1404430894}
   - component: {fileID: 1404430895}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23719,7 +22563,7 @@ GameObject:
   - component: {fileID: 1429447472}
   - component: {fileID: 1429447471}
   - component: {fileID: 1429447473}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24001,7 +22845,7 @@ GameObject:
   - component: {fileID: 1449564251}
   - component: {fileID: 1449564253}
   - component: {fileID: 1449564254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24148,7 +22992,6 @@ GameObject:
   - component: {fileID: 1453456830}
   - component: {fileID: 1453456829}
   - component: {fileID: 1453456831}
-  - component: {fileID: 1453456832}
   m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -24255,7 +23098,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -24270,25 +23113,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &1453456832
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453456826}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1454910922
 GameObject:
   m_ObjectHideFlags: 0
@@ -24365,7 +23189,7 @@ GameObject:
   - component: {fileID: 1468534438}
   - component: {fileID: 1468534437}
   - component: {fileID: 1468534442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24498,7 +23322,6 @@ GameObject:
   - component: {fileID: 1473785720}
   - component: {fileID: 1473785719}
   - component: {fileID: 1473785724}
-  - component: {fileID: 1473785725}
   m_Layer: 3
   m_Name: Cube (47)
   m_TagString: Untagged
@@ -24605,7 +23428,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0.0000019073486}
@@ -24620,25 +23443,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9999999, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1473785725
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473785717}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1482655191
 GameObject:
   m_ObjectHideFlags: 0
@@ -24651,7 +23455,7 @@ GameObject:
   - component: {fileID: 1482655195}
   - component: {fileID: 1482655194}
   - component: {fileID: 1482655196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24784,7 +23588,6 @@ GameObject:
   - component: {fileID: 1483395492}
   - component: {fileID: 1483395491}
   - component: {fileID: 1483395496}
-  - component: {fileID: 1483395497}
   m_Layer: 3
   m_Name: Cube (78)
   m_TagString: Untagged
@@ -24891,7 +23694,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000038146973}
@@ -24906,25 +23709,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1483395497
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483395489}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1487471054
 GameObject:
   m_ObjectHideFlags: 0
@@ -24938,7 +23722,7 @@ GameObject:
   - component: {fileID: 1487471056}
   - component: {fileID: 1487471061}
   - component: {fileID: 1487471062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25085,7 +23869,6 @@ GameObject:
   - component: {fileID: 1496010458}
   - component: {fileID: 1496010457}
   - component: {fileID: 1496010459}
-  - component: {fileID: 1496010460}
   m_Layer: 3
   m_Name: Cube (23)
   m_TagString: Untagged
@@ -25192,7 +23975,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000076293945}
@@ -25207,25 +23990,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &1496010460
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496010454}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1499712334
 GameObject:
   m_ObjectHideFlags: 0
@@ -25239,7 +24003,7 @@ GameObject:
   - component: {fileID: 1499712337}
   - component: {fileID: 1499712336}
   - component: {fileID: 1499712335}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25357,7 +24121,7 @@ GameObject:
   - component: {fileID: 1500993848}
   - component: {fileID: 1500993851}
   - component: {fileID: 1500993850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25504,7 +24268,6 @@ GameObject:
   - component: {fileID: 1503245809}
   - component: {fileID: 1503245808}
   - component: {fileID: 1503245810}
-  - component: {fileID: 1503245811}
   m_Layer: 3
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -25611,7 +24374,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.00000023841858, y: -0.0000038146973}
@@ -25626,25 +24389,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1503245811
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503245805}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1506501234
 GameObject:
   m_ObjectHideFlags: 0
@@ -25657,7 +24401,6 @@ GameObject:
   - component: {fileID: 1506501238}
   - component: {fileID: 1506501237}
   - component: {fileID: 1506501239}
-  - component: {fileID: 1506501240}
   m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -25764,7 +24507,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -25779,25 +24522,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1506501240
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506501234}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1508201243
 GameObject:
   m_ObjectHideFlags: 0
@@ -25810,7 +24534,7 @@ GameObject:
   - component: {fileID: 1508201247}
   - component: {fileID: 1508201246}
   - component: {fileID: 1508201248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25943,7 +24667,6 @@ GameObject:
   - component: {fileID: 1515962211}
   - component: {fileID: 1515962210}
   - component: {fileID: 1515962212}
-  - component: {fileID: 1515962213}
   m_Layer: 3
   m_Name: Cube (27)
   m_TagString: Untagged
@@ -26050,7 +24773,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -26065,25 +24788,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1515962213
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515962207}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1517904727
 GameObject:
   m_ObjectHideFlags: 0
@@ -26096,7 +24800,7 @@ GameObject:
   - component: {fileID: 1517904730}
   - component: {fileID: 1517904729}
   - component: {fileID: 1517904734}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26229,7 +24933,6 @@ GameObject:
   - component: {fileID: 1525591509}
   - component: {fileID: 1525591508}
   - component: {fileID: 1525591513}
-  - component: {fileID: 1525591514}
   m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -26336,7 +25039,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0}
@@ -26351,25 +25054,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1525591514
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525591506}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1538234305
 GameObject:
   m_ObjectHideFlags: 0
@@ -26382,7 +25066,7 @@ GameObject:
   - component: {fileID: 1538234308}
   - component: {fileID: 1538234307}
   - component: {fileID: 1538234312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26516,7 +25200,7 @@ GameObject:
   - component: {fileID: 1555406828}
   - component: {fileID: 1555406830}
   - component: {fileID: 1555406831}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26664,7 +25348,7 @@ GameObject:
   - component: {fileID: 1569208537}
   - component: {fileID: 1569208539}
   - component: {fileID: 1569208540}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26811,7 +25495,7 @@ GameObject:
   - component: {fileID: 1582507323}
   - component: {fileID: 1582507322}
   - component: {fileID: 1582507324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26945,7 +25629,7 @@ GameObject:
   - component: {fileID: 1582965592}
   - component: {fileID: 1582965594}
   - component: {fileID: 1582965595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27092,7 +25776,6 @@ GameObject:
   - component: {fileID: 1609000613}
   - component: {fileID: 1609000612}
   - component: {fileID: 1609000614}
-  - component: {fileID: 1609000615}
   m_Layer: 3
   m_Name: Cube (48)
   m_TagString: Untagged
@@ -27199,7 +25882,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.0000076293945}
@@ -27214,25 +25897,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1609000615
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609000609}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1644795652
 GameObject:
   m_ObjectHideFlags: 0
@@ -27245,7 +25909,7 @@ GameObject:
   - component: {fileID: 1644795656}
   - component: {fileID: 1644795655}
   - component: {fileID: 1644795657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27379,7 +26043,7 @@ GameObject:
   - component: {fileID: 1645577557}
   - component: {fileID: 1645577559}
   - component: {fileID: 1645577560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27526,7 +26190,7 @@ GameObject:
   - component: {fileID: 1653964622}
   - component: {fileID: 1653964621}
   - component: {fileID: 1653964623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27661,11 +26325,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: <DashForce>k__BackingField
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <JumpForce>k__BackingField
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <WallCheck>k__BackingField
+      value: 
+      objectReference: {fileID: 2029738742}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: <GroundDistance>k__BackingField
-      value: 0.2
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <WallSlideSpeed>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <WallCheckDistance>k__BackingField
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27862,7 +26542,7 @@ GameObject:
   - component: {fileID: 1679731183}
   - component: {fileID: 1679731182}
   - component: {fileID: 1679731184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27995,7 +26675,6 @@ GameObject:
   - component: {fileID: 1683119298}
   - component: {fileID: 1683119297}
   - component: {fileID: 1683119302}
-  - component: {fileID: 1683119303}
   m_Layer: 3
   m_Name: Cube (70)
   m_TagString: Untagged
@@ -28102,7 +26781,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.00000047683716, y: -0.0000038146973}
@@ -28117,25 +26796,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0000002, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1683119303
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683119295}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: -90
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1689595192
 GameObject:
   m_ObjectHideFlags: 0
@@ -28149,7 +26809,6 @@ GameObject:
   - component: {fileID: 1689595195}
   - component: {fileID: 1689595197}
   - component: {fileID: 1689595198}
-  - component: {fileID: 1689595199}
   m_Layer: 3
   m_Name: Cube (72)
   m_TagString: Untagged
@@ -28256,7 +26915,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000038146973, y: 0}
@@ -28286,25 +26945,6 @@ MonoBehaviour:
   _moveTo: {x: 0, y: 10}
   _moveTime: 1
   ease: 25
---- !u!251 &1689595199
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689595192}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1699767069
 GameObject:
   m_ObjectHideFlags: 0
@@ -28318,7 +26958,7 @@ GameObject:
   - component: {fileID: 1699767072}
   - component: {fileID: 1699767074}
   - component: {fileID: 1699767075}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28466,7 +27106,7 @@ GameObject:
   - component: {fileID: 1706258187}
   - component: {fileID: 1706258189}
   - component: {fileID: 1706258190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28613,7 +27253,7 @@ GameObject:
   - component: {fileID: 1723470172}
   - component: {fileID: 1723470171}
   - component: {fileID: 1723470176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28746,7 +27386,7 @@ GameObject:
   - component: {fileID: 1727997172}
   - component: {fileID: 1727997171}
   - component: {fileID: 1727997173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28880,7 +27520,6 @@ GameObject:
   - component: {fileID: 1753582398}
   - component: {fileID: 1753582400}
   - component: {fileID: 1753582401}
-  - component: {fileID: 1753582402}
   m_Layer: 3
   m_Name: Cube (85)
   m_TagString: Untagged
@@ -28987,7 +27626,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000076293945, y: 0}
@@ -29018,25 +27657,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -30}
   waitTime: 2
---- !u!251 &1753582402
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753582395}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1773529967
 GameObject:
   m_ObjectHideFlags: 0
@@ -29050,7 +27670,7 @@ GameObject:
   - component: {fileID: 1773529970}
   - component: {fileID: 1773529972}
   - component: {fileID: 1773529973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29331,7 +27951,7 @@ GameObject:
   - component: {fileID: 1793206402}
   - component: {fileID: 1793206407}
   - component: {fileID: 1793206408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29478,7 +28098,7 @@ GameObject:
   - component: {fileID: 1806639902}
   - component: {fileID: 1806639901}
   - component: {fileID: 1806639903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29608,7 +28228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1820786535}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29647,7 +28267,6 @@ GameObject:
   - component: {fileID: 1825783907}
   - component: {fileID: 1825783906}
   - component: {fileID: 1825783908}
-  - component: {fileID: 1825783909}
   m_Layer: 3
   m_Name: Cube (92)
   m_TagString: Untagged
@@ -29754,7 +28373,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -29769,25 +28388,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1825783909
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825783903}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1829404414
 GameObject:
   m_ObjectHideFlags: 0
@@ -29800,7 +28400,6 @@ GameObject:
   - component: {fileID: 1829404418}
   - component: {fileID: 1829404417}
   - component: {fileID: 1829404419}
-  - component: {fileID: 1829404420}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -29907,7 +28506,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -29922,25 +28521,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &1829404420
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829404414}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1839818036
 GameObject:
   m_ObjectHideFlags: 0
@@ -29953,7 +28533,7 @@ GameObject:
   - component: {fileID: 1839818039}
   - component: {fileID: 1839818038}
   - component: {fileID: 1839818043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (94)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30086,7 +28666,7 @@ GameObject:
   - component: {fileID: 1862768226}
   - component: {fileID: 1862768225}
   - component: {fileID: 1862768230}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30367,7 +28947,7 @@ GameObject:
   - component: {fileID: 1873275614}
   - component: {fileID: 1873275613}
   - component: {fileID: 1873275618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30500,7 +29080,6 @@ GameObject:
   - component: {fileID: 1878775135}
   - component: {fileID: 1878775134}
   - component: {fileID: 1878775136}
-  - component: {fileID: 1878775137}
   m_Layer: 3
   m_Name: Cube (48)
   m_TagString: Untagged
@@ -30607,7 +29186,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0000076293945}
@@ -30622,25 +29201,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &1878775137
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878775131}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1890839373
 GameObject:
   m_ObjectHideFlags: 0
@@ -30654,7 +29214,7 @@ GameObject:
   - component: {fileID: 1890839376}
   - component: {fileID: 1890839375}
   - component: {fileID: 1890839378}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30802,7 +29362,6 @@ GameObject:
   - component: {fileID: 1895031818}
   - component: {fileID: 1895031820}
   - component: {fileID: 1895031821}
-  - component: {fileID: 1895031822}
   m_Layer: 3
   m_Name: Cube (86)
   m_TagString: Untagged
@@ -30909,7 +29468,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -30940,25 +29499,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -30}
   waitTime: 2
---- !u!251 &1895031822
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895031815}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1896868336
 GameObject:
   m_ObjectHideFlags: 0
@@ -30971,7 +29511,6 @@ GameObject:
   - component: {fileID: 1896868339}
   - component: {fileID: 1896868338}
   - component: {fileID: 1896868343}
-  - component: {fileID: 1896868344}
   m_Layer: 3
   m_Name: Cube (36)
   m_TagString: Untagged
@@ -31078,7 +29617,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -31093,25 +29632,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9999999, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1896868344
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896868336}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1897010316
 GameObject:
   m_ObjectHideFlags: 0
@@ -31124,7 +29644,6 @@ GameObject:
   - component: {fileID: 1897010319}
   - component: {fileID: 1897010318}
   - component: {fileID: 1897010323}
-  - component: {fileID: 1897010324}
   m_Layer: 3
   m_Name: Cube (76)
   m_TagString: Untagged
@@ -31231,7 +29750,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000038146973, y: 0.0000038146973}
@@ -31246,25 +29765,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
---- !u!251 &1897010324
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897010316}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1909245108
 GameObject:
   m_ObjectHideFlags: 0
@@ -31410,7 +29910,6 @@ GameObject:
   - component: {fileID: 1915979978}
   - component: {fileID: 1915979977}
   - component: {fileID: 1915979979}
-  - component: {fileID: 1915979980}
   - component: {fileID: 1915979981}
   m_Layer: 3
   m_Name: Cube (46)
@@ -31518,7 +30017,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -31533,23 +30032,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!114 &1915979980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915979974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5112c784e24cd84a8c7062f523ddde2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveTime: 1
-  ease: 7
-  pointA: {x: 10, y: -12}
-  pointB: {x: 25, y: -8}
-  pointC: {x: 0, y: 0}
 --- !u!251 &1915979981
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -31581,7 +30063,7 @@ GameObject:
   - component: {fileID: 1933499452}
   - component: {fileID: 1933499451}
   - component: {fileID: 1933499453}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31712,7 +30194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933761458}
   - component: {fileID: 1933761459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sala2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31837,7 +30319,7 @@ GameObject:
   - component: {fileID: 1935003966}
   - component: {fileID: 1935003965}
   - component: {fileID: 1935003967}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31970,7 +30452,7 @@ GameObject:
   - component: {fileID: 1939032801}
   - component: {fileID: 1939032800}
   - component: {fileID: 1939032805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32103,7 +30585,6 @@ GameObject:
   - component: {fileID: 1979367166}
   - component: {fileID: 1979367165}
   - component: {fileID: 1979367167}
-  - component: {fileID: 1979367168}
   m_Layer: 3
   m_Name: Cube (24)
   m_TagString: Untagged
@@ -32210,7 +30691,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.00000047683716, y: 0}
@@ -32225,25 +30706,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &1979367168
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979367162}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1980361802
 GameObject:
   m_ObjectHideFlags: 0
@@ -32256,7 +30718,7 @@ GameObject:
   - component: {fileID: 1980361806}
   - component: {fileID: 1980361805}
   - component: {fileID: 1980361807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32389,7 +30851,7 @@ GameObject:
   - component: {fileID: 1983946160}
   - component: {fileID: 1983946159}
   - component: {fileID: 1983946161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32522,7 +30984,7 @@ GameObject:
   - component: {fileID: 1989379757}
   - component: {fileID: 1989379756}
   - component: {fileID: 1989379761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32655,7 +31117,7 @@ GameObject:
   - component: {fileID: 2002949752}
   - component: {fileID: 2002949751}
   - component: {fileID: 2002949753}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32788,7 +31250,6 @@ GameObject:
   - component: {fileID: 2005760207}
   - component: {fileID: 2005760206}
   - component: {fileID: 2005760208}
-  - component: {fileID: 2005760209}
   m_Layer: 3
   m_Name: Cube (43)
   m_TagString: Untagged
@@ -32895,7 +31356,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -32910,25 +31371,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &2005760209
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005760203}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &2023620694
 GameObject:
   m_ObjectHideFlags: 0
@@ -33108,6 +31550,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &2029738742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 110474699353472981, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+  m_PrefabInstance: {fileID: 1670771935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033503562
 GameObject:
   m_ObjectHideFlags: 0
@@ -33121,7 +31568,7 @@ GameObject:
   - component: {fileID: 2033503565}
   - component: {fileID: 2033503567}
   - component: {fileID: 2033503568}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33402,7 +31849,7 @@ GameObject:
   - component: {fileID: 2035518190}
   - component: {fileID: 2035518192}
   - component: {fileID: 2035518193}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33550,7 +31997,7 @@ GameObject:
   - component: {fileID: 2036442595}
   - component: {fileID: 2036442597}
   - component: {fileID: 2036442598}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33697,7 +32144,7 @@ GameObject:
   - component: {fileID: 2039307332}
   - component: {fileID: 2039307331}
   - component: {fileID: 2039307333}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33830,7 +32277,7 @@ GameObject:
   - component: {fileID: 2045855960}
   - component: {fileID: 2045855959}
   - component: {fileID: 2045855964}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33963,7 +32410,7 @@ GameObject:
   - component: {fileID: 2047626716}
   - component: {fileID: 2047626715}
   - component: {fileID: 2047626717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34096,7 +32543,7 @@ GameObject:
   - component: {fileID: 2050777021}
   - component: {fileID: 2050777020}
   - component: {fileID: 2050777022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34230,7 +32677,7 @@ GameObject:
   - component: {fileID: 2060246056}
   - component: {fileID: 2060246058}
   - component: {fileID: 2060246059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34570,7 +33017,7 @@ GameObject:
   - component: {fileID: 2065996789}
   - component: {fileID: 2065996788}
   - component: {fileID: 2065996793}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34703,7 +33150,6 @@ GameObject:
   - component: {fileID: 2074822998}
   - component: {fileID: 2074822997}
   - component: {fileID: 2074823002}
-  - component: {fileID: 2074823003}
   m_Layer: 3
   m_Name: Cube (44)
   m_TagString: Untagged
@@ -34810,7 +33256,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000019073486, y: 0}
@@ -34825,25 +33271,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &2074823003
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074822995}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 360
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &2079120873
 GameObject:
   m_ObjectHideFlags: 0
@@ -34856,7 +33283,6 @@ GameObject:
   - component: {fileID: 2079120876}
   - component: {fileID: 2079120875}
   - component: {fileID: 2079120880}
-  - component: {fileID: 2079120881}
   m_Layer: 3
   m_Name: Cube (99)
   m_TagString: Untagged
@@ -34978,25 +33404,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.9999999}
   m_EdgeRadius: 0
---- !u!251 &2079120881
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079120873}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &2088286789
 GameObject:
   m_ObjectHideFlags: 0
@@ -35009,7 +33416,6 @@ GameObject:
   - component: {fileID: 2088286793}
   - component: {fileID: 2088286792}
   - component: {fileID: 2088286794}
-  - component: {fileID: 2088286795}
   m_Layer: 3
   m_Name: Cube (16)
   m_TagString: Untagged
@@ -35116,7 +33522,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -35131,25 +33537,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!251 &2088286795
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088286789}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &2088984189
 GameObject:
   m_ObjectHideFlags: 0
@@ -35162,7 +33549,7 @@ GameObject:
   - component: {fileID: 2088984192}
   - component: {fileID: 2088984191}
   - component: {fileID: 2088984196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35296,7 +33683,6 @@ GameObject:
   - component: {fileID: 2099130686}
   - component: {fileID: 2099130688}
   - component: {fileID: 2099130689}
-  - component: {fileID: 2099130690}
   m_Layer: 3
   m_Name: Cube (14)
   m_TagString: Untagged
@@ -35403,7 +33789,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000038146973, y: 0}
@@ -35434,25 +33820,6 @@ MonoBehaviour:
   ease: 7
   pointA: {x: 0, y: -7}
   waitTime: 2
---- !u!251 &2099130690
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099130683}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &2123010823
 GameObject:
   m_ObjectHideFlags: 0
@@ -35466,7 +33833,7 @@ GameObject:
   - component: {fileID: 2123010825}
   - component: {fileID: 2123010830}
   - component: {fileID: 2123010831}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35613,7 +33980,7 @@ GameObject:
   - component: {fileID: 2130065865}
   - component: {fileID: 2130065864}
   - component: {fileID: 2130065869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35746,7 +34113,6 @@ GameObject:
   - component: {fileID: 2144329008}
   - component: {fileID: 2144329007}
   - component: {fileID: 2144329009}
-  - component: {fileID: 2144329010}
   m_Layer: 3
   m_Name: Cube (20)
   m_TagString: Untagged
@@ -35853,7 +34219,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.00000047683716, y: 0.0000076293945}
@@ -35868,25 +34234,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.99999994}
   m_EdgeRadius: 0
---- !u!251 &2144329010
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144329004}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

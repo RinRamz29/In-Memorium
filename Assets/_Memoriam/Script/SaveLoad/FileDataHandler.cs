@@ -33,7 +33,6 @@ namespace _Memoriam.Script.SaveLoad
                     dataToLoad = Encrypt(dataToLoad);
                     
                     loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
-                    Debug.Log(dataToLoad);
                 }
                 catch (Exception e)
                 {

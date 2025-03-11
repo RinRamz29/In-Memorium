@@ -41,11 +41,11 @@ namespace _Memoriam.Script.Enemies
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
-        protected readonly int _dieHash = Animator.StringToHash("Die");
-        protected readonly int _damagedHash = Animator.StringToHash("Damaged");
+        protected readonly int DieHash = Animator.StringToHash("Die");
+        protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
-        private float _lastAttackTime = 0f;
+        protected float LastAttackTime = 0f;
         private bool _isFlipped;
 
 
@@ -66,11 +66,11 @@ namespace _Memoriam.Script.Enemies
             {
                 if (result.TryGetComponent<IPlayer>(out var player))
                 {
-                    if (Time.time - _lastAttackTime > AttackTimeOut)
+                    if (Time.time - LastAttackTime > AttackTimeOut)
                     {
                         Animator.SetTrigger(_attackHash);
                         player.ReceiveDamage(Damage);
-                        _lastAttackTime = Time.time;
+                        LastAttackTime = Time.time;
                         return Node.Status.Success;
                     }
 
@@ -89,6 +89,12 @@ namespace _Memoriam.Script.Enemies
 
             var distance = Vector2.Distance(transform.position, _playerPos);
 
+            if (distance > 10f)
+            {
+                transform.position = PatrolPoints[0];
+                return Node.Status.Failure;
+            }
+            
             if (distance < AttackDistance)
             {
                 Animator.SetFloat(_moveXHash, 0f);
