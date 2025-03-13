@@ -13,6 +13,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Health = MaxHealth;
             LastAttackTime = -AttackTimeOut;
+            InitialAttackTimer = -AttackTimeOut;
             SetUpBehaviorSelector();
         }
 
@@ -51,7 +52,14 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(Attack), 2));  
             behaviorSelector.AddChild(chaseSequence);
              
-            // Patrol Logic
+            // Return to Home Logic
+            var returnHomeSequence = new Sequence("ReturnHomeSequence");
+            returnHomeSequence.AddChild(new Leaf("WasChasing", new Stretegies.Condition(() => 
+                WasChasing && !EnemyDetected), 2));
+            returnHomeSequence.AddChild(new Leaf("ReturnHome", new Stretegies.ActionStrategy(Patrol), 1));
+            behaviorSelector.AddChild(returnHomeSequence);
+             
+            // Regular Patrol Logic
             var patrolSequence = new Sequence("PatrolSelector");
             patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
             patrolSequence.AddChild(new Leaf("Patrol", new Stretegies.ActionStrategy(Patrol), 1));
