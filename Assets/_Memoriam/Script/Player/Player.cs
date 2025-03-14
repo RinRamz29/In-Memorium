@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
@@ -38,7 +39,12 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
-        
+
+        private bool isInvulnerable = false;
+        private float invulnerabilityTime = 1.5f;
+        private float knockbackForce = 10f;
+        private float blinkInterval = 0.1f;
+
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
         {
@@ -132,15 +138,55 @@ namespace _Memoriam.Script.Player
             StateMachine?.FixedTick();
         }
 
-        public void ReceiveDamage(float damage)
+        public void ReceiveDamage(float damage, Vector2 damageSource)
         {
-            Health -= damage;
+            if (isInvulnerable || Health <= 0) return;
 
-            var clampedHealth = Health / MaxHealth;       
-            
-            Debug.Log(clampedHealth);
-            
-            OnHealthChanged?.Invoke(clampedHealth);
+            Health -= damage;
+            Debug.Log($"Jugador recibió {damage} de daño. Vida restante: {Health}");
+
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+
+            if (Health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartCoroutine(KnockbackAndInvulnerability(damageSource));
+            }
+        }
+
+        private IEnumerator KnockbackAndInvulnerability(Vector2 damageSource)
+        {
+            isInvulnerable = true;
+
+            //Cálculo del knockback
+            Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
+
+            //Asegurar que haya un knockback horizontal notable
+            knockbackDirection = new Vector2(knockbackDirection.x, Mathf.Abs(knockbackDirection.y) * 0.5f).normalized;
+
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Rigidbody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            //Parpadeo visual
+            StartCoroutine(BlinkEffect());
+
+            //Tiempo de invulnerabilidad
+            yield return new WaitForSeconds(invulnerabilityTime);
+
+            isInvulnerable = false;
+        }
+
+        private IEnumerator BlinkEffect()
+        {
+            while (isInvulnerable)
+            {
+                SpriteRenderer.enabled = !SpriteRenderer.enabled;
+                yield return new WaitForSeconds(blinkInterval);
+            }
+            SpriteRenderer.enabled = true;
         }
 
         public void ReceiveHeal(float heal)
