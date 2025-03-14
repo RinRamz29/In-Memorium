@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _Memoriam.Script.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameLoader : MonoBehaviour
     {
         private void OnEnable()
         {

@@ -1,0 +1,32 @@
+<linker>
+    <!-- Preserve the entire namespace where your singletons reside -->
+    <assembly fullname="_Memoriam">
+        <namespace fullname="_Memoriam.Script.General" preserve="all"/>
+        <namespace fullname="_Memoriam.Script.Managers" preserve="all"/>
+        <namespace fullname="_Memoriam.Script.Enemies" preserve="all"/>
+        <namespace fullname="_Memoriam.Script.InputLogic" preserve="all"/>
+        <namespace fullname="_Memoriam.Script.SaveLoad" preserve="all"/>
+    </assembly>
+
+    <!-- Preserve the Singleton base class specifically -->
+    <assembly fullname="_Memoriam">
+        <type fullname="_Memoriam.Script.General.Singleton`1" preserve="all"/>
+    </assembly>
+
+    <!-- Preserve all classes that inherit from Singleton<T> -->
+    <!-- Example: If you have GameManager that inherits from Singleton<GameManager> -->
+    <assembly fullname="_Memoriam">
+        <type fullname="_Memoriam.Script.Enemies.EnemyManager" preserve="all"/>
+        <type fullname="_Memoriam.Script.General.ObjectPool" preserve="all"/>
+        <type fullname="_Memoriam.Script.InputLogic.InputReader" preserve="all"/>
+        <type fullname="_Memoriam.Script.Managers.MenuManager" preserve="all"/>
+        <type fullname="_Memoriam.Script.SaveLoad.DataPersistentManager" preserve="all"/>
+        <type fullname="_Memoriam.Script.Managers.GameStateManager" preserve="all"/>
+        <!-- Add other singleton inheritors -->
+    </assembly>
+
+    <!-- Preserve types used with generics -->
+    <assembly fullname="UnityEngine.CoreModule">
+        <type fullname="UnityEngine.MonoBehaviour" preserve="all"/>
+    </assembly>
+</linker>

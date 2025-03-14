@@ -764,7 +764,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Joystick"",
+                    ""name"": ""Cross"",
                     ""id"": ""c1347133-ce92-4a53-89b2-a6d63b86cb55"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -777,7 +777,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""a6153df4-951c-480d-a386-46c6b1bd55ec"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
@@ -788,7 +788,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""66213642-fbf0-47ae-afec-11e0c2f4579e"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
@@ -799,7 +799,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""ecff8922-9028-4e29-98d3-ce62e2744667"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
@@ -810,7 +810,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""14644f94-87c5-45f2-8bf7-d8df8a8d6ceb"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",

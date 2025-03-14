@@ -24,7 +24,10 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public LayerMask GroundMask { get; set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; set; }
         [field: SerializeField] public GameObject SwordCollider { get; set; }
-
+        [field: SerializeField] public Transform WallCheck { get; set; }
+        [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
+        [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
+        public bool IsTouchingWall { get; set; }
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
@@ -85,16 +88,17 @@ namespace _Memoriam.Script.Player
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
         
-        // Dying logic
-        public Transform LastCheckPoint { get; set; }
-
+        // Health/Dying logic
+        public Vector3 LastCheckPoint { get; set; }
+        public static Action<float> OnHealthChanged { get; set; }
+        
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
             StateMachine.ChangeState(new PlayerCombatState(this));
             Health = MaxHealth;
             Stamina = MaxStamina;
-            LastCheckPoint = transform;
+            LastCheckPoint = transform.position;
         }
 
         private void OnEnable()
@@ -112,7 +116,6 @@ namespace _Memoriam.Script.Player
             if (Health <= 0)
             {
                 Die();
-                Health = MaxHealth;
             }
         }
 
@@ -129,16 +132,35 @@ namespace _Memoriam.Script.Player
             StateMachine?.FixedTick();
         }
 
-        public float ReceiveDamage(float damage)
+        public void ReceiveDamage(float damage)
         {
-            return Health -= damage;
+            Health -= damage;
+
+            var clampedHealth = Health / MaxHealth;       
+            
+            Debug.Log(clampedHealth);
+            
+            OnHealthChanged?.Invoke(clampedHealth);
+        }
+
+        public void ReceiveHeal(float heal)
+        {
+            if (Health + heal >= MaxHealth)
+                Health = MaxHealth;
+            else
+                Health += heal;
+
+            var clampedHealth = Health / MaxHealth;            
+            OnHealthChanged?.Invoke(clampedHealth);
         }
 
         private void Die()
         {
             //TO DO
             //Implement animation trigger
-            this.transform.position = LastCheckPoint.position;
+            this.transform.position = LastCheckPoint;
+            Health = MaxHealth / 2;
+            OnHealthChanged.Invoke(Health / MaxHealth);            
         }
         
         #region PowerUps
@@ -157,6 +179,7 @@ namespace _Memoriam.Script.Player
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:
+                    case TypeOfPickable.HealthPotion:
                         pickUp.Pick(this.gameObject);
                         break;
                 }
@@ -212,6 +235,7 @@ namespace _Memoriam.Script.Player
             DashPickedUp = data.player.canDash;
             DoubleJumpPickedUp = data.player.canDoubleJump;
             Health = data.player.health;
+            OnHealthChanged?.Invoke(Health);
         }
 
         public void SaveData(ref GameData data)
