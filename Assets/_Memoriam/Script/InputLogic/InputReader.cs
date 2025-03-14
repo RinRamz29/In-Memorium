@@ -3,11 +3,13 @@ using System.Text.RegularExpressions;
 using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Zenject;
+using UnityEngine.InputSystem.Utilities;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.InputLogic
 {
-    public class InputReader : MonoSingleton<InputReader>
+    [Preserve]
+    public class InputReader : Singleton<InputReader>
     {
         //Enum for control type
         public enum ControlType
@@ -17,25 +19,41 @@ namespace _Memoriam.Script.InputLogic
         }
 
         [field: SerializeField] public ControlType ControlTypes { get; set; }
-        [Inject] private InputManager _inputManager;
+        public PlayerActionsScript PlayerActions { get; private set; }
 
         public Action<ControlType> OnControlTypeChanged;
         
         //Regex Pattern
         private const string PatternForController = @"Control";
+        
+        public Action<InputControl> OnButtonPress;
+        public Action<InputDevice, InputDeviceChange> TypeOfController;
+
+        //Check for connection/disconnection of an input device
+        private void SetController(InputDevice device, InputDeviceChange change)
+        {
+            TypeOfController.Invoke(device, change);
+        }
 
         //Subscribe
-        private void OnEnable()
+        protected override void Awake()
         {
-            _inputManager.TypeOfController += GetTypeOfController;
-            _inputManager.OnButtonPress += ChangeControllerType;
+            base.Awake();
+            PlayerActions = new PlayerActionsScript();
+            
+            TypeOfController += GetTypeOfController;
+            OnButtonPress += ChangeControllerType;
+            InputSystem.onDeviceChange += SetController;
+            InputSystem.onAnyButtonPress.Call(control => { OnButtonPress?.Invoke(control); });
         }
 
         //Unsubscribe
-        private void OnDisable()
+        protected override void OnDestroy()
         {
-            _inputManager.TypeOfController -= GetTypeOfController;
-            _inputManager.OnButtonPress -= ChangeControllerType;
+            base.OnDestroy();
+            TypeOfController -= GetTypeOfController;
+            OnButtonPress -= ChangeControllerType;
+            InputSystem.onDeviceChange -= SetController;
         }
 
         //Get type of controller from change of device Delegate

@@ -5,15 +5,20 @@ namespace _Memoriam.Script.Powerups
 {
     public interface IPickable
     {
-        public TypeOfPowerUp TypeOfPowerUp { get; }
-        
-        public void Pick();
+        public TypeOfPickable TypeOfPickable { get; }
+        public string ID { get; }
+
+        public void Pick(GameObject player);
+
+        public void GenerateID();
     }
-    
-    [Serializable]    
-    public enum TypeOfPowerUp
+
+    [Serializable]
+    public enum TypeOfPickable
     {
         DoubleJump,
         Dash,
+        CheckPoint,
+        HealthPotion,
     }
 }

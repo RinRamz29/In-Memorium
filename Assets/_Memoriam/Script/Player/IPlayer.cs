@@ -2,6 +2,8 @@
 {
     public interface IPlayer
     {
-        public float ReceiveDamage(float damage);
+        public void ReceiveDamage(float damage);
+        
+        public void ReceiveHeal(float heal);
     }
 }

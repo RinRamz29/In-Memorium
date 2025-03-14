@@ -1,7 +1,6 @@
 using System;
 using _Memoriam.Script.Managers;
 using UnityEngine;
-using Zenject;
 
 namespace _Memoriam.Script.Menus
 {

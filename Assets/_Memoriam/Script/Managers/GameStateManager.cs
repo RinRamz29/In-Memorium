@@ -1,12 +1,12 @@
 using System;
 using _Memoriam.Script.General;
-using UnityEditor;
 using UnityEngine;
-using Zenject;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.Managers
 {
-    public class GameStateManager : MonoSingleton<GameStateManager>
+    [Preserve]
+    public class GameStateManager : Singleton<GameStateManager>
     {
         [Serializable]
         public enum GameState
@@ -20,13 +20,15 @@ namespace _Memoriam.Script.Managers
         [field: SerializeField] public GameState GameCurrentState { get; private set; }
         public Action<GameState> OnGameStateChanged { get; set; }
 
-        private void OnEnable()
+        protected override void Awake()
         {
+            base.Awake();
             OnGameStateChanged += ChangeState;
         }
 
-        private void OnDisable()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();   
             OnGameStateChanged -= ChangeState;
         }
 

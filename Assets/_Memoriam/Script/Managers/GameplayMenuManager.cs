@@ -1,20 +1,23 @@
 using System;
+using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.SaveLoad;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using Zenject;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
     public class GameplayMenuManager : MonoBehaviour
     {
-        [Inject] private PlayerActionsScript _playerActions;
-
         [SerializeField] private GameObject pauseMenu;
+        [field: SerializeField] public Slider HealthBar { get; private set; }
+
+        private void ChangeHealthValue(float health) => HealthBar.value = health;
 
         private void OnEnable()
         {
-            _playerActions.Player.Pause.performed += OnPause;
+            InputReader.Instance.PlayerActions.Player.Pause.performed += OnPause;
+            Player.Player.OnHealthChanged += ChangeHealthValue;
         }
 
         private void OnPause(InputAction.CallbackContext context)
@@ -37,9 +40,15 @@ namespace _Memoriam.Script.Managers
             }
         }
 
+        public void Save()
+        {
+            DataPersistentManager.Instance.SaveGame();
+        }
+
         private void OnDisable()
         {
-            _playerActions.Player.Pause.performed -= OnPause;
+            InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;
+            Player.Player.OnHealthChanged -= ChangeHealthValue;
         }
     }
 }

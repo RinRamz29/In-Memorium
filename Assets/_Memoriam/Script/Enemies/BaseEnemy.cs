@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player;
+using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
-using Zenject;
 
 namespace _Memoriam.Script.Enemies
 {
-    public class BaseEnemy : MonoBehaviour, IDamageable, IEnemy
+    public class BaseEnemy : MonoBehaviour, IDamageable, IEnemy, ISaveableObject
     {
+        [field: SerializeField] public string id { get; set; }
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get; set; }
         [field: SerializeField] public float Speed { get; set; }
@@ -18,6 +19,11 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float AttackDistance { get; set; } = 1.5f;
         [field: SerializeField] public float WaitTimeAtPoint { get; set; } = 2f;
         [field: SerializeField] public float AttackTimeOut { get; set; } = 2f;
+        [field: SerializeField] public float MovementThreshold { get; set; } = 0.1f;
+        protected bool WasChasing;
+        protected float InitialAttackTimer;
+        private bool _isInAttackRange;
+
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
@@ -40,11 +46,11 @@ namespace _Memoriam.Script.Enemies
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
-        protected readonly int _dieHash = Animator.StringToHash("Die");
-        protected readonly int _damagedHash = Animator.StringToHash("Damaged");
+        protected readonly int DieHash = Animator.StringToHash("Die");
+        protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
-        private float _lastAttackTime = 0f;
+        protected float LastAttackTime = 0f;
         private bool _isFlipped;
 
 
@@ -53,6 +59,7 @@ namespace _Memoriam.Script.Enemies
             if (_player == null)
                 return Node.Status.Failure;
 
+            // Check if enemy is in attack range
             var sizeOfCapsule = _isFlipped ? new Vector2(-AttackDistance, 1f) : new Vector2(AttackDistance, 1f);
             AttackPoint.transform.localPosition = _isFlipped
                 ? new Vector3(-1f, AttackPoint.transform.localPosition.y, AttackPoint.transform.localPosition.z)
@@ -65,11 +72,21 @@ namespace _Memoriam.Script.Enemies
             {
                 if (result.TryGetComponent<IPlayer>(out var player))
                 {
-                    if (Time.time - _lastAttackTime > AttackTimeOut)
+                    // Initialize attack timer when first entering attack range
+                    if (!_isInAttackRange)
+                    {
+                        _isInAttackRange = true;
+                        InitialAttackTimer = Time.time;
+                        return Node.Status.Running;
+                    }
+
+                    // Wait for both initial delay and attack timeout
+                    if (Time.time - InitialAttackTimer > AttackTimeOut && 
+                        Time.time - LastAttackTime > AttackTimeOut)
                     {
                         Animator.SetTrigger(_attackHash);
                         player.ReceiveDamage(Damage);
-                        _lastAttackTime = Time.time;
+                        LastAttackTime = Time.time;
                         return Node.Status.Success;
                     }
 
@@ -78,6 +95,7 @@ namespace _Memoriam.Script.Enemies
             }
 
             EnemyDetected = false;
+            _isInAttackRange = false;
             return Node.Status.Failure;
         }
 
@@ -87,7 +105,7 @@ namespace _Memoriam.Script.Enemies
                 return Node.Status.Failure;
 
             var distance = Vector2.Distance(transform.position, _playerPos);
-
+             
             if (distance < AttackDistance)
             {
                 Animator.SetFloat(_moveXHash, 0f);
@@ -96,21 +114,23 @@ namespace _Memoriam.Script.Enemies
 
             var diff = _playerPos.x - transform.position.x;
 
-            switch (diff)
+            if (Mathf.Abs(diff) > MovementThreshold)
             {
-                case > 0.1f:
+                if (diff > 0)
+                {
                     transform.position += transform.right * (Speed * Time.deltaTime);
                     SpriteRenderer.flipX = false;
                     _isFlipped = false;
-                    break;
-                case < -0.1f:
+                }
+                else
+                {
                     transform.position -= transform.right * (Speed * Time.deltaTime);
                     SpriteRenderer.flipX = true;
                     _isFlipped = true;
-                    break;
+                }
+                Animator.SetFloat(_moveXHash, 1f);
             }
-
-            Animator.SetFloat(_moveXHash, 1f);
+            WasChasing = true;
             return Node.Status.Running;
         }
 
@@ -129,12 +149,12 @@ namespace _Memoriam.Script.Enemies
                 return Node.Status.Running;
             }
 
-            if (distance < 1f)
+            // Return to initial patrol point when losing player
+            if (WasChasing && !EnemyDetected)
             {
-                Animator.SetFloat(_moveXHash, 0f);
-                _waitTimer = WaitTimeAtPoint;
-                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
-                return Node.Status.Running;
+                _currentPatrolIndex = 0;
+                _isInAttackRange = false;
+                WasChasing = false;
             }
 
             SpriteRenderer.flipX = currentPoint.x - transform.position.x < 0;
@@ -148,13 +168,22 @@ namespace _Memoriam.Script.Enemies
                 transform.position -= transform.right * (Speed * Time.deltaTime);
             }
 
+            if (distance < 1f)
+            {
+                Animator.SetFloat(_moveXHash, 0f);
+                _waitTimer = WaitTimeAtPoint;
+                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
+                return Node.Status.Running;
+            }
+
             Animator.SetFloat(_moveXHash, 1f);
             return Node.Status.Running;
         }
 
         public Node.Status Detect()
         {
-            var results = Physics2D.OverlapCapsuleAll(DetectPoint.transform.position, DetectRadius, CapsuleDirection2D.Horizontal,PlayerLayer);
+            var results = Physics2D.OverlapCapsuleAll(DetectPoint.transform.position, DetectRadius,
+                CapsuleDirection2D.Horizontal, PlayerLayer);
 
             foreach (var coll in results)
             {
@@ -173,6 +202,34 @@ namespace _Memoriam.Script.Enemies
 
         public virtual void ReceiveDamage(float damage)
         {
+        }
+
+        public void LoadData(GameData data)
+        {
+            foreach (var kvp in data.EnemySavable)
+            {
+                if (kvp.Key == id)
+                {
+                    gameObject.SetActive(kvp.Value.isAlive);
+                    transform.position = kvp.Value.position;
+                }
+            }
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            var instance = new SavableEnemy()
+            {
+                isAlive = gameObject.activeInHierarchy,
+                position = this.transform.position,
+            };
+
+            if (data.EnemySavable.ContainsKey(id))
+            {
+                data.EnemySavable.Remove(id);
+            }
+            
+            data.EnemySavable.Add(id, instance);
         }
     }
 }

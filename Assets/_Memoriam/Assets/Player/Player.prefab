@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1259118611413332132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66,6 +66,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4952586438122786652}
+  - {fileID: 110474699353472981}
   - {fileID: 4674546240718080718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -86,7 +87,7 @@ MonoBehaviour:
   <AudioSource>k__BackingField: {fileID: 0}
   <Rigidbody2D>k__BackingField: {fileID: 2421239069223854808}
   <GroundCheck>k__BackingField: {fileID: 4952586438122786652}
-  <GroundDistance>k__BackingField: 0.6
+  <GroundDistance>k__BackingField: 0.2
   <GroundMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
@@ -94,11 +95,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   <SwordCollider>k__BackingField: {fileID: 4888445375247080529}
+  <WallCheck>k__BackingField: {fileID: 0}
+  <WallCheckDistance>k__BackingField: 0.2
+  <WallSlideSpeed>k__BackingField: 2
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 100
   <Stamina>k__BackingField: 0
   <MaxStamina>k__BackingField: 100
   <JumpForce>k__BackingField: 10
+  <DashForce>k__BackingField: 40
   <Damage>k__BackingField: 10
   <Speed>k__BackingField: 10
 --- !u!95 &6382465138541805993
@@ -273,3 +278,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7216368135719283781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.331}
+--- !u!1 &5480729822914900306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110474699353472981}
+  m_Layer: 6
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &110474699353472981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480729822914900306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7216368135719283781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

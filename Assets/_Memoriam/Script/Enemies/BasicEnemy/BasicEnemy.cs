@@ -1,5 +1,4 @@
-﻿using System;
-using _Memoriam.Script.Enemies.BT;
+﻿using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using UnityEngine;
@@ -13,13 +12,14 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         private void Awake()
         {
             Health = MaxHealth;
+            LastAttackTime = -AttackTimeOut;
+            InitialAttackTimer = -AttackTimeOut;
             SetUpBehaviorSelector();
         }
 
         private void Start()
         {
             PatrolPoints.Add(transform.position);
-
             foreach (var offset in OffsetPoints)
             {
                 var offsetX = (transform.position.x + offset.x);
@@ -52,7 +52,14 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(Attack), 2));  
             behaviorSelector.AddChild(chaseSequence);
              
-            // Patrol Logic
+            // Return to Home Logic
+            var returnHomeSequence = new Sequence("ReturnHomeSequence");
+            returnHomeSequence.AddChild(new Leaf("WasChasing", new Stretegies.Condition(() => 
+                WasChasing && !EnemyDetected), 2));
+            returnHomeSequence.AddChild(new Leaf("ReturnHome", new Stretegies.ActionStrategy(Patrol), 1));
+            behaviorSelector.AddChild(returnHomeSequence);
+             
+            // Regular Patrol Logic
             var patrolSequence = new Sequence("PatrolSelector");
             patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
             patrolSequence.AddChild(new Leaf("Patrol", new Stretegies.ActionStrategy(Patrol), 1));
@@ -76,17 +83,19 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         public override void ReceiveDamage(float damage)
         {
-            Animator.SetTrigger(_damagedHash);
+            Animator.SetTrigger(DamagedHash);
             Health -= damage;
         }
 
         private void Die()
         {
-            Animator.SetTrigger(_dieHash);
+            Animator.SetTrigger(DieHash);
             _behaviourTree = null;
-            
+
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForEnemyPool, this.gameObject);
+            }
         }
 
         private void OnDisable()

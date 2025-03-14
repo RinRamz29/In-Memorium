@@ -1,52 +1,45 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using _Memoriam.Script.General;
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.Enemies
 {
+    [Preserve]    
     public class EnemyManager : Singleton<EnemyManager>
     {
-        [Serializable]
-        private class EnemySpawned
+        [SerializeField] private List<EnemyToSpawn> enemiesToSpawn  = new List<EnemyToSpawn>();
+        [SerializeField] public string idForEnemyPool;
+        
+        [ContextMenu("Generate GUID for id")]
+        private void GenerateId()
         {
-            public GameObject enemyObject;
-            public bool isActive;
+            foreach (var spawn in enemiesToSpawn) 
+                spawn.id = Guid.NewGuid().ToString();
         }
 
-        [Serializable]
-        public class EnemyToSpawn
-        {
-            public List<Vector2> path;
-            public Transform spawnPoint;
-        }
-        
-        [SerializeField] private List<EnemyToSpawn> enemiesToSpawn = new List<EnemyToSpawn>();
-        [SerializeField] public string idForEnemyPool;
-        [SerializeField] private List<EnemySpawned> enemiesSpawned = new List<EnemySpawned>();
-        
-        private void Start()
+        public void SpawnEnemies(bool newGame)
         {
             foreach (var spawn in enemiesToSpawn)
             {
                 var enemy = ObjectPool.Instance.SpawnFromPool(idForEnemyPool, spawn.spawnPoint.position,
-                    spawn.spawnPoint.rotation);
-                
-                var newEnemy = new EnemySpawned
-                {
-                    isActive = true,
-                    enemyObject = enemy
-                };
-                enemiesSpawned.Add(newEnemy);
-                
+                    spawn.spawnPoint.rotation, newGame);
+
                 if (enemy.TryGetComponent(out BaseEnemy enemyBase))
                 {
-                    enemyBase.OffsetPoints = spawn.path;                        
+                    enemyBase.OffsetPoints = spawn.path;
+                    enemyBase.id = spawn.id;
                 }
             }
         }
+    }
+
+    [Serializable]
+    public class EnemyToSpawn
+    {
+        public List<Vector2> path;
+        public Transform spawnPoint;
+        public string id;
     }
 }
