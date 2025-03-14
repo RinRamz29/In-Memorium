@@ -19,6 +19,11 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float AttackDistance { get; set; } = 1.5f;
         [field: SerializeField] public float WaitTimeAtPoint { get; set; } = 2f;
         [field: SerializeField] public float AttackTimeOut { get; set; } = 2f;
+        [field: SerializeField] public float MovementThreshold { get; set; } = 0.1f;
+        protected bool WasChasing;
+        protected float InitialAttackTimer;
+        private bool _isInAttackRange;
+
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
@@ -41,11 +46,11 @@ namespace _Memoriam.Script.Enemies
         private IPlayer _player;
         private readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
-        protected readonly int _dieHash = Animator.StringToHash("Die");
-        protected readonly int _damagedHash = Animator.StringToHash("Damaged");
+        protected readonly int DieHash = Animator.StringToHash("Die");
+        protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
-        private float _lastAttackTime = 0f;
+        protected float LastAttackTime = 0f;
         private bool _isFlipped;
 
 
@@ -54,6 +59,7 @@ namespace _Memoriam.Script.Enemies
             if (_player == null)
                 return Node.Status.Failure;
 
+            // Check if enemy is in attack range
             var sizeOfCapsule = _isFlipped ? new Vector2(-AttackDistance, 1f) : new Vector2(AttackDistance, 1f);
             AttackPoint.transform.localPosition = _isFlipped
                 ? new Vector3(-1f, AttackPoint.transform.localPosition.y, AttackPoint.transform.localPosition.z)
@@ -66,11 +72,21 @@ namespace _Memoriam.Script.Enemies
             {
                 if (result.TryGetComponent<IPlayer>(out var player))
                 {
-                    if (Time.time - _lastAttackTime > AttackTimeOut)
+                    // Initialize attack timer when first entering attack range
+                    if (!_isInAttackRange)
+                    {
+                        _isInAttackRange = true;
+                        InitialAttackTimer = Time.time;
+                        return Node.Status.Running;
+                    }
+
+                    // Wait for both initial delay and attack timeout
+                    if (Time.time - InitialAttackTimer > AttackTimeOut && 
+                        Time.time - LastAttackTime > AttackTimeOut)
                     {
                         Animator.SetTrigger(_attackHash);
                         player.ReceiveDamage(Damage);
-                        _lastAttackTime = Time.time;
+                        LastAttackTime = Time.time;
                         return Node.Status.Success;
                     }
 
@@ -79,6 +95,7 @@ namespace _Memoriam.Script.Enemies
             }
 
             EnemyDetected = false;
+            _isInAttackRange = false;
             return Node.Status.Failure;
         }
 
@@ -88,7 +105,7 @@ namespace _Memoriam.Script.Enemies
                 return Node.Status.Failure;
 
             var distance = Vector2.Distance(transform.position, _playerPos);
-
+             
             if (distance < AttackDistance)
             {
                 Animator.SetFloat(_moveXHash, 0f);
@@ -97,21 +114,23 @@ namespace _Memoriam.Script.Enemies
 
             var diff = _playerPos.x - transform.position.x;
 
-            switch (diff)
+            if (Mathf.Abs(diff) > MovementThreshold)
             {
-                case > 0.1f:
+                if (diff > 0)
+                {
                     transform.position += transform.right * (Speed * Time.deltaTime);
                     SpriteRenderer.flipX = false;
                     _isFlipped = false;
-                    break;
-                case < -0.1f:
+                }
+                else
+                {
                     transform.position -= transform.right * (Speed * Time.deltaTime);
                     SpriteRenderer.flipX = true;
                     _isFlipped = true;
-                    break;
+                }
+                Animator.SetFloat(_moveXHash, 1f);
             }
-
-            Animator.SetFloat(_moveXHash, 1f);
+            WasChasing = true;
             return Node.Status.Running;
         }
 
@@ -130,12 +149,12 @@ namespace _Memoriam.Script.Enemies
                 return Node.Status.Running;
             }
 
-            if (distance < 1f)
+            // Return to initial patrol point when losing player
+            if (WasChasing && !EnemyDetected)
             {
-                Animator.SetFloat(_moveXHash, 0f);
-                _waitTimer = WaitTimeAtPoint;
-                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
-                return Node.Status.Running;
+                _currentPatrolIndex = 0;
+                _isInAttackRange = false;
+                WasChasing = false;
             }
 
             SpriteRenderer.flipX = currentPoint.x - transform.position.x < 0;
@@ -147,6 +166,14 @@ namespace _Memoriam.Script.Enemies
             else
             {
                 transform.position -= transform.right * (Speed * Time.deltaTime);
+            }
+
+            if (distance < 1f)
+            {
+                Animator.SetFloat(_moveXHash, 0f);
+                _waitTimer = WaitTimeAtPoint;
+                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
+                return Node.Status.Running;
             }
 
             Animator.SetFloat(_moveXHash, 1f);

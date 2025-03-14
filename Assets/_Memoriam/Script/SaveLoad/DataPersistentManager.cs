@@ -1,26 +1,23 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Memoriam.Script.General;
-using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad.Data;
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.SaveLoad
 {
-    public class DataPersistentManager : MonoSingleton<DataPersistentManager>
+    [Preserve]    
+    public class DataPersistentManager : Singleton<DataPersistentManager>
     {
-        [SerializeField] private string fileName;
-        
         private GameData _gameData;
         private List<ISaveableObject> _saveableObjects; 
         private FileDataHandler _fileDataHandler;
         public bool IsNewGame { get; set; }
-
-        private void Start()
+        
+        protected override void Awake()
         {
+            base.Awake();
             _saveableObjects = FindAllSaveableObjects();
             _fileDataHandler = new FileDataHandler();
         }
@@ -36,7 +33,7 @@ namespace _Memoriam.Script.SaveLoad
             
             if (_gameData == null)
             {
-                Debug.Log("No save data found");
+                Debug.LogError("No save data found");
                 NewGame();
             }
 

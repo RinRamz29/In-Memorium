@@ -20,7 +20,8 @@ namespace _Memoriam.Script.Player.States
 
         private bool _isDashing;
         private float _dashCooldown;
-
+        private const float AirControlMultiplier = 0.75f;
+        private const float WallPushForce = 3f;
 
         public PlayerCombatState(Player player)
         {
@@ -38,7 +39,6 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
-
 
             _damage = _player.Damage;
         }
@@ -162,18 +162,55 @@ namespace _Memoriam.Script.Player.States
         private void Move()
         {
             _player.Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
-            _player.Rigidbody2D.linearVelocity =
-                new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
 
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
-
+            
+            _player.IsTouchingWall = Physics2D.OverlapCircle(
+                _player.WallCheck.position,
+                _player.WallCheckDistance,
+                _player.GroundMask
+            );
+            
+            if (_player.IsGrounded)
+            {
+                _player.Rigidbody2D.linearVelocity =
+                    new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
+            }
+            else if (_player.IsTouchingWall && !_player.IsGrounded)
+            {
+                var verticalVelocity = Mathf.Max(_player.Rigidbody2D.linearVelocity.y, -_player.WallSlideSpeed);
+                _player.Rigidbody2D.linearVelocity = new Vector2(0, verticalVelocity);
+                
+                if ((_player.SpriteRenderer.flipX && _player.Movement.x > 0) ||
+                    (!_player.SpriteRenderer.flipX && _player.Movement.x < 0))
+                {
+                    _player.Rigidbody2D.AddForce(new Vector2(_player.Movement.x * WallPushForce, 0), ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                _player.Rigidbody2D.linearVelocity =
+                    new Vector2((_player.Movement.x * AirControlMultiplier) * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+                _player.Animator.SetFloat(_player.SpeedXHash, 0);
+            }
+            
             if (_isDashing)
             {
                 _player.Rigidbody2D.linearVelocity =
                     new Vector2(_player.Rigidbody2D.linearVelocity.y, _player.Rigidbody2D.linearVelocity.y);
                 _direction = _isFlipped ? Vector2.left : Vector2.right;
                 _player.Rigidbody2D.AddForce(_direction * _player.DashForce, ForceMode2D.Impulse);
+
+                switch (_direction.x)
+                {
+                    case < -0.1f when _player.Movement.x > 0.1f:
+                    case > 0.1f when _player.Movement.x < -0.1f:
+                        _isDashing = false;
+                        _player.CanDash = false;
+                        break;
+                }
 
                 _dashCooldown -= Time.deltaTime;
                 if (_dashCooldown <= 0)
@@ -212,15 +249,6 @@ namespace _Memoriam.Script.Player.States
                     break;
             }
 
-            if (_player.IsGrounded)
-            {
-                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
-            }
-            else
-            {
-                _player.Animator.SetFloat(_player.SpeedXHash, 0);
-            }
-
             switch (_player.Rigidbody2D.linearVelocity.y)
             {
                 case > 0.1f:
@@ -247,7 +275,9 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             _player.CanDoubleJump = false;
-            _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
+            // Reset vertical velocity before double jump
+            _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
+            _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
         }
 
         private void Dash(InputAction.CallbackContext context)
@@ -256,7 +286,7 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             _isDashing = true;
-            _dashCooldown = 0.2f;
+            _dashCooldown = 0.45f;
         }
 
         private void CheckForSwordCollisions()

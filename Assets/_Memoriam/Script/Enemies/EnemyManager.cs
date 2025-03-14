@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using _Memoriam.Script.General;
-using _Memoriam.Script.Managers;
-using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.Enemies
 {
+    [Preserve]    
     public class EnemyManager : Singleton<EnemyManager>
     {
-        [SerializeField] private List<EnemyToSpawn> enemiesToSpawn = new List<EnemyToSpawn>();
+        [SerializeField] private List<EnemyToSpawn> enemiesToSpawn  = new List<EnemyToSpawn>();
         [SerializeField] public string idForEnemyPool;
         
         [ContextMenu("Generate GUID for id")]

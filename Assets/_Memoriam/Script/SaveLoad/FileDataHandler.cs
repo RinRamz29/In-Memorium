@@ -9,7 +9,7 @@ namespace _Memoriam.Script.SaveLoad
     {
         private string _dataDirthPath = Application.persistentDataPath;
         private string _fileName = "saveData";
-        private readonly string _encryptionCodeWord = "rubenEsGay";
+        private readonly string _encryptionCodeWord = "rubenEsSexy";
 
         public GameData LoadData()
         {
@@ -33,7 +33,6 @@ namespace _Memoriam.Script.SaveLoad
                     dataToLoad = Encrypt(dataToLoad);
                     
                     loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
-                    Debug.Log(dataToLoad);
                 }
                 catch (Exception e)
                 {
