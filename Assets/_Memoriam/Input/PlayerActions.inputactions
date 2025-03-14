@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SaveMenu",
+                    "type": "Button",
+                    "id": "15abe1af-fe6e-40ca-83fb-8c6a532b3c3f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -468,6 +477,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChargedLightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfeb3e65-1f1e-44d6-801a-cdfe184d5fcc",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db9f7ba3-9436-42d4-a2a6-3c2fc7cd122d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

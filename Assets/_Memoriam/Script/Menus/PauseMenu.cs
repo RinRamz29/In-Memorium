@@ -1,6 +1,8 @@
 using System;
+using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _Memoriam.Script.Menus
 {
@@ -8,7 +10,7 @@ namespace _Memoriam.Script.Menus
     {
         public GameObject pause;
         public GameObject pauseMenu;
-        public GameObject LoadMenu;
+        
         [SerializeField] private SceneDataBase sceneData;
         
         public void Resume()
@@ -19,31 +21,29 @@ namespace _Memoriam.Script.Menus
             
         }
 
-        public void Update()
+        public void Pause(InputAction.CallbackContext context)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
+                
                 pauseMenu.SetActive(true);
                 pause.SetActive(true);
                 GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
-            }
+            
         }
 
         public async void Menu()
         {
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
+        
 
-        public void LoadGame()
+        private void OnEnable()
         {
-            pause.SetActive(false);
-            LoadMenu.SetActive(true);
+            InputReader.Instance.PlayerActions.Player.Pause.performed += Pause;
         }
 
-        public void pauseMenuLoad()
+        private void OnDisable()
         {
-            pause.SetActive(true);
-            LoadMenu.SetActive(false);
+            InputReader.Instance.PlayerActions.Player.Pause.performed -= Pause;
         }
     }
 }

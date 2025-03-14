@@ -180,6 +180,15 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SaveMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""15abe1af-fe6e-40ca-83fb-8c6a532b3c3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -554,6 +563,28 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChargedLightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfeb3e65-1f1e-44d6-801a-cdfe184d5fcc"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SaveMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db9f7ba3-9436-42d4-a2a6-3c2fc7cd122d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SaveMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1182,6 +1213,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_ChargedHeavyAttack = m_Player.FindAction("ChargedHeavyAttack", throwIfNotFound: true);
         m_Player_ChargedLightAttack = m_Player.FindAction("ChargedLightAttack", throwIfNotFound: true);
+        m_Player_SaveMenu = m_Player.FindAction("SaveMenu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1286,6 +1318,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_ChargedHeavyAttack;
     private readonly InputAction m_Player_ChargedLightAttack;
+    private readonly InputAction m_Player_SaveMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1337,6 +1370,10 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ChargedLightAttack".
         /// </summary>
         public InputAction @ChargedLightAttack => m_Wrapper.m_Player_ChargedLightAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SaveMenu".
+        /// </summary>
+        public InputAction @SaveMenu => m_Wrapper.m_Player_SaveMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1393,6 +1430,9 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @ChargedLightAttack.started += instance.OnChargedLightAttack;
             @ChargedLightAttack.performed += instance.OnChargedLightAttack;
             @ChargedLightAttack.canceled += instance.OnChargedLightAttack;
+            @SaveMenu.started += instance.OnSaveMenu;
+            @SaveMenu.performed += instance.OnSaveMenu;
+            @SaveMenu.canceled += instance.OnSaveMenu;
         }
 
         /// <summary>
@@ -1434,6 +1474,9 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @ChargedLightAttack.started -= instance.OnChargedLightAttack;
             @ChargedLightAttack.performed -= instance.OnChargedLightAttack;
             @ChargedLightAttack.canceled -= instance.OnChargedLightAttack;
+            @SaveMenu.started -= instance.OnSaveMenu;
+            @SaveMenu.performed -= instance.OnSaveMenu;
+            @SaveMenu.canceled -= instance.OnSaveMenu;
         }
 
         /// <summary>
@@ -1815,6 +1858,13 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChargedLightAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SaveMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSaveMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
