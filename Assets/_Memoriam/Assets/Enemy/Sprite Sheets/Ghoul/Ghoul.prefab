@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1465173353742932187
 Transform:
   m_ObjectHideFlags: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea65cf14d134d19adffb84ab11f86e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <id>k__BackingField: 
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 30
   <Speed>k__BackingField: 5
@@ -99,6 +100,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   <Animator>k__BackingField: {fileID: 6540252712236085843}
+  <PatrolPoints>k__BackingField: []
 --- !u!212 &6936911284584182044
 SpriteRenderer:
   m_ObjectHideFlags: 0

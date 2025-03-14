@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player;
+using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
-using Zenject;
 
 namespace _Memoriam.Script.Enemies
 {
-    public class BaseEnemy : MonoBehaviour, IDamageable, IEnemy
+    public class BaseEnemy : MonoBehaviour, IDamageable, IEnemy, ISaveableObject
     {
+        [field: SerializeField] public string id { get; set; }
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get; set; }
         [field: SerializeField] public float Speed { get; set; }
@@ -154,7 +155,8 @@ namespace _Memoriam.Script.Enemies
 
         public Node.Status Detect()
         {
-            var results = Physics2D.OverlapCapsuleAll(DetectPoint.transform.position, DetectRadius, CapsuleDirection2D.Horizontal,PlayerLayer);
+            var results = Physics2D.OverlapCapsuleAll(DetectPoint.transform.position, DetectRadius,
+                CapsuleDirection2D.Horizontal, PlayerLayer);
 
             foreach (var coll in results)
             {
@@ -173,6 +175,34 @@ namespace _Memoriam.Script.Enemies
 
         public virtual void ReceiveDamage(float damage)
         {
+        }
+
+        public void LoadData(GameData data)
+        {
+            foreach (var kvp in data.EnemySavable)
+            {
+                if (kvp.Key == id)
+                {
+                    gameObject.SetActive(kvp.Value.isAlive);
+                    transform.position = kvp.Value.position;
+                }
+            }
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            var instance = new SavableEnemy()
+            {
+                isAlive = gameObject.activeInHierarchy,
+                position = this.transform.position,
+            };
+
+            if (data.EnemySavable.ContainsKey(id))
+            {
+                data.EnemySavable.Remove(id);
+            }
+            
+            data.EnemySavable.Add(id, instance);
         }
     }
 }

@@ -31,12 +31,11 @@ namespace _Memoriam.Script.General
                     objectPool.Enqueue(obj);
                 }
 
-                Debug.Log(objc.id);
                 _poolDictionary.Add(objc.id, objectPool);
             }
         }
 
-        public GameObject SpawnFromPool(string id, Vector3 position, Quaternion rotation)
+        public GameObject SpawnFromPool(string id, Vector3 position, Quaternion rotation, bool set)
         {
             if (!_poolDictionary.TryGetValue(id, out var objectPool))
             {
@@ -51,10 +50,13 @@ namespace _Memoriam.Script.General
             }
 
             var objectToSpawn = objectPool.Dequeue();
-        
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.rotation = rotation;
+
+            if (set)
+            {
+                objectToSpawn.SetActive(true);
+                objectToSpawn.transform.position = position;
+                objectToSpawn.transform.rotation = rotation;
+            }
 
             return objectToSpawn;
         }

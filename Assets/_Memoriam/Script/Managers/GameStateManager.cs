@@ -1,8 +1,6 @@
 using System;
 using _Memoriam.Script.General;
-using UnityEditor;
 using UnityEngine;
-using Zenject;
 
 namespace _Memoriam.Script.Managers
 {

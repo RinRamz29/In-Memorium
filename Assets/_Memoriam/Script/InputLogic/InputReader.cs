@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Zenject;
 
 namespace _Memoriam.Script.InputLogic
 {
@@ -17,12 +16,20 @@ namespace _Memoriam.Script.InputLogic
         }
 
         [field: SerializeField] public ControlType ControlTypes { get; set; }
-        [Inject] private InputManager _inputManager;
+        public InputManager _inputManager { get; private set; }
+        public PlayerActionsScript PlayerActions { get; private set; }
 
         public Action<ControlType> OnControlTypeChanged;
         
         //Regex Pattern
         private const string PatternForController = @"Control";
+
+        protected override void Awake()
+        {
+            base.Awake();
+            PlayerActions = new PlayerActionsScript();
+            _inputManager = new InputManager(PlayerActions);
+        }
 
         //Subscribe
         private void OnEnable()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using _Memoriam.Script.Enemies;
+using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using UnityEngine;
@@ -29,14 +30,14 @@ namespace _Memoriam.Script.Player.States
 
         public void Enter()
         {
-            _player.PlayerActions.Player.LightAttack.performed += LightAttack;
-            _player.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
-            _player.PlayerActions.Player.Dash.performed += Dash;
-            _player.PlayerActions.Player.ChargedLightAttack.performed += _ => _player.ChargedInputReceived = true;
-            _player.PlayerActions.Player.ChargedHeavyAttack.performed += _ => _player.ChargedInputReceived = true;
-            _player.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
-            _player.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
-            _player.PlayerActions.Player.Jump.performed += Jump;
+            InputReader.Instance.PlayerActions.Player.LightAttack.performed += LightAttack;
+            InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
+            InputReader.Instance.PlayerActions.Player.Dash.performed += Dash;
+            InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed += _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed += _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
 
 
             _damage = _player.Damage;
@@ -44,10 +45,10 @@ namespace _Memoriam.Script.Player.States
 
         public void Exit()
         {
-            _player.PlayerActions.Player.LightAttack.performed -= LightAttack;
-            _player.PlayerActions.Player.HeavyAttack.performed -= HeavyAttack;
-            _player.PlayerActions.Player.Dash.performed -= Dash;
-            _player.PlayerActions.Player.Jump.performed -= Jump;
+            InputReader.Instance.PlayerActions.Player.LightAttack.performed -= LightAttack;
+            InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= HeavyAttack;
+            InputReader.Instance.PlayerActions.Player.Dash.performed -= Dash;
+            InputReader.Instance.PlayerActions.Player.Jump.performed -= Jump;
 
             // Reset attack state
             _player.IsAttacking = false;
@@ -160,7 +161,7 @@ namespace _Memoriam.Script.Player.States
 
         private void Move()
         {
-            _player.Movement = _player.PlayerActions.Player.Move.ReadValue<Vector2>();
+            _player.Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
             _player.Rigidbody2D.linearVelocity =
                 new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
 
@@ -181,6 +182,23 @@ namespace _Memoriam.Script.Player.States
                     _player.CanDash = false;
                 }
             }
+
+            if (!_player.CanDoubleJump)
+            {
+                if (_player.IsGrounded && _player.DoubleJumpPickedUp)
+                {
+                    _player.CanDoubleJump = true;
+                }
+            }
+            
+            if (!_player.CanDash)
+            {
+                if (_player.IsGrounded && _player.DashPickedUp)
+                {
+                    _player.CanDash = true;
+                }
+            }
+            
 
             switch (_player.Movement.normalized.x)
             {
@@ -228,6 +246,7 @@ namespace _Memoriam.Script.Player.States
             if (!context.performed || _player.IsGrounded || !_player.CanDoubleJump)
                 return;
 
+            _player.CanDoubleJump = false;
             _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
         }
 
