@@ -265,7 +265,8 @@ namespace _Memoriam.Script.Player.States
 
         private void Jump(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (!context.performed ||
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
 
             if (context.performed && _player.IsGrounded)
