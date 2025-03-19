@@ -85,7 +85,7 @@ namespace _Memoriam.Script.Enemies
                         Time.time - LastAttackTime > AttackTimeOut)
                     {
                         Animator.SetTrigger(_attackHash);
-                        player.ReceiveDamage(Damage);
+                        player.ReceiveDamage(Damage, transform.position);
                         LastAttackTime = Time.time;
                         return Node.Status.Success;
                     }
