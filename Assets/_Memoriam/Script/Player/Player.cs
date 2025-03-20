@@ -97,6 +97,7 @@ namespace _Memoriam.Script.Player
         // Health/Dying logic
         public Vector3 LastCheckPoint { get; set; }
         public static Action<float> OnHealthChanged { get; set; }
+        public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
         
         private void Awake()
         {
@@ -110,6 +111,7 @@ namespace _Memoriam.Script.Player
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
+            OnHealthChanged?.Invoke(Health);
         }
 
         private void Update()
@@ -143,8 +145,6 @@ namespace _Memoriam.Script.Player
             if (isInvulnerable || Health <= 0) return;
 
             Health -= damage;
-            Debug.Log($"Jugador recibió {damage} de daño. Vida restante: {Health}");
-
             OnHealthChanged?.Invoke(Health / MaxHealth);
 
             if (Health <= 0)
@@ -161,7 +161,7 @@ namespace _Memoriam.Script.Player
         {
             isInvulnerable = true;
 
-            //Cálculo del knockback
+            //Cï¿½lculo del knockback
             Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
 
             //Asegurar que haya un knockback horizontal notable
@@ -218,10 +218,12 @@ namespace _Memoriam.Script.Player
                 {
                     case TypeOfPickable.Dash:
                         DashPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Dash);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.DoubleJump:
                         DoubleJumpPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.DoubleJump);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:
