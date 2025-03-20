@@ -94,7 +94,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForEnemyPool, this.gameObject);
+                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
             }
         }
 

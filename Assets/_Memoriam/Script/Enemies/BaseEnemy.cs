@@ -22,10 +22,11 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float MovementThreshold { get; set; } = 0.1f;
         protected bool WasChasing;
         protected float InitialAttackTimer;
-        private bool _isInAttackRange;
+        protected bool _isInAttackRange;
 
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
+        [field: SerializeField] public Rigidbody2D Rigidbody2D { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
         [field: SerializeField] public GameObject DetectPoint { get; set; }
 
@@ -42,19 +43,19 @@ namespace _Memoriam.Script.Enemies
 
         protected bool EnemyDetected;
         [field: SerializeField] protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
-        private Vector2 _playerPos;
-        private IPlayer _player;
-        private readonly int _moveXHash = Animator.StringToHash("MoveX");
+        protected Vector2 _playerPos;
+        protected IPlayer _player;
+        protected readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
         protected readonly int DieHash = Animator.StringToHash("Die");
         protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
         protected float LastAttackTime = 0f;
-        private bool _isFlipped;
+        protected bool _isFlipped;
 
 
-        public Node.Status Attack()
+        public virtual Node.Status Attack()
         {
             if (_player == null)
                 return Node.Status.Failure;
@@ -99,7 +100,7 @@ namespace _Memoriam.Script.Enemies
             return Node.Status.Failure;
         }
 
-        public Node.Status MoveTowards()
+        public virtual Node.Status MoveTowards()
         {
             if (_player == null)
                 return Node.Status.Failure;
@@ -134,7 +135,7 @@ namespace _Memoriam.Script.Enemies
             return Node.Status.Running;
         }
 
-        public Node.Status Patrol()
+        public virtual Node.Status Patrol()
         {
             if (PatrolPoints == null || PatrolPoints.Count == 0)
                 return Node.Status.Failure;

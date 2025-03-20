@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GhoulIdle
+  m_Name: Attack
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -17,22 +17,7 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves:
-  - serializedVersion: 2
-    curve:
-    - time: 0
-      value: {fileID: 5306025243165171872, guid: 9238d30bf5aac6b47bc799466bdb8834, type: 3}
-    - time: 0.15
-      value: {fileID: -3708165947236346720, guid: 9238d30bf5aac6b47bc799466bdb8834, type: 3}
-    - time: 0.26666668
-      value: {fileID: 354634742639977690, guid: 9238d30bf5aac6b47bc799466bdb8834, type: 3}
-    - time: 0.41666666
-      value: {fileID: -4728414378666906468, guid: 9238d30bf5aac6b47bc799466bdb8834, type: 3}
-    attribute: m_Sprite
-    path: 
-    classID: 212
-    script: {fileID: 0}
-    flags: 2
+  m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -46,7 +31,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

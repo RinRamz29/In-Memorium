@@ -42,7 +42,7 @@ namespace _Memoriam.Script.Player
 
         private bool isInvulnerable = false;
         private float invulnerabilityTime = 1.5f;
-        private float knockbackForce = 10f;
+        [SerializeField] private float knockbackForce = 10f;
         private float blinkInterval = 0.1f;
 
         //Delegates
@@ -161,19 +161,19 @@ namespace _Memoriam.Script.Player
         {
             isInvulnerable = true;
 
-            //C�lculo del knockback
+            //Calculate the knockback
             Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
 
-            //Asegurar que haya un knockback horizontal notable
+            //Ensure there is a notable horizontal knockback
             knockbackDirection = new Vector2(knockbackDirection.x, Mathf.Abs(knockbackDirection.y) * 0.5f).normalized;
 
             Rigidbody2D.linearVelocity = Vector2.zero;
             Rigidbody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
-            //Parpadeo visual
+            //Visual blink effect
             StartCoroutine(BlinkEffect());
 
-            //Tiempo de invulnerabilidad
+            //Invulnerability time
             yield return new WaitForSeconds(invulnerabilityTime);
 
             isInvulnerable = false;
