@@ -2,6 +2,7 @@ using System;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
+using TerrorConsole;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
@@ -14,6 +15,16 @@ namespace _Memoriam.Script.Managers
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] private GameObject errorPopUp;
         [SerializeField] private Button errorButton;
+
+        public void PlayButtonHoverSFX()
+        {
+            AudioManager.Instance.PlayOneShotSFX("ButtonHoverSFX");
+        }
+
+        public void PlayButtonSelectSFX()
+        {
+            AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
+        }
 
         protected override void Awake()
         {
