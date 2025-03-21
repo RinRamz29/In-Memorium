@@ -42,7 +42,7 @@ namespace _Memoriam.Script.Player
 
         private bool isInvulnerable = false;
         private float invulnerabilityTime = 1.5f;
-        private float knockbackForce = 10f;
+        [SerializeField] private float knockbackForce = 10f;
         private float blinkInterval = 0.1f;
 
         //Delegates
@@ -97,6 +97,7 @@ namespace _Memoriam.Script.Player
         // Health/Dying logic
         public Vector3 LastCheckPoint { get; set; }
         public static Action<float> OnHealthChanged { get; set; }
+        public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
         
         private void Awake()
         {
@@ -110,6 +111,7 @@ namespace _Memoriam.Script.Player
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
+            OnHealthChanged?.Invoke(Health);
         }
 
         private void Update()
@@ -143,8 +145,6 @@ namespace _Memoriam.Script.Player
             if (isInvulnerable || Health <= 0) return;
 
             Health -= damage;
-            Debug.Log($"Jugador recibió {damage} de daño. Vida restante: {Health}");
-
             OnHealthChanged?.Invoke(Health / MaxHealth);
 
             if (Health <= 0)
@@ -161,19 +161,19 @@ namespace _Memoriam.Script.Player
         {
             isInvulnerable = true;
 
-            //Cálculo del knockback
+            //Calculate the knockback
             Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
 
-            //Asegurar que haya un knockback horizontal notable
+            //Ensure there is a notable horizontal knockback
             knockbackDirection = new Vector2(knockbackDirection.x, Mathf.Abs(knockbackDirection.y) * 0.5f).normalized;
 
             Rigidbody2D.linearVelocity = Vector2.zero;
             Rigidbody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
-            //Parpadeo visual
+            //Visual blink effect
             StartCoroutine(BlinkEffect());
 
-            //Tiempo de invulnerabilidad
+            //Invulnerability time
             yield return new WaitForSeconds(invulnerabilityTime);
 
             isInvulnerable = false;
@@ -218,10 +218,12 @@ namespace _Memoriam.Script.Player
                 {
                     case TypeOfPickable.Dash:
                         DashPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Dash);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.DoubleJump:
                         DoubleJumpPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.DoubleJump);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:
@@ -278,6 +280,7 @@ namespace _Memoriam.Script.Player
         public void LoadData(GameData data)
         {
             transform.position = data.player.position;
+            LastCheckPoint = data.player.position;
             DashPickedUp = data.player.canDash;
             DoubleJumpPickedUp = data.player.canDoubleJump;
             Health = data.player.health;
@@ -290,6 +293,7 @@ namespace _Memoriam.Script.Player
             {
                 position = transform.position,
                 canDash = DashPickedUp,
+                lastCheckpoint = LastCheckPoint,
                 canDoubleJump = DoubleJumpPickedUp,
                 health = Health,
             };
