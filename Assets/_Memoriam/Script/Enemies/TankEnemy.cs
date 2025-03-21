@@ -50,14 +50,7 @@ public class TankEnemy : BaseEnemy
             chaseSequence.AddChild(new Leaf("MoveTowardsEnemy", new Stretegies.ActionStrategy(MoveTowards), 2));
             chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(Attack), 2));  
             behaviorSelector.AddChild(chaseSequence);
-             
-            // Return to Home Logic
-            var returnHomeSequence = new Sequence("ReturnHomeSequence");
-            returnHomeSequence.AddChild(new Leaf("WasChasing", new Stretegies.Condition(() => 
-                WasChasing && !EnemyDetected), 2));
-            returnHomeSequence.AddChild(new Leaf("ReturnHome", new Stretegies.ActionStrategy(Patrol), 1));
-            behaviorSelector.AddChild(returnHomeSequence);
-             
+
             // Regular Patrol Logic
             var patrolSequence = new Sequence("PatrolSelector");
             patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
@@ -82,7 +75,7 @@ public class TankEnemy : BaseEnemy
 
         public override void ReceiveDamage(float damage)
         {
-            Animator.SetTrigger(DamagedHash);
+            
             Health -= damage;
         }
 
@@ -93,7 +86,7 @@ public class TankEnemy : BaseEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForEnemyPool, this.gameObject);
+                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForTanksEnemies, this.gameObject);
             }
         }
 
@@ -102,4 +95,5 @@ public class TankEnemy : BaseEnemy
             GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
         }
     }
+    
 

@@ -28490,6 +28490,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 143946111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &823261990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &828555004
 GameObject:
   m_ObjectHideFlags: 0
@@ -34092,6 +34097,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1087553010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087553011}
+  m_Layer: 0
+  m_Name: Spawner (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087553011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087553010}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -590.56, y: -29.54, z: 0.91804785}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 823261990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088322939
 GameObject:
   m_ObjectHideFlags: 0
@@ -43699,9 +43735,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3433503460372292434, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: <ObjectsPool>k__BackingField.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433503460372292434, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: <ObjectsPool>k__BackingField.Array.data[2].id
+      value: Tanks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433503460372292434, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: <ObjectsPool>k__BackingField.Array.data[1].size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433503460372292434, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: <ObjectsPool>k__BackingField.Array.data[2].size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433503460372292434, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: <ObjectsPool>k__BackingField.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 8139663869060386672, guid: 7c72afd89feb22c41aff0be1204a7bdf, type: 3}
     - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 682.85443
@@ -43743,8 +43795,84 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: idForTanksEnemies
+      value: Tanks
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.data[0].id
+      value: 993ff43e-a7f2-4c00-ba50-f54c425893be
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[0].id
+      value: e05594f1-4d8d-45f8-9650-2fc7d1db58e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].id
+      value: 6002828e-7216-4b23-9c8b-2ebf79fa554b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[1].id
+      value: f760daa4-162e-4dc9-a6cc-edfdc29e25ec
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[2].id
+      value: a7c6917c-0764-47b8-978a-2229d6900b7f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[3].id
+      value: b388505d-9ff2-4565-992c-fb51e30ff3b2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[4].id
+      value: 93840db2-168b-47f8-97bc-95afb4641cb6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[5].id
+      value: ac2f2952-1b09-428d-9f34-0eaeadd27bcf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[6].id
+      value: 7634a734-6701-4148-b18d-7b95cf630638
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[7].id
+      value: 7732407e-c1bf-4124-9d3f-3a663fe680a1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[8].id
+      value: 2fa98708-b14a-4d80-b3a8-70df5517bc38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[9].id
+      value: 1353698f-f966-4177-8179-ecd639eeedbb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[10].id
+      value: f0f3ff25-c017-43bb-b0c2-4e9d70326dd0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.data[0].spawnPoint
+      value: 
+      objectReference: {fileID: 1087553011}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.data[0].path.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: flyersToSpawn.Array.data[0].path.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.data[0].path.Array.data[0].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: tankEnemies.Array.data[0].path.Array.data[1].x
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: flyersToSpawn.Array.data[0].path.Array.data[0].x
@@ -43768,7 +43896,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1087553011}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
 --- !u!1 &1640313835
@@ -50194,9 +50325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   <HealthBar>k__BackingField: {fileID: 1640313836}
-  powerupToggles:
-  - {fileID: 574400278}
-  - {fileID: 812748905}
+  powerupToggles: []
 --- !u!1 &2024129724
 GameObject:
   m_ObjectHideFlags: 0

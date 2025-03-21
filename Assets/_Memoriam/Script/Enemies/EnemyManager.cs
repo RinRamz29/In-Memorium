@@ -55,7 +55,7 @@ namespace _Memoriam.Script.Enemies
             
             foreach (var tanks in tankEnemies)
             {
-                var enemy = ObjectPool.Instance.SpawnFromPool(idForFlyerEnemies, tanks.spawnPoint.position,
+                var enemy = ObjectPool.Instance.SpawnFromPool(idForTanksEnemies, tanks.spawnPoint.position,
                     tanks.spawnPoint.rotation, newGame);
 
                 if (enemy.TryGetComponent(out BaseEnemy enemyBase))
