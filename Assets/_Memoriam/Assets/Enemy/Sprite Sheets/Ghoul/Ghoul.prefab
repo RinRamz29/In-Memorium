@@ -89,10 +89,13 @@ MonoBehaviour:
   <AttackDistance>k__BackingField: 1
   <WaitTimeAtPoint>k__BackingField: 2
   <AttackTimeOut>k__BackingField: 1.5
+  <MovementThreshold>k__BackingField: 0.1
+  <ReturnToSpawnTimeout>k__BackingField: 2
   <OffsetPoints>k__BackingField:
   - {x: 5, y: 0}
   - {x: 4, y: 0}
   <SpriteRenderer>k__BackingField: {fileID: 6936911284584182044}
+  <Rigidbody2D>k__BackingField: {fileID: 0}
   <AttackPoint>k__BackingField: {fileID: 7122204583798220164}
   <DetectPoint>k__BackingField: {fileID: 3900861639517482836}
   <DetectRadius>k__BackingField: {x: 7, y: 3}

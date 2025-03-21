@@ -84,12 +84,13 @@ MonoBehaviour:
   <id>k__BackingField: 
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 20
-  <Speed>k__BackingField: 10
+  <Speed>k__BackingField: 7
   <Damage>k__BackingField: 20
   <AttackDistance>k__BackingField: 2
   <WaitTimeAtPoint>k__BackingField: 2
   <AttackTimeOut>k__BackingField: 2
-  <MovementThreshold>k__BackingField: 0.1
+  <MovementThreshold>k__BackingField: 0.3
+  <ReturnToSpawnTimeout>k__BackingField: 2
   <OffsetPoints>k__BackingField: []
   <SpriteRenderer>k__BackingField: {fileID: 6936911284584182044}
   <Rigidbody2D>k__BackingField: {fileID: 3801244046312491248}

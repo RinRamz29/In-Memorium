@@ -59,13 +59,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(base.Attack), 2));  
             behaviorSelector.AddChild(chaseSequence);
 
-            // Return to Home Logic
-            var returnHomeSequence = new Sequence("ReturnHomeSequence");
-            returnHomeSequence.AddChild(new Leaf("WasChasing",
-                new Stretegies.Condition(() => WasChasing && !EnemyDetected), 2));
-            returnHomeSequence.AddChild(new Leaf("ReturnHome", new Stretegies.ActionStrategy(this.Patrol), 1));
-            behaviorSelector.AddChild(returnHomeSequence);
-
             // Regular Patrol Logic
             var patrolSequence = new Sequence("PatrolSelector");
             patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
@@ -148,7 +141,34 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 _waitTimer = WaitTimeAtPoint;
                 _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
             }
+            
+            if (distance > 3f)
+            {
+                Debug.Log("Too far, returning to spawn");
+                
+                _returnToSpawnTimer += Time.deltaTime;
+                
+                SpriteRenderer.flipX = transform.position.x - currentPoint.x < 0f;
+                
+                if (currentPoint.x - transform.position.x > 0)
+                {
+                    transform.position += transform.right * (Speed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position -= transform.right * (Speed * Time.deltaTime);
+                }
+                
+                // If taking too long to return, teleport back
+                if (_returnToSpawnTimer >= ReturnToSpawnTimeout)
+                {
+                    transform.position = currentPoint;
+                    _returnToSpawnTimer = 0f;
+                }
+                return Node.Status.Running;
+            }
 
+            _returnToSpawnTimer = 0f;
             return Node.Status.Running;
         }
 
@@ -165,6 +185,13 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 return Node.Status.Success;
             }
             var diff = _playerPos.x - transform.position.x;
+            
+            if (distance > 5f)
+            {
+                Debug.Log("Too far, returning");
+                EnemyDetected = false;
+                return Node.Status.Failure;
+            }
 
             if (Mathf.Abs(diff) > MovementThreshold)
             {
