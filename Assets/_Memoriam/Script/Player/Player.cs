@@ -280,6 +280,7 @@ namespace _Memoriam.Script.Player
         public void LoadData(GameData data)
         {
             transform.position = data.player.position;
+            LastCheckPoint = data.player.position;
             DashPickedUp = data.player.canDash;
             DoubleJumpPickedUp = data.player.canDoubleJump;
             Health = data.player.health;
@@ -292,6 +293,7 @@ namespace _Memoriam.Script.Player
             {
                 position = transform.position,
                 canDash = DashPickedUp,
+                lastCheckpoint = LastCheckPoint,
                 canDoubleJump = DoubleJumpPickedUp,
                 health = Health,
             };
