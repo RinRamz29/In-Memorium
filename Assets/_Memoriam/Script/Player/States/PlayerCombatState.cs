@@ -265,7 +265,8 @@ namespace _Memoriam.Script.Player.States
 
         private void Jump(InputAction.CallbackContext context)
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed ||
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
 
             if (context.performed && _player.IsGrounded)
@@ -282,10 +283,7 @@ namespace _Memoriam.Script.Player.States
 
         private void Dash(InputAction.CallbackContext context)
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
-                return;
-            
-            if (!_player.CanDash)
+            if (!context.performed || !_player.CanDash)
                 return;
 
             _isDashing = true;

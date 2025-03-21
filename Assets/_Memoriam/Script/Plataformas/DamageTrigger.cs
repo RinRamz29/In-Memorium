@@ -5,25 +5,26 @@ namespace _Memoriam.Script.Plataformas
 {
     public class DamageTrigger : MonoBehaviour
     {
-        [SerializeField] private float damage;
-        [SerializeField] private COSA tipoDedanio;
-        
+        private const float Damage = 25f;
+        [SerializeField] private TypeOfTrap typeOfTrap;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<IPlayer>(out var player))
             {
-                Debug.Log("Player received " + damage + " damage");
-                Debug.Log("Player received " + damage + " damage");
-
-                switch (tipoDedanio)
+                switch (typeOfTrap)
                 {
-                    case COSA.PINCHOS:
-                        player.ReceiveDamage(damage); // Hace daño normal
+                    case TypeOfTrap.Razors:
+                        player.ReceiveDamage(Damage, (Vector2)transform.position); 
                         break;
 
-                    case COSA.LAVA:
-                        player.ReceiveDamage(9999); // Muerte instantánea
-                        Debug.Log("Player died from LAVA");
+                    case TypeOfTrap.Lava:
+                        player.ReceiveDamage(9999, (Vector2)transform.position); 
+                        break;
+                    
+                    case TypeOfTrap.ProjectileSmoke:
+                    case TypeOfTrap.ProjectileRazor:
+                        player.ReceiveDamage(Damage, (Vector2)transform.position);
                         break;
                 }
             }
@@ -31,9 +32,10 @@ namespace _Memoriam.Script.Plataformas
     }
 }
 
-enum COSA
+enum TypeOfTrap
 {
-    PINCHOS,
-    LAVA,
-    PROYECTIL
+    Lava,
+    ProjectileRazor,
+    ProjectileSmoke,
+    Razors,
 }

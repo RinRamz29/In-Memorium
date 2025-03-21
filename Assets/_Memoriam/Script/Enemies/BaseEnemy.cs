@@ -20,12 +20,16 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float WaitTimeAtPoint { get; set; } = 2f;
         [field: SerializeField] public float AttackTimeOut { get; set; } = 2f;
         [field: SerializeField] public float MovementThreshold { get; set; } = 0.1f;
+        [field: SerializeField] public float ReturnToSpawnTimeout { get; set; } = 5f;
+        protected float _returnToSpawnTimer = 0f;
         protected bool WasChasing;
         protected float InitialAttackTimer;
-        private bool _isInAttackRange;
+        protected bool _isInAttackRange;
+        protected bool TooFarAway;
 
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
+        [field: SerializeField] public Rigidbody2D Rigidbody2D { get; set; }
         [field: SerializeField] public GameObject AttackPoint { get; set; }
         [field: SerializeField] public GameObject DetectPoint { get; set; }
 
@@ -42,19 +46,19 @@ namespace _Memoriam.Script.Enemies
 
         protected bool EnemyDetected;
         [field: SerializeField] protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
-        private Vector2 _playerPos;
-        private IPlayer _player;
-        private readonly int _moveXHash = Animator.StringToHash("MoveX");
+        protected Vector2 _playerPos;
+        protected IPlayer _player;
+        protected readonly int _moveXHash = Animator.StringToHash("MoveX");
         private readonly int _attackHash = Animator.StringToHash("Attack");
         protected readonly int DieHash = Animator.StringToHash("Die");
         protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
         protected float LastAttackTime = 0f;
-        private bool _isFlipped;
+        protected bool _isFlipped;
 
 
-        public Node.Status Attack()
+        public virtual Node.Status Attack()
         {
             if (_player == null)
                 return Node.Status.Failure;
@@ -81,11 +85,11 @@ namespace _Memoriam.Script.Enemies
                     }
 
                     // Wait for both initial delay and attack timeout
-                    if (Time.time - InitialAttackTimer > AttackTimeOut && 
+                    if (Time.time - InitialAttackTimer > AttackTimeOut &&
                         Time.time - LastAttackTime > AttackTimeOut)
                     {
                         Animator.SetTrigger(_attackHash);
-                        player.ReceiveDamage(Damage);
+                        player.ReceiveDamage(Damage, transform.position);
                         LastAttackTime = Time.time;
                         return Node.Status.Success;
                     }
@@ -99,17 +103,24 @@ namespace _Memoriam.Script.Enemies
             return Node.Status.Failure;
         }
 
-        public Node.Status MoveTowards()
+        public virtual Node.Status MoveTowards()
         {
             if (_player == null)
                 return Node.Status.Failure;
 
             var distance = Vector2.Distance(transform.position, _playerPos);
-             
+
             if (distance < AttackDistance)
             {
                 Animator.SetFloat(_moveXHash, 0f);
                 return Node.Status.Success;
+            }
+
+            if (distance > 5f)
+            {
+                Debug.Log("Too far, returning");
+                EnemyDetected = false;
+                return Node.Status.Failure;
             }
 
             var diff = _playerPos.x - transform.position.x;
@@ -128,16 +139,19 @@ namespace _Memoriam.Script.Enemies
                     SpriteRenderer.flipX = true;
                     _isFlipped = true;
                 }
+
                 Animator.SetFloat(_moveXHash, 1f);
             }
+
             WasChasing = true;
             return Node.Status.Running;
         }
 
-        public Node.Status Patrol()
+        public virtual Node.Status Patrol()
         {
             if (PatrolPoints == null || PatrolPoints.Count == 0)
                 return Node.Status.Failure;
+            
 
             var currentPoint = PatrolPoints[_currentPatrolIndex];
 
@@ -147,14 +161,6 @@ namespace _Memoriam.Script.Enemies
             {
                 _waitTimer -= Time.deltaTime;
                 return Node.Status.Running;
-            }
-
-            // Return to initial patrol point when losing player
-            if (WasChasing && !EnemyDetected)
-            {
-                _currentPatrolIndex = 0;
-                _isInAttackRange = false;
-                WasChasing = false;
             }
 
             SpriteRenderer.flipX = currentPoint.x - transform.position.x < 0;
@@ -176,6 +182,33 @@ namespace _Memoriam.Script.Enemies
                 return Node.Status.Running;
             }
 
+            if (distance > 3f)
+            {
+                Debug.Log("Too far, returning to spawn");
+                
+                _returnToSpawnTimer += Time.deltaTime;
+                
+                SpriteRenderer.flipX = transform.position.x - currentPoint.x < 0f;
+                
+                if (currentPoint.x - transform.position.x > 0)
+                {
+                    transform.position += transform.right * (Speed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position -= transform.right * (Speed * Time.deltaTime);
+                }
+                
+                // If taking too long to return, teleport back
+                if (_returnToSpawnTimer >= ReturnToSpawnTimeout)
+                {
+                    transform.position = currentPoint;
+                    _returnToSpawnTimer = 0f;
+                }
+                return Node.Status.Running;
+            }
+
+            _returnToSpawnTimer = 0f;
             Animator.SetFloat(_moveXHash, 1f);
             return Node.Status.Running;
         }
@@ -228,7 +261,7 @@ namespace _Memoriam.Script.Enemies
             {
                 data.EnemySavable.Remove(id);
             }
-            
+
             data.EnemySavable.Add(id, instance);
         }
     }

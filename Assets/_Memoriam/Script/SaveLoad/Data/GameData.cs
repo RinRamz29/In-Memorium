@@ -19,6 +19,7 @@ namespace _Memoriam.Script.SaveLoad.Data
     public class SavablePlayer
     {
         public Vector3 position;
+        public Vector3 lastCheckpoint;
         public bool canDoubleJump;
         public bool canDash;
         public float health;

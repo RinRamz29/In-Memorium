@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
@@ -38,7 +39,12 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
-        
+
+        private bool isInvulnerable = false;
+        private float invulnerabilityTime = 1.5f;
+        [SerializeField] private float knockbackForce = 10f;
+        private float blinkInterval = 0.1f;
+
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
         {
@@ -91,6 +97,7 @@ namespace _Memoriam.Script.Player
         // Health/Dying logic
         public Vector3 LastCheckPoint { get; set; }
         public static Action<float> OnHealthChanged { get; set; }
+        public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
         
         private void Awake()
         {
@@ -104,6 +111,7 @@ namespace _Memoriam.Script.Player
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
+            OnHealthChanged?.Invoke(Health);
         }
 
         private void Update()
@@ -132,15 +140,53 @@ namespace _Memoriam.Script.Player
             StateMachine?.FixedTick();
         }
 
-        public void ReceiveDamage(float damage)
+        public void ReceiveDamage(float damage, Vector2 damageSource)
         {
-            Health -= damage;
+            if (isInvulnerable || Health <= 0) return;
 
-            var clampedHealth = Health / MaxHealth;       
-            
-            Debug.Log(clampedHealth);
-            
-            OnHealthChanged?.Invoke(clampedHealth);
+            Health -= damage;
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+
+            if (Health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartCoroutine(KnockbackAndInvulnerability(damageSource));
+            }
+        }
+
+        private IEnumerator KnockbackAndInvulnerability(Vector2 damageSource)
+        {
+            isInvulnerable = true;
+
+            //Calculate the knockback
+            Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
+
+            //Ensure there is a notable horizontal knockback
+            knockbackDirection = new Vector2(knockbackDirection.x, Mathf.Abs(knockbackDirection.y) * 0.5f).normalized;
+
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Rigidbody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+            //Visual blink effect
+            StartCoroutine(BlinkEffect());
+
+            //Invulnerability time
+            yield return new WaitForSeconds(invulnerabilityTime);
+
+            isInvulnerable = false;
+        }
+
+        private IEnumerator BlinkEffect()
+        {
+            while (isInvulnerable)
+            {
+                SpriteRenderer.enabled = !SpriteRenderer.enabled;
+                yield return new WaitForSeconds(blinkInterval);
+            }
+            SpriteRenderer.enabled = true;
         }
 
         public void ReceiveHeal(float heal)
@@ -172,10 +218,12 @@ namespace _Memoriam.Script.Player
                 {
                     case TypeOfPickable.Dash:
                         DashPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Dash);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.DoubleJump:
                         DoubleJumpPickedUp = true;
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.DoubleJump);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:
@@ -232,6 +280,7 @@ namespace _Memoriam.Script.Player
         public void LoadData(GameData data)
         {
             transform.position = data.player.position;
+            LastCheckPoint = data.player.position;
             DashPickedUp = data.player.canDash;
             DoubleJumpPickedUp = data.player.canDoubleJump;
             Health = data.player.health;
@@ -244,6 +293,7 @@ namespace _Memoriam.Script.Player
             {
                 position = transform.position,
                 canDash = DashPickedUp,
+                lastCheckpoint = LastCheckPoint,
                 canDoubleJump = DoubleJumpPickedUp,
                 health = Health,
             };
