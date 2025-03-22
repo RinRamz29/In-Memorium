@@ -124,7 +124,7 @@ namespace _Memoriam.Script.Enemies
             }
 
             var diff = _playerPos.x - transform.position.x;
-
+            
             if (Mathf.Abs(diff) > MovementThreshold)
             {
                 if (diff > 0)
