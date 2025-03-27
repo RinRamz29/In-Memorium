@@ -120,7 +120,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             if (WasChasing && !EnemyDetected)
             {
                 _currentPatrolIndex = 0;
-                _isInAttackRange = false;
+                IsInAttackRange = false;
                 WasChasing = false;
             }
 

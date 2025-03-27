@@ -24,7 +24,7 @@ namespace _Memoriam.Script.Enemies
         protected float _returnToSpawnTimer = 0f;
         protected bool WasChasing;
         protected float InitialAttackTimer;
-        protected bool _isInAttackRange;
+        protected bool IsInAttackRange;
         protected bool TooFarAway;
 
         [field: SerializeField] public List<Vector2> OffsetPoints { get; set; }
@@ -77,9 +77,9 @@ namespace _Memoriam.Script.Enemies
                 if (result.TryGetComponent<IPlayer>(out var player))
                 {
                     // Initialize attack timer when first entering attack range
-                    if (!_isInAttackRange)
+                    if (!IsInAttackRange)
                     {
-                        _isInAttackRange = true;
+                        IsInAttackRange = true;
                         InitialAttackTimer = Time.time;
                         return Node.Status.Running;
                     }
@@ -99,7 +99,7 @@ namespace _Memoriam.Script.Enemies
             }
 
             EnemyDetected = false;
-            _isInAttackRange = false;
+            IsInAttackRange = false;
             return Node.Status.Failure;
         }
 
