@@ -37,11 +37,14 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
+
+            AudioManager.Instance.PlayMusic("MainMenuMusic");
         }
 
         public async void NewGame()
         {
             await Task.Delay(150);
+            AudioManager.Instance.PlayMusic("GameplayMusic");
             DataPersistentManager.Instance.IsNewGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
@@ -49,6 +52,7 @@ namespace _Memoriam.Script.Managers
         public async void LoadGame()
         {
             await Task.Delay(150);
+            AudioManager.Instance.PlayMusic("GameplayMusic");
             DataPersistentManager.Instance.IsNewGame = false;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
