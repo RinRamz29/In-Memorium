@@ -3,6 +3,7 @@ using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
 using TerrorConsole;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
@@ -40,12 +41,14 @@ namespace _Memoriam.Script.Managers
 
         public async void NewGame()
         {
+            await Task.Delay(150);
             DataPersistentManager.Instance.IsNewGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         
         public async void LoadGame()
         {
+            await Task.Delay(150);
             DataPersistentManager.Instance.IsNewGame = false;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }

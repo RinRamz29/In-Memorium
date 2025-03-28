@@ -24,6 +24,8 @@ namespace TerrorConsole
             {
                 Destroy(gameObject);
             }
+
+            SFXVolume = PlayerPrefs.HasKey("sfxVol") ? PlayerPrefs.GetFloat("sfxVol") : 1f;
         }
 
         private void Start()
@@ -33,7 +35,6 @@ namespace TerrorConsole
 
         private void InitializeSFX()
         {
-            SFXVolume = PlayerPrefs.GetFloat("sfxVol", SFXVolume);
             _sfxMixer.SetFloat("SFXVolume", Mathf.Lerp(-80f, 0f, SFXVolume));
         }
 
