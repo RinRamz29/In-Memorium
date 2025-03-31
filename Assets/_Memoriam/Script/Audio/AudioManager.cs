@@ -12,18 +12,27 @@ namespace TerrorConsole
         [SerializeField] private AudioDatabase _audioDatabase;
         [SerializeField] private AudioMixer _sfxMixer;
 
+        [SerializeField] private AudioSource _musicAudioSource;
+        [SerializeField] private AudioMixer _musicMixer;
+
         public float SFXVolume { get; private set; }
+
+        private bool sfxMuted = false;
+
 
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
                 Destroy(gameObject);
             }
+
+            SFXVolume = PlayerPrefs.HasKey("sfxVol") ? PlayerPrefs.GetFloat("sfxVol") : 1f;
         }
 
         private void Start()
@@ -33,8 +42,17 @@ namespace TerrorConsole
 
         private void InitializeSFX()
         {
-            SFXVolume = PlayerPrefs.GetFloat("sfxVol", SFXVolume);
-            _sfxMixer.SetFloat("SFXVolume", Mathf.Lerp(-80f, 0f, SFXVolume));
+            if (PlayerPrefs.HasKey("sfxVol"))
+            {
+                SFXVolume = PlayerPrefs.GetFloat("sfxVol");
+            }
+            else
+            {
+                SFXVolume = 1f; // Volumen por defecto si nunca se ha guardado
+            }
+
+            float volumeDB = Mathf.Lerp(-80f, 0f, SFXVolume);
+            _sfxMixer.SetFloat("SFXVolume", volumeDB);
         }
 
         public void PlayDoorCloseSFX()
@@ -71,6 +89,25 @@ namespace TerrorConsole
             }
         }
 
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.T))
+            {
+                sfxMuted = !sfxMuted;
+
+                if (sfxMuted)
+                {
+                    _sfxMixer.SetFloat("SFXVolume", -80f);
+                    Debug.Log("SFX OFF");
+                }
+                else
+                {
+                    _sfxMixer.SetFloat("SFXVolume", Mathf.Lerp(-80f, 0f, SFXVolume));
+                    Debug.Log("SFX ON");
+                }
+            }
+        }
+
         /// <summary>
         /// New volume represented in a range from 0 to 1
         /// </summary>
@@ -82,6 +119,34 @@ namespace TerrorConsole
 
             _sfxMixer.SetFloat("SFXVolume", volumeDB); // Asigna el volumen en el Audio Mixer
             PlayerPrefs.SetFloat("sfxVol", newVolume); // Guarda el volumen para la próxima vez que se inicie el juego
+        }
+
+        public void PlayMusic(string audioName)
+        {
+            AudioData audioData = _audioDatabase.GetAudio(audioName);
+
+            if (audioData == null)
+            {
+                Debug.LogWarning($"Música '{audioName}' no encontrada en el AudioDatabase.");
+                return;
+            }
+
+            Debug.Log($"[AUDIO] Cambiando música a: {audioName}");
+
+            _musicAudioSource.Stop();
+            _musicAudioSource.clip = audioData.AudioClip;
+            _musicAudioSource.volume = audioData.Volume;
+            _musicAudioSource.loop = true;
+            _musicAudioSource.Play();
+        }
+
+        public void SetMusicVolume(float newVolume)
+        {
+            newVolume = Mathf.Clamp(newVolume, 0f, 1f);
+            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume);
+            _musicMixer.SetFloat("MusicVolume", volumeDB);
+            PlayerPrefs.SetFloat("musicVol", newVolume);
+            PlayerPrefs.Save();
         }
     }
 }

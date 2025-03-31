@@ -1,6 +1,7 @@
 using System;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
+using TerrorConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ namespace _Memoriam.Script.Menus
         
         public void Resume()
         {
+                AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
                 pauseMenu.SetActive(false);
                 pause.SetActive(false);
                 GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);

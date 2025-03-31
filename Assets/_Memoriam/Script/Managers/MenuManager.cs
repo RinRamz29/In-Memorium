@@ -3,6 +3,7 @@ using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
 using TerrorConsole;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
@@ -36,16 +37,22 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
+
+            AudioManager.Instance.PlayMusic("MainMenuMusic");
         }
 
         public async void NewGame()
         {
+            await Task.Delay(150);
+            AudioManager.Instance.PlayMusic("GameplayMusic");
             DataPersistentManager.Instance.IsNewGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         
         public async void LoadGame()
         {
+            await Task.Delay(150);
+            AudioManager.Instance.PlayMusic("GameplayMusic");
             DataPersistentManager.Instance.IsNewGame = false;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
