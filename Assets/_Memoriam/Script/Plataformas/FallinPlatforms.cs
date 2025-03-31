@@ -1,42 +1,43 @@
 using DG.Tweening;
 using UnityEngine;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Collections;
 
-public class FallinPlatforms : MonoBehaviour, IPlatforms
+public class FallinPlatforms : MonoBehaviour
 {
-    [SerializeField] private float _moveTime = 1f;
-    [SerializeField] private Ease ease = Ease.InOutQuad;
+    Rigidbody2D rb2d;
+    Vector2 defaultPos;
 
-    [SerializeField] private Vector2 pointA = Vector2.zero;
-
-    [SerializeField] private float waitTime = 1.5f;
-
-    private Vector2 _startPosition;  
+    [SerializeField] float fallDelay, respawnTime;
 
     void Start()
     {
-        _startPosition = transform.position;
+        defaultPos = transform.position;
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    private async void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            await PlatformFall();
+            StartCoroutine("PlatformDrop");
         }
     }
 
-    private async Task PlatformFall()
+    IEnumerator PlatformDrop()
     {
-        await Task.Delay(3000);
-        Move();
+        yield return new WaitForSeconds(fallDelay);
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
+        yield return new WaitForSeconds(respawnTime);
+        Reset();
+
     }
 
-    public void Move()
+    private void Reset()
     {
-        DOTween.Sequence()
-            .Append(transform.DOMove(_startPosition + pointA, _moveTime).SetEase(ease))
-            .AppendInterval(waitTime)
-            .Append(transform.DOMove(_startPosition, _moveTime).SetEase(ease));
+        rb2d.bodyType = RigidbodyType2D.Static;
+        transform.position = defaultPos;
     }
+    
 }
