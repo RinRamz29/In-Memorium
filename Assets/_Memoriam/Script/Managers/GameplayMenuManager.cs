@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -10,7 +11,7 @@ using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
-    public class GameplayMenuManager : MonoBehaviour
+    public class GameplayMenuManager : MonoBehaviour, ISaveableObject
     {
         [SerializeField] private GameObject pauseMenu;
         [field: SerializeField] public Slider HealthBar { get; private set; }
@@ -67,6 +68,18 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;
             Player.Player.OnHealthChanged -= ChangeHealthValue;
+        }
+
+        public void LoadData(GameData data)
+        {
+            powerupToggles[0].isOn = data.gamePlayMenu.canDoubleJump;
+            powerupToggles[1].isOn = data.gamePlayMenu.canDash;
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            data.gamePlayMenu.canDoubleJump = powerupToggles[0].isOn;
+            data.gamePlayMenu.canDash = powerupToggles[1].isOn;
         }
     }
 }

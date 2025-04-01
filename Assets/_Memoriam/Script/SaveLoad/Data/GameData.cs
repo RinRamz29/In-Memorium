@@ -24,6 +24,13 @@ namespace _Memoriam.Script.SaveLoad.Data
         public bool canDash;
         public float health;
     }
+
+    [Serializable]
+    public class GamePlayMenuSaveData
+    {
+        public bool canDoubleJump;
+        public bool canDash;
+    }
     
     [Serializable]
     public class GameData 
@@ -31,12 +38,14 @@ namespace _Memoriam.Script.SaveLoad.Data
         public SavablePlayer player;
         public SerializableDictionary<string, SavableEnemy> EnemySavable;
         public SerializableDictionary<string, bool> pickableSavable;
+        public GamePlayMenuSaveData gamePlayMenu;        
 
         public GameData()
         {
             pickableSavable = new SerializableDictionary<string, bool>();
             player = new SavablePlayer();
             EnemySavable = new SerializableDictionary<string, SavableEnemy>();
+            gamePlayMenu = new GamePlayMenuSaveData();
         }
     }
 }

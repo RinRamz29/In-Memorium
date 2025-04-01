@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Memoriam.Script.General;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Memoriam.Script.Plataformas
@@ -10,6 +11,7 @@ namespace _Memoriam.Script.Plataformas
         [SerializeField] private string iDForPool;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float timeBetweenProjectiles;
+        [SerializeField] private Vector2 directionToLaunch;
         private float _lastLaunchTime;
 
         private void Update()
@@ -26,7 +28,13 @@ namespace _Memoriam.Script.Plataformas
                 return;
 
             _lastLaunchTime = Time.time;
-            ObjectPool.Instance.SpawnFromPool(iDForPool, transform.position, Quaternion.identity, true);
+            var obj = ObjectPool.Instance.SpawnFromPool(iDForPool, transform.position, Quaternion.identity, true);
+            
+            if (obj.TryGetComponent<Projectile>(out var projectile))
+            {
+                projectile.Direction = directionToLaunch;
+            }
+            
         }
     }
 }

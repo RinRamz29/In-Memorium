@@ -11,6 +11,7 @@ namespace _Memoriam.Script.Plataformas
         [SerializeField] private string iDForPool;
         [SerializeField] private float projectileSpeed;
         [SerializeField] private Rigidbody2D rb;
+        public Vector2 Direction { get; set; }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -27,7 +28,7 @@ namespace _Memoriam.Script.Plataformas
 
         private void Update()
         {
-            rb.linearVelocity += Vector2.up * (projectileSpeed * Time.deltaTime);
+            rb.linearVelocity += Direction * (projectileSpeed * Time.deltaTime);
         }
     }
 }
