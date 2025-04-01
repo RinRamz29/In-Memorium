@@ -12,6 +12,26 @@ namespace _Memoriam.Script.Powerups
 
         public void Pick(GameObject player)
         {
+            if (player == null)
+                return;
+
+            if (player.TryGetComponent<Player.Player>(out var playerPlayer))
+            {
+                switch (TypeOfPickable)
+                {
+                    case TypeOfPickable.Dash:
+                        playerPlayer.CanDash = true;
+                        break;
+                    case TypeOfPickable.CheckPoint:
+                        playerPlayer.LastCheckPoint = transform.position;
+                        DataPersistentManager.Instance.SaveGame();
+                        break;
+                    case TypeOfPickable.DoubleJump:
+                        playerPlayer.CanDoubleJump = true;
+                        break;
+                }
+            }
+            
             gameObject.SetActive(false);
         }
 
