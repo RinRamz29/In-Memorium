@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.Scripting;
+using UnityEngine.Serialization;
 
 namespace _Memoriam.Script.Enemies
 {
@@ -12,9 +13,11 @@ namespace _Memoriam.Script.Enemies
         [SerializeField] private List<EnemyToSpawn> enemiesToSpawn  = new List<EnemyToSpawn>();
         [SerializeField] private List<EnemyToSpawn> flyersToSpawn  = new List<EnemyToSpawn>();
         [SerializeField] private List<EnemyToSpawn> tankEnemies  = new List<EnemyToSpawn>();
+        [SerializeField] private EnemyToSpawn miniBoss = null;
         [SerializeField] public string idForBasicEnemies;
         [SerializeField] public string idForFlyerEnemies;
         [SerializeField] public string idForTanksEnemies;
+        [SerializeField] public string idForMiniBoss;
         
         [ContextMenu("Generate GUID for id")]
         private void GenerateId()
@@ -25,6 +28,8 @@ namespace _Memoriam.Script.Enemies
                 flyer.id = Guid.NewGuid().ToString();
             foreach (var tank in tankEnemies)
                 tank.id = Guid.NewGuid().ToString();
+            
+            miniBoss.id = Guid.NewGuid().ToString();
         }
 
         public void SpawnEnemies(bool newGame)
@@ -63,6 +68,13 @@ namespace _Memoriam.Script.Enemies
                     enemyBase.OffsetPoints = tanks.path;
                     enemyBase.id = tanks.id;
                 }
+            }
+            
+            var enemyBoss = ObjectPool.Instance.SpawnFromPool(idForMiniBoss, miniBoss.spawnPoint.position, miniBoss.spawnPoint.rotation, newGame);
+
+            if (enemyBoss.TryGetComponent<MiniBoss.MiniBoss>(out var boss))
+            {
+                boss.id = miniBoss.id;
             }
         }
     }

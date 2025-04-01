@@ -17,6 +17,12 @@ namespace _Memoriam.Script.Enemies.MiniBoss
         private bool _isTransitioning;
         private float _originalDamage;
         private float _originalSpeed;
+        [SerializeField] private float globalAttackCooldown = 1.5f;
+        private Dictionary<int, float> _attackWeights = new Dictionary<int, float>();
+        private Dictionary<int, float> _tempWeights = new Dictionary<int, float>();
+        private const float DefaultWeight = 1.0f;
+        private const float WeightPenalty = 0.2f;
+        private const float WeightRecoveryRate = 0.1f;
 
         // Attack pattern variables
         [SerializeField] private float attack1Cooldown = 3f;
@@ -45,6 +51,13 @@ namespace _Memoriam.Script.Enemies.MiniBoss
         private void Awake()
         {
             Health = MaxHealth;
+            _tempWeights = new Dictionary<int, float>();
+            
+            // Initialize attack weights
+            _attackWeights[0] = DefaultWeight; // Attack 1
+            _attackWeights[1] = DefaultWeight; // Attack 2
+            _attackWeights[2] = DefaultWeight; // Attack 3
+
             LastAttackTime = -AttackTimeOut;
             InitialAttackTimer = -AttackTimeOut;
             SetUpBehaviorSelector();
@@ -161,6 +174,10 @@ namespace _Memoriam.Script.Enemies.MiniBoss
             if (!IsInAttackRange) 
                 return Node.Status.Failure;
 
+            // Check global cooldown
+            if (Time.time - LastAttackTime < globalAttackCooldown)
+                return Node.Status.Running;
+
             var currentTime = Time.time;
             var canAttack1 = currentTime - _lastAttack1Time >= attack1Cooldown;
             var canAttack2 = currentTime - _lastAttack2Time >= attack2Cooldown;
@@ -169,13 +186,47 @@ namespace _Memoriam.Script.Enemies.MiniBoss
             if (!canAttack1 && !canAttack2 && !canAttack3)
                 return Node.Status.Running;
 
-            // Choose random available attack
-            var availableAttacks = new List<int>();
-            if (canAttack1) availableAttacks.Add(0);
-            if (canAttack2) availableAttacks.Add(1);
-            if (canAttack3) availableAttacks.Add(2);
+            // Update weights
+            _tempWeights.Clear();
+            foreach (var kvp in _attackWeights.Keys)
+            {
+                _tempWeights[kvp] = Mathf.Min(DefaultWeight, 
+                    _attackWeights[kvp] + WeightRecoveryRate * Time.deltaTime);
+            }
 
-            int attackIndex = availableAttacks[Random.Range(0, availableAttacks.Count)];
+            foreach (var kvp in _tempWeights)
+                _attackWeights[kvp.Key] = kvp.Value;
+
+            // Calculate weighted probabilities
+            float totalWeight = 0;
+            var availableAttacks = new Dictionary<int, float>();
+            
+            if (canAttack1) totalWeight += _attackWeights[0];
+            if (canAttack2) totalWeight += _attackWeights[1];
+            if (canAttack3) totalWeight += _attackWeights[2];
+            
+            if (canAttack1) availableAttacks[0] = _attackWeights[0];
+            if (canAttack2) availableAttacks[1] = _attackWeights[1];
+            if (canAttack3) availableAttacks[2] = _attackWeights[2];
+
+            // Select attack based on weights
+            float randomValue = Random.Range(0, totalWeight);
+            float currentSum = 0;
+            int attackIndex = 0;
+
+            foreach (var attack in availableAttacks)
+            {
+                currentSum += attack.Value;
+                if (randomValue <= currentSum)
+                {
+                    attackIndex = attack.Key;
+                    break;
+                }
+            }
+
+            // Apply weight penalty to selected attack
+            _attackWeights[attackIndex] = WeightPenalty;
+            LastAttackTime = currentTime;
 
             switch (attackIndex)
             {
@@ -235,27 +286,22 @@ namespace _Memoriam.Script.Enemies.MiniBoss
         {
             // Basic melee slash
             Animator.SetTrigger(_attack1Hash);
-
-            var hitbox = Physics2D.OverlapCircleAll(
-                AttackPoint.transform.position,
-                attack1Range,
-                PlayerLayer
-            );
-
-            foreach (var hit in hitbox)
-            {
-                if (hit.TryGetComponent<IPlayer>(out var player))
-                {
-                    player.ReceiveDamage(attack1Damage * (_isBuffed ? buffedDamageMultiplier : 1f), transform.position);
-                }
-            }
         }
-
+        
         private void PerformAttack2()
         {
             // Basic melee slash
             Animator.SetTrigger(_attack2Hash);
+        }
+        
+        private void PerformAttack3()
+        {
+            // Dash attack
+            Animator.SetTrigger(_attack3Hash);
+        }
 
+        public void Attack1()
+        {
             var hitbox = Physics2D.OverlapCircleAll(
                 AttackPoint.transform.position,
                 attack1Range,
@@ -269,12 +315,27 @@ namespace _Memoriam.Script.Enemies.MiniBoss
                     player.ReceiveDamage(attack1Damage * (_isBuffed ? buffedDamageMultiplier : 1f), transform.position);
                 }
             }
-        }
-        private void PerformAttack3()
+        } 
+        
+        public void Attack2()
         {
-            // Dash attack
-            Animator.SetTrigger(_attack3Hash);
+            var hitbox = Physics2D.OverlapCircleAll(
+                AttackPoint.transform.position,
+                attack1Range,
+                PlayerLayer
+            );
 
+            foreach (var hit in hitbox)
+            {
+                if (hit.TryGetComponent<IPlayer>(out var player))
+                {
+                    player.ReceiveDamage(attack2Damage * (_isBuffed ? buffedDamageMultiplier : 1f), transform.position);
+                }
+            }
+        }  
+        
+        public void Attack3()
+        {
             // Calculate dash direction towards player
             Vector2 dashDirection = (_playerPos - (Vector2)transform.position).normalized;
 
@@ -296,6 +357,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss
                 }
             }
         }
+
 
         private void OnDrawGizmosSelected()
         {
