@@ -4834,6 +4834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5154092201584303558, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1321611
@@ -9159,6 +9163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoul
       objectReference: {fileID: 0}
+    - target: {fileID: 6936911284584182044, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
