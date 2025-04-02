@@ -2970,7 +2970,7 @@ Transform:
   m_GameObject: {fileID: 6825499185411273971}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -495.49445, y: 58.244137, z: 0.9527022}
+  m_LocalPosition: {x: -516.58, y: 58.244137, z: 0.9527022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3462,12 +3462,15 @@ MonoBehaviour:
   - prefab: {fileID: 122463274813769203, guid: 34c7ec67ef20d964898bd3c218fd5577, type: 3}
     id: Projectiles
     size: 36
-  - prefab: {fileID: 8139663869060386672, guid: 7c72afd89feb22c41aff0be1204a7bdf, type: 3}
-    id: Tanks
-    size: 8
+  - prefab: {fileID: 751294390469502471, guid: 146d9510eb201234896651a87f89fe4d, type: 3}
+    id: Ranged
+    size: 9
   - prefab: {fileID: 5559703034287951607, guid: 2bd245ae490d671469df0e4568288a7e, type: 3}
     id: MiniBoss
     size: 1
+  - prefab: {fileID: 122463274813769203, guid: cdda264a556bde34b963d30e63690787, type: 3}
+    id: ProjectileEnemy
+    size: 38
 --- !u!114 &4020676678074504670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,221 +3489,226 @@ MonoBehaviour:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 2671376242087190784}
-    id: bcbb183a-8c7f-44cc-8580-249a422544ab
+    id: ca1f2a38-8484-4f98-a2e6-aa0c4078fc66
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 7110703468588655332}
-    id: 00bd40d1-09bc-441d-8a0f-1966c49b290b
+    id: f3c0adae-ce08-409e-8463-83605e8e76ba
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 7466896305843919288}
-    id: 7b2ae189-7818-4b41-ae99-550676642573
+    id: 82e36330-1937-46d7-a39c-b8095e89af0b
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 893053942114823094}
-    id: c57ded54-fae3-4f13-b445-cd15ccbe917a
+    id: f70a262a-adb0-497f-a51f-151f7a3d85f5
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 7063841273614625872}
-    id: 6f31c097-91e2-4b2b-9f25-eda9332dd1e9
+    id: 1c82cdd8-6c01-4702-b84f-da7da4297902
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 8038909614828832711}
-    id: 066d8267-faf5-4e5e-837c-894c55b073f1
+    id: 14f9f7da-2bf0-41b1-a5c9-97fcf7c7a8d6
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 5873042409600580215}
-    id: c7748e3a-0abd-4cda-aab0-d0e84208bd7c
+    id: 808280bb-add0-489a-bc37-2baf11fa26ff
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 3655517624431114463}
-    id: 1ed265eb-8a94-4dde-aa26-3b8d2fb2f916
+    id: daf3716f-32a8-4692-82af-64476663944e
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 5098959991292271487}
-    id: 2042d1a2-f1c7-4e5a-a278-febf9c36d9bd
+    id: 4940a594-af38-4852-8b4c-e3256fdc2a1d
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 8479497248803300224}
-    id: 999b5e3b-9c73-46dc-a7d3-3cb2c2ef0795
+    id: abf80746-8f50-433c-ad67-b739e0a5357e
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 7616615362873467880}
-    id: e31b6cfb-358c-4584-8d3a-a3736b67ff7d
+    id: a717ed9e-acb9-4902-ade4-1bf73b8234af
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 7537101238057164180}
-    id: c8aa11bb-9394-42bf-b58f-76faaa20e818
+    id: ddd05e91-cff4-493a-b3d1-222980abf48d
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 4758898353055310002}
-    id: d977b90b-4c96-49dd-9502-7724fe4720e3
+    id: 5b870edf-22a4-4932-9fd4-8e481422639f
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 5919495922929918679}
-    id: 8e5c76e0-b893-4aef-a3fe-dda72cdd0e15
+    id: 44577eec-ffe5-4631-994a-e6d98cf363df
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 1038411951687151839}
-    id: c1a21e25-fff3-48bb-bd5e-3c8ae8d51445
+    id: b4753171-4cfe-493d-86bc-f276eb56796f
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 117396803969044408}
-    id: b17b5649-6542-4228-8394-94cbd3eb9457
+    id: 4014ce12-05b1-42a2-9782-fa3c095a3fbd
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 1612919835708586549}
-    id: b1aa5433-9f74-43af-b814-4508313fa949
+    id: f3ae29e7-3561-450d-a67b-898e273b02ca
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 3970969977441260614}
-    id: dd144e02-dfe2-494a-893c-3f4d43372ae7
+    id: f43c6711-9894-4f06-b446-91f5ec969457
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 6120028753032871640}
-    id: 70406b9d-7245-4dfc-bcf8-48f9e8055032
+    id: 003b7b35-d9d4-4f58-a48a-185c26c3b173
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 5655536568237505557}
-    id: 5f62d970-2f71-4ecc-bb31-4bba87769842
+    id: 79ea5a60-efab-4faa-99b7-3036cfdd3905
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 3292920243856123520}
-    id: 46e398a6-abde-473d-bd14-f0d12de651be
+    id: 511945b4-da35-41b1-a190-a35b5df54419
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 2995729361257434161}
-    id: d61582f2-e1b4-4206-9a72-6a3c449b2a1e
+    id: 2e88b7d7-a9b5-4e20-8a0c-623d37b1d5f7
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 6227575408795191401}
-    id: 7099e4d6-5c4d-43ed-bb73-21dfb42f0c21
+    id: 6b2f9217-9e3d-4f86-8be3-eb65999aedb0
   flyersToSpawn:
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 2219327707249905393}
-    id: 95482f84-9b04-41ca-a8f5-947ac912080f
+    id: 510fe4e9-00fb-4273-850a-edf1704d32a6
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 4164741115296579912}
-    id: a97beac2-5c2f-46ed-8657-d4259b74ba39
+    id: b8ef2c19-9d99-4e9a-b2eb-6bc240ecc84c
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 3177828074882841666}
-    id: 8b02d2e3-68f1-4020-94f6-2659c30e9ba1
+    id: f004a483-084e-4214-97f0-6ab86dfe6c0b
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 8580393149605759903}
-    id: 3d3d6963-b5d2-4c4b-96cb-d02dbd79a0fc
+    id: b8b0449f-a155-4ae8-99c0-67a60ecd2bca
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 5090483259776978298}
-    id: 3c4a4371-8f6a-41a5-b2a8-1be9d75e4713
+    id: ff7ee5f6-7486-477a-ade4-16ba09125320
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 6589283059208373886}
-    id: afdfd67f-cb90-4b0f-81d9-219388f6ceaa
+    id: c46441b7-8793-4fee-9160-9f6e35773c61
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 5325455227772912084}
-    id: b18d5853-6356-4904-a53d-64910ab3e248
+    id: b184364c-2989-4446-9f72-c4eb597ec5a5
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 9121478061203371052}
-    id: 457cc38d-f632-4436-86fd-ff06940f1023
+    id: 186b838d-ce05-4584-8b0d-3f851877dd7a
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 5325455227772912084}
-    id: 239d2576-c10b-4de5-bc98-f5cf94909f02
+    id: 80a7e574-595d-4b28-9b21-fb57d2f6a374
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 7975103724495530259}
-    id: 0c65cf76-44c4-40e7-8840-120dee2ff3da
+    id: 0d67708e-fb13-4a06-9f5f-32b93359a75f
   - path:
     - {x: 2, y: 2}
     - {x: -2, y: -2}
     spawnPoint: {fileID: 4259943399526021052}
-    id: 9576ba47-fb35-4891-b49f-b9260d48e93c
-  tankEnemies:
+    id: 3cd91352-afc4-4832-af15-a461cb05d302
+  rangedEnemies:
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
-    spawnPoint: {fileID: 6462831481223868204}
-    id: 2e5d3b30-76cb-471d-b0e2-50ca08379716
+    spawnPoint: {fileID: 5270188526411685701}
+    id: a438ec40-763b-4e20-b1df-d64729ef1417
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
-    spawnPoint: {fileID: 355720860309957506}
-    id: 9af8484f-a135-413f-88f2-968419554e4c
+    spawnPoint: {fileID: 8681890276722816691}
+    id: 9fbcc63a-a6a3-4f7a-8415-2c9b0c8c9e10
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 8741677788873239911}
-    id: 4683c91c-2a82-494d-b108-916c9a150b05
+    id: 15ee40f0-df98-4177-957a-377d13b7fd35
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
-    spawnPoint: {fileID: 8400358584589525896}
-    id: 34ddf60e-f43d-473d-8215-326d21f4b543
+    spawnPoint: {fileID: 6311296291662825552}
+    id: 3d69c16a-01b4-43e3-b769-47ccb3d62043
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
-    spawnPoint: {fileID: 4652893093278098828}
-    id: a1039394-5a00-48fa-9271-3e31808cd55a
+    spawnPoint: {fileID: 6543566335950957695}
+    id: f916091f-ec41-490d-97fe-820279f033ba
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 9121478061203371052}
+    id: f5ec3d79-1447-4c41-8b85-d8ed3d44c2c7
+  - path:
+    - {x: 2, y: 0}
+    - {x: -2, y: 0}
+    spawnPoint: {fileID: 4101447993825212864}
+    id: fc69d3ab-58c9-4593-b617-91660f8ea6be
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 186475634531017728}
-    id: b6e2f323-18bb-46cc-9ddc-40dbab22eca8
+    id: 8c59d8bf-c889-4d65-b676-6a559859154a
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
     spawnPoint: {fileID: 4523787752176437973}
-    id: 538514ab-e4ab-4321-ab6a-cdddc65ce593
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
-    spawnPoint: {fileID: 2637222964267747841}
-    id: a1f493c6-22d6-4ee8-8059-45b6423a4d0c
+    id: 104fb2cc-7dd5-4167-a88d-921c42e1d471
   miniBoss:
     path: []
     spawnPoint: {fileID: 1921752127999141122}
-    id: c17b1413-a1a0-4bac-aecb-58db4f03fb1b
+    id: e14bf6af-680c-402e-950b-6452f5dda783
   idForBasicEnemies: Enemies
   idForFlyerEnemies: Flyers
-  idForTanksEnemies: Tanks
+  idForRangedEnemies: Ranged
   idForMiniBoss: MiniBoss
 --- !u!1 &7739763309835941490
 GameObject:

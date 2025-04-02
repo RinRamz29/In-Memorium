@@ -1,40 +1,46 @@
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using _Memoriam.Script.General;
-using DG.Tweening;
 using UnityEngine;
 
 namespace _Memoriam.Script.Plataformas
 {
     public class ProjectileLauncher : MonoBehaviour
     {
-        [SerializeField] private string iDForPool;
-        [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private float timeBetweenProjectiles;
-        [SerializeField] private Vector2 directionToLaunch;
-        private float _lastLaunchTime;
-
-        private void Update()
+        [SerializeField] private string projectilePoolId;
+        [SerializeField] private float fireRate = 1f;
+        [SerializeField] private Transform firePoint;
+        [SerializeField] private bool autoFire = false;
+        [SerializeField] private Vector2 fireDirection = Vector2.right;
+        
+        private float _lastFireTime;
+        
+        private void Start()
         {
-            if (Time.time - _lastLaunchTime > timeBetweenProjectiles)
+            if (autoFire)
             {
-                SpawnProjectile();
+                StartCoroutine(AutoFireRoutine());
             }
         }
-
-        private void SpawnProjectile()
+        
+        public void FireProjectile(Vector2 direction)
         {
-            if (projectilePrefab == null) 
-                return;
-
-            _lastLaunchTime = Time.time;
-            var obj = ObjectPool.Instance.SpawnFromPool(iDForPool, transform.position, Quaternion.identity, true);
+            if (Time.time - _lastFireTime < 1f / fireRate) return;
             
-            if (obj.TryGetComponent<Projectile>(out var projectile))
+            GameObject projectileObj = ObjectPool.Instance.SpawnFromPool(projectilePoolId, firePoint.position, Quaternion.identity, false);
+            if (projectileObj.TryGetComponent<Projectile>(out var projectile))
             {
-                projectile.Direction = directionToLaunch;
+                projectile.Direction = direction.normalized;
             }
-            
+            _lastFireTime = Time.time;
+        }
+        
+        private IEnumerator AutoFireRoutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1f / fireRate);
+                FireProjectile(fireDirection);
+            }
         }
     }
 }

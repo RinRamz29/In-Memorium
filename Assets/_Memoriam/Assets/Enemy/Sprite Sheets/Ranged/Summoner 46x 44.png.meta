@@ -1,5 +1,13 @@
 fileFormatVersion: 2
 guid: b2ed582bc8a32894ebcfd0233bb17ac4
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307279
+  packageName: The DARK Series Mega Pack 2
+  packageVersion: 1.0
+  assetPath: Assets/DARK Series Mega Pack 2/05 DARK - The Bood King and Enemies/Sprite
+    Sheets/Summoner 46x 44.png
+  uploadId: 722180
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -102,7 +110,7 @@ TextureImporter:
       213: 1930227926072962268
     second: Summoner 46x 44_32
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -166,8 +174,21 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -179,8 +200,21 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -199,13 +233,14 @@ TextureImporter:
       name: Summoner 46x 44_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 19
         y: 176
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -220,13 +255,14 @@ TextureImporter:
       name: Summoner 46x 44_1
       rect:
         serializedVersion: 2
-        x: 46
+        x: 65
         y: 176
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -241,13 +277,14 @@ TextureImporter:
       name: Summoner 46x 44_2
       rect:
         serializedVersion: 2
-        x: 92
+        x: 110
         y: 176
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -262,13 +299,14 @@ TextureImporter:
       name: Summoner 46x 44_3
       rect:
         serializedVersion: 2
-        x: 138
+        x: 157
         y: 176
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -283,13 +321,14 @@ TextureImporter:
       name: Summoner 46x 44_4
       rect:
         serializedVersion: 2
-        x: 184
+        x: 202
         y: 176
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -304,13 +343,14 @@ TextureImporter:
       name: Summoner 46x 44_5
       rect:
         serializedVersion: 2
-        x: 230
+        x: 247
         y: 176
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -325,13 +365,14 @@ TextureImporter:
       name: Summoner 46x 44_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 19
         y: 132
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -346,13 +387,14 @@ TextureImporter:
       name: Summoner 46x 44_7
       rect:
         serializedVersion: 2
-        x: 46
+        x: 64
         y: 132
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -367,13 +409,14 @@ TextureImporter:
       name: Summoner 46x 44_8
       rect:
         serializedVersion: 2
-        x: 92
+        x: 110
         y: 132
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -388,13 +431,14 @@ TextureImporter:
       name: Summoner 46x 44_9
       rect:
         serializedVersion: 2
-        x: 138
+        x: 155
         y: 132
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -409,13 +453,14 @@ TextureImporter:
       name: Summoner 46x 44_10
       rect:
         serializedVersion: 2
-        x: 184
+        x: 201
         y: 132
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -430,13 +475,14 @@ TextureImporter:
       name: Summoner 46x 44_11
       rect:
         serializedVersion: 2
-        x: 230
+        x: 247
         y: 132
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -451,13 +497,14 @@ TextureImporter:
       name: Summoner 46x 44_12
       rect:
         serializedVersion: 2
-        x: 0
+        x: 19
         y: 88
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -472,13 +519,14 @@ TextureImporter:
       name: Summoner 46x 44_13
       rect:
         serializedVersion: 2
-        x: 46
+        x: 64
         y: 88
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -493,13 +541,14 @@ TextureImporter:
       name: Summoner 46x 44_14
       rect:
         serializedVersion: 2
-        x: 92
+        x: 110
         y: 88
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -514,13 +563,14 @@ TextureImporter:
       name: Summoner 46x 44_15
       rect:
         serializedVersion: 2
-        x: 138
+        x: 155
         y: 88
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -535,13 +585,14 @@ TextureImporter:
       name: Summoner 46x 44_16
       rect:
         serializedVersion: 2
-        x: 184
+        x: 199
         y: 88
-        width: 46
+        width: 28
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -556,13 +607,14 @@ TextureImporter:
       name: Summoner 46x 44_17
       rect:
         serializedVersion: 2
-        x: 230
+        x: 247
         y: 88
-        width: 46
+        width: 29
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -577,13 +629,14 @@ TextureImporter:
       name: Summoner 46x 44_18
       rect:
         serializedVersion: 2
-        x: 276
+        x: 293
         y: 88
-        width: 46
+        width: 29
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -598,13 +651,14 @@ TextureImporter:
       name: Summoner 46x 44_19
       rect:
         serializedVersion: 2
-        x: 322
+        x: 339
         y: 88
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -619,13 +673,14 @@ TextureImporter:
       name: Summoner 46x 44_20
       rect:
         serializedVersion: 2
-        x: 368
+        x: 386
         y: 88
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -640,13 +695,14 @@ TextureImporter:
       name: Summoner 46x 44_21
       rect:
         serializedVersion: 2
-        x: 0
+        x: 18
         y: 44
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -661,13 +717,14 @@ TextureImporter:
       name: Summoner 46x 44_22
       rect:
         serializedVersion: 2
-        x: 46
+        x: 64
         y: 44
-        width: 46
+        width: 23
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -682,13 +739,14 @@ TextureImporter:
       name: Summoner 46x 44_23
       rect:
         serializedVersion: 2
-        x: 92
+        x: 110
         y: 44
-        width: 46
+        width: 24
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -703,13 +761,14 @@ TextureImporter:
       name: Summoner 46x 44_24
       rect:
         serializedVersion: 2
-        x: 138
+        x: 155
         y: 44
-        width: 46
+        width: 25
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -724,13 +783,14 @@ TextureImporter:
       name: Summoner 46x 44_25
       rect:
         serializedVersion: 2
-        x: 0
+        x: 18
         y: 0
-        width: 46
+        width: 28
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -750,8 +810,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -771,8 +832,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -792,8 +854,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -813,8 +876,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -834,8 +898,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -855,8 +920,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -876,8 +942,9 @@ TextureImporter:
         width: 46
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -889,6 +956,7 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -898,6 +966,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       Summoner 46x 44_0: 5374604837666599638
       Summoner 46x 44_1: 2476816872873531893
@@ -937,11 +1007,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 307279
-  packageName: The DARK Series Mega Pack 2
-  packageVersion: 1.0
-  assetPath: Assets/DARK Series Mega Pack 2/05 DARK - The Bood King and Enemies/Sprite
-    Sheets/Summoner 46x 44.png
-  uploadId: 722180

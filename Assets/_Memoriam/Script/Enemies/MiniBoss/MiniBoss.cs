@@ -142,7 +142,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss
             if (distance < AttackDistance)
             {
                 IsInAttackRange = true;
-                Animator.SetFloat(_moveXHash, 0f);
+                Animator.SetFloat(MoveXHash, 0f);
                 return Node.Status.Success;
             }
 
@@ -163,7 +163,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss
                     _isFlipped = true;
                 }
 
-                Animator.SetFloat(_moveXHash, 1f);
+                Animator.SetFloat(MoveXHash, 1f);
             }
 
             return Node.Status.Running;

@@ -41,15 +41,15 @@ namespace _Memoriam.Script.Enemies
         protected void OnStateChanged(GameStateManager.GameState state)
         {
             if (state == GameStateManager.GameState.OnPause)
-                Animator.SetFloat(_moveXHash, 0f);
+                Animator.SetFloat(MoveXHash, 0f);
         }
 
         protected bool EnemyDetected;
         [field: SerializeField] protected List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
         protected Vector2 _playerPos;
         protected IPlayer _player;
-        protected readonly int _moveXHash = Animator.StringToHash("MoveX");
-        private readonly int _attackHash = Animator.StringToHash("Attack");
+        protected readonly int MoveXHash = Animator.StringToHash("MoveX");
+        protected readonly int AttackHash = Animator.StringToHash("Attack");
         protected readonly int DieHash = Animator.StringToHash("Die");
         protected readonly int DamagedHash = Animator.StringToHash("Damaged");
         private int _currentPatrolIndex = 0;
@@ -88,7 +88,7 @@ namespace _Memoriam.Script.Enemies
                     if (Time.time - InitialAttackTimer > AttackTimeOut &&
                         Time.time - LastAttackTime > AttackTimeOut)
                     {
-                        Animator.SetTrigger(_attackHash);
+                        Animator.SetTrigger(AttackHash);
                         player.ReceiveDamage(Damage, transform.position);
                         LastAttackTime = Time.time;
                         return Node.Status.Success;
@@ -112,7 +112,7 @@ namespace _Memoriam.Script.Enemies
 
             if (distance < AttackDistance)
             {
-                Animator.SetFloat(_moveXHash, 0f);
+                Animator.SetFloat(MoveXHash, 0f);
                 return Node.Status.Success;
             }
 
@@ -140,7 +140,7 @@ namespace _Memoriam.Script.Enemies
                     _isFlipped = true;
                 }
 
-                Animator.SetFloat(_moveXHash, 1f);
+                Animator.SetFloat(MoveXHash, 1f);
             }
 
             WasChasing = true;
@@ -176,7 +176,7 @@ namespace _Memoriam.Script.Enemies
 
             if (distance < 1f)
             {
-                Animator.SetFloat(_moveXHash, 0f);
+                Animator.SetFloat(MoveXHash, 0f);
                 _waitTimer = WaitTimeAtPoint;
                 _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
                 return Node.Status.Running;
@@ -209,7 +209,7 @@ namespace _Memoriam.Script.Enemies
             }
 
             _returnToSpawnTimer = 0f;
-            Animator.SetFloat(_moveXHash, 1f);
+            Animator.SetFloat(MoveXHash, 1f);
             return Node.Status.Running;
         }
 

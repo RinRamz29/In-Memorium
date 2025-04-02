@@ -84,10 +84,12 @@ public class TankEnemy : BaseEnemy
             Animator.SetTrigger(DieHash);
             _behaviourTree = null;
 
+            /*
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForTanksEnemies, this.gameObject);
             }
+            */
         }
 
         private void OnDisable()

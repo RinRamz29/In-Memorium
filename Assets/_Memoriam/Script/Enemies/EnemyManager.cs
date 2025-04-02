@@ -12,11 +12,11 @@ namespace _Memoriam.Script.Enemies
     {
         [SerializeField] private List<EnemyToSpawn> enemiesToSpawn  = new List<EnemyToSpawn>();
         [SerializeField] private List<EnemyToSpawn> flyersToSpawn  = new List<EnemyToSpawn>();
-        [SerializeField] private List<EnemyToSpawn> tankEnemies  = new List<EnemyToSpawn>();
+        [SerializeField] private List<EnemyToSpawn> rangedEnemies  = new List<EnemyToSpawn>();
         [SerializeField] private EnemyToSpawn miniBoss = null;
         [SerializeField] public string idForBasicEnemies;
         [SerializeField] public string idForFlyerEnemies;
-        [SerializeField] public string idForTanksEnemies;
+        [SerializeField] public string idForRangedEnemies;
         [SerializeField] public string idForMiniBoss;
         
         [ContextMenu("Generate GUID for id")]
@@ -26,7 +26,7 @@ namespace _Memoriam.Script.Enemies
                 spawn.id = Guid.NewGuid().ToString();
             foreach (var flyer in flyersToSpawn)
                 flyer.id = Guid.NewGuid().ToString();
-            foreach (var tank in tankEnemies)
+            foreach (var tank in rangedEnemies)
                 tank.id = Guid.NewGuid().ToString();
             
             miniBoss.id = Guid.NewGuid().ToString();
@@ -58,18 +58,18 @@ namespace _Memoriam.Script.Enemies
                 }
             }
             
-            foreach (var tanks in tankEnemies)
+            foreach (var ranged in rangedEnemies)
             {
-                var enemy = ObjectPool.Instance.SpawnFromPool(idForTanksEnemies, tanks.spawnPoint.position,
-                    tanks.spawnPoint.rotation, newGame);
+                var enemy = ObjectPool.Instance.SpawnFromPool(idForRangedEnemies, ranged.spawnPoint.position,
+                    ranged.spawnPoint.rotation, newGame);
 
                 if (enemy.TryGetComponent(out BaseEnemy enemyBase))
                 {
-                    enemyBase.OffsetPoints = tanks.path;
-                    enemyBase.id = tanks.id;
+                    enemyBase.OffsetPoints = ranged.path;
+                    enemyBase.id = ranged.id;
                 }
             }
-            
+
             var enemyBoss = ObjectPool.Instance.SpawnFromPool(idForMiniBoss, miniBoss.spawnPoint.position, miniBoss.spawnPoint.rotation, newGame);
 
             if (enemyBoss.TryGetComponent<MiniBoss.MiniBoss>(out var boss))

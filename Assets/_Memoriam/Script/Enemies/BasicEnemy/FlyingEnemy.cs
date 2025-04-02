@@ -134,7 +134,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             // Update sprite facing and animation
             SpriteRenderer.flipX = direction.x < 0;
-            Animator.SetFloat(_moveXHash, Mathf.Abs(direction.x));
+            Animator.SetFloat(MoveXHash, Mathf.Abs(direction.x));
 
             if (distance < 0.5f)
             {
