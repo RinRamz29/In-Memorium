@@ -14,10 +14,13 @@ namespace _Memoriam.Script.General
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            playerUI.SetActive(false);
-            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
-            moreComingUI.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(selectedButton);
+            if (other.TryGetComponent<Player.Player>(out var player))
+            {
+                playerUI.SetActive(false);
+                GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+                moreComingUI.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(selectedButton);
+            }
         }
     }
 }
