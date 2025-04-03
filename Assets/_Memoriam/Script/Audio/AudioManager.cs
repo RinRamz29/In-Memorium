@@ -38,6 +38,10 @@ namespace TerrorConsole
         private void Start()
         {
             InitializeSFX();
+
+            float debugDB;
+            _sfxMixer.GetFloat("SFXVolume", out debugDB);
+            Debug.Log($"[DEBUG] SFXVolume actual en mixer: {debugDB}");
         }
 
         private void InitializeSFX()
@@ -115,6 +119,7 @@ namespace TerrorConsole
         public void SetSFXVolume(float newVolume)
         {
             newVolume = Mathf.Clamp(newVolume, 0f, 1f); // Asegura que el valor esté entre 0 y 1
+            SFXVolume = newVolume;
             float volumeDB = Mathf.Lerp(-80f, 0f, newVolume); // Convierte de un rango de 0-1 a -80dB (silencio) a 0dB (volumen máximo)
 
             _sfxMixer.SetFloat("SFXVolume", volumeDB); // Asigna el volumen en el Audio Mixer
