@@ -42660,11 +42660,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomIn
-      value: 4.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
@@ -42735,10 +42735,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2137213365}
     m_Modifications:
-    - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
-      propertyPath: zoomIn
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: cinemachineCamera
       value: 
@@ -86591,11 +86587,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomIn
-      value: 4.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
@@ -91019,11 +91015,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 2
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: cinemachineCamera
@@ -91782,19 +91778,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Size.x
-      value: 4.025797
+      value: 5.3769064
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Size.y
-      value: 0.6065165
+      value: 0.8040093
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Offset.x
-      value: -0.52281386
+      value: 0.15274096
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Offset.y
-      value: -0.31719857
+      value: -0.21846825
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomIn
@@ -91802,7 +91798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
@@ -104170,7 +104166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomIn
-      value: 4.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
@@ -106149,10 +106145,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2137213365}
     m_Modifications:
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
-      propertyPath: zoomIn
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: cinemachineCamera
       value: 
       objectReference: {fileID: 896082343}
@@ -107891,11 +107883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: cinemachineCamera
@@ -108557,7 +108549,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Size.x
-      value: 5.049754
+      value: 6.0246634
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Size.y
@@ -108565,7 +108557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Offset.x
-      value: -0.010835171
+      value: 0.47661948
       objectReference: {fileID: 0}
     - target: {fileID: 4364364930339706612, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: m_Offset.y
@@ -108577,7 +108569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomSpeed
@@ -108875,7 +108867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: cinemachineCamera
@@ -138544,7 +138536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomIn
-      value: 4.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6606104096099716499, guid: 84edb83f6b4ecd046b5e8523c122c9d1, type: 3}
       propertyPath: zoomOut

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
@@ -7,6 +8,7 @@ using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace _Memoriam.Script.Player
@@ -18,7 +20,7 @@ namespace _Memoriam.Script.Player
         [Header("Dependencies")]
         [field: SerializeField] public Animator Animator { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
-        [field: SerializeField] public AudioSource AudioSource { get; set; }
+        [field: SerializeField] public CinemachineCamera CineMachineCamera { get; set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; set; }
         [field: SerializeField] public Transform GroundCheck { get; set; }
         [field: SerializeField] public float GroundDistance { get; set; } = 0.1f;
@@ -206,7 +208,8 @@ namespace _Memoriam.Script.Player
             //Implement animation trigger
             this.transform.position = LastCheckPoint;
             Health = MaxHealth / 2;
-            OnHealthChanged.Invoke(Health / MaxHealth);            
+            OnHealthChanged.Invoke(Health / MaxHealth);
+            CineMachineCamera.Lens.OrthographicSize = 4f;
         }
         
         #region PowerUps

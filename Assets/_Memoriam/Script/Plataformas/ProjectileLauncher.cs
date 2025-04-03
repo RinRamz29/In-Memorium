@@ -26,7 +26,7 @@ namespace _Memoriam.Script.Plataformas
         {
             if (Time.time - _lastFireTime < 1f / fireRate) return;
             
-            GameObject projectileObj = ObjectPool.Instance.SpawnFromPool(projectilePoolId, firePoint.position, Quaternion.identity, false);
+            GameObject projectileObj = ObjectPool.Instance.SpawnFromPool(projectilePoolId, firePoint.position, Quaternion.identity, true);
             if (projectileObj.TryGetComponent<Projectile>(out var projectile))
             {
                 projectile.Direction = direction.normalized;
