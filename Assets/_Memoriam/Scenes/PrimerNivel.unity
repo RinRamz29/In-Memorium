@@ -47935,6 +47935,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 83, y: 64, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 11
+      m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 84, y: 64, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 11
+      m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 85, y: 64, z: 0}
     second:
       serializedVersion: 2
@@ -83469,7 +83489,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0af9ec86051c0b84fa12af2f1544603e, type: 2}
   - m_RefCount: 2056
     m_Data: {fileID: 11400000, guid: 8fab4bdc5ee354c4e8ef17f550807656, type: 2}
-  - m_RefCount: 59
+  - m_RefCount: 61
     m_Data: {fileID: 11400000, guid: 588195a5a176ac2419a661804dd82d21, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 038faf7edadc7c7488c8c1dc053ddefa, type: 2}
@@ -83556,7 +83576,7 @@ Tilemap:
     m_Data: {fileID: 3919842511363967868, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 2056
     m_Data: {fileID: -8394685579119890973, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 59
+  - m_RefCount: 61
     m_Data: {fileID: 3155726596349114720, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 8009086277340485293, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
@@ -83629,7 +83649,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -2939579795372664130, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 3933
+  - m_RefCount: 3935
     m_Data:
       e00: 1
       e01: 0
@@ -83648,7 +83668,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 3933
+  - m_RefCount: 3935
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -97895,7 +97915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3d1d16694dcc04a97f9c8da850b144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 896082343}
+  cinemachineCamera: {fileID: 0}
+  zoomIn: 2
+  zoomOut: 4
+  zoomSpeed: 1.5
 --- !u!1 &900059691
 GameObject:
   m_ObjectHideFlags: 0
