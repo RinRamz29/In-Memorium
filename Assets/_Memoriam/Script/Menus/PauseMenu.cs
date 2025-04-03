@@ -3,49 +3,40 @@ using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using TerrorConsole;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace _Memoriam.Script.Menus
 {
     public class PauseMenu : MonoBehaviour
     {
-        public GameObject pause;
-        public GameObject pauseMenu;
-        
+        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject firstButton;
+        [SerializeField] private GameObject playerUI;
         [SerializeField] private SceneDataBase sceneData;
-        
-        public void Resume()
+
+        private void OnEnable()
         {
-                AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
-                pauseMenu.SetActive(false);
-                pause.SetActive(false);
-                GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
-            
+            EventSystem.current.SetSelectedGameObject(firstButton);
+            playerUI.SetActive(false);
         }
 
-        public void Pause(InputAction.CallbackContext context)
+        public void Resume()
         {
-                
-                pauseMenu.SetActive(true);
-                pause.SetActive(true);
-                GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
-            
+            AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
+            pauseMenu.SetActive(false);
+            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+            playerUI.SetActive(true);
         }
 
         public async void Menu()
         {
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
-        
 
-        private void OnEnable()
+        public void Quit()
         {
-            InputReader.Instance.PlayerActions.Player.Pause.performed += Pause;
-        }
-
-        private void OnDisable()
-        {
-            InputReader.Instance.PlayerActions.Player.Pause.performed -= Pause;
+            Application.Quit();
         }
     }
 }

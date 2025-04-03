@@ -144258,62 +144258,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2899883643902070396}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Memoriam.Script.Menus.PauseMenu, DefMemoriam
-      objectReference: {fileID: 0}
-    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2899883643902070396}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Memoriam.Script.Menus.PauseMenu, DefMemoriam
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4959850765762276215, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -144351,17 +144295,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
---- !u!114 &2899883643902070396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5960654935969703469, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 2899883643902070395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078325000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb9ac1bfcfdd0e4fad8922371abffb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &2972519124845250390
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
