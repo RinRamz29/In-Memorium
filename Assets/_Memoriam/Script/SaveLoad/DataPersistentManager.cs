@@ -12,15 +12,14 @@ namespace _Memoriam.Script.SaveLoad
     {
         private GameData _gameData;
         private int _currentSlot = 1;
-        private List<ISaveableObject> _saveableObjects; 
-        private FileDataHandler _fileDataHandler;
-        public bool IsNewGame { get; set; }
+        private List<ISaveableObject> _saveableObjects;
+        public FileDataHandler FileDataHandler { get; private set; }
         
         protected override void Awake()
         {
             base.Awake();
             _saveableObjects = FindAllSaveableObjects();
-            _fileDataHandler = new FileDataHandler();
+            FileDataHandler = new FileDataHandler();
         }
 
         public void NewGame()
@@ -31,14 +30,14 @@ namespace _Memoriam.Script.SaveLoad
         public void LoadGame(int slot)
         {
             _currentSlot = slot;
-            _gameData = _fileDataHandler.LoadData(slot);
-            
-            if (_gameData == null)
-            {
-                Debug.LogError("No save data found");
-                NewGame();
-            }
 
+            if (FileDataHandler.DoesSaveExist(slot) == false)
+            {
+                return;
+            }
+            
+            _gameData = FileDataHandler.LoadData(slot);
+            
             var savesObjects = FindAllSaveableObjects();
             
             foreach (var savedObj in savesObjects)
@@ -57,7 +56,7 @@ namespace _Memoriam.Script.SaveLoad
                 savedObj.SaveData(ref _gameData);
             }
             
-            _fileDataHandler.SaveData(_gameData, slot);
+            FileDataHandler.SaveData(_gameData, slot);
         }
 
         private List<ISaveableObject> FindAllSaveableObjects()
@@ -69,7 +68,7 @@ namespace _Memoriam.Script.SaveLoad
 
         public bool DoesSaveExist(int slot)
         {
-            return _fileDataHandler.DoesSaveExist(slot);
+            return FileDataHandler.DoesSaveExist(slot);
         }
     }
 }

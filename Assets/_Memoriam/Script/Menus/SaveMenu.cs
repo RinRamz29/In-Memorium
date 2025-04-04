@@ -12,6 +12,8 @@ namespace _Memoriam.Script.Menus
         [SerializeField] private TMPro.TextMeshProUGUI[] slotTexts;
         [SerializeField] private GameObject firstToSelect;
         [SerializeField] private SceneDataBase sceneData;
+        [SerializeField] public GameObject errorCanva;
+        [SerializeField] public GameObject errorButton;
 
         private void OnEnable()
         {
@@ -36,11 +38,19 @@ namespace _Memoriam.Script.Menus
         
         public async void LoadGame(int slot)
         {
-            await Task.Delay(150);
-            AudioManager.Instance.PlayMusic("GameplayMusic");
-            GameLoader.newGame = false;
-            GameLoader.slotIndex = slot;
-            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
+            if (DataPersistentManager.Instance.FileDataHandler.DoesSaveExist(slot))
+            {
+                await Task.Delay(150);
+                AudioManager.Instance.PlayMusic("GameplayMusic");
+                GameLoader.newGame = false;
+                GameLoader.slotIndex = slot;
+                await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
+            }
+            else
+            {
+                errorCanva.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(errorButton);
+            }
         }
     }
 }
