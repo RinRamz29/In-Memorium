@@ -5,6 +5,7 @@ using _Memoriam.Script.SaveLoad;
 using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
 
@@ -14,8 +15,7 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
-        [SerializeField] private GameObject errorPopUp;
-        [SerializeField] private Button errorButton;
+        [SerializeField] private GameObject firstToSelect;
 
         public void PlayButtonHoverSFX()
         {
@@ -31,14 +31,14 @@ namespace _Memoriam.Script.Managers
         {
             base.Awake();
             InputReader.Instance.PlayerActions.UI.Enable();
+            AudioManager.Instance.PlayMusic("MainMenuMusic");
         }
 
         private void OnEnable()
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
-
-            AudioManager.Instance.PlayMusic("MainMenuMusic");
+            EventSystem.current.SetSelectedGameObject(firstToSelect);
         }
 
         public async void NewGame()

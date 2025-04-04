@@ -1,12 +1,11 @@
+using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace _Memoriam.Script.Audio
 {
-    public class AudioManager : MonoBehaviour, IAudioSource
+    public class AudioManager : Singleton<AudioManager>, IAudioSource
     {
-        public static AudioManager Instance { get; private set; }
-
         [SerializeField] private AudioSource _sfxAudioSource;
         [SerializeField] private AudioDatabase _audioDatabase;
         [SerializeField] private AudioMixer _sfxMixer;
@@ -19,17 +18,9 @@ namespace _Memoriam.Script.Audio
         private bool sfxMuted = false;
 
 
-        private void Awake()
+        protected override void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            base.Awake();
 
             SFXVolume = PlayerPrefs.HasKey("sfxVol") ? PlayerPrefs.GetFloat("sfxVol") : 1f;
         }
