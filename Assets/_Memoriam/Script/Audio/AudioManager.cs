@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Windows;
 
-namespace TerrorConsole
+namespace _Memoriam.Script.Audio
 {
     public class AudioManager : MonoBehaviour, IAudioSource
     {
@@ -75,7 +74,7 @@ namespace TerrorConsole
             PlayOneShotSFX("UIButtonClickSFX");
         }
 
-        //MODIFICACIÓN: Ahora este método es PÚBLICO para que pueda ser accedido desde otros scripts
+        //MODIFICACIï¿½N: Ahora este mï¿½todo es Pï¿½BLICO para que pueda ser accedido desde otros scripts
         public void PlayOneShotSFX(string audioName)
         {
             AudioData audioData = _audioDatabase.GetAudio(audioName);
@@ -114,11 +113,11 @@ namespace TerrorConsole
         /// <param name="newVolume"></param>
         public void SetSFXVolume(float newVolume)
         {
-            newVolume = Mathf.Clamp(newVolume, 0f, 1f); // Asegura que el valor esté entre 0 y 1
-            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume); // Convierte de un rango de 0-1 a -80dB (silencio) a 0dB (volumen máximo)
+            newVolume = Mathf.Clamp(newVolume, 0f, 1f); // Asegura que el valor estï¿½ entre 0 y 1
+            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume); // Convierte de un rango de 0-1 a -80dB (silencio) a 0dB (volumen mï¿½ximo)
 
             _sfxMixer.SetFloat("SFXVolume", volumeDB); // Asigna el volumen en el Audio Mixer
-            PlayerPrefs.SetFloat("sfxVol", newVolume); // Guarda el volumen para la próxima vez que se inicie el juego
+            PlayerPrefs.SetFloat("sfxVol", newVolume); // Guarda el volumen para la prï¿½xima vez que se inicie el juego
         }
 
         public void PlayMusic(string audioName)
@@ -127,11 +126,11 @@ namespace TerrorConsole
 
             if (audioData == null)
             {
-                Debug.LogWarning($"Música '{audioName}' no encontrada en el AudioDatabase.");
+                Debug.LogWarning($"Mï¿½sica '{audioName}' no encontrada en el AudioDatabase.");
                 return;
             }
 
-            Debug.Log($"[AUDIO] Cambiando música a: {audioName}");
+            Debug.Log($"[AUDIO] Cambiando mï¿½sica a: {audioName}");
 
             _musicAudioSource.Stop();
             _musicAudioSource.clip = audioData.AudioClip;

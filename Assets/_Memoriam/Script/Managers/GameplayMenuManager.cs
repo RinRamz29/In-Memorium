@@ -59,11 +59,6 @@ namespace _Memoriam.Script.Managers
             }
         }
 
-        public void Save()
-        {
-            DataPersistentManager.Instance.SaveGame();
-        }
-
         private void OnDisable()
         {
             InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;

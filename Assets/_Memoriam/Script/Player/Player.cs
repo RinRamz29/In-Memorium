@@ -302,5 +302,16 @@ namespace _Memoriam.Script.Player
             };
             data.player = player;
         }
+        
+                
+        private void OnDrawGizmosSelected()
+        {
+            // Draw attack ranges for debugging
+            if (WallCheck != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(WallCheck.transform.position, WallCheckDistance);
+            }
+        }
     }
 }

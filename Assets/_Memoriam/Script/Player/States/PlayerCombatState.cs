@@ -181,7 +181,7 @@ namespace _Memoriam.Script.Player.States
             else if (_player.IsTouchingWall && !_player.IsGrounded)
             {
                 var verticalVelocity = Mathf.Max(_player.Rigidbody2D.linearVelocity.y, -_player.WallSlideSpeed);
-                _player.Rigidbody2D.linearVelocity = new Vector2(0, verticalVelocity);
+                _player.Rigidbody2D.linearVelocity = new Vector2(_player.Movement.x, verticalVelocity);
                 
                 if ((_player.SpriteRenderer.flipX && _player.Movement.x > 0) ||
                     (!_player.SpriteRenderer.flipX && _player.Movement.x < 0))

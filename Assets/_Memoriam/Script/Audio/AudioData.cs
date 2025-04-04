@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TerrorConsole
+namespace _Memoriam.Script.Audio
 {
     [CreateAssetMenu(fileName = "AudioData", menuName = "ScriptableObjects/AudioData")]
 

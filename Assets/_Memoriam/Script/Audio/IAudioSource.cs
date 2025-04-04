@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace TerrorConsole
+namespace _Memoriam.Script.Audio
 {
     public interface IAudioSource
     {

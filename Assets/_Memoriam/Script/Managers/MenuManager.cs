@@ -2,8 +2,8 @@ using System;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
-using TerrorConsole;
 using System.Threading.Tasks;
+using _Memoriam.Script.Audio;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
@@ -45,15 +45,7 @@ namespace _Memoriam.Script.Managers
         {
             await Task.Delay(150);
             AudioManager.Instance.PlayMusic("GameplayMusic");
-            DataPersistentManager.Instance.IsNewGame = true;
-            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
-        }
-        
-        public async void LoadGame()
-        {
-            await Task.Delay(150);
-            AudioManager.Instance.PlayMusic("GameplayMusic");
-            DataPersistentManager.Instance.IsNewGame = false;
+            GameLoader.newGame = true;
             await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
         

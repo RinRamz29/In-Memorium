@@ -1,41 +1,46 @@
-using System;
-using _Memoriam.Script.InputLogic;
-using _Memoriam.Script.Player;
+using System.Threading.Tasks;
+using _Memoriam.Script.Audio;
+using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
-public class SaveMenu : MonoBehaviour
+namespace _Memoriam.Script.Menus
 {
-    public GameObject saveMenu;
-    InputAction saveAction;
-    
-
-    private void Start()
+    public class SaveMenu : MonoBehaviour
     {
-        saveAction = InputReader.Instance.PlayerActions.FindAction("SaveMenu");
-    }
+        [SerializeField] private TMPro.TextMeshProUGUI[] slotTexts;
+        [SerializeField] private GameObject firstToSelect;
+        [SerializeField] private SceneDataBase sceneData;
 
-
-    public void Save()
-    {
-        DataPersistentManager.Instance.SaveGame();
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        saveMenu.SetActive(false);
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.TryGetComponent<Player>(out var player))
+        private void OnEnable()
         {
-            if (saveAction.IsPressed())
+            UpdateSlotUI();
+            EventSystem.current.SetSelectedGameObject(firstToSelect);
+        }
+
+        private void UpdateSlotUI()
+        {
+            for (int i = 0; i < 3; i++)
             {
-                saveMenu.SetActive(true);
-                player.LastCheckPoint = transform.position;
+                if (DataPersistentManager.Instance.DoesSaveExist(i + 1))
+                {
+                    slotTexts[i].text = $"Save Slot {i + 1}\nExists";
+                }
+                else
+                {
+                    slotTexts[i].text = $"Save Slot {i + 1}\nEmpty";
+                }
             }
+        }
+        
+        public async void LoadGame(int slot)
+        {
+            await Task.Delay(150);
+            AudioManager.Instance.PlayMusic("GameplayMusic");
+            GameLoader.newGame = false;
+            GameLoader.slotIndex = slot;
+            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
         }
     }
 }

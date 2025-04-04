@@ -1,4 +1,5 @@
 using System;
+using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace _Memoriam.Script.Powerups
         [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
         [field: SerializeField] public string ID { get; private set; }
 
+        [SerializeField] private GameObject saveMenu;
+
         public void Pick(GameObject player)
         {
             if (player.TryGetComponent(out Player.Player playerController))
@@ -17,7 +20,8 @@ namespace _Memoriam.Script.Powerups
                 playerController.LastCheckPoint = transform.position;
             }
 
-            DataPersistentManager.Instance.SaveGame();
+            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+            saveMenu.SetActive(true);
             gameObject.SetActive(false);
         }
 
