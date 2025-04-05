@@ -10,6 +10,7 @@ using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Player
 {
@@ -27,9 +28,12 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public LayerMask GroundMask { get; set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; set; }
         [field: SerializeField] public GameObject SwordCollider { get; set; }
-        [field: SerializeField] public Transform WallCheck { get; set; }
+        [field: SerializeField] public Transform[] WallCheck { get; set; }
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
+        [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
+        [field: SerializeField] public Slider lightAttackBar { get; private set; }
+        [field: SerializeField] public Slider heavyAttackBar { get; private set; }
         public bool IsTouchingWall { get; set; }
 
         [Header("Stats")]
@@ -41,11 +45,16 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
+        [field: SerializeField] public float CameraHorizontalOffset  { get; private set; } = 3f;
+        [field: SerializeField] public float CameraFallYOffset  { get; private set; } = -2f;
+        [field: SerializeField] public float CameraJumpYOffset  { get; private set; } = 1.5f;
+        [field: SerializeField] public float CameraOffsetLerpSpeed  { get; private set; } = 5f;
 
         private bool isInvulnerable = false;
         private float invulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private float blinkInterval = 0.1f;
+
 
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
@@ -209,7 +218,7 @@ namespace _Memoriam.Script.Player
             this.transform.position = LastCheckPoint;
             Health = MaxHealth / 2;
             OnHealthChanged.Invoke(Health / MaxHealth);
-            CineMachineCamera.Lens.OrthographicSize = 4f;
+            CineMachineCamera.Lens.OrthographicSize = 6f;
         }
         
         #region PowerUps
@@ -301,17 +310,6 @@ namespace _Memoriam.Script.Player
                 health = Health,
             };
             data.player = player;
-        }
-        
-                
-        private void OnDrawGizmosSelected()
-        {
-            // Draw attack ranges for debugging
-            if (WallCheck != null)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(WallCheck.transform.position, WallCheckDistance);
-            }
         }
     }
 }
