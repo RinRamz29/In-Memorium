@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1465173353742932187}
-  - component: {fileID: 6352087045913186285}
+  - component: {fileID: 3232595578630962546}
   - component: {fileID: 6936911284584182044}
   - component: {fileID: 6540252712236085843}
   - component: {fileID: 6953529492705737273}
@@ -69,7 +69,7 @@ Transform:
   - {fileID: 5720688178118009281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6352087045913186285
+--- !u!114 &3232595578630962546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,15 +78,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5559703034287951607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a2b61610b82ea4ba2bcb1120304f17, type: 3}
+  m_Script: {fileID: 11500000, guid: fff177665ffa4e51946f12e6b770f814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <id>k__BackingField: 
   <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 150
   <Speed>k__BackingField: 5
-  <Damage>k__BackingField: 15
-  <AttackDistance>k__BackingField: 2
+  <Damage>k__BackingField: 0
+  <AttackDistance>k__BackingField: 1.5
   <WaitTimeAtPoint>k__BackingField: 2
   <AttackTimeOut>k__BackingField: 2
   <MovementThreshold>k__BackingField: 0.1
@@ -96,7 +96,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 3801244046312491248}
   <AttackPoint>k__BackingField: {fileID: 7122204583798220164}
   <DetectPoint>k__BackingField: {fileID: 3900861639517482836}
-  <DetectRadius>k__BackingField: {x: 10, y: 10}
+  <DetectRadius>k__BackingField: {x: 10, y: 2}
   <PlayerLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
@@ -106,15 +106,7 @@ MonoBehaviour:
   buffedDamageMultiplier: 1.5
   buffedSpeedMultiplier: 1.3
   globalAttackCooldown: 1.5
-  attack1Cooldown: 2
-  attack2Cooldown: 3
-  attack3Cooldown: 3.2
-  attack1Damage: 20
-  attack2Damage: 15
-  attack3Damage: 25
-  attack1Range: 2.5
-  attack2Range: 2.5
-  attack3Range: 7.33
+  attackData: {fileID: 11400000, guid: d940abba0164048468360b4c69db8c75, type: 2}
 --- !u!212 &6936911284584182044
 SpriteRenderer:
   m_ObjectHideFlags: 0

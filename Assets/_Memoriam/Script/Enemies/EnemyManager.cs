@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Memoriam.Script.Enemies.Bosses;
 using _Memoriam.Script.General;
 using UnityEngine;
 using UnityEngine.Scripting;
@@ -72,7 +73,7 @@ namespace _Memoriam.Script.Enemies
 
             var enemyBoss = ObjectPool.Instance.SpawnFromPool(idForMiniBoss, miniBoss.spawnPoint.position, miniBoss.spawnPoint.rotation, newGame);
 
-            if (enemyBoss.TryGetComponent<MiniBoss.MiniBoss>(out var boss))
+            if (enemyBoss.TryGetComponent<BossEnemy>(out var boss))
             {
                 boss.id = miniBoss.id;
             }

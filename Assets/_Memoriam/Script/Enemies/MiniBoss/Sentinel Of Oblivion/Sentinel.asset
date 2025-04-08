@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3daa2d03d95342b0a798f2c92f60040b, type: 3}
+  m_Name: Sentinel
+  m_EditorClassIdentifier: 
+  attacks:
+  - name: Spectral Slam
+    damage: 10
+    cooldown: 4.5
+    range: 3.5
+    width: 0
+    type: 0
+    animationTrigger: Attack2
+    attackSfx: {fileID: 8300000, guid: 0fbea40fdecd4cf4cb6920b7d97334ea, type: 3}
+    effectPrefab: {fileID: 0}
+  - name: Shadow Cleave
+    damage: 18
+    cooldown: 6.5
+    range: 5
+    width: 1.2
+    type: 1
+    animationTrigger: Attack1
+    attackSfx: {fileID: 8300000, guid: 0fbea40fdecd4cf4cb6920b7d97334ea, type: 3}
+    effectPrefab: {fileID: 0}

@@ -18,6 +18,8 @@ namespace _Memoriam.Script.Powerups
     {
         DoubleJump,
         Dash,
+        ShadowForm, 
+        Grapple,
         CheckPoint,
         HealthPotion,
     }

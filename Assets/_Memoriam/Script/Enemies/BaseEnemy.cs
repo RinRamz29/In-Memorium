@@ -113,6 +113,7 @@ namespace _Memoriam.Script.Enemies
             if (distance < AttackDistance)
             {
                 Animator.SetFloat(MoveXHash, 0f);
+                IsInAttackRange = true;
                 return Node.Status.Success;
             }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.Serlalization.Serialization_Types;
 using NUnit.Framework;
@@ -23,6 +24,7 @@ namespace _Memoriam.Script.SaveLoad.Data
         public bool canDoubleJump;
         public bool canDash;
         public float health;
+        public PlayerAbilities abilities;
     }
 
     [Serializable]

@@ -10,14 +10,49 @@ using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Memoriam.Script.Player
 {
+    #region Abilities
+
+    public enum AbilityType
+    {
+        Dash,
+        DoubleJump,
+        ShadowForm,
+        Grapple
+    }
+
+    [Serializable]
+    public class PlayerAbilities
+    {
+        public bool hasDash;
+        public bool hasDoubleJump;
+        public bool hasShadowForm;
+        public bool hasGrapple;
+
+        public bool HasUnlocked(AbilityType type)
+        {
+            return type switch
+            {
+                AbilityType.Dash => hasDash,
+                AbilityType.DoubleJump => hasDoubleJump,
+                AbilityType.ShadowForm => hasShadowForm,
+                AbilityType.Grapple => hasGrapple,
+                _ => false
+            };
+        }
+    }
+
+    #endregion
+
     public class Player : MonoBehaviour, IPlayer, ISaveableObject
     {
+        public PlayerAbilities abilities = new PlayerAbilities();
         public StateMachineBase StateMachine { get; private set; } = new();
-        
+
         [Header("Dependencies")]
         [field: SerializeField] public Animator Animator { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
@@ -45,15 +80,15 @@ namespace _Memoriam.Script.Player
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         [field: SerializeField] public float LighAttackStamina { get; private set; } = 25f;
         [field: SerializeField] public float HeavyAttackStamina { get; private set; } = 35f;
-        [field: SerializeField] public float CameraHorizontalOffset  { get; private set; } = 3f;
-        [field: SerializeField] public float CameraFallYOffset  { get; private set; } = -2f;
-        [field: SerializeField] public float CameraJumpYOffset  { get; private set; } = 1.5f;
-        [field: SerializeField] public float CameraOffsetLerpSpeed  { get; private set; } = 5f;
+        [field: SerializeField] public float CameraHorizontalOffset { get; private set; } = 3f;
+        [field: SerializeField] public float CameraFallYOffset { get; private set; } = -2f;
+        [field: SerializeField] public float CameraJumpYOffset { get; private set; } = 1.5f;
+        [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
 
-        private bool isInvulnerable = false;
-        private float invulnerabilityTime = 1.5f;
+        private bool _isInvulnerable = false;
+        private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
-        private float blinkInterval = 0.1f;
+        private const float BlinkInterval = 0.1f;
 
 
         //Delegates
@@ -76,41 +111,25 @@ namespace _Memoriam.Script.Player
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
-        
-        // PowerUps
-        public bool CanDoubleJump { get; set; }
-        public bool DoubleJumpPickedUp { get; set; }
-        public bool CanDash { get; set; }
-        public bool DashPickedUp { get; set; }
-        
-        // Combo tracking
-        public bool IsAttacking { get; set; }
-        public bool ComboInputReceived { get; set; }
-        public bool ChargedInputReceived { get; set; }
-        public AttackType CurrentAttackType { get; set; }
-        public bool ComboWindowOpen { get; set; }
-        
+
         // Animation hashes
         public int LightAttackHash { get; } = Animator.StringToHash("Light");
         public int HeavyAttackHash { get; } = Animator.StringToHash("Heavy");
-        public int Combo1AttackHash { get;  } = Animator.StringToHash("Combo1");
+        public int Combo1AttackHash { get; } = Animator.StringToHash("Combo1");
         public int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
         public int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
         public int ChargedHeavyTriggeredHash { get; } = Animator.StringToHash("ChargedHeavyTrigger");
         public int ChargedTriggeredHash { get; } = Animator.StringToHash("ChargedTriggered");
-        public int SpeedXHash  { get; } = Animator.StringToHash("SpeedX");
-        public int SpeedYHash  { get; } = Animator.StringToHash("SpeedY");
-        
+        public int SpeedXHash { get; } = Animator.StringToHash("SpeedX");
+        public int SpeedYHash { get; } = Animator.StringToHash("SpeedY");
+
         // Movement parameters
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
-        
-        // Health/Dying logic
-        public Vector3 LastCheckPoint { get; set; }
-        public static Action<float> OnHealthChanged { get; set; }
-        public static Action<float> OnStaminaChanged { get; set; }
-        public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
-        
+
+
+        #region UnityFlow
+
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
@@ -131,9 +150,9 @@ namespace _Memoriam.Script.Player
         {
             if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
-            
+
             StateMachine?.Tick();
-            
+
             if (Health <= 0)
             {
                 Die();
@@ -149,13 +168,24 @@ namespace _Memoriam.Script.Player
         {
             if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
                 return;
-                
+
             StateMachine?.FixedTick();
         }
 
+
+        #endregion
+
+        #region HealDamageLogic
+
+        // Health/Dying logic
+        public Vector3 LastCheckPoint { get; set; }
+        public static Action<float> OnHealthChanged { get; set; }
+        public static Action<float> OnStaminaChanged { get; set; }
+        public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
+
         public void ReceiveDamage(float damage, Vector2 damageSource)
         {
-            if (isInvulnerable || Health <= 0) return;
+            if (_isInvulnerable || Health <= 0) return;
 
             Health -= damage;
             OnHealthChanged?.Invoke(Health / MaxHealth);
@@ -172,7 +202,7 @@ namespace _Memoriam.Script.Player
 
         private IEnumerator KnockbackAndInvulnerability(Vector2 damageSource)
         {
-            isInvulnerable = true;
+            _isInvulnerable = true;
 
             //Calculate the knockback
             Vector2 knockbackDirection = ((Vector2)transform.position - damageSource).normalized;
@@ -187,18 +217,19 @@ namespace _Memoriam.Script.Player
             StartCoroutine(BlinkEffect());
 
             //Invulnerability time
-            yield return new WaitForSeconds(invulnerabilityTime);
+            yield return new WaitForSeconds(InvulnerabilityTime);
 
-            isInvulnerable = false;
+            _isInvulnerable = false;
         }
 
         private IEnumerator BlinkEffect()
         {
-            while (isInvulnerable)
+            while (_isInvulnerable)
             {
                 SpriteRenderer.enabled = !SpriteRenderer.enabled;
-                yield return new WaitForSeconds(blinkInterval);
+                yield return new WaitForSeconds(BlinkInterval);
             }
+
             SpriteRenderer.enabled = true;
         }
 
@@ -209,7 +240,7 @@ namespace _Memoriam.Script.Player
             else
                 Health += heal;
 
-            var clampedHealth = Health / MaxHealth;            
+            var clampedHealth = Health / MaxHealth;
             OnHealthChanged?.Invoke(clampedHealth);
         }
 
@@ -222,39 +253,28 @@ namespace _Memoriam.Script.Player
             OnHealthChanged.Invoke(Health / MaxHealth);
             CineMachineCamera.Lens.OrthographicSize = 6f;
         }
-        
-        #region PowerUps
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.TryGetComponent<IPickable>(out var pickUp))
-            {
-                switch (pickUp.TypeOfPickable)
-                {
-                    case TypeOfPickable.Dash:
-                        DashPickedUp = true;
-                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Dash);
-                        pickUp.Pick(this.gameObject);
-                        break;
-                    case TypeOfPickable.DoubleJump:
-                        DoubleJumpPickedUp = true;
-                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.DoubleJump);
-                        pickUp.Pick(this.gameObject);
-                        break;
-                    case TypeOfPickable.CheckPoint:
-                    case TypeOfPickable.HealthPotion:
-                        pickUp.Pick(this.gameObject);
-                        break;
-                }
-            }
-        }
-        
+
         #endregion
 
         #region CombosLogic
-        
+
+        // Combo tracking
+        public bool IsAttacking { get; set; }
+        public bool ComboInputReceived { get; set; }
+        public bool ChargedInputReceived { get; set; }
+        public AttackType CurrentAttackType { get; set; }
+        public bool ComboWindowOpen { get; set; }
         public float CurrentSwingDamage { get; private set; }
-        
-        public enum AttackStrength { Light, Heavy, ChargedHeavy, ChargedLight, ComboLight, ComboHeavy }
+
+        public enum AttackStrength
+        {
+            Light,
+            Heavy,
+            ChargedHeavy,
+            ChargedLight,
+            ComboLight,
+            ComboHeavy
+        }
 
         public void SetAttack(AttackStrength type)
         {
@@ -280,12 +300,12 @@ namespace _Memoriam.Script.Player
                     break;
             }
         }
-        
+
         public void OpenComboWindow()
         {
             ComboWindowOpen = true;
         }
-        
+
         public void EnableSwordCollider()
         {
             SwordCollider.SetActive(true);
@@ -312,10 +332,10 @@ namespace _Memoriam.Script.Player
         {
             IsAttacking = false;
             ComboInputReceived = false;
-            ComboWindowOpen  = false;
+            ComboWindowOpen = false;
             CurrentAttackType = AttackType.None;
-            
-            
+
+
             Animator.SetBool(HeavyAttackHash, false);
             Animator.SetBool(LightAttackHash, false);
         }
@@ -324,7 +344,7 @@ namespace _Memoriam.Script.Player
         {
             IsAttacking = false;
             CurrentAttackType = AttackType.None;
-            
+
             Animator.SetBool(ComboTriggeredHash, false);
         }
 
@@ -334,14 +354,71 @@ namespace _Memoriam.Script.Player
             Light,
             Heavy
         }
+
         #endregion
+
+        #region PowerUpsLogic
+        
+        public void UnlockAbility(AbilityType type)
+        {
+            switch (type)
+            {
+                case AbilityType.Dash:
+                    abilities.hasDash = true;
+                    break;
+                case AbilityType.DoubleJump:
+                    abilities.hasDoubleJump = true;
+                    break;
+                case AbilityType.ShadowForm:
+                    abilities.hasShadowForm = true;
+                    break;
+                case AbilityType.Grapple:
+                    abilities.hasGrapple = true;
+                    break;
+            }
+
+            OnPowerUpPickedUp?.Invoke((TypeOfPickable)type);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<IPickable>(out var pickUp))
+            {
+                switch (pickUp.TypeOfPickable)
+                {
+                    case TypeOfPickable.Dash:
+                        UnlockAbility(AbilityType.Dash);
+                        pickUp.Pick(this.gameObject);
+                        break;
+                    case TypeOfPickable.DoubleJump:
+                        UnlockAbility(AbilityType.DoubleJump);
+                        pickUp.Pick(this.gameObject);
+                        break;
+                    case TypeOfPickable.Grapple:
+                        UnlockAbility(AbilityType.Grapple);
+                        pickUp.Pick(this.gameObject);
+                        break;
+                    case TypeOfPickable.ShadowForm:
+                        UnlockAbility(AbilityType.ShadowForm);
+                        pickUp.Pick(this.gameObject);
+                        break;
+                    case TypeOfPickable.CheckPoint:
+                    case TypeOfPickable.HealthPotion:
+                        pickUp.Pick(this.gameObject);
+                        break;
+                }
+            }
+        }
+
+        #endregion
+
+        #region SaveLoadLogic
 
         public void LoadData(GameData data)
         {
             transform.position = data.player.position;
             LastCheckPoint = data.player.position;
-            DashPickedUp = data.player.canDash;
-            DoubleJumpPickedUp = data.player.canDoubleJump;
+            abilities = data.player.abilities;
             Health = data.player.health;
             OnHealthChanged?.Invoke(Health);
         }
@@ -351,12 +428,13 @@ namespace _Memoriam.Script.Player
             var player = new SavablePlayer()
             {
                 position = transform.position,
-                canDash = DashPickedUp,
                 lastCheckpoint = LastCheckPoint,
-                canDoubleJump = DoubleJumpPickedUp,
+                abilities = abilities,
                 health = Health,
             };
             data.player = player;
         }
+
+        #endregion
     }
 }
