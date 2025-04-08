@@ -11,15 +11,15 @@ namespace _Memoriam.Script.SaveLoad
     public class DataPersistentManager : Singleton<DataPersistentManager>
     {
         private GameData _gameData;
-        private List<ISaveableObject> _saveableObjects; 
-        private FileDataHandler _fileDataHandler;
-        public bool IsNewGame { get; set; }
+        private int _currentSlot = 1;
+        private List<ISaveableObject> _saveableObjects;
+        public FileDataHandler FileDataHandler { get; private set; }
         
         protected override void Awake()
         {
             base.Awake();
             _saveableObjects = FindAllSaveableObjects();
-            _fileDataHandler = new FileDataHandler();
+            FileDataHandler = new FileDataHandler();
         }
 
         public void NewGame()
@@ -27,16 +27,17 @@ namespace _Memoriam.Script.SaveLoad
             _gameData = new GameData();
         }
 
-        public void LoadGame()
+        public void LoadGame(int slot)
         {
-            _gameData = _fileDataHandler.LoadData();
-            
-            if (_gameData == null)
-            {
-                Debug.LogError("No save data found");
-                NewGame();
-            }
+            _currentSlot = slot;
 
+            if (FileDataHandler.DoesSaveExist(slot) == false)
+            {
+                return;
+            }
+            
+            _gameData = FileDataHandler.LoadData(slot);
+            
             var savesObjects = FindAllSaveableObjects();
             
             foreach (var savedObj in savesObjects)
@@ -45,8 +46,9 @@ namespace _Memoriam.Script.SaveLoad
             }
         }
         
-        public void SaveGame()
+        public void SaveGame(int slot)
         {
+            _currentSlot = slot;
             _saveableObjects = FindAllSaveableObjects();
             
             foreach (var savedObj in _saveableObjects)
@@ -54,7 +56,7 @@ namespace _Memoriam.Script.SaveLoad
                 savedObj.SaveData(ref _gameData);
             }
             
-            _fileDataHandler.SaveData(_gameData);
+            FileDataHandler.SaveData(_gameData, slot);
         }
 
         private List<ISaveableObject> FindAllSaveableObjects()
@@ -62,6 +64,11 @@ namespace _Memoriam.Script.SaveLoad
             var saveableObjects = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<ISaveableObject>();
             
             return saveableObjects.ToList();
+        }
+
+        public bool DoesSaveExist(int slot)
+        {
+            return FileDataHandler.DoesSaveExist(slot);
         }
     }
 }

@@ -1,14 +1,17 @@
-using TerrorConsole;
+using _Memoriam.Script.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHoverSound : MonoBehaviour, ISelectHandler
+namespace _Memoriam.Script.InputLogic
 {
-    public void OnSelect(BaseEventData eventData)
+    public class ButtonHoverSound : MonoBehaviour, ISelectHandler
     {
-        if (AudioManager.Instance != null)
+        public void OnSelect(BaseEventData eventData)
         {
-            AudioManager.Instance.PlayOneShotSFX("ButtonHoverSFX");
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayOneShotSFX("UIButtonHoverSFX");
+            }
         }
     }
 }

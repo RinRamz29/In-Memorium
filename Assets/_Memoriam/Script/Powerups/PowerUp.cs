@@ -22,10 +22,6 @@ namespace _Memoriam.Script.Powerups
                     case TypeOfPickable.Dash:
                         playerPlayer.CanDash = true;
                         break;
-                    case TypeOfPickable.CheckPoint:
-                        playerPlayer.LastCheckPoint = transform.position;
-                        DataPersistentManager.Instance.SaveGame();
-                        break;
                     case TypeOfPickable.DoubleJump:
                         playerPlayer.CanDoubleJump = true;
                         break;

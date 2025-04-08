@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8549841013516257099
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 751294390469502471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.63965, y: 6.7468233, z: -0.07022335}
+  m_LocalPosition: {x: 8.82, y: -3.252, z: -0.09480448}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65,7 +65,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 1859171563268027707}
   <AttackPoint>k__BackingField: {fileID: 1955100505581822587}
   <DetectPoint>k__BackingField: {fileID: 7219848484933043965}
-  <DetectRadius>k__BackingField: {x: 10, y: 10}
+  <DetectRadius>k__BackingField: {x: 8, y: 8}
   <PlayerLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
@@ -147,7 +147,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -212,7 +212,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

@@ -30,6 +30,7 @@ namespace _Memoriam.Script.SaveLoad.Data
     {
         public bool canDoubleJump;
         public bool canDash;
+        public float health;
     }
     
     [Serializable]

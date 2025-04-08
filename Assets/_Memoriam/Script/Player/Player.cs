@@ -10,6 +10,7 @@ using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Player
 {
@@ -27,25 +28,33 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public LayerMask GroundMask { get; set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; set; }
         [field: SerializeField] public GameObject SwordCollider { get; set; }
-        [field: SerializeField] public Transform WallCheck { get; set; }
+        [field: SerializeField] public Transform[] WallCheck { get; set; }
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
+        [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
         public bool IsTouchingWall { get; set; }
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
-        [field: SerializeField] public float Stamina { get; private set; }
+        [field: SerializeField] public float Stamina { get; set; }
         [field: SerializeField] public float MaxStamina { get; private set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
+        [field: SerializeField] public float LighAttackStamina { get; private set; } = 25f;
+        [field: SerializeField] public float HeavyAttackStamina { get; private set; } = 35f;
+        [field: SerializeField] public float CameraHorizontalOffset  { get; private set; } = 3f;
+        [field: SerializeField] public float CameraFallYOffset  { get; private set; } = -2f;
+        [field: SerializeField] public float CameraJumpYOffset  { get; private set; } = 1.5f;
+        [field: SerializeField] public float CameraOffsetLerpSpeed  { get; private set; } = 5f;
 
         private bool isInvulnerable = false;
         private float invulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private float blinkInterval = 0.1f;
+
 
         //Delegates
         private void OnStateChanged(GameStateManager.GameState state)
@@ -99,6 +108,7 @@ namespace _Memoriam.Script.Player
         // Health/Dying logic
         public Vector3 LastCheckPoint { get; set; }
         public static Action<float> OnHealthChanged { get; set; }
+        public static Action<float> OnStaminaChanged { get; set; }
         public static Action<TypeOfPickable> OnPowerUpPickedUp { get; set; }
         
         private void Awake()
@@ -114,6 +124,7 @@ namespace _Memoriam.Script.Player
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             OnHealthChanged?.Invoke(Health);
+            OnStaminaChanged?.Invoke(Stamina);
         }
 
         private void Update()
@@ -209,7 +220,7 @@ namespace _Memoriam.Script.Player
             this.transform.position = LastCheckPoint;
             Health = MaxHealth / 2;
             OnHealthChanged.Invoke(Health / MaxHealth);
-            CineMachineCamera.Lens.OrthographicSize = 4f;
+            CineMachineCamera.Lens.OrthographicSize = 6f;
         }
         
         #region PowerUps
@@ -240,9 +251,54 @@ namespace _Memoriam.Script.Player
         #endregion
 
         #region CombosLogic
+        
+        public float CurrentSwingDamage { get; private set; }
+        
+        public enum AttackStrength { Light, Heavy, ChargedHeavy, ChargedLight, ComboLight, ComboHeavy }
+
+        public void SetAttack(AttackStrength type)
+        {
+            switch (type)
+            {
+                case AttackStrength.Light:
+                    CurrentSwingDamage = Damage * 1.0f;
+                    break;
+                case AttackStrength.Heavy:
+                    CurrentSwingDamage = Damage * 1.5f;
+                    break;
+                case AttackStrength.ChargedHeavy:
+                    CurrentSwingDamage = Damage * 2.5f;
+                    break;
+                case AttackStrength.ChargedLight:
+                    CurrentSwingDamage = Damage * 1.7f;
+                    break;
+                case AttackStrength.ComboLight:
+                    CurrentSwingDamage = Damage * 1.5f;
+                    break;
+                case AttackStrength.ComboHeavy:
+                    CurrentSwingDamage = Damage * 2.0f;
+                    break;
+            }
+        }
+        
         public void OpenComboWindow()
         {
             ComboWindowOpen = true;
+        }
+        
+        public void EnableSwordCollider()
+        {
+            SwordCollider.SetActive(true);
+
+            if (SwordCollider.TryGetComponent<SwordCollider>(out var logic))
+            {
+                logic.SetData(CurrentSwingDamage);
+            }
+        }
+
+        public void DisableSwordCollider()
+        {
+            SwordCollider.SetActive(false);
         }
 
         public void CloseComboWindow()

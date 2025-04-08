@@ -1,10 +1,10 @@
+using System;
 using UnityEngine;
 
-namespace TerrorConsole
+namespace _Memoriam.Script.Audio
 {
-    [CreateAssetMenu(fileName = "AudioData", menuName = "ScriptableObjects/AudioData")]
-
-    public class AudioData : ScriptableObject
+    [Serializable]
+    public class AudioData
     {
         public string AudioName;
         public AudioClip AudioClip;

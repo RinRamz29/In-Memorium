@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
@@ -14,14 +11,22 @@ namespace _Memoriam.Script.Player.States
     public class PlayerCombatState : IState
     {
         private Player _player;
-        private float _damage;
         private bool _isFlipped;
         private Vector2 _direction;
 
         private bool _isDashing;
         private float _dashCooldown;
         private const float AirControlMultiplier = 0.75f;
-        private const float WallPushForce = 3f;
+
+
+        private float _lastStaminaUseTime = -Mathf.Infinity;
+        private float _staminaRegenDelay = 2f; // seconds after last use
+        private float _staminaRegenRate = 15f; // stamina per second
+        
+
+        private Vector2 _currentVelocity = Vector2.zero;
+        private Vector3 _targetOffset;
+        
 
         public PlayerCombatState(Player player)
         {
@@ -34,13 +39,13 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.LightAttack.performed += LightAttack;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
             InputReader.Instance.PlayerActions.Player.Dash.performed += Dash;
-            InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed += _ => _player.ChargedInputReceived = true;
-            InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed += _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed +=
+                _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed +=
+                _ => _player.ChargedInputReceived = true;
             InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
-
-            _damage = _player.Damage;
         }
 
         public void Exit()
@@ -65,8 +70,15 @@ namespace _Memoriam.Script.Player.States
                 ExecuteCombo();
             }
             else if (_player.ChargedInputReceived && _player.ComboWindowOpen)
-            { 
+            {
                 ExecuteChargedAttack();
+            }
+            
+            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > _staminaRegenDelay)
+            {
+                _player.Stamina += _staminaRegenRate * Time.deltaTime;
+                _player.Stamina = Mathf.Clamp(_player.Stamina, 0, _player.MaxStamina);
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
             }
         }
 
@@ -77,16 +89,22 @@ namespace _Memoriam.Script.Player.States
 
         private void LightAttack(InputAction.CallbackContext context)
         {
-            if (!context.performed ||
-                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed)
                 return;
+
+            if (_player.Stamina < _player.LighAttackStamina)
+            {
+                return;
+            }
 
             if (!_player.IsAttacking)
             {
-                // First light attack
                 _player.IsAttacking = true;
-                _damage = _player.Damage * 1f;
-                _player.CurrentAttackType = Player.AttackType.Light;
+                _player.SetAttack(Player.AttackStrength.Light);
+
+                _player.Stamina -= _player.LighAttackStamina;
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
+                _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.LightAttackHash, true);
             }
@@ -94,20 +112,28 @@ namespace _Memoriam.Script.Player.States
 
         private void HeavyAttack(InputAction.CallbackContext context)
         {
-            if (!context.performed ||
-                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (!context.performed)
                 return;
+
+            if (_player.Stamina < _player.HeavyAttackStamina)
+            {
+                return;
+            }
 
             if (!_player.IsAttacking)
             {
-                // First heavy attack
                 _player.IsAttacking = true;
-                _damage = _player.Damage * 1.5f;
+                _player.SetAttack(Player.AttackStrength.Heavy);
                 _player.CurrentAttackType = Player.AttackType.Heavy;
+
+                _player.Stamina -= _player.HeavyAttackStamina;
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
+                _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.HeavyAttackHash, true);
             }
         }
+
 
         private void ExecuteChargedAttack()
         {
@@ -116,19 +142,19 @@ namespace _Memoriam.Script.Player.States
 
             _player.ChargedInputReceived = false;
             _player.ComboWindowOpen = false;
-            
+
             CheckForSwordCollisions();
             _player.Animator.SetBool(_player.ComboTriggeredHash, true);
 
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
-                _damage = _player.Damage * 1.6f;
+                _player.SetAttack(Player.AttackStrength.ChargedLight);
                 _player.Animator.SetBool(_player.LightAttackHash, false);
                 _player.Animator.SetTrigger(_player.ChargedTriggeredHash);
             }
             else if (_player.CurrentAttackType == Player.AttackType.Heavy)
             {
-                _damage = _player.Damage * 2f;
+                _player.SetAttack(Player.AttackStrength.ChargedHeavy);
                 _player.Animator.SetBool(_player.HeavyAttackHash, false);
                 _player.Animator.SetTrigger(_player.ChargedHeavyTriggeredHash);
             }
@@ -147,13 +173,13 @@ namespace _Memoriam.Script.Player.States
 
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
-                _damage = _player.Damage * 1.4f;
+                _player.SetAttack(Player.AttackStrength.ComboLight);
                 _player.Animator.SetBool(_player.LightAttackHash, false);
                 _player.Animator.SetTrigger(_player.Combo1AttackHash);
             }
             else if (_player.CurrentAttackType == Player.AttackType.Heavy)
             {
-                _damage = _player.Damage * 1.7f;
+                _player.SetAttack(Player.AttackStrength.ComboHeavy);
                 _player.Animator.SetBool(_player.HeavyAttackHash, false);
                 _player.Animator.SetTrigger(_player.Combo2AttackHash);
             }
@@ -165,51 +191,60 @@ namespace _Memoriam.Script.Player.States
 
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
-            
-            _player.IsTouchingWall = Physics2D.OverlapCircle(
-                _player.WallCheck.position,
-                _player.WallCheckDistance,
-                _player.GroundMask
-            );
-            
+            _player.IsTouchingWall = false;
+
+            foreach (var check in _player.WallCheck)
+            {
+                var direction = _isFlipped ? Vector2.left : Vector2.right;
+                var hit = Physics2D.Raycast(check.position, direction, _player.WallCheckDistance, _player.GroundMask);
+                Debug.DrawRay(check.position, direction * _player.WallCheckDistance, Color.red);
+
+                if (hit.collider != null)
+                {
+                    _player.IsTouchingWall = true;
+
+                    if (!_player.IsGrounded || _player.Rigidbody2D.linearVelocity.y > 0)
+                        _player.IsGrounded = false;
+
+                    break;
+                }
+            }
+
+            float targetSpeedX = _player.Movement.x * _player.Speed;
+            float smoothedX =
+                Mathf.SmoothDamp(_player.Rigidbody2D.linearVelocity.x, targetSpeedX, ref _currentVelocity.x, 0.1f);
+            float verticalSpeed = _player.Rigidbody2D.linearVelocity.y;
+
             if (_player.IsGrounded)
             {
-                _player.Rigidbody2D.linearVelocity =
-                    new Vector2(_player.Movement.x * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
-                _player.Animator.SetFloat(_player.SpeedXHash, _player.Movement.x);
+                _player.Rigidbody2D.linearVelocity = new Vector2(smoothedX, verticalSpeed);
+                _player.Animator.SetFloat(_player.SpeedXHash, Mathf.Abs(_player.Movement.x));
             }
             else if (_player.IsTouchingWall && !_player.IsGrounded)
             {
-                var verticalVelocity = Mathf.Max(_player.Rigidbody2D.linearVelocity.y, -_player.WallSlideSpeed);
-                _player.Rigidbody2D.linearVelocity = new Vector2(0, verticalVelocity);
-                
-                if ((_player.SpriteRenderer.flipX && _player.Movement.x > 0) ||
-                    (!_player.SpriteRenderer.flipX && _player.Movement.x < 0))
-                {
-                    _player.Rigidbody2D.AddForce(new Vector2(_player.Movement.x * WallPushForce, 0), ForceMode2D.Impulse);
-                }
+                verticalSpeed = Mathf.Max(_player.Rigidbody2D.linearVelocity.y, -_player.WallSlideSpeed);
+                _player.Rigidbody2D.linearVelocity = new Vector2(0f, verticalSpeed);
             }
             else
             {
-                _player.Rigidbody2D.linearVelocity =
-                    new Vector2((_player.Movement.x * AirControlMultiplier) * _player.Speed, _player.Rigidbody2D.linearVelocity.y);
+                float airSpeedX = Mathf.SmoothDamp(_player.Rigidbody2D.linearVelocity.x,
+                    _player.Movement.x * AirControlMultiplier * _player.Speed, ref _currentVelocity.x, 0.15f);
+                _player.Rigidbody2D.linearVelocity = new Vector2(airSpeedX, verticalSpeed);
                 _player.Animator.SetFloat(_player.SpeedXHash, 0);
             }
-            
+
             if (_isDashing)
             {
                 _player.Rigidbody2D.linearVelocity =
-                    new Vector2(_player.Rigidbody2D.linearVelocity.y, _player.Rigidbody2D.linearVelocity.y);
+                    new Vector2(_player.Rigidbody2D.linearVelocity.x, _player.Rigidbody2D.linearVelocity.y);
                 _direction = _isFlipped ? Vector2.left : Vector2.right;
                 _player.Rigidbody2D.AddForce(_direction * _player.DashForce, ForceMode2D.Impulse);
 
-                switch (_direction.x)
+                if ((_direction.x < -0.1f && _player.Movement.x > 0.1f) ||
+                    (_direction.x > 0.1f && _player.Movement.x < -0.1f))
                 {
-                    case < -0.1f when _player.Movement.x > 0.1f:
-                    case > 0.1f when _player.Movement.x < -0.1f:
-                        _isDashing = false;
-                        _player.CanDash = false;
-                        break;
+                    _isDashing = false;
+                    _player.CanDash = false;
                 }
 
                 _dashCooldown -= Time.deltaTime;
@@ -220,48 +255,64 @@ namespace _Memoriam.Script.Player.States
                 }
             }
 
-            if (!_player.CanDoubleJump)
+            if (!_player.CanDoubleJump && _player.IsGrounded && _player.DoubleJumpPickedUp)
             {
-                if (_player.IsGrounded && _player.DoubleJumpPickedUp)
-                {
-                    _player.CanDoubleJump = true;
-                }
-            }
-            
-            if (!_player.CanDash)
-            {
-                if (_player.IsGrounded && _player.DashPickedUp)
-                {
-                    _player.CanDash = true;
-                }
-            }
-            
-
-            switch (_player.Movement.normalized.x)
-            {
-                case > 0.1f:
-                    _player.SpriteRenderer.flipX = false;
-                    _isFlipped = false;
-                    break;
-                case < -0.1f:
-                    _player.SpriteRenderer.flipX = true;
-                    _isFlipped = true;
-                    break;
+                _player.CanDoubleJump = true;
             }
 
-            switch (_player.Rigidbody2D.linearVelocity.y)
+            if (!_player.CanDash && _player.IsGrounded && _player.DashPickedUp)
             {
-                case > 0.1f:
-                    _player.Animator.SetFloat(_player.SpeedYHash, 1);
-                    break;
-                case < -0.1f:
-                    _player.Animator.SetFloat(_player.SpeedYHash, -1);
-                    break;
-                default:
-                    _player.Animator.SetFloat(_player.SpeedYHash, 0);
-                    break;
+                _player.CanDash = true;
             }
+
+            UpdateCameraOffset();
+            
+            var moveX = _player.Movement.normalized.x;
+
+            // Horizontal offset based on direction
+            if (moveX > 0.1f)
+            {
+                _player.SpriteRenderer.flipX = false;
+                _isFlipped = false;
+            }
+            else if (moveX < -0.1f)
+            {
+                _player.SpriteRenderer.flipX = true;
+                _isFlipped = true;
+            }
+
+            float yVelocity = _player.Rigidbody2D.linearVelocity.y;
+            if (yVelocity > 0.1f)
+                _player.Animator.SetFloat(_player.SpeedYHash, 1);
+            else if (yVelocity < -0.1f)
+                _player.Animator.SetFloat(_player.SpeedYHash, -1);
+            else
+                _player.Animator.SetFloat(_player.SpeedYHash, 0);
         }
+        
+        private void UpdateCameraOffset()
+        {
+            var moveX = _player.Movement.x;
+
+            switch (moveX)
+            {
+                // Horizontal offset based on direction
+                case > 0.9f:
+                    _targetOffset.x = _player.CameraHorizontalOffset;
+                    break;
+                case < -0.8f:
+                    _targetOffset.x = -_player.CameraHorizontalOffset;
+                    break;
+            }
+
+            _targetOffset.y = _player.CinemachineFollow.FollowOffset.y;
+            _targetOffset.z = _player.CinemachineFollow.FollowOffset.z;
+            
+            // Lerp for smooth transition
+            Vector3 currentOffset =  _player.CinemachineFollow.FollowOffset;
+            _player.CinemachineFollow.FollowOffset = Vector3.Lerp(currentOffset, _targetOffset, Time.deltaTime * _player.CameraOffsetLerpSpeed);
+        }
+
 
         private void Jump(InputAction.CallbackContext context)
         {
@@ -292,24 +343,11 @@ namespace _Memoriam.Script.Player.States
 
         private void CheckForSwordCollisions()
         {
-            var sizeOfCapsule = _isFlipped ? new Vector2(-2.0f, 1f) : new Vector2(2.0f, 1.0f);
-
             _player.SwordCollider.transform.localPosition = _isFlipped
                 ? new Vector3(-1f, _player.SwordCollider.transform.localPosition.y,
                     _player.SwordCollider.transform.localPosition.z)
                 : new Vector3(1f, _player.SwordCollider.transform.localPosition.y,
                     _player.SwordCollider.transform.localPosition.z);
-
-            var results = Physics2D.OverlapCapsuleAll(_player.SwordCollider.transform.position, sizeOfCapsule,
-                CapsuleDirection2D.Horizontal, _player.EnemyLayer);
-
-            foreach (var result in results)
-            {
-                if (result.TryGetComponent<IEnemy>(out var enemy))
-                {
-                    enemy.ReceiveDamage(_damage);
-                }
-            }
         }
     }
 }
