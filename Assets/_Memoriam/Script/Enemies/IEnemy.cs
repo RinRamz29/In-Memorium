@@ -4,10 +4,6 @@ namespace _Memoriam.Script.Enemies
 {
     public interface IEnemy
     {
-        public float Health { get; set; }
-        public float MaxHealth { get; set; }
-        public float Speed { get; set; }
-        public float Damage { get; set; }
         public void ReceiveDamage(float damage);
         public Node.Status  Attack();
         

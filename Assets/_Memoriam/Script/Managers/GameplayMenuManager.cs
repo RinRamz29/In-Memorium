@@ -14,10 +14,13 @@ namespace _Memoriam.Script.Managers
     public class GameplayMenuManager : MonoBehaviour, ISaveableObject
     {
         [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject uiPlayer;
         [field: SerializeField] public Slider HealthBar { get; private set; }
+        [field: SerializeField] public Slider StaminaBar { get; private set; }
 
         [SerializeField] private List<Toggle> powerupToggles;
         private void ChangeHealthValue(float health) => HealthBar.value = health;
+        private void ChangeStaminaValue(float stamina) => StaminaBar.value = stamina;
 
         private void TogglePowerUp(TypeOfPickable pickable)
         {
@@ -36,6 +39,7 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.PlayerActions.Player.Pause.performed += OnPause;
             Player.Player.OnHealthChanged += ChangeHealthValue;
+            Player.Player.OnStaminaChanged += ChangeStaminaValue;
             Player.Player.OnPowerUpPickedUp += TogglePowerUp;
         }
 
@@ -48,10 +52,12 @@ namespace _Memoriam.Script.Managers
             {
                 case GameStateManager.GameState.OnPause:
                     GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+                    uiPlayer.SetActive(true);
                     pauseMenu.SetActive(false);
                     break;
                 case GameStateManager.GameState.OnGameplay:
                     GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+                    uiPlayer.SetActive(false);
                     pauseMenu.SetActive(true);
                     break;
                 default:
@@ -63,18 +69,21 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;
             Player.Player.OnHealthChanged -= ChangeHealthValue;
+            Player.Player.OnStaminaChanged -= ChangeStaminaValue;
         }
 
         public void LoadData(GameData data)
         {
             powerupToggles[0].isOn = data.gamePlayMenu.canDoubleJump;
             powerupToggles[1].isOn = data.gamePlayMenu.canDash;
+            HealthBar.value = data.gamePlayMenu.health;
         }
 
         public void SaveData(ref GameData data)
         {
             data.gamePlayMenu.canDoubleJump = powerupToggles[0].isOn;
             data.gamePlayMenu.canDash = powerupToggles[1].isOn;
+            data.gamePlayMenu.health = HealthBar.value;
         }
     }
 }

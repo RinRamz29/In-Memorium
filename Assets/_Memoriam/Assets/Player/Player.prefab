@@ -136,8 +136,6 @@ MonoBehaviour:
   <WallCheckDistance>k__BackingField: 0.7
   <WallSlideSpeed>k__BackingField: 10
   <CinemachineFollow>k__BackingField: {fileID: 0}
-  <lightAttackBar>k__BackingField: {fileID: 0}
-  <heavyAttackBar>k__BackingField: {fileID: 0}
   <Health>k__BackingField: 0
   <MaxHealth>k__BackingField: 100
   <Stamina>k__BackingField: 0
@@ -146,6 +144,8 @@ MonoBehaviour:
   <DashForce>k__BackingField: 2
   <Damage>k__BackingField: 10
   <Speed>k__BackingField: 10
+  <LighAttackStamina>k__BackingField: 25
+  <HeavyAttackStamina>k__BackingField: 35
   <CameraHorizontalOffset>k__BackingField: 2
   <CameraFallYOffset>k__BackingField: -2
   <CameraJumpYOffset>k__BackingField: 1.5
@@ -210,7 +210,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: df71cf95b5631bd458c93705c22ac1b6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -313,13 +313,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4674546240718080718}
-  m_Layer: 6
+  - component: {fileID: 5338014726250697070}
+  - component: {fileID: 4100071438591337687}
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4674546240718080718
 Transform:
   m_ObjectHideFlags: 0
@@ -329,12 +331,61 @@ Transform:
   m_GameObject: {fileID: 4888445375247080529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70914644, w: 0.70506126}
-  m_LocalPosition: {x: 0.587, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.959, y: 0.033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7216368135719283781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.331}
+--- !u!70 &5338014726250697070
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888445375247080529}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
+--- !u!114 &4100071438591337687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888445375247080529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c143d97d9c6a447b6468f36aa3a439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5480729822914900306
 GameObject:
   m_ObjectHideFlags: 0

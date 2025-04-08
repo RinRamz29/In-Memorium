@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +11,6 @@ namespace _Memoriam.Script.Player.States
     public class PlayerCombatState : IState
     {
         private Player _player;
-        private float _damage;
         private bool _isFlipped;
         private Vector2 _direction;
 
@@ -23,15 +18,11 @@ namespace _Memoriam.Script.Player.States
         private float _dashCooldown;
         private const float AirControlMultiplier = 0.75f;
 
-        private float _lightAttackCooldown = 1.4f;
-        private float _heavyAttackCooldown = 1.75f;
-        private float _lastAttackTime = -Mathf.Infinity;
-        
-        private float _lightAttackTimer;
-        private float _heavyAttackTimer;
-        
 
-        private Color _cachedColor;
+        private float _lastStaminaUseTime = -Mathf.Infinity;
+        private float _staminaRegenDelay = 2f; // seconds after last use
+        private float _staminaRegenRate = 15f; // stamina per second
+        
 
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
@@ -55,8 +46,6 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
-            _cachedColor = _player.SpriteRenderer.color;
-            _damage = _player.Damage;
         }
 
         public void Exit()
@@ -85,11 +74,12 @@ namespace _Memoriam.Script.Player.States
                 ExecuteChargedAttack();
             }
             
-            _lightAttackTimer += Time.deltaTime;
-            _heavyAttackTimer += Time.deltaTime;
-
-            _player.heavyAttackBar.value = Mathf.Clamp01(_heavyAttackTimer / _heavyAttackCooldown);
-            _player.lightAttackBar.value = Mathf.Clamp01(_lightAttackTimer / _lightAttackCooldown);
+            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > _staminaRegenDelay)
+            {
+                _player.Stamina += _staminaRegenRate * Time.deltaTime;
+                _player.Stamina = Mathf.Clamp(_player.Stamina, 0, _player.MaxStamina);
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
+            }
         }
 
         public void LateTick()
@@ -102,7 +92,7 @@ namespace _Memoriam.Script.Player.States
             if (!context.performed)
                 return;
 
-            if (Time.time - _lastAttackTime < _lightAttackCooldown)
+            if (_player.Stamina < _player.LighAttackStamina)
             {
                 return;
             }
@@ -110,10 +100,11 @@ namespace _Memoriam.Script.Player.States
             if (!_player.IsAttacking)
             {
                 _player.IsAttacking = true;
-                _damage = _player.Damage * 1f;
-                _player.CurrentAttackType = Player.AttackType.Light;
-                _lastAttackTime = Time.time;
-                _lightAttackTimer = 0f;
+                _player.SetAttack(Player.AttackStrength.Light);
+
+                _player.Stamina -= _player.LighAttackStamina;
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
+                _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.LightAttackHash, true);
             }
@@ -124,7 +115,7 @@ namespace _Memoriam.Script.Player.States
             if (!context.performed)
                 return;
 
-            if (Time.time - _lastAttackTime < _heavyAttackCooldown)
+            if (_player.Stamina < _player.HeavyAttackStamina)
             {
                 return;
             }
@@ -132,10 +123,12 @@ namespace _Memoriam.Script.Player.States
             if (!_player.IsAttacking)
             {
                 _player.IsAttacking = true;
-                _damage = _player.Damage * 1.5f;
+                _player.SetAttack(Player.AttackStrength.Heavy);
                 _player.CurrentAttackType = Player.AttackType.Heavy;
-                _lastAttackTime = Time.time;
-                _heavyAttackTimer = 0f;
+
+                _player.Stamina -= _player.HeavyAttackStamina;
+                Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
+                _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.HeavyAttackHash, true);
             }
@@ -155,13 +148,13 @@ namespace _Memoriam.Script.Player.States
 
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
-                _damage = _player.Damage * 1.6f;
+                _player.SetAttack(Player.AttackStrength.ChargedLight);
                 _player.Animator.SetBool(_player.LightAttackHash, false);
                 _player.Animator.SetTrigger(_player.ChargedTriggeredHash);
             }
             else if (_player.CurrentAttackType == Player.AttackType.Heavy)
             {
-                _damage = _player.Damage * 2f;
+                _player.SetAttack(Player.AttackStrength.ChargedHeavy);
                 _player.Animator.SetBool(_player.HeavyAttackHash, false);
                 _player.Animator.SetTrigger(_player.ChargedHeavyTriggeredHash);
             }
@@ -180,13 +173,13 @@ namespace _Memoriam.Script.Player.States
 
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
-                _damage = _player.Damage * 1.4f;
+                _player.SetAttack(Player.AttackStrength.ComboLight);
                 _player.Animator.SetBool(_player.LightAttackHash, false);
                 _player.Animator.SetTrigger(_player.Combo1AttackHash);
             }
             else if (_player.CurrentAttackType == Player.AttackType.Heavy)
             {
-                _damage = _player.Damage * 1.7f;
+                _player.SetAttack(Player.AttackStrength.ComboHeavy);
                 _player.Animator.SetBool(_player.HeavyAttackHash, false);
                 _player.Animator.SetTrigger(_player.Combo2AttackHash);
             }
@@ -350,24 +343,11 @@ namespace _Memoriam.Script.Player.States
 
         private void CheckForSwordCollisions()
         {
-            var sizeOfCapsule = _isFlipped ? new Vector2(-2.5f, 1f) : new Vector2(2.5f, 1.0f);
-
             _player.SwordCollider.transform.localPosition = _isFlipped
                 ? new Vector3(-1f, _player.SwordCollider.transform.localPosition.y,
                     _player.SwordCollider.transform.localPosition.z)
                 : new Vector3(1f, _player.SwordCollider.transform.localPosition.y,
                     _player.SwordCollider.transform.localPosition.z);
-
-            var results = Physics2D.OverlapCapsuleAll(_player.SwordCollider.transform.position, sizeOfCapsule,
-                CapsuleDirection2D.Horizontal, _player.EnemyLayer);
-
-            foreach (var result in results)
-            {
-                if (result.TryGetComponent<IEnemy>(out var enemy))
-                {
-                    enemy.ReceiveDamage(_damage);
-                }
-            }
         }
     }
 }
