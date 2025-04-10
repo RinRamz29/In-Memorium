@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LightB
+  m_Name: Candelabro
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 3e9496b1781d224478f1524c4f508f82, type: 3}
+      value: {fileID: 21300000, guid: acd060104eda63341b93267260f10b34, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: f839d91505d1239419b49813edd167cb, type: 3}
+      value: {fileID: 21300000, guid: ad339aa190bf36044aabbaad3c69d047, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 479445745c71d864090cc2d2289dff5f, type: 3}
+      value: {fileID: 21300000, guid: b1a46a9717089a54caa3aa13184e25b4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,9 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 3e9496b1781d224478f1524c4f508f82, type: 3}
-    - {fileID: 21300000, guid: f839d91505d1239419b49813edd167cb, type: 3}
-    - {fileID: 21300000, guid: 479445745c71d864090cc2d2289dff5f, type: 3}
+    - {fileID: 21300000, guid: acd060104eda63341b93267260f10b34, type: 3}
+    - {fileID: 21300000, guid: ad339aa190bf36044aabbaad3c69d047, type: 3}
+    - {fileID: 21300000, guid: b1a46a9717089a54caa3aa13184e25b4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -61,7 +61,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
