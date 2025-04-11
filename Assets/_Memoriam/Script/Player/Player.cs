@@ -359,6 +359,9 @@ namespace _Memoriam.Script.Player
 
         #region PowerUpsLogic
         
+        public bool canDoubleJump;
+        public bool canDash;
+        
         public void UnlockAbility(AbilityType type)
         {
             switch (type)

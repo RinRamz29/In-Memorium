@@ -255,14 +255,14 @@ namespace _Memoriam.Script.Player.States
                 }
             }
 
-            if (!_player.abilities.hasDoubleJump && _player.IsGrounded && _player.abilities.hasDoubleJump)
+            if (_player.abilities.hasDoubleJump && _player.IsGrounded & !_player.canDoubleJump)
             {
-                _player.abilities.hasDoubleJump = true;
+                _player.canDoubleJump = true;
             }
 
-            if (!_player.abilities.hasDash && _player.IsGrounded && _player.abilities.hasDash)
+            if (_player.abilities.hasDash && _player.IsGrounded && !_player.canDash)
             {
-                _player.abilities.hasDash = true;
+                _player.canDash = true;
             }
 
             UpdateCameraOffset();
@@ -322,17 +322,17 @@ namespace _Memoriam.Script.Player.States
             if (context.performed && _player.IsGrounded)
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
 
-            if (!context.performed || _player.IsGrounded || !_player.abilities.hasDoubleJump)
+            if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
                 return;
 
-            _player.abilities.hasDoubleJump = false;
+            _player.canDoubleJump = false;
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
         }
 
         private void Dash(InputAction.CallbackContext context)
         {
-            if (!context.performed || !_player.abilities.hasDash)
+            if (!context.performed || !_player.canDash)
                 return;
 
             _isDashing = true;
