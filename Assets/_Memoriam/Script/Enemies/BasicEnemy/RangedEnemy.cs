@@ -14,6 +14,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         [SerializeField] private Transform firePoint;
         [SerializeField] private float retreatDistance = 2f;
         
+        public delegate void MonsterDefeated(int exp);
+        public static event MonsterDefeated OnMonsterDefeated;
+        
         private Parallel _behaviourTree;
         
         private void Awake()
@@ -21,6 +24,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             Health = MaxHealth;
             LastAttackTime = -AttackTimeOut;
             InitialAttackTimer = -AttackTimeOut;
+            Experience = Experience;
             SetUpBehaviorSelector();
         }
 
@@ -188,6 +192,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
+                OnMonsterDefeated(Experience);
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
             }
         }

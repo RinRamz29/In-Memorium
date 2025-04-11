@@ -16,6 +16,8 @@ namespace _Memoriam.Script.Enemies
         [field: SerializeField] public float MaxHealth { get; set; }
         [field: SerializeField] public float Speed { get; set; }
         [field: SerializeField] public float Damage { get; set; }
+        
+        [field: SerializeField] public int Experience { get; set; }
         [field: SerializeField] public float AttackDistance { get; set; } = 1.5f;
         [field: SerializeField] public float WaitTimeAtPoint { get; set; } = 2f;
         [field: SerializeField] public float AttackTimeOut { get; set; } = 2f;

@@ -14,12 +14,16 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
+        
+        public delegate void MonsterDefeated(int exp);
+        public static event MonsterDefeated OnMonsterDefeated;
 
         private void Awake()
         {
             Health = MaxHealth;
             LastAttackTime = -AttackTimeOut;
             InitialAttackTimer = -AttackTimeOut;
+            Experience = Experience;
             SetUpBehaviorSelector();
         }
 
@@ -94,6 +98,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
+                OnMonsterDefeated(Experience);
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForFlyerEnemies, this.gameObject);
             }
         }
