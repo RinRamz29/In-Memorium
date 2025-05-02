@@ -51,12 +51,12 @@ namespace _Memoriam.Script.Managers
             switch (GameStateManager.Instance.GameCurrentState)
             {
                 case GameStateManager.GameState.OnPause:
-                    GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+                    GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
                     uiPlayer.SetActive(true);
                     pauseMenu.SetActive(false);
                     break;
                 case GameStateManager.GameState.OnGameplay:
-                    GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+                    GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
                     uiPlayer.SetActive(false);
                     pauseMenu.SetActive(true);
                     break;

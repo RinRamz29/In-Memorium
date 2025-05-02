@@ -32,7 +32,7 @@ namespace _Memoriam.Script.Managers
             {
                 slider.value = progress;
                 if (progress >= 0.9f)
-                    GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+                    GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             });
         }
 
@@ -42,7 +42,7 @@ namespace _Memoriam.Script.Managers
             {
                 slider.value = progress;
                 if (progress >= 0.9f)
-                    GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnMenu);
+                    GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
             });
         }
 

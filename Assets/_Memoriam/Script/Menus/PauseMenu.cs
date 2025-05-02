@@ -25,7 +25,7 @@ namespace _Memoriam.Script.Menus
         {
             AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
             pauseMenu.SetActive(false);
-            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+            GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             playerUI.SetActive(true);
         }
 
