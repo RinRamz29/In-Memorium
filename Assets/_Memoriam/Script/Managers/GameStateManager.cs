@@ -16,26 +16,24 @@ namespace _Memoriam.Script.Managers
             OnPause,
             OnLose,
             OnLoading,
-        } 
-        [field: SerializeField] public GameState GameCurrentState { get; private set; }
-        public Action<GameState> OnGameStateChanged { get; set; }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            OnGameStateChanged += ChangeState;
         }
+
+        [field: SerializeField] public GameState GameCurrentState { get; private set; }
+        public event Action<GameState> OnGameStateChanged;
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();   
-            OnGameStateChanged -= ChangeState;
+            base.OnDestroy();
+            OnGameStateChanged = null;
         }
 
-        private void ChangeState(GameState newState)
+        public void SetGameState(GameState newState)
         {
+            if (GameCurrentState == newState)
+                return;
+
             GameCurrentState = newState;
-            Debug.Log("Game state changed to: " + GameCurrentState);
+            OnGameStateChanged?.Invoke(GameCurrentState);
         }
     }
 }

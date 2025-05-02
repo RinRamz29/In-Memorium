@@ -18,7 +18,7 @@ namespace _Memoriam.Script.Menus
         public void Save(int slot)
         {
             DataPersistentManager.Instance.SaveGame(slot);
-            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnGameplay);
+            GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
         }
     }
 }

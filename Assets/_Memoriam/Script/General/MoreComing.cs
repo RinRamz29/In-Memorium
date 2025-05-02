@@ -17,7 +17,7 @@ namespace _Memoriam.Script.General
             if (other.TryGetComponent<Player.Player>(out var player))
             {
                 playerUI.SetActive(false);
-                GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+                GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
                 moreComingUI.SetActive(true);
                 EventSystem.current.SetSelectedGameObject(selectedButton);
             }

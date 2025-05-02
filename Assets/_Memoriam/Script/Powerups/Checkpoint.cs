@@ -22,7 +22,7 @@ namespace _Memoriam.Script.Powerups
                 playerController.LastCheckPoint = checkPointPosition.position;
             }
 
-            GameStateManager.Instance.OnGameStateChanged?.Invoke(GameStateManager.GameState.OnPause);
+            GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
             saveMenu.SetActive(true);
             gameObject.SetActive(false);
         }

@@ -97,20 +97,39 @@ namespace _Memoriam.Script.Player
             switch (state)
             {
                 case GameStateManager.GameState.OnGameplay:
-                    Rigidbody2D.gravityScale = 2f;
+                    ResumePhysics();
                     break;
                 case GameStateManager.GameState.OnLose:
                     break;
                 case GameStateManager.GameState.OnPause:
                     Animator.SetFloat(SpeedXHash, 0);
-                    Movement = Vector2.zero;
-                    Rigidbody2D.linearVelocity = Vector2.zero;
-                    Rigidbody2D.gravityScale = 0f;
+                    PausePhysics();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
+        
+        private Vector3 _savedVelocity;
+        private float _savedAngularVelocity;
+
+        public void PausePhysics()
+        {
+            _savedVelocity = Rigidbody2D.linearVelocity;
+            _savedAngularVelocity = Rigidbody2D.angularVelocity;
+            Rigidbody2D.angularVelocity = 0f;
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        }
+        
+        public void ResumePhysics()
+        {
+            Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+            
+            Rigidbody2D.linearVelocity = _savedVelocity;
+            Rigidbody2D.angularVelocity = _savedAngularVelocity;
+        }
+
 
         // Animation hashes
         public int LightAttackHash { get; } = Animator.StringToHash("Light");
