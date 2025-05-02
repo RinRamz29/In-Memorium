@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
@@ -314,6 +315,8 @@ namespace _Memoriam.Script.Player
             {
                 logic.SetData(CurrentSwingDamage);
             }
+
+            AudioManager.Instance.PlayRandomSFX("PlayerAttack");
         }
 
         public void DisableSwordCollider()

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
@@ -22,7 +23,6 @@ namespace _Memoriam.Script.Player.States
         private float _lastStaminaUseTime = -Mathf.Infinity;
         private const float StaminaRegenDelay = 2f; // seconds after last use
         private const float StaminaRegenRate = 15f; // stamina per second
-
 
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
@@ -189,6 +189,9 @@ namespace _Memoriam.Script.Player.States
         {
             _player.Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
 
+            // Actualiza grounded antes de calcular si aterrizó
+            bool wasGrounded = _player.IsGrounded;
+
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
             _player.IsTouchingWall = false;
@@ -208,6 +211,13 @@ namespace _Memoriam.Script.Player.States
 
                     break;
                 }
+            }
+
+            // Detectar aterrizaje
+            bool justLanded = !wasGrounded && _player.IsGrounded;
+            if (justLanded && Mathf.Abs(_player.Rigidbody2D.linearVelocity.y) > 1f)
+            {
+                AudioManager.Instance.PlayOneShotSFX("PlayerLand");
             }
 
             float targetSpeedX = _player.Movement.x * _player.Speed;
@@ -289,6 +299,7 @@ namespace _Memoriam.Script.Player.States
                 _player.Animator.SetFloat(_player.SpeedYHash, 0);
         }
 
+
         private void UpdateCameraOffset()
         {
             var moveX = _player.Movement.x;
@@ -320,7 +331,11 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             if (context.performed && _player.IsGrounded)
+            {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
+                AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            }
+                
 
             if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
                 return;
@@ -328,6 +343,7 @@ namespace _Memoriam.Script.Player.States
             _player.canDoubleJump = false;
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
+            AudioManager.Instance.PlayRandomSFX("PlayerJump");
         }
 
         private void Dash(InputAction.CallbackContext context)
