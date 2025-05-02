@@ -244,25 +244,25 @@ namespace _Memoriam.Script.Player.States
                     (_direction.x > 0.1f && _player.Movement.x < -0.1f))
                 {
                     _isDashing = false;
-                    _player.CanDash = false;
+                    _player.canDash = false;
                 }
 
                 _dashCooldown -= Time.deltaTime;
                 if (_dashCooldown <= 0)
                 {
                     _isDashing = false;
-                    _player.CanDash = false;
+                    _player.canDash = false;
                 }
             }
 
-            if (!_player.CanDoubleJump && _player.IsGrounded && _player.DoubleJumpPickedUp)
+            if (!_player.canDoubleJump && _player.IsGrounded && _player.abilities.hasDoubleJump)
             {
-                _player.CanDoubleJump = true;
+                _player.canDoubleJump = true;
             }
 
-            if (!_player.CanDash && _player.IsGrounded && _player.DashPickedUp)
+            if (!_player.canDash && _player.IsGrounded && _player.abilities.hasDash)
             {
-                _player.CanDash = true;
+                _player.canDash = true;
             }
 
             UpdateCameraOffset();
@@ -326,10 +326,10 @@ namespace _Memoriam.Script.Player.States
                 _player.saltoParticula.Play();
             }
             
-            if (!context.performed || _player.IsGrounded || !_player.CanDoubleJump)
+            if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
                 return;
 
-            _player.CanDoubleJump = false;
+            _player.canDoubleJump = false;
             // Reset vertical velocity before double jump
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
@@ -339,7 +339,7 @@ namespace _Memoriam.Script.Player.States
 
         private void Dash(InputAction.CallbackContext context)
         {
-            if (!context.performed || !_player.CanDash)
+            if (!context.performed || !_player.canDash)
                 return;
 
             _isDashing = true;
