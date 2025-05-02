@@ -10,7 +10,7 @@ namespace _Memoriam.Script.Player.States
 {
     public class PlayerCombatState : IState
     {
-        private readonly Player _player;
+        private Player _player;
         private bool _isFlipped;
         private Vector2 _direction;
 
@@ -20,9 +20,9 @@ namespace _Memoriam.Script.Player.States
 
 
         private float _lastStaminaUseTime = -Mathf.Infinity;
-        private const float StaminaRegenDelay = 2f; // seconds after last use
-        private const float StaminaRegenRate = 15f; // stamina per second
-
+        private float _staminaRegenDelay = 2f; // seconds after last use
+        private float _staminaRegenRate = 15f; // stamina per second
+        
 
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
@@ -74,9 +74,9 @@ namespace _Memoriam.Script.Player.States
                 ExecuteChargedAttack();
             }
             
-            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > StaminaRegenDelay)
+            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > _staminaRegenDelay)
             {
-                _player.Stamina += StaminaRegenRate * Time.deltaTime;
+                _player.Stamina += _staminaRegenRate * Time.deltaTime;
                 _player.Stamina = Mathf.Clamp(_player.Stamina, 0, _player.MaxStamina);
                 Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
             }
@@ -244,31 +244,32 @@ namespace _Memoriam.Script.Player.States
                     (_direction.x > 0.1f && _player.Movement.x < -0.1f))
                 {
                     _isDashing = false;
-                    _player.abilities.hasDash = false;
+                    _player.CanDash = false;
                 }
 
                 _dashCooldown -= Time.deltaTime;
                 if (_dashCooldown <= 0)
                 {
                     _isDashing = false;
-                    _player.abilities.hasDash = false;
+                    _player.CanDash = false;
                 }
             }
 
-            if (_player.abilities.hasDoubleJump && _player.IsGrounded & !_player.canDoubleJump)
+            if (!_player.CanDoubleJump && _player.IsGrounded && _player.DoubleJumpPickedUp)
             {
-                _player.canDoubleJump = true;
+                _player.CanDoubleJump = true;
             }
 
-            if (_player.abilities.hasDash && _player.IsGrounded && !_player.canDash)
+            if (!_player.CanDash && _player.IsGrounded && _player.DashPickedUp)
             {
-                _player.canDash = true;
+                _player.CanDash = true;
             }
 
             UpdateCameraOffset();
-
+            
             var moveX = _player.Movement.normalized.x;
 
+            // Horizontal offset based on direction
             if (moveX > 0.1f)
             {
                 _player.SpriteRenderer.flipX = false;
@@ -288,7 +289,7 @@ namespace _Memoriam.Script.Player.States
             else
                 _player.Animator.SetFloat(_player.SpeedYHash, 0);
         }
-
+        
         private void UpdateCameraOffset()
         {
             var moveX = _player.Movement.x;
@@ -320,25 +321,30 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             if (context.performed && _player.IsGrounded)
+            {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
-
-            if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
+                _player.saltoParticula.Play();
+            }
+            
+            if (!context.performed || _player.IsGrounded || !_player.CanDoubleJump)
                 return;
 
-            _player.canDoubleJump = false;
+            _player.CanDoubleJump = false;
+            // Reset vertical velocity before double jump
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
+
+
         }
 
         private void Dash(InputAction.CallbackContext context)
         {
-            if (!context.performed || !_player.canDash)
+            if (!context.performed || !_player.CanDash)
                 return;
 
             _isDashing = true;
             _dashCooldown = 0.45f;
         }
-
 
         private void CheckForSwordCollisions()
         {
