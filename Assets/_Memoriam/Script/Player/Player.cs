@@ -34,6 +34,8 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
         public bool IsTouchingWall { get; set; }
 
+        [field: SerializeField] public ParticleSystem saltoParticula { get; private set; }
+
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get; private set; }
