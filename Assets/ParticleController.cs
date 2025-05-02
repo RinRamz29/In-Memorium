@@ -22,7 +22,7 @@ public class ParticleController : MonoBehaviour
     {
         counter += Time.deltaTime;
 
-        if(isOnGround && Mathf.Abs(playerRb.velocity.x) > occurAfterVelocity)
+        if(isOnGround && Mathf.Abs(playerRb.linearVelocity.x) > occurAfterVelocity)
         {
             if (counter > dustFormationPeriod)
             {

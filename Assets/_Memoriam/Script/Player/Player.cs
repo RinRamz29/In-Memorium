@@ -79,6 +79,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
+        [field: SerializeField] public PlayerProgression Progression { get; set; }  = new PlayerProgression();
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         [field: SerializeField] public float LighAttackStamina { get; private set; } = 25f;
         [field: SerializeField] public float HeavyAttackStamina { get; private set; } = 35f;
@@ -165,6 +166,7 @@ namespace _Memoriam.Script.Player
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             OnHealthChanged?.Invoke(Health);
             OnStaminaChanged?.Invoke(Stamina);
+            Progression.OnLevelUp += HandleLevelUp;
         }
 
         private void Update()
@@ -183,6 +185,7 @@ namespace _Memoriam.Script.Player
         private void OnDisable()
         {
             GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
+            Progression.OnLevelUp -= HandleLevelUp;
         }
 
         private void FixedUpdate()
@@ -194,6 +197,22 @@ namespace _Memoriam.Script.Player
         }
 
 
+        #endregion
+
+        #region LevelUpLogic
+        private void HandleLevelUp(int newLevel)
+        {
+            MaxHealth += 10 + newLevel * 0.5f;
+            Health = MaxHealth;
+
+            MaxStamina += 5 + newLevel * 0.5f;
+            Stamina = MaxStamina;
+
+            Damage += 1 + newLevel * 0.2f;
+
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+            OnStaminaChanged?.Invoke(Stamina / MaxStamina);
+        }
         #endregion
 
         #region HealDamageLogic
@@ -444,7 +463,8 @@ namespace _Memoriam.Script.Player
             LastCheckPoint = data.player.position;
             abilities = data.player.abilities;
             Health = data.player.health;
-            OnHealthChanged?.Invoke(Health);
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+            OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
 
         public void SaveData(ref GameData data)

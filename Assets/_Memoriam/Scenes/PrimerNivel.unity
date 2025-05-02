@@ -196627,6 +196627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 828869107}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!61 &691417230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198932,6 +198934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 1587864945}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!61 &796066934
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -220469,6 +220473,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325505063}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!225 &1339756346 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8484406099053715616, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+  m_PrefabInstance: {fileID: 799160469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347898678
 GameObject:
   m_ObjectHideFlags: 0
@@ -231887,6 +231896,18 @@ PrefabInstance:
       propertyPath: <CinemachineFollow>k__BackingField
       value: 
       objectReference: {fileID: 896082342}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <Progression>k__BackingField.maxLevel
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <Progression>k__BackingField.maxXpToLevelUp
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833692567691569560, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+      propertyPath: <Progression>k__BackingField.minXpToLevelUp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7216368135719283781, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.1
@@ -232435,6 +232456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 512840294}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!61 &1711659965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -254456,6 +254479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 992386549}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!61 &1774400078
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279268,6 +279293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 1694450144}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!114 &6204024958996534987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279281,6 +279308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 1561310132}
+  fadeCanvasGroup: {fileID: 1339756346}
+  fadeDuration: 1
 --- !u!114 &6204024959063792268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279294,6 +279323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 204173303}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
 --- !u!4 &6293244209464163454
 Transform:
   m_ObjectHideFlags: 0

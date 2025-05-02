@@ -94,6 +94,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
+                if (_player != null && _player is Player.Player realPlayer)
+                {
+                    realPlayer.Progression.GainXp(25); 
+                }
+                
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForFlyerEnemies, this.gameObject);
             }
         }
