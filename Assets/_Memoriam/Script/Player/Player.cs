@@ -52,7 +52,7 @@ namespace _Memoriam.Script.Player
     {
         public PlayerAbilities abilities = new PlayerAbilities();
         public StateMachineBase StateMachine { get; private set; } = new();
-
+        
         [Header("Dependencies")]
         [field: SerializeField] public Animator Animator { get; set; }
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
@@ -71,9 +71,9 @@ namespace _Memoriam.Script.Player
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
-        [field: SerializeField] public float MaxHealth { get; private set; }
+        [field: SerializeField] public float MaxHealth { get;  set; }
         [field: SerializeField] public float Stamina { get; set; }
-        [field: SerializeField] public float MaxStamina { get; private set; }
+        [field: SerializeField] public float MaxStamina { get;  set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
@@ -127,6 +127,7 @@ namespace _Memoriam.Script.Player
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
 
+        
 
         #region UnityFlow
 
@@ -243,7 +244,7 @@ namespace _Memoriam.Script.Player
             var clampedHealth = Health / MaxHealth;
             OnHealthChanged?.Invoke(clampedHealth);
         }
-
+        
         private void Die()
         {
             //TO DO

@@ -86,7 +86,7 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 30
   <Speed>k__BackingField: 5
   <Damage>k__BackingField: 15
-  <Experience>k__BackingField: 15
+  <Experience>k__BackingField: 100
   <AttackDistance>k__BackingField: 1
   <WaitTimeAtPoint>k__BackingField: 1
   <AttackTimeOut>k__BackingField: 1
@@ -105,6 +105,7 @@ MonoBehaviour:
     m_Bits: 64
   <Animator>k__BackingField: {fileID: 6540252712236085843}
   <PatrolPoints>k__BackingField: []
+  BloodParticles: {fileID: 2615265372504516880, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
 --- !u!212 &6936911284584182044
 SpriteRenderer:
   m_ObjectHideFlags: 0

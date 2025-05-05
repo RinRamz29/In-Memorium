@@ -14,6 +14,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         [SerializeField] private Transform firePoint;
         [SerializeField] private float retreatDistance = 2f;
         
+        
         public delegate void MonsterDefeated(int exp);
         public static event MonsterDefeated OnMonsterDefeated;
         

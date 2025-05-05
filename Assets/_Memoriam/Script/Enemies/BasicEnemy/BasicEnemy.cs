@@ -11,6 +11,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         public delegate void MonsterDefeated(int exp);
         public static event MonsterDefeated OnMonsterDefeated;
         
+        public ParticleSystem BloodParticles;
+        
         private void Awake()
         {
             Health = MaxHealth;
@@ -92,6 +94,16 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             {
                 OnMonsterDefeated(Experience);
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
+            }
+            PlayLevelUpEffects();
+        }
+        
+        private void PlayLevelUpEffects()
+        {
+            if (BloodParticles != null)
+            {
+                Instantiate(BloodParticles, transform.position, Quaternion.identity);
+                BloodParticles.Play();
             }
         }
 

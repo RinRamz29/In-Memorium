@@ -13,20 +13,15 @@ public class ExpManager : MonoBehaviour
    public float expGrowMultiplier = 1.2f;
    public Slider expSlider;
    public TMP_Text expText;
+   public Player _player;
+   
+   public ParticleSystem levelUpParticles;
 
    private void Start()
    {
       UpdateUI();
    }
-
-   private void Update()
-   {
-      if (Input.GetKeyDown(KeyCode.P))
-      {
-         GainExp(25);
-      }
-   }
-
+   
    private void OnEnable()
    {
       BasicEnemy.OnMonsterDefeated += GainExp;
@@ -51,11 +46,27 @@ public class ExpManager : MonoBehaviour
       UpdateUI();
    }
 
-   private void LevelUp()
+   public void LevelUp()
    {
       level++;
       currentExp -= expToLevel;
+      _player.MaxHealth += 20;
+      _player.Health = _player.MaxHealth;
+      _player.MaxStamina += 20;
       expToLevel = Mathf.RoundToInt(expToLevel * expGrowMultiplier);
+      
+      PlayLevelUpEffects();
+      
+      UpdateUI();
+   }
+
+   private void PlayLevelUpEffects()
+   {
+      if (levelUpParticles != null)
+      {
+         levelUpParticles.gameObject.SetActive(true);
+         levelUpParticles.Play();
+      }
    }
 
    public void UpdateUI()
