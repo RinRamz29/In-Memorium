@@ -56,6 +56,7 @@ namespace _Memoriam.Script.Tutorial
     public class TutorialStep {
         
         public string instruction;
+        public List<Sprite> icon;
         public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, ChargedAttack, Combo, EnterZone }
         public ActionType action;
     }

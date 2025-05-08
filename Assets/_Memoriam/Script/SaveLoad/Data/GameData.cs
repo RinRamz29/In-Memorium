@@ -25,6 +25,7 @@ namespace _Memoriam.Script.SaveLoad.Data
         public bool canDash;
         public float health;
         public PlayerAbilities abilities;
+        public bool isTutoFinished;
     }
 
     [Serializable]

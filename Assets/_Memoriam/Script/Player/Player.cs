@@ -92,6 +92,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
 
         private bool _isInvulnerable = false;
+        private bool _isTutoFinished = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private const float BlinkInterval = 0.1f;
@@ -468,6 +469,7 @@ namespace _Memoriam.Script.Player
             LastCheckPoint = data.player.position;
             abilities = data.player.abilities;
             Health = data.player.health;
+            _isTutoFinished = data.player.isTutoFinished;
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
@@ -480,6 +482,7 @@ namespace _Memoriam.Script.Player
                 lastCheckpoint = LastCheckPoint,
                 abilities = abilities,
                 health = Health,
+                isTutoFinished = _isTutoFinished,
             };
             data.player = player;
         }
