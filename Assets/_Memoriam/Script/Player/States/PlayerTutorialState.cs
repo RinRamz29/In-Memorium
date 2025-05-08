@@ -453,7 +453,10 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
                 AudioManager.Instance.PlayRandomSFX("PlayerJump");
-                _player.saltoParticula.Play();
+                _player.saltoPataIzquierda.gameObject.SetActive(true);
+                _player.saltoPataDerecha.gameObject.SetActive(true);
+                _player.saltoPataDerecha.Play();
+                _player.saltoPataIzquierda.Play();
             }
             
             if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
@@ -464,6 +467,9 @@ namespace _Memoriam.Script.Player.States
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            _player.DobleSalto.gameObject.SetActive(true);
+            _player.DobleSalto.Play();
+            
         }
 
         private void Dash(InputAction.CallbackContext context)

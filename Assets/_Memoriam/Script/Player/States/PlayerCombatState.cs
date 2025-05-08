@@ -230,6 +230,9 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.Rigidbody2D.linearVelocity = new Vector2(smoothedX, verticalSpeed);
                 _player.Animator.SetFloat(_player.SpeedXHash, Mathf.Abs(_player.Movement.x));
+                _player.saltoPataDerecha.Stop();
+                _player.saltoPataIzquierda.Stop();
+                _player.DobleSalto.Stop();
             }
             else if (_player.IsTouchingWall && !_player.IsGrounded)
             {
@@ -335,7 +338,8 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
                 AudioManager.Instance.PlayRandomSFX("PlayerJump");
-                _player.saltoParticula.Play();
+                _player.saltoPataDerecha.Play();
+                _player.saltoPataIzquierda.Play();
             }
             
             if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)

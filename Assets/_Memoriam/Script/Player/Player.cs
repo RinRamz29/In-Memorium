@@ -72,8 +72,11 @@ namespace _Memoriam.Script.Player
         [SerializeField] private TutorialManager tutorialManager;
         public bool IsTouchingWall { get; set; }
 
-        [field: SerializeField] public ParticleSystem saltoParticula { get; private set; }
-
+        [field: SerializeField] public ParticleSystem saltoPataDerecha { get; private set; }
+        [field: SerializeField] public ParticleSystem saltoPataIzquierda { get; private set; }
+        
+        [field: SerializeField] public ParticleSystem DobleSalto { get; private set; }
+        
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get;  set; }

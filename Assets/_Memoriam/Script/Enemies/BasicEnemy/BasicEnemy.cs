@@ -10,6 +10,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         private Parallel _behaviourTree;
         public delegate void MonsterDefeated(int exp);
         public static event MonsterDefeated OnMonsterDefeated;
+
+        public ParticleSystem Blood;
         
         private void Awake()
         {
@@ -80,6 +82,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Animator.SetTrigger(DamagedHash);
             Health -= damage;
+            Instantiate(Blood, transform.position, Quaternion.identity);
         }
 
         private void Die()
@@ -95,6 +98,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                     realPlayer.Progression.GainXp(25); 
                 }
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
+                Instantiate(Blood, transform.position, Quaternion.identity);
+                Destroy(Blood);
             }
         }
 
