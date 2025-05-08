@@ -149,8 +149,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             
             if (distance > 3f)
             {
-                Debug.Log("Too far, returning to spawn");
-                
                 _returnToSpawnTimer += Time.deltaTime;
                 
                 SpriteRenderer.flipX = transform.position.x - currentPoint.x < 0f;

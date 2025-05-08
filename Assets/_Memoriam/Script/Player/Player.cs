@@ -9,6 +9,7 @@ using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
+using _Memoriam.Script.Tutorial;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -68,6 +69,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
         [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
+        [SerializeField] private TutorialManager tutorialManager;
         public bool IsTouchingWall { get; set; }
 
         [field: SerializeField] public ParticleSystem saltoParticula { get; private set; }
@@ -156,7 +158,7 @@ namespace _Memoriam.Script.Player
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
-            StateMachine.ChangeState(new PlayerCombatState(this));
+            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
             Health = MaxHealth;
             Stamina = MaxStamina;
             LastCheckPoint = transform.position;

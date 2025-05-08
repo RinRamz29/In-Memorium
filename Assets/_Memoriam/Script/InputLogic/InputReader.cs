@@ -91,14 +91,12 @@ namespace _Memoriam.Script.InputLogic
             {
                 ControlTypes = ControlType.KeyboardMouse;
                 OnControlTypeChanged?.Invoke(ControlTypes);
-                Debug.Log(device.name);
             }
 
             if (match.Success)
             {
                 ControlTypes = ControlType.Control;
                 OnControlTypeChanged?.Invoke(ControlTypes);
-                Debug.Log(device.name);
             }
         }
     }
