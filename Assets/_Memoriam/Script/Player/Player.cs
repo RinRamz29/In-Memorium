@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
@@ -8,6 +9,7 @@ using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
+using _Memoriam.Script.Tutorial;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -67,7 +69,10 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
         [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
+        [SerializeField] private TutorialManager tutorialManager;
         public bool IsTouchingWall { get; set; }
+
+        [field: SerializeField] public ParticleSystem saltoParticula { get; private set; }
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
@@ -77,6 +82,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
+        [field: SerializeField] public PlayerProgression Progression { get; set; }  = new PlayerProgression();
         [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
         [field: SerializeField] public float LighAttackStamina { get; private set; } = 25f;
         [field: SerializeField] public float HeavyAttackStamina { get; private set; } = 35f;
@@ -86,6 +92,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
 
         private bool _isInvulnerable = false;
+        private bool _isTutoFinished = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private const float BlinkInterval = 0.1f;
@@ -97,20 +104,39 @@ namespace _Memoriam.Script.Player
             switch (state)
             {
                 case GameStateManager.GameState.OnGameplay:
-                    Rigidbody2D.gravityScale = 2f;
+                    ResumePhysics();
                     break;
                 case GameStateManager.GameState.OnLose:
                     break;
                 case GameStateManager.GameState.OnPause:
                     Animator.SetFloat(SpeedXHash, 0);
-                    Movement = Vector2.zero;
-                    Rigidbody2D.linearVelocity = Vector2.zero;
-                    Rigidbody2D.gravityScale = 0f;
+                    PausePhysics();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
+        
+        private Vector3 _savedVelocity;
+        private float _savedAngularVelocity;
+
+        public void PausePhysics()
+        {
+            _savedVelocity = Rigidbody2D.linearVelocity;
+            _savedAngularVelocity = Rigidbody2D.angularVelocity;
+            Rigidbody2D.angularVelocity = 0f;
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        }
+        
+        public void ResumePhysics()
+        {
+            Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+            
+            Rigidbody2D.linearVelocity = _savedVelocity;
+            Rigidbody2D.angularVelocity = _savedAngularVelocity;
+        }
+
 
         // Animation hashes
         public int LightAttackHash { get; } = Animator.StringToHash("Light");
@@ -134,7 +160,7 @@ namespace _Memoriam.Script.Player
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
-            StateMachine.ChangeState(new PlayerCombatState(this));
+            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
             Health = MaxHealth;
             Stamina = MaxStamina;
             LastCheckPoint = transform.position;
@@ -145,6 +171,7 @@ namespace _Memoriam.Script.Player
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             OnHealthChanged?.Invoke(Health);
             OnStaminaChanged?.Invoke(Stamina);
+            Progression.OnLevelUp += HandleLevelUp;
         }
 
         private void Update()
@@ -163,6 +190,7 @@ namespace _Memoriam.Script.Player
         private void OnDisable()
         {
             GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
+            Progression.OnLevelUp -= HandleLevelUp;
         }
 
         private void FixedUpdate()
@@ -174,6 +202,22 @@ namespace _Memoriam.Script.Player
         }
 
 
+        #endregion
+
+        #region LevelUpLogic
+        private void HandleLevelUp(int newLevel)
+        {
+            MaxHealth += 10 + newLevel * 0.5f;
+            Health = MaxHealth;
+
+            MaxStamina += 5 + newLevel * 0.5f;
+            Stamina = MaxStamina;
+
+            Damage += 1 + newLevel * 0.2f;
+
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+            OnStaminaChanged?.Invoke(Stamina / MaxStamina);
+        }
         #endregion
 
         #region HealDamageLogic
@@ -315,6 +359,8 @@ namespace _Memoriam.Script.Player
             {
                 logic.SetData(CurrentSwingDamage);
             }
+
+            AudioManager.Instance.PlayRandomSFX("PlayerAttack");
         }
 
         public void DisableSwordCollider()
@@ -359,6 +405,9 @@ namespace _Memoriam.Script.Player
         #endregion
 
         #region PowerUpsLogic
+        
+        public bool canDoubleJump;
+        public bool canDash;
         
         public void UnlockAbility(AbilityType type)
         {
@@ -421,7 +470,9 @@ namespace _Memoriam.Script.Player
             LastCheckPoint = data.player.position;
             abilities = data.player.abilities;
             Health = data.player.health;
-            OnHealthChanged?.Invoke(Health);
+            _isTutoFinished = data.player.isTutoFinished;
+            OnHealthChanged?.Invoke(Health / MaxHealth);
+            OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
 
         public void SaveData(ref GameData data)
@@ -432,6 +483,7 @@ namespace _Memoriam.Script.Player
                 lastCheckpoint = LastCheckPoint,
                 abilities = abilities,
                 health = Health,
+                isTutoFinished = _isTutoFinished,
             };
             data.player = player;
         }

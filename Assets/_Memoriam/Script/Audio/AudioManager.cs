@@ -14,14 +14,11 @@ namespace _Memoriam.Script.Audio
         [SerializeField] private AudioMixer _musicMixer;
 
         public float SFXVolume { get; private set; }
-
         private bool sfxMuted = false;
-
 
         protected override void Awake()
         {
             base.Awake();
-
             SFXVolume = PlayerPrefs.HasKey("sfxVol") ? PlayerPrefs.GetFloat("sfxVol") : 1f;
         }
 
@@ -38,44 +35,38 @@ namespace _Memoriam.Script.Audio
             }
             else
             {
-                SFXVolume = 1f; // Volumen por defecto si nunca se ha guardado
+                SFXVolume = 1f;
             }
 
             float volumeDB = Mathf.Lerp(-80f, 0f, SFXVolume);
             _sfxMixer.SetFloat("SFXVolume", volumeDB);
         }
 
-        public void PlayDoorCloseSFX()
-        {
-            PlayOneShotSFX("DoorCloseSFX");
-        }
-
-        public void PlayDoorOpenSFX()
-        {
-            PlayOneShotSFX("DoorOpenSFX");
-        }
-
-        public void PlayPauseSFX()
-        {
-            PlayOneShotSFX("PauseSFX");
-        }
-
-        public void PlayUIButtonClickSFX()
-        {
-            PlayOneShotSFX("UIButtonClickSFX");
-        }
-
-        //MODIFICACI�N: Ahora este m�todo es P�BLICO para que pueda ser accedido desde otros scripts
         public void PlayOneShotSFX(string audioName)
         {
             AudioData audioData = _audioDatabase.GetAudio(audioName);
-            if (audioData != null)
+            if (audioData != null && audioData.Clips != null && audioData.Clips.Length > 0)
             {
-                _sfxAudioSource.PlayOneShot(audioData.AudioClip, audioData.Volume);
+                _sfxAudioSource.PlayOneShot(audioData.Clips[0], audioData.Volume);
             }
             else
             {
-                Debug.LogWarning($"Audio '{audioName}' no encontrado en AudioDatabase.");
+                Debug.LogWarning($"Audio '{audioName}' no encontrado o sin clips en AudioDatabase.");
+            }
+        }
+
+        public void PlayRandomSFX(string audioName)
+        {
+            AudioData audioData = _audioDatabase.GetAudio(audioName);
+            if (audioData != null && audioData.Clips != null && audioData.Clips.Length > 0)
+            {
+                int index = UnityEngine.Random.Range(0, audioData.Clips.Length);
+                AudioClip selectedClip = audioData.Clips[index];
+                _sfxAudioSource.PlayOneShot(selectedClip, audioData.Volume);
+            }
+            else
+            {
+                Debug.LogWarning($"Audio '{audioName}' no encontrado o sin clips en AudioDatabase.");
             }
         }
 
@@ -84,59 +75,37 @@ namespace _Memoriam.Script.Audio
             if (UnityEngine.Input.GetKeyDown(KeyCode.T))
             {
                 sfxMuted = !sfxMuted;
-
-                if (sfxMuted)
-                {
-                    _sfxMixer.SetFloat("SFXVolume", -80f);
-                    Debug.Log("SFX OFF");
-                }
-                else
-                {
-                    _sfxMixer.SetFloat("SFXVolume", Mathf.Lerp(-80f, 0f, SFXVolume));
-                    Debug.Log("SFX ON");
-                }
+                _sfxMixer.SetFloat("SFXVolume", sfxMuted ? -80f : Mathf.Lerp(-80f, 0f, SFXVolume));
             }
         }
 
-        /// <summary>
-        /// New volume represented in a range from 0 to 1
-        /// </summary>
-        /// <param name="newVolume"></param>
         public void SetSFXVolume(float newVolume)
         {
-            newVolume = Mathf.Clamp(newVolume, 0f, 1f); // Asegura que el valor est� entre 0 y 1
-            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume); // Convierte de un rango de 0-1 a -80dB (silencio) a 0dB (volumen m�ximo)
-
-            _sfxMixer.SetFloat("SFXVolume", volumeDB); // Asigna el volumen en el Audio Mixer
-            PlayerPrefs.SetFloat("sfxVol", newVolume); // Guarda el volumen para la pr�xima vez que se inicie el juego
+            newVolume = Mathf.Clamp(newVolume, 0f, 1f);
+            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume);
+            _sfxMixer.SetFloat("SFXVolume", volumeDB);
+            PlayerPrefs.SetFloat("sfxVol", newVolume);
         }
 
         public void PlayMusic(string audioName)
         {
             AudioData audioData = _audioDatabase.GetAudio(audioName);
-
-            if (audioData == null)
+            if (audioData == null || audioData.Clips == null || audioData.Clips.Length == 0)
             {
-                Debug.LogWarning($"M�sica '{audioName}' no encontrada en el AudioDatabase.");
+                Debug.LogWarning($"Música '{audioName}' no encontrada en AudioDatabase.");
                 return;
             }
 
-            Debug.Log($"[AUDIO] Cambiando m�sica a: {audioName}");
-
             _musicAudioSource.Stop();
-            _musicAudioSource.clip = audioData.AudioClip;
+            _musicAudioSource.clip = audioData.Clips[0]; // Para música, se usa el primer clip
             _musicAudioSource.volume = audioData.Volume;
             _musicAudioSource.loop = true;
             _musicAudioSource.Play();
         }
 
-        public void SetMusicVolume(float newVolume)
-        {
-            newVolume = Mathf.Clamp(newVolume, 0f, 1f);
-            float volumeDB = Mathf.Lerp(-80f, 0f, newVolume);
-            _musicMixer.SetFloat("MusicVolume", volumeDB);
-            PlayerPrefs.SetFloat("musicVol", newVolume);
-            PlayerPrefs.Save();
-        }
+        public void PlayDoorCloseSFX() => PlayOneShotSFX("DoorCloseSFX");
+        public void PlayDoorOpenSFX() => PlayOneShotSFX("DoorOpenSFX");
+        public void PlayPauseSFX() => PlayOneShotSFX("PauseSFX");
+        public void PlayUIButtonClickSFX() => PlayOneShotSFX("UIButtonClickSFX");
     }
 }

@@ -37,7 +37,7 @@ namespace _Memoriam.Script.Managers
         private void OnEnable()
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
-            GameStateManager.Instance.OnGameStateChanged.Invoke(GameStateManager.GameState.OnMenu);
+            GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
             EventSystem.current.SetSelectedGameObject(firstToSelect);
         }
 

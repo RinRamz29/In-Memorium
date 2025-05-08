@@ -7,7 +7,7 @@ namespace _Memoriam.Script.Audio
     public class AudioData
     {
         public string AudioName;
-        public AudioClip AudioClip;
+        public AudioClip[] Clips;
         public float Volume = 1;
     }
 }

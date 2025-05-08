@@ -161,6 +161,11 @@ namespace _Memoriam.Script.Enemies.Bosses
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
+                if (_player != null && _player is Player.Player realPlayer)
+                {
+                    realPlayer.Progression.GainXp(50); 
+                }
+                
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForMiniBoss, gameObject);
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System.Collections;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
@@ -10,7 +11,7 @@ namespace _Memoriam.Script.Player.States
 {
     public class PlayerCombatState : IState
     {
-        private readonly Player _player;
+        private Player _player;
         private bool _isFlipped;
         private Vector2 _direction;
 
@@ -20,9 +21,9 @@ namespace _Memoriam.Script.Player.States
 
 
         private float _lastStaminaUseTime = -Mathf.Infinity;
-        private const float StaminaRegenDelay = 2f; // seconds after last use
-        private const float StaminaRegenRate = 15f; // stamina per second
-
+        private float _staminaRegenDelay = 2f; // seconds after last use
+        private float _staminaRegenRate = 15f; // stamina per second
+        
 
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
@@ -74,9 +75,9 @@ namespace _Memoriam.Script.Player.States
                 ExecuteChargedAttack();
             }
             
-            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > StaminaRegenDelay)
+            if (!_player.IsAttacking && Time.time - _lastStaminaUseTime > _staminaRegenDelay)
             {
-                _player.Stamina += StaminaRegenRate * Time.deltaTime;
+                _player.Stamina += _staminaRegenRate * Time.deltaTime;
                 _player.Stamina = Mathf.Clamp(_player.Stamina, 0, _player.MaxStamina);
                 Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
             }
@@ -189,6 +190,9 @@ namespace _Memoriam.Script.Player.States
         {
             _player.Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
 
+            // Actualiza grounded antes de calcular si aterrizó
+            bool wasGrounded = _player.IsGrounded;
+
             _player.IsGrounded =
                 Physics2D.OverlapCircle(_player.GroundCheck.position, _player.GroundDistance, _player.GroundMask);
             _player.IsTouchingWall = false;
@@ -208,6 +212,13 @@ namespace _Memoriam.Script.Player.States
 
                     break;
                 }
+            }
+
+            // Detectar aterrizaje
+            bool justLanded = !wasGrounded && _player.IsGrounded;
+            if (justLanded && Mathf.Abs(_player.Rigidbody2D.linearVelocity.y) > 1f)
+            {
+                AudioManager.Instance.PlayOneShotSFX("PlayerLand");
             }
 
             float targetSpeedX = _player.Movement.x * _player.Speed;
@@ -244,31 +255,32 @@ namespace _Memoriam.Script.Player.States
                     (_direction.x > 0.1f && _player.Movement.x < -0.1f))
                 {
                     _isDashing = false;
-                    _player.abilities.hasDash = false;
+                    _player.canDash = false;
                 }
 
                 _dashCooldown -= Time.deltaTime;
                 if (_dashCooldown <= 0)
                 {
                     _isDashing = false;
-                    _player.abilities.hasDash = false;
+                    _player.canDash = false;
                 }
             }
 
-            if (!_player.abilities.hasDoubleJump && _player.IsGrounded && _player.abilities.hasDoubleJump)
+            if (!_player.canDoubleJump && _player.IsGrounded && _player.abilities.hasDoubleJump)
             {
-                _player.abilities.hasDoubleJump = true;
+                _player.canDoubleJump = true;
             }
 
-            if (!_player.abilities.hasDash && _player.IsGrounded && _player.abilities.hasDash)
+            if (!_player.canDash && _player.IsGrounded && _player.abilities.hasDash)
             {
-                _player.abilities.hasDash = true;
+                _player.canDash = true;
             }
 
             UpdateCameraOffset();
-
+            
             var moveX = _player.Movement.normalized.x;
 
+            // Horizontal offset based on direction
             if (moveX > 0.1f)
             {
                 _player.SpriteRenderer.flipX = false;
@@ -288,7 +300,7 @@ namespace _Memoriam.Script.Player.States
             else
                 _player.Animator.SetFloat(_player.SpeedYHash, 0);
         }
-
+        
         private void UpdateCameraOffset()
         {
             var moveX = _player.Movement.x;
@@ -320,25 +332,30 @@ namespace _Memoriam.Script.Player.States
                 return;
 
             if (context.performed && _player.IsGrounded)
+            {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
-
-            if (!context.performed || _player.IsGrounded || !_player.abilities.hasDoubleJump)
+                AudioManager.Instance.PlayRandomSFX("PlayerJump");
+                _player.saltoParticula.Play();
+            }
+            
+            if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)
                 return;
 
-            _player.abilities.hasDoubleJump = false;
+            _player.canDoubleJump = false;
+            // Reset vertical velocity before double jump
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
+            AudioManager.Instance.PlayRandomSFX("PlayerJump");
         }
 
         private void Dash(InputAction.CallbackContext context)
         {
-            if (!context.performed || !_player.abilities.hasDash)
+            if (!context.performed || !_player.canDash)
                 return;
 
             _isDashing = true;
             _dashCooldown = 0.45f;
         }
-
 
         private void CheckForSwordCollisions()
         {

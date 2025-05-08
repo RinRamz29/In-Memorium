@@ -2,6 +2,7 @@ using _Memoriam.Script.Enemies;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
+using _Memoriam.Script.Player;
 using UnityEngine;
 
 public class TankEnemy : BaseEnemy
@@ -81,6 +82,8 @@ public class TankEnemy : BaseEnemy
 
         private void Die()
         {
+
+            
             Animator.SetTrigger(DieHash);
             _behaviourTree = null;
 
