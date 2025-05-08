@@ -11,14 +11,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         public delegate void MonsterDefeated(int exp);
         public static event MonsterDefeated OnMonsterDefeated;
         
-        public ParticleSystem BloodParticles;
-        
         private void Awake()
         {
             Health = MaxHealth;
             LastAttackTime = -AttackTimeOut;
             InitialAttackTimer = -AttackTimeOut;
-            Experience = Experience;
             SetUpBehaviorSelector();
         }
 
@@ -92,18 +89,12 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
-                OnMonsterDefeated(Experience);
+                OnMonsterDefeated?.Invoke(Experience);
+                if (_player != null && _player is Player.Player realPlayer)
+                {
+                    realPlayer.Progression.GainXp(25); 
+                }
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
-            }
-            PlayLevelUpEffects();
-        }
-        
-        private void PlayLevelUpEffects()
-        {
-            if (BloodParticles != null)
-            {
-                Instantiate(BloodParticles, transform.position, Quaternion.identity);
-                BloodParticles.Play();
             }
         }
 
