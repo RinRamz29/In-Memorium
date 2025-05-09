@@ -109,6 +109,7 @@ namespace _Memoriam.Script.Player.States
                 _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.LightAttackHash, true);
+                AudioManager.Instance.PlayRandomSFX("PlayerLightAttack");
             }
         }
 
@@ -133,6 +134,7 @@ namespace _Memoriam.Script.Player.States
                 _lastStaminaUseTime = Time.time;
                 CheckForSwordCollisions();
                 _player.Animator.SetBool(_player.HeavyAttackHash, true);
+                AudioManager.Instance.PlayRandomSFX("PlayerHeavyAttack");
             }
         }
 
@@ -147,7 +149,7 @@ namespace _Memoriam.Script.Player.States
 
             CheckForSwordCollisions();
             _player.Animator.SetBool(_player.ComboTriggeredHash, true);
-
+            AudioManager.Instance.PlayRandomSFX("PlayerHeavyAttack");
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
                 _player.SetAttack(Player.AttackStrength.ChargedLight);
@@ -172,7 +174,7 @@ namespace _Memoriam.Script.Player.States
 
             CheckForSwordCollisions();
             _player.Animator.SetBool(_player.ComboTriggeredHash, true);
-
+            AudioManager.Instance.PlayRandomSFX("PlayerLightAttack");
             if (_player.CurrentAttackType == Player.AttackType.Light)
             {
                 _player.SetAttack(Player.AttackStrength.ComboLight);
@@ -369,6 +371,7 @@ namespace _Memoriam.Script.Player.States
 
             _isDashing = true;
             _dashCooldown = 0.45f;
+            AudioManager.Instance.PlayOneShotSFX("PlayerDash");
         }
 
         private void CheckForSwordCollisions()

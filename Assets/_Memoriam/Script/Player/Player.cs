@@ -244,6 +244,7 @@ namespace _Memoriam.Script.Player
 
             Health -= damage;
             OnHealthChanged?.Invoke(Health / MaxHealth);
+            AudioManager.Instance.PlayRandomSFX("PlayerDamage");
 
             if (Health <= 0)
             {
@@ -253,6 +254,10 @@ namespace _Memoriam.Script.Player
             {
                 StartCoroutine(KnockbackAndInvulnerability(damageSource));
             }
+        }
+        public void PlayFootstep()
+        {
+            AudioManager.Instance.PlayRandomSFX("PlayerWalk");
         }
 
         private IEnumerator KnockbackAndInvulnerability(Vector2 damageSource)
@@ -370,8 +375,6 @@ namespace _Memoriam.Script.Player
             {
                 logic.SetData(CurrentSwingDamage);
             }
-
-            AudioManager.Instance.PlayRandomSFX("PlayerAttack");
         }
 
         public void DisableSwordCollider()

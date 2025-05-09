@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace _Memoriam.Script.Powerups
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             StartCoroutine(WaitForParticles());
+            AudioManager.Instance.PlayOneShotSFX("Pickup");
         }
 
 

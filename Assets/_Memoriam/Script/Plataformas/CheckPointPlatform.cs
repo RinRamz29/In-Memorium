@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.InputLogic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -51,6 +52,7 @@ namespace _Memoriam.Script.Plataformas
             {
                 _player = player;
                 _playerInRange = true;
+                AudioManager.Instance.PlayOneShotSFX("PlayerTeleport");
                 // Show UI prompt "Press E to teleport"
             }
         }

@@ -1,4 +1,5 @@
 using System;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
@@ -19,6 +20,7 @@ public class HealthPotion : MonoBehaviour, IPickable, ISaveableObject
         }
         
         gameObject.SetActive(false);
+        AudioManager.Instance.PlayOneShotSFX("PlayerLife");
     }
 
     [ContextMenu("Generate ID")]
