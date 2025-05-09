@@ -5,6 +5,7 @@ using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
+using _Memoriam.Script.Powerups;
 using _Memoriam.Script.Tutorial;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,6 +43,19 @@ namespace _Memoriam.Script.Player.States
         public void Enter()
         {
             var step = _tutorial.CurrentStep;
+            Player.OnPowerUpPickedUp += PowerUpPickedUp;
+            Player.onPlayerFirstTp += ReachedFirstTp;
+            InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
+            InputReader.Instance.PlayerActions.Player.LightAttack.performed += LightAttack;
+            InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
+            InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed +=
+                _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed +=
+                _ => _player.ChargedInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
+            InputReader.Instance.PlayerActions.Player.Dash.performed += Dash;
+
             Subscribe(step);
         }
 
@@ -53,6 +67,8 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= HeavyAttack;
             InputReader.Instance.PlayerActions.Player.Dash.performed -= Dash;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= Jump;
+            Player.OnPowerUpPickedUp -= PowerUpPickedUp;
+            Player.onPlayerFirstTp -= ReachedFirstTp;
                        
             // Reset attack state
             _player.IsAttacking = false;
@@ -71,37 +87,30 @@ namespace _Memoriam.Script.Player.States
             if (step.action == TutorialStep.ActionType.Jump)
             {
                 InputReader.Instance.PlayerActions.Player.Jump.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
             }
             
             if (step.action == TutorialStep.ActionType.LightAttack)
             {
                 InputReader.Instance.PlayerActions.Player.LightAttack.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.LightAttack.performed += LightAttack;
             }
             
             if (step.action == TutorialStep.ActionType.HeavyAttack)
             {
                 InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += HeavyAttack;
             }
             
             if (step.action == TutorialStep.ActionType.ChargedAttack)
             {
                 InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed += OnStepCompleted;
                 InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed +=
-                    _ => _player.ChargedInputReceived = true;
-                InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed +=
-                    _ => _player.ChargedInputReceived = true;
+
             }
             
             if (step.action == TutorialStep.ActionType.Combo)
             {
                 InputReader.Instance.PlayerActions.Player.LightCombo.performed += OnStepCompleted;
                 InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
-                InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
+
             }
                         
             if (step.action == TutorialStep.ActionType.DoubleJump)
@@ -113,20 +122,52 @@ namespace _Memoriam.Script.Player.States
             {
                 InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
             }
-            
-            if (step.action == TutorialStep.ActionType.Dash)
-            {
-                InputReader.Instance.PlayerActions.Player.Dash.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.Dash.performed += Dash;
-            }
         }
 
         private void OnStepCompleted(InputAction.CallbackContext ctx)
         {
             if (!ctx.performed)
                 return;
+
+            if (_tutorial.CurrentStepIndex + 1 >= _tutorial.steps.Count)
+            {
+                AdvanceIfCorrect();
+                return;
+            }
+            
+            var next = _tutorial.steps[_tutorial.CurrentStepIndex + 1];
+            
+            if (next.action == TutorialStep.ActionType.DoubleJump && !_player.abilities.hasDoubleJump)
+            {
+                AdvanceIfCorrect();
+                _tutorial.SetTutorialUI(false);
+                return;
+            }
+            
+            if (next.action == TutorialStep.ActionType.Interact && !_player.ReachedFirstTp)
+            {
+                AdvanceIfCorrect();
+                _tutorial.SetTutorialUI(false);
+                return;
+            }
             
             AdvanceIfCorrect();
+        }
+
+        private void PowerUpPickedUp(TypeOfPickable powerUpType)
+        {
+            if (powerUpType != TypeOfPickable.DoubleJump && powerUpType != TypeOfPickable.Dash)
+                return;
+            _tutorial.SetTutorialUI(true);
+            
+        }
+
+        private void ReachedFirstTp(bool condition)
+        {
+            if (_tutorial.CurrentStep.action == TutorialStep.ActionType.Interact && condition)
+            {
+                _tutorial.SetTutorialUI(true);
+            }
         }
         
         private void OnDoubleJump(InputAction.CallbackContext ctx)
@@ -134,6 +175,7 @@ namespace _Memoriam.Script.Player.States
             if (!ctx.performed || !_player.canDoubleJump)
                 return;
                 
+            _tutorial.SetTutorialUI(false);
             AdvanceIfCorrect();
         }
 
@@ -149,7 +191,6 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.LightCombo.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Interact.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.Dash.performed -= OnStepCompleted;
         }
         
         private void AdvanceIfCorrect()
@@ -165,6 +206,7 @@ namespace _Memoriam.Script.Player.States
             }
             else
             {
+                _tutorial.SetTutorialUI(false);
                 _player.StateMachine.ChangeState(new PlayerCombatState(_player));
             }
         }

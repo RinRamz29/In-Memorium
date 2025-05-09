@@ -2,6 +2,7 @@ using System;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.General;
 using _Memoriam.Script.SaveLoad;
+using _Memoriam.Script.Tutorial;
 using UnityEngine;
 
 namespace _Memoriam.Script.Managers

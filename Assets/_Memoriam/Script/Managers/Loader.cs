@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using _Memoriam.Script.Tutorial;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,9 @@ namespace _Memoriam.Script.Managers
             {
                 slider.value = progress;
                 if (progress >= 0.9f)
+                {
                     GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
+                }
             });
         }
 

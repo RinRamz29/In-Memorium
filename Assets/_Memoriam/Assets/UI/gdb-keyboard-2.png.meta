@@ -3541,7 +3541,7 @@ TextureImporter:
         width: 17
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3550,6 +3550,28 @@ TextureImporter:
       bones: []
       spriteID: 99a16d243c42dff40bc82e3a1dbeb153
       internalID: 708875959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdb-keyboard-2_138
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 560
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d52ee87624613441b9e484a150a392d
+      internalID: -934109011
       vertices: []
       indices: 
       edges: []
@@ -3612,6 +3634,7 @@ TextureImporter:
       gdb-keyboard-2_135: 418924702
       gdb-keyboard-2_136: 253902772
       gdb-keyboard-2_137: 708875959
+      gdb-keyboard-2_138: -934109011
       gdb-keyboard-2_14: -9069395727677453478
       gdb-keyboard-2_15: 3112658401213155458
       gdb-keyboard-2_16: 3209281970591224228

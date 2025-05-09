@@ -512,7 +512,7 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1c30fee8-577c-4ea3-bdf4-a8382edb2758"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",

@@ -24,12 +24,14 @@ namespace _Memoriam.Script.Player
             }
         }
         public event Action<int> OnLevelUp;
+        public event Action<float> OnXpGained;
 
         public void GainXp(float amount)
         {
             if (Level >= maxLevel) return;                
 
             CurrentXp += amount;
+            OnXpGained?.Invoke(amount);
 
             while (true)
             {

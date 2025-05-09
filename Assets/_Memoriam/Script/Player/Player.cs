@@ -99,10 +99,9 @@ namespace _Memoriam.Script.Player
         [field: SerializeField, Range(0,10)] public int OccurAfterVelocity { get; private set; }
         [field: SerializeField, Range(0,0.2f)] public float DustFormationPeriod { get; private set; }
 
-        
-        
+        public static Action<bool> onPlayerFirstTp;
+        public bool ReachedFirstTp { get; private set; }
         private bool _isInvulnerable = false;
-        private bool _isTutoFinished = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private const float BlinkInterval = 0.1f;
@@ -162,7 +161,6 @@ namespace _Memoriam.Script.Player
         // Movement parameters
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
-
         
 
         #region UnityFlow
@@ -181,7 +179,13 @@ namespace _Memoriam.Script.Player
             OnHealthChanged?.Invoke(Health);
             OnStaminaChanged?.Invoke(Stamina);
             Progression.OnLevelUp += HandleLevelUp;
-            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
+            
+            if (tutorialManager.isFinished)
+                StateMachine.ChangeState(new PlayerCombatState(this));
+            else
+                StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
+            
+            onPlayerFirstTp += (cond) => ReachedFirstTp = cond;
         }
 
         private void Update()
@@ -484,7 +488,7 @@ namespace _Memoriam.Script.Player
             LastCheckPoint = data.player.position;
             abilities = data.player.abilities;
             Health = data.player.health;
-            _isTutoFinished = data.player.isTutoFinished;
+
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
@@ -497,7 +501,6 @@ namespace _Memoriam.Script.Player
                 lastCheckpoint = LastCheckPoint,
                 abilities = abilities,
                 health = Health,
-                isTutoFinished = _isTutoFinished,
             };
             data.player = player;
         }
