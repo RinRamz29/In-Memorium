@@ -8,6 +8,8 @@ namespace _Memoriam.Script.Enemies.MiniBoss.SentinelOfOblivion
     {
         [Header("Sentinel Specific")]
         private float[] _lastAttackTimes;
+        
+        public ParticleSystem Blood;
 
         protected override void Awake()
         {
@@ -48,6 +50,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss.SentinelOfOblivion
         {
             base.Die();
             Debug.Log("Sentinel derrotado, droppeando Dash...");
+            Instantiate(Blood, transform.position, Quaternion.identity);
             // Aquí puedes hacer aparecer el PowerUp del Dash
         }
     }
