@@ -15,6 +15,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         private int _currentPatrolIndex = 0;
         private float _waitTimer = 0f;
         
+        public ParticleSystem Blood;
+        
         public delegate void MonsterDefeated(int exp);
         public static event MonsterDefeated OnMonsterDefeated;
 
@@ -89,6 +91,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Animator.SetTrigger(DamagedHash);
             Health -= damage;
+            Instantiate(Blood, transform.position, Quaternion.identity);
         }
 
         private void Die()
@@ -104,6 +107,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                     realPlayer.Progression.GainXp(25); 
                 }
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForFlyerEnemies, this.gameObject);
+                Instantiate(Blood, transform.position, Quaternion.identity);
             }
         }
 
