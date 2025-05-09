@@ -72,8 +72,6 @@ namespace _Memoriam.Script.Player
         [SerializeField] private TutorialManager tutorialManager;
         public bool IsTouchingWall { get; set; }
 
-        [field: SerializeField] public ParticleSystem saltoParticula { get; private set; }
-
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get;  set; }
@@ -90,7 +88,17 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float CameraFallYOffset { get; private set; } = -2f;
         [field: SerializeField] public float CameraJumpYOffset { get; private set; } = 1.5f;
         [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
+        
+        [Header("Particles")]
+        [field: SerializeField] public ParticleSystem MovimientoParticula { get; private set; }
+        [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
+        [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
+        
+        [field: SerializeField, Range(0,10)] public int OccurAfterVelocity { get; private set; }
+        [field: SerializeField, Range(0,0.2f)] public float DustFormationPeriod { get; private set; }
 
+        
+        
         private bool _isInvulnerable = false;
         private bool _isTutoFinished = false;
         private const float InvulnerabilityTime = 1.5f;
@@ -285,6 +293,7 @@ namespace _Memoriam.Script.Player
             else
                 Health += heal;
 
+            ParticlesHeal?.Play();
             var clampedHealth = Health / MaxHealth;
             OnHealthChanged?.Invoke(clampedHealth);
         }

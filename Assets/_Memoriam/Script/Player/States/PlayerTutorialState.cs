@@ -28,7 +28,7 @@ namespace _Memoriam.Script.Player.States
         private float _staminaRegenDelay = 2f; // seconds after last use
         private float _staminaRegenRate = 15f; // stamina per second
         
-
+        private float _counter;
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
 
@@ -337,6 +337,7 @@ namespace _Memoriam.Script.Player.States
             if (justLanded && Mathf.Abs(_player.Rigidbody2D.linearVelocity.y) > 1f)
             {
                 AudioManager.Instance.PlayOneShotSFX("PlayerLand");
+                _player.CaidaParticula.Play();
             }
 
             float targetSpeedX = _player.Movement.x * _player.Speed;
@@ -348,6 +349,17 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.Rigidbody2D.linearVelocity = new Vector2(smoothedX, verticalSpeed);
                 _player.Animator.SetFloat(_player.SpeedXHash, Mathf.Abs(_player.Movement.x));
+                                
+                if (Mathf.Abs(_player.Rigidbody2D.linearVelocity.x) > _player.OccurAfterVelocity)
+                {
+                    _counter += Time.deltaTime;
+                    
+                    if (_counter > _player.DustFormationPeriod)
+                    {
+                        _player.MovimientoParticula.Play();
+                        _counter = 0;
+                    }
+                }
             }
             else if (_player.IsTouchingWall && !_player.IsGrounded)
             {
@@ -453,7 +465,6 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.Rigidbody2D.AddForce(Vector2.up * _player.JumpForce, ForceMode2D.Impulse);
                 AudioManager.Instance.PlayRandomSFX("PlayerJump");
-                _player.saltoParticula.Play();
             }
             
             if (!context.performed || _player.IsGrounded || !_player.canDoubleJump)

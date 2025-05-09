@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using UnityEngine;
@@ -9,13 +11,17 @@ namespace _Memoriam.Script.Powerups
     {
         [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
         [field: SerializeField] public string ID { get; private set; }
+        [SerializeField] private ParticleSystem pickupParticles;
 
         public void Pick(GameObject player)
         {
             if (player == null)
                 return;
-
-            gameObject.SetActive(false);
+            
+            pickupParticles?.Play();
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            StartCoroutine(WaitForParticles());
         }
 
 
@@ -23,6 +29,12 @@ namespace _Memoriam.Script.Powerups
         public void GenerateID()
         {
             ID = Guid.NewGuid().ToString();
+        }
+
+        private IEnumerator WaitForParticles()
+        {
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
         }
 
         public void LoadData(GameData data)

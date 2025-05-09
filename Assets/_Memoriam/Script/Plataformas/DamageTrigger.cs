@@ -1,4 +1,5 @@
 using System;
+using _Memoriam.Script.Enemies;
 using _Memoriam.Script.Player;
 using UnityEngine;
 
@@ -28,6 +29,10 @@ namespace _Memoriam.Script.Plataformas
                         player.ReceiveDamage(Damage, (Vector2)transform.position);
                         break;
                 }
+            }
+            else if (other.TryGetComponent<IEnemy>(out var enemy))
+            {
+                enemy.ReceiveDamage(99999999f);
             }
         }
 

@@ -14,6 +14,7 @@ namespace _Memoriam.Script.Powerups
         [SerializeField] private Transform checkPointPosition;
 
         [SerializeField] private GameObject saveMenu;
+        [SerializeField] private ParticleSystem pickupParticles;
 
         public void Pick(GameObject player)
         {

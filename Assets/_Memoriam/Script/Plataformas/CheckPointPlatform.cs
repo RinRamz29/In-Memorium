@@ -11,6 +11,8 @@ namespace _Memoriam.Script.Plataformas
         [SerializeField] private Transform targetToTeleport;
         [SerializeField] private CanvasGroup fadeCanvasGroup; // Assign a full screen UI CanvasGroup for fade
         [SerializeField] private float fadeDuration = 1f;
+        [SerializeField] private ParticleSystem tpParticles;
+        [SerializeField] private ParticleSystem tpParticlesArrived;
 
         private Player.Player _player;
         private bool _playerInRange;
@@ -19,8 +21,11 @@ namespace _Memoriam.Script.Plataformas
 
         private void OnInteractPressed(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed && _playerInRange) 
+            if (ctx.performed && _playerInRange)
+            {
+                tpParticles.Play();
                 _interactPressed = true; 
+            } 
         } 
         
 
@@ -68,6 +73,9 @@ namespace _Memoriam.Script.Plataformas
 
             _player.transform.position = targetToTeleport.position;
             _player.LastCheckPoint = targetToTeleport.position;
+            tpParticlesArrived.transform.parent = targetToTeleport;
+            tpParticlesArrived.transform.localPosition = new Vector3(0f, -2f, 0f);
+            tpParticlesArrived.Play();
 
             yield return StartCoroutine(Fade(0f));
 
