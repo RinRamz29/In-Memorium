@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using _Memoriam.Script.InputLogic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Tutorial
 {
@@ -11,8 +14,9 @@ namespace _Memoriam.Script.Tutorial
         public bool isFinished;
         public int CurrentStepIndex { get; private set; } = 0;
         public TutorialStep CurrentStep { get; private set; }
-        //[SerializeField] private CanvasGroup uiGroup;
-        //[SerializeField] private TextMeshProUGUI instructionText;
+        [SerializeField] private TextMeshProUGUI instructionText;
+        [SerializeField] private Image icon;
+        [SerializeField] private GameObject canvas;
 
         private void Awake()
         {
@@ -29,26 +33,62 @@ namespace _Memoriam.Script.Tutorial
         {
             ShowStep();
         }
-        
+
+        private void Update()
+        {
+            CheckForInput();
+        }
+
         public void NextStep()
         {
-            CurrentStepIndex++;
-            CurrentStep = steps[CurrentStepIndex];
-            if (CurrentStepIndex < steps.Count) 
+            if (CurrentStepIndex + 1 < steps.Count)
+            {
+                CurrentStepIndex++;
+                CurrentStep = steps[CurrentStepIndex];
                 ShowStep();
-            else 
+            }
+            else
+            {
                 EndTutorial();
+            }
         }
     
         public void ShowStep() {
-            //instructionText.text = steps[CurrentStep].instruction;
-            //uiGroup.alpha = 1;
+
+            CheckForInput();
+            
+            instructionText.text = CurrentStep.instruction;
+            canvas.SetActive(true);
+        }
+
+        private void CheckForInput()
+        {
+            if (InputReader.Instance.ControlTypes == InputReader.ControlType.Control)
+            {
+                if (CurrentStep.icon.Count > 0)
+                {
+                    icon.enabled = true;
+                    icon.sprite = CurrentStep.icon[0];
+                }
+                else
+                    icon.enabled = false;
+            }
+            else if (InputReader.Instance.ControlTypes == InputReader.ControlType.KeyboardMouse)
+            {
+                if (CurrentStep.icon.Count > 0)
+                {
+                    icon.enabled = true;
+                    icon.sprite = CurrentStep.icon[1];
+                }
+                else
+                    icon.enabled = false;
+            }
         }
     
         public void EndTutorial()
         {
             isFinished = true;
-            //uiGroup.alpha = 0;
+            canvas.SetActive(false);
         }
     }
     
@@ -57,7 +97,7 @@ namespace _Memoriam.Script.Tutorial
         
         public string instruction;
         public List<Sprite> icon;
-        public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, ChargedAttack, Combo, EnterZone }
+        public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, ChargedAttack, Combo, Interact }
         public ActionType action;
     }
 }

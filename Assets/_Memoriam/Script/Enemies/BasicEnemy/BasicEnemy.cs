@@ -82,14 +82,13 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Animator.SetTrigger(DamagedHash);
             Health -= damage;
-            Instantiate(Blood, transform.position, Quaternion.identity);
         }
 
         private void Die()
         {
             Animator.SetTrigger(DieHash);
             _behaviourTree = null;
-
+            Blood.Play();
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 OnMonsterDefeated?.Invoke(Experience);
@@ -98,8 +97,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                     realPlayer.Progression.GainXp(25); 
                 }
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
-                Instantiate(Blood, transform.position, Quaternion.identity);
-                Destroy(Blood);
             }
         }
 

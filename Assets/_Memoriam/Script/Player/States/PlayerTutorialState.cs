@@ -108,6 +108,11 @@ namespace _Memoriam.Script.Player.States
             {
                 InputReader.Instance.PlayerActions.Player.Jump.performed += OnDoubleJump;
             }
+                        
+            if (step.action == TutorialStep.ActionType.Interact)
+            {
+                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
+            }
             
             if (step.action == TutorialStep.ActionType.Dash)
             {
@@ -126,23 +131,24 @@ namespace _Memoriam.Script.Player.States
         
         private void OnDoubleJump(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed && !_player.IsGrounded && _player.canDoubleJump)
-            {
-                InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
-                AdvanceIfCorrect();
-            }
+            if (!ctx.performed || !_player.canDoubleJump)
+                return;
+                
+            AdvanceIfCorrect();
         }
 
         private void Unsubscribe()
         {
             InputReader.Instance.PlayerActions.Player.Move.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
             InputReader.Instance.PlayerActions.Player.LightAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.ChargedLightAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.ChargedHeavyAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.LightCombo.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.Interact.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Dash.performed -= OnStepCompleted;
         }
         
@@ -172,7 +178,8 @@ namespace _Memoriam.Script.Player.States
             {
                 ExecuteCombo();
             }
-            else if (_player.ChargedInputReceived && _player.ComboWindowOpen)
+            
+            if (_player.ChargedInputReceived && _player.ComboWindowOpen)
             {
                 ExecuteChargedAttack();
             }
@@ -208,6 +215,7 @@ namespace _Memoriam.Script.Player.States
             {
                 _player.IsAttacking = true;
                 _player.SetAttack(Player.AttackStrength.Light);
+                _player.CurrentAttackType = Player.AttackType.Light;
 
                 _player.Stamina -= _player.LighAttackStamina;
                 Player.OnStaminaChanged?.Invoke(_player.Stamina / _player.MaxStamina);
@@ -475,6 +483,8 @@ namespace _Memoriam.Script.Player.States
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            _player.SaltoDerecha.Play();
+            _player.SaltoIzquierda.Play();
         }
 
         private void Dash(InputAction.CallbackContext context)

@@ -18,7 +18,7 @@ namespace _Memoriam.Script.Powerups
             if (player == null)
                 return;
             
-            pickupParticles?.Play();
+            //pickupParticles?.Play();
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             StartCoroutine(WaitForParticles());

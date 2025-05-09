@@ -358,6 +358,8 @@ namespace _Memoriam.Script.Player.States
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            _player.SaltoDerecha.Play();
+            _player.SaltoIzquierda.Play();
         }
 
         private void Dash(InputAction.CallbackContext context)

@@ -93,6 +93,8 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public ParticleSystem MovimientoParticula { get; private set; }
         [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
         [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
+        [field: SerializeField] public ParticleSystem SaltoIzquierda { get; private set; }
+        [field: SerializeField] public ParticleSystem SaltoDerecha { get; private set; }
         
         [field: SerializeField, Range(0,10)] public int OccurAfterVelocity { get; private set; }
         [field: SerializeField, Range(0,0.2f)] public float DustFormationPeriod { get; private set; }
@@ -168,7 +170,6 @@ namespace _Memoriam.Script.Player
         private void Awake()
         {
             InputReader.Instance.PlayerActions.Player.Enable();
-            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
             Health = MaxHealth;
             Stamina = MaxStamina;
             LastCheckPoint = transform.position;
@@ -180,6 +181,7 @@ namespace _Memoriam.Script.Player
             OnHealthChanged?.Invoke(Health);
             OnStaminaChanged?.Invoke(Stamina);
             Progression.OnLevelUp += HandleLevelUp;
+            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
         }
 
         private void Update()
