@@ -32,8 +32,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 
@@ -89,7 +90,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             Animator.SetTrigger(DieHash);
             _behaviourTree = null;
-
             if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 OnMonsterDefeated?.Invoke(Experience);
@@ -99,7 +99,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 }
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
                 Instantiate(Blood, transform.position, Quaternion.identity);
-                Destroy(Blood);
             }
         }
 

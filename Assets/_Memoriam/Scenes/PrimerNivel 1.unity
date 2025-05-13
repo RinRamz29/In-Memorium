@@ -34806,6 +34806,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!225 &39506687 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8484406099053715616, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+  m_PrefabInstance: {fileID: 567129522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &48294488
 GameObject:
   m_ObjectHideFlags: 0
@@ -48651,6 +48656,7 @@ MonoBehaviour:
   <ID>k__BackingField: bdb6ea0e-629d-4d8d-bfca-f0566795c511
   checkPointPosition: {fileID: 284829193}
   saveMenu: {fileID: 1523868321}
+  pickupParticles: {fileID: 0}
 --- !u!1 &194007940
 GameObject:
   m_ObjectHideFlags: 0
@@ -102319,6 +102325,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 828869107}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
+  tpParticles: {fileID: 0}
+  tpParticlesArrived: {fileID: 0}
 --- !u!61 &691417230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128261,6 +128271,7 @@ MonoBehaviour:
   <ID>k__BackingField: 4cb221f1-0b71-4c2e-88c2-e7c98bbc9565
   checkPointPosition: {fileID: 399301791}
   saveMenu: {fileID: 1523868321}
+  pickupParticles: {fileID: 0}
 --- !u!1 &1478184614
 GameObject:
   m_ObjectHideFlags: 0
@@ -129216,6 +129227,7 @@ MonoBehaviour:
   <ID>k__BackingField: 8cf93ad7-b334-4202-8424-6ab016ad42cf
   checkPointPosition: {fileID: 795554011}
   saveMenu: {fileID: 1523868321}
+  pickupParticles: {fileID: 0}
 --- !u!1 &1512112019
 GameObject:
   m_ObjectHideFlags: 0
@@ -137130,6 +137142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 0
   <ID>k__BackingField: 5fb57a23-14a4-425b-803a-357f1fb60ffa
+  pickupParticles: {fileID: 0}
 --- !u!1 &1658722039
 GameObject:
   m_ObjectHideFlags: 0
@@ -161521,6 +161534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TypeOfPickable>k__BackingField: 1
   <ID>k__BackingField: 8d423299-be75-4db0-8deb-5b1b9d6b1159
+  pickupParticles: {fileID: 0}
 --- !u!1 &1853135996
 GameObject:
   m_ObjectHideFlags: 0
@@ -164395,8 +164409,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1490715768}
   uiPlayer: {fileID: 567129523}
+  player: {fileID: 0}
   <HealthBar>k__BackingField: {fileID: 567129526}
   <StaminaBar>k__BackingField: {fileID: 1322528597}
+  <XpBar>k__BackingField: {fileID: 0}
+  <LevelTxt>k__BackingField: {fileID: 0}
   powerupToggles:
   - {fileID: 567129528}
   - {fileID: 567129527}
@@ -165180,6 +165197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5418bfd000732d84697af7b0cd8fb028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeCanvasGroup: {fileID: 39506687}
+  fadeDuration: 0.1
 --- !u!1 &2063134655
 GameObject:
   m_ObjectHideFlags: 0
@@ -174151,6 +174170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 1694450144}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
+  tpParticles: {fileID: 0}
+  tpParticlesArrived: {fileID: 0}
 --- !u!114 &6204024958996534987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174164,6 +174187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 1561310132}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
+  tpParticles: {fileID: 0}
+  tpParticlesArrived: {fileID: 0}
 --- !u!114 &6204024959063792268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174177,6 +174204,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToTeleport: {fileID: 204173303}
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
+  tpParticles: {fileID: 0}
+  tpParticlesArrived: {fileID: 0}
 --- !u!4 &6293244209464163454
 Transform:
   m_ObjectHideFlags: 0

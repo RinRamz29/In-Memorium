@@ -15,17 +15,8 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
-        [SerializeField] private GameObject firstToSelect;
-
-        public void PlayButtonHoverSFX()
-        {
-            AudioManager.Instance.PlayOneShotSFX("ButtonHoverSFX");
-        }
-
-        public void PlayButtonSelectSFX()
-        {
-            AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
-        }
+        public bool IsNewGame { get; private set; } = false;
+        public bool NoSave { get; private set; } = false;
 
         protected override void Awake()
         {
@@ -38,15 +29,28 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
-            EventSystem.current.SetSelectedGameObject(firstToSelect);
         }
 
         public async void NewGame()
         {
-            await Task.Delay(150);
+            IsNewGame = true;
             AudioManager.Instance.PlayMusic("GameplayMusic");
-            GameLoader.newGame = true;
-            await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
+            await Loader.Instance.LoadLoader(true);
+        }
+                
+        public async void LoadGame(int slot)
+        {
+            if (DataPersistentManager.Instance.FileDataHandler.DoesSaveExist(slot))
+            {
+                IsNewGame = false;
+                NoSave = false;
+                AudioManager.Instance.PlayMusic("GameplayMusic");
+                await Loader.Instance.LoadLoader(true, slot); 
+            }
+            else
+            {
+                NoSave = true;
+            }
         }
         
         public void QuitGame()

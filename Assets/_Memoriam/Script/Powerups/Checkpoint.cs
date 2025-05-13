@@ -11,15 +11,15 @@ namespace _Memoriam.Script.Powerups
     {
         [field: SerializeField] public TypeOfPickable TypeOfPickable { get; private set; }
         [field: SerializeField] public string ID { get; private set; }
-        [SerializeField] private Transform checkPointPosition;
 
         [SerializeField] private GameObject saveMenu;
+        [SerializeField] private ParticleSystem pickupParticles;
 
         public void Pick(GameObject player)
         {
             if (player.TryGetComponent(out Player.Player playerController))
             {
-                playerController.LastCheckPoint = checkPointPosition.position;
+                playerController.LastCheckPoint = transform.position;
             }
 
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);

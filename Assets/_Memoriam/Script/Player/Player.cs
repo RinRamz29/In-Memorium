@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
@@ -68,15 +69,9 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public Transform[] WallCheck { get; set; }
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
-        [field: SerializeField] public CinemachineFollow CinemachineFollow { get; private set; }
-        [SerializeField] private TutorialManager tutorialManager;
+        [field: SerializeField] public CinemachineFollow CinemachineFollow { get; set; }
         public bool IsTouchingWall { get; set; }
 
-        [field: SerializeField] public ParticleSystem saltoPataDerecha { get; private set; }
-        [field: SerializeField] public ParticleSystem saltoPataIzquierda { get; private set; }
-        
-        [field: SerializeField] public ParticleSystem DobleSalto { get; private set; }
-        
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
         [field: SerializeField] public float MaxHealth { get;  set; }
@@ -93,9 +88,20 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float CameraFallYOffset { get; private set; } = -2f;
         [field: SerializeField] public float CameraJumpYOffset { get; private set; } = 1.5f;
         [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
+        
+        [Header("Particles")]
+        [field: SerializeField] public ParticleSystem MovimientoParticula { get; private set; }
+        [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
+        [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
+        [field: SerializeField] public ParticleSystem SaltoIzquierda { get; private set; }
+        [field: SerializeField] public ParticleSystem SaltoDerecha { get; private set; }
+        
+        [field: SerializeField, Range(0,10)] public int OccurAfterVelocity { get; private set; }
+        [field: SerializeField, Range(0,0.2f)] public float DustFormationPeriod { get; private set; }
 
+        public static Action<bool> onPlayerFirstTp;
+        public bool ReachedFirstTp { get; set; }
         private bool _isInvulnerable = false;
-        private bool _isTutoFinished = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private const float BlinkInterval = 0.1f;
@@ -109,33 +115,28 @@ namespace _Memoriam.Script.Player
                 case GameStateManager.GameState.OnGameplay:
                     ResumePhysics();
                     break;
-                case GameStateManager.GameState.OnLose:
-                    break;
                 case GameStateManager.GameState.OnPause:
-                    Animator.SetFloat(SpeedXHash, 0);
                     PausePhysics();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
         
         private Vector3 _savedVelocity;
         private float _savedAngularVelocity;
 
-        public void PausePhysics()
+        private void PausePhysics()
         {
+            Animator.SetFloat(SpeedXHash, 0);
             _savedVelocity = Rigidbody2D.linearVelocity;
             _savedAngularVelocity = Rigidbody2D.angularVelocity;
             Rigidbody2D.angularVelocity = 0f;
             Rigidbody2D.linearVelocity = Vector2.zero;
-            Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+            Rigidbody2D.gravityScale = 0f;
         }
         
-        public void ResumePhysics()
+        private void ResumePhysics()
         {
-            Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-            
+            Rigidbody2D.gravityScale = 2f;
             Rigidbody2D.linearVelocity = _savedVelocity;
             Rigidbody2D.angularVelocity = _savedAngularVelocity;
         }
@@ -147,42 +148,40 @@ namespace _Memoriam.Script.Player
         public int Combo1AttackHash { get; } = Animator.StringToHash("Combo1");
         public int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
         public int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
-        public int ChargedHeavyTriggeredHash { get; } = Animator.StringToHash("ChargedHeavyTrigger");
-        public int ChargedTriggeredHash { get; } = Animator.StringToHash("ChargedTriggered");
         public int SpeedXHash { get; } = Animator.StringToHash("SpeedX");
         public int SpeedYHash { get; } = Animator.StringToHash("SpeedY");
 
         // Movement parameters
         public Vector2 Movement { get; set; }
         public bool IsGrounded { get; set; }
-
         
 
         #region UnityFlow
-
-        private void Awake()
-        {
-            InputReader.Instance.PlayerActions.Player.Enable();
-            StateMachine.ChangeState(new PlayerTutorialState(this, tutorialManager));
-            Health = MaxHealth;
-            Stamina = MaxStamina;
-            LastCheckPoint = transform.position;
-        }
-
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
+            InputReader.Instance.PlayerActions.Player.Enable();
+            PlayerProgression.OnLevelUp += HandleLevelUp;
+            onPlayerFirstTp += (cond) => ReachedFirstTp = cond;
+            ResetPlayer();
+            Health = MaxHealth;
+            Stamina = MaxStamina;
+            LastCheckPoint = transform.position;
             OnHealthChanged?.Invoke(Health);
             OnStaminaChanged?.Invoke(Stamina);
-            Progression.OnLevelUp += HandleLevelUp;
         }
 
         private void Update()
         {
             if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            {
                 return;
+            }
 
-            StateMachine?.Tick();
+            if (GameStateManager.Instance.GameCurrentState == GameStateManager.GameState.OnGameplay)
+            {
+                StateMachine?.Tick();
+            }
 
             if (Health <= 0)
             {
@@ -193,18 +192,83 @@ namespace _Memoriam.Script.Player
         private void OnDisable()
         {
             GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
-            Progression.OnLevelUp -= HandleLevelUp;
+            PlayerProgression.OnLevelUp -= HandleLevelUp;
         }
 
         private void FixedUpdate()
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
-                return;
-
-            StateMachine?.FixedTick();
+            if (GameStateManager.Instance.GameCurrentState == GameStateManager.GameState.OnGameplay)
+            {
+                StateMachine?.FixedTick();
+            }
         }
 
+        public void ResetPlayer()
+        {
+            if (!TryGetComponent<Rigidbody2D>(out var rb))
+                rb = gameObject.AddComponent<Rigidbody2D>();
 
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 2f;
+            Rigidbody2D = rb;
+
+            if (SwordCollider == null || SwordCollider is null)
+            {
+                var sword = new GameObject("SwordSpawned");
+                sword.transform.SetParent(transform);
+                sword.transform.localPosition = new Vector3(0.95f, 0.032f, 0f);
+                sword.AddComponent<SwordCollider>();
+                var capsule = sword.AddComponent<CapsuleCollider2D>();
+                capsule.isTrigger = true;
+                capsule.size = new Vector2(1f, 2f);
+                capsule.direction = CapsuleDirection2D.Vertical;
+                sword.SetActive(false);
+                SwordCollider = sword;
+            }
+            
+            if (!TryGetComponent<Animator>(out var animator))
+                animator = gameObject.AddComponent<Animator>();
+            
+            animator.Rebind();
+            animator.Update(0);
+            Animator = animator;
+
+            if (GroundCheck == null)
+            {
+                var ground = new GameObject("GroundCheck");
+                ground.transform.SetParent(transform);
+                ground.transform.localPosition = new Vector3(0f, -0.67f, 0f);
+                GroundCheck = ground.transform;
+            }
+
+            if (WallCheck == null || WallCheck.Length == 0)
+            {
+                var up = new GameObject("WallCheckUp");
+                var med = new GameObject("WallCheckMed");
+                var low = new GameObject("WallCheckLow");
+                up.transform.SetParent(transform);
+                med.transform.SetParent(transform);
+                low.transform.SetParent(transform);
+                med.transform.localPosition = new Vector3(0f, 0f, 0f);
+                up.transform.localPosition = new Vector3(0f, 0.4f, 0f);
+                low.transform.localPosition = new Vector3(0f, -0.5f, 0f);
+                WallCheck = new[] { up.transform, med.transform, low.transform };
+            }
+
+            var cam = FindFirstObjectByType<CinemachineCamera>();
+            cam.Follow = transform;
+            CineMachineCamera = cam;
+            CinemachineFollow = cam?.GetComponent<CinemachineFollow>();
+            
+            EnemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+            GroundMask = 1 << LayerMask.NameToLayer("Ground");
+            
+            if (TutorialManager.Instance.isFinished)
+                StateMachine.ChangeState(new PlayerCombatState(this));
+            else
+                StateMachine.ChangeState(new PlayerTutorialState(this));
+        }
+        
         #endregion
 
         #region LevelUpLogic
@@ -237,6 +301,7 @@ namespace _Memoriam.Script.Player
 
             Health -= damage;
             OnHealthChanged?.Invoke(Health / MaxHealth);
+            AudioManager.Instance.PlayRandomSFX("PlayerDamage");
 
             if (Health <= 0)
             {
@@ -246,6 +311,10 @@ namespace _Memoriam.Script.Player
             {
                 StartCoroutine(KnockbackAndInvulnerability(damageSource));
             }
+        }
+        public void PlayFootstep()
+        {
+            AudioManager.Instance.PlayRandomSFX("PlayerWalk");
         }
 
         private IEnumerator KnockbackAndInvulnerability(Vector2 damageSource)
@@ -288,6 +357,7 @@ namespace _Memoriam.Script.Player
             else
                 Health += heal;
 
+            ParticlesHeal?.Play();
             var clampedHealth = Health / MaxHealth;
             OnHealthChanged?.Invoke(clampedHealth);
         }
@@ -309,7 +379,6 @@ namespace _Memoriam.Script.Player
         // Combo tracking
         public bool IsAttacking { get; set; }
         public bool ComboInputReceived { get; set; }
-        public bool ChargedInputReceived { get; set; }
         public AttackType CurrentAttackType { get; set; }
         public bool ComboWindowOpen { get; set; }
         public float CurrentSwingDamage { get; private set; }
@@ -334,12 +403,6 @@ namespace _Memoriam.Script.Player
                 case AttackStrength.Heavy:
                     CurrentSwingDamage = Damage * 1.5f;
                     break;
-                case AttackStrength.ChargedHeavy:
-                    CurrentSwingDamage = Damage * 2.5f;
-                    break;
-                case AttackStrength.ChargedLight:
-                    CurrentSwingDamage = Damage * 1.7f;
-                    break;
                 case AttackStrength.ComboLight:
                     CurrentSwingDamage = Damage * 1.5f;
                     break;
@@ -362,8 +425,6 @@ namespace _Memoriam.Script.Player
             {
                 logic.SetData(CurrentSwingDamage);
             }
-
-            AudioManager.Instance.PlayRandomSFX("PlayerAttack");
         }
 
         public void DisableSwordCollider()
@@ -469,11 +530,13 @@ namespace _Memoriam.Script.Player
 
         public void LoadData(GameData data)
         {
-            transform.position = data.player.position;
-            LastCheckPoint = data.player.position;
+            transform.position = data.player.lastCheckpoint;
+            LastCheckPoint = data.player.lastCheckpoint;
             abilities = data.player.abilities;
             Health = data.player.health;
-            _isTutoFinished = data.player.isTutoFinished;
+            Progression.Level = data.player.level;
+            Progression.CurrentXp = data.player.xp;
+
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
@@ -482,11 +545,11 @@ namespace _Memoriam.Script.Player
         {
             var player = new SavablePlayer()
             {
-                position = transform.position,
                 lastCheckpoint = LastCheckPoint,
                 abilities = abilities,
                 health = Health,
-                isTutoFinished = _isTutoFinished,
+                level = Progression.Level,
+                xp = Progression.CurrentXp,
             };
             data.player = player;
         }

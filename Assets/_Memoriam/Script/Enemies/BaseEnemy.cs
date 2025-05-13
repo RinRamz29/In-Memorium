@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
@@ -59,6 +60,12 @@ namespace _Memoriam.Script.Enemies
         protected float LastAttackTime = 0f;
         protected bool _isFlipped;
 
+
+        protected virtual void OnEnable()
+        {
+            if (Rigidbody2D != null)
+                Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        }
 
         public virtual Node.Status Attack()
         {
@@ -240,7 +247,7 @@ namespace _Memoriam.Script.Enemies
 
         public void LoadData(GameData data)
         {
-            foreach (var kvp in data.EnemySavable)
+            foreach (var kvp in data.enemySavable)
             {
                 if (kvp.Key == id)
                 {
@@ -258,12 +265,12 @@ namespace _Memoriam.Script.Enemies
                 position = this.transform.position,
             };
 
-            if (data.EnemySavable.ContainsKey(id))
+            if (data.enemySavable.ContainsKey(id))
             {
-                data.EnemySavable.Remove(id);
+                data.enemySavable.Remove(id);
             }
 
-            data.EnemySavable.Add(id, instance);
+            data.enemySavable.Add(id, instance);
         }
     }
 }

@@ -16,9 +16,6 @@ namespace _Memoriam.Script.SaveLoad.Data
         {
             SaveDate = DateTime.Now;
             PlayerHealth = gameData.player.health;
-            PlayerPosition = gameData.player.position;
-            HasDoubleJump = gameData.player.canDoubleJump;
-            HasDash = gameData.player.canDash;
         }
     }
 }

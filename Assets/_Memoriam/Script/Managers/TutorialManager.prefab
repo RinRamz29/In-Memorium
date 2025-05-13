@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &642438881431871383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3387058213559985336}
+  - component: {fileID: 3407061722215676684}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3387058213559985336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642438881431871383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3407061722215676684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642438881431871383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d601f606b145a7a29eb8d787590a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps:
+  - instruction: 'Move with: '
+    icon:
+    - {fileID: 3998864616719496319, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 5762481801186481368, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 0
+  - instruction: 'Jump with:'
+    icon:
+    - {fileID: -737011211277047346, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 253902772, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 1
+  - instruction: 'Light Attack with:'
+    icon:
+    - {fileID: 8603364596459411821, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 417424752226488098, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 4
+  - instruction: 'Heavy Attack with:'
+    icon:
+    - {fileID: 9109898363745289567, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 8531666819827272381, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 5
+  - instruction: 'Combo by double click heavy or light '
+    icon: []
+    action: 6
+  - instruction: 'Double Jump by double pressing:'
+    icon:
+    - {fileID: 7752122263599561285, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 253902772, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 3
+  - instruction: 'Interact with:'
+    icon:
+    - {fileID: 2324525799202304566, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: 418924702, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 7
+  - instruction: 'Dash with:'
+    icon:
+    - {fileID: -5826372792910275525, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
+    - {fileID: -934109011, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    action: 2
+  isFinished: 0
+  instructionText: {fileID: 0}
+  icon: {fileID: 0}
+  canvas: {fileID: 0}
