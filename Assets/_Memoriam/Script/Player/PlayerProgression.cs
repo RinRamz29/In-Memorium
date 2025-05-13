@@ -10,8 +10,8 @@ namespace _Memoriam.Script.Player
         [SerializeField] private float minXpToLevelUp = 100f;
         [SerializeField] private float maxXpToLevelUp = 1500f;
 
-        [field: SerializeField] public int   Level      { get; private set; } = 1;
-        [field: SerializeField] public float CurrentXp  { get; private set; } = 0;
+        [field: SerializeField] public int   Level      { get; set; } = 1;
+        [field: SerializeField] public float CurrentXp  { get; set; } = 0;
 
         public float XpToNextLevel
         {
@@ -23,8 +23,8 @@ namespace _Memoriam.Script.Player
                 return minXpToLevelUp + (maxXpToLevelUp - minXpToLevelUp) * Mathf.Pow(t, 3);
             }
         }
-        public event Action<int> OnLevelUp;
-        public event Action<float> OnXpGained;
+        public static event Action<int> OnLevelUp;
+        public static event Action<float> OnXpGained;
 
         public void GainXp(float amount)
         {

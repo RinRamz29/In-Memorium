@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1465173353742932187
 Transform:
   m_ObjectHideFlags: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 150
   <Speed>k__BackingField: 5
   <Damage>k__BackingField: 0
+  <Experience>k__BackingField: 0
   <AttackDistance>k__BackingField: 1.5
   <WaitTimeAtPoint>k__BackingField: 2
   <AttackTimeOut>k__BackingField: 2
@@ -107,6 +108,7 @@ MonoBehaviour:
   buffedSpeedMultiplier: 1.3
   globalAttackCooldown: 1.5
   attackData: {fileID: 11400000, guid: d940abba0164048468360b4c69db8c75, type: 2}
+  Blood: {fileID: 0}
 --- !u!212 &6936911284584182044
 SpriteRenderer:
   m_ObjectHideFlags: 0

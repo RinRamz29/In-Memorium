@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace _Memoriam.Script.General
 {
-    [Preserve]
     public class ObjectPool : Singleton<ObjectPool>
     {
+        #region structs y fields
+
         [Serializable]
         public class PoolObject
         {
@@ -17,59 +18,121 @@ namespace _Memoriam.Script.General
         }
 
         [field: SerializeField] public List<PoolObject> ObjectsPool { get; set; }
-        private Dictionary<string, Queue<GameObject>> _poolDictionary = new();
+        private readonly Dictionary<string, Queue<GameObject>> _poolDictionary = new();
+        private readonly Dictionary<string, List<GameObject>> _spawned = new();
+        private Dictionary<string, int> _referenceCounters = new();
 
-        protected override void Awake()
+        #endregion
+
+        #region creación de pools
+
+        public void Initialize()
         {
-            base.Awake();
-            foreach (var objc in ObjectsPool)
+            _poolDictionary.Clear();
+            _spawned.Clear();
+            _referenceCounters.Clear();
+            
+            foreach (var poolObj in ObjectsPool)
             {
-                var objectPool = new Queue<GameObject>();
+                Queue<GameObject> queue = new();
+                List<GameObject> prefabs = new();
+                GameObject prefab = poolObj.prefab;
 
-                for (int i = 0; i < objc.size; i++)
+                if (prefab == null)
                 {
-                    var obj = Instantiate(objc.prefab);
-                    obj.SetActive(false);
-                    objectPool.Enqueue(obj);
+                    Debug.LogWarning($"[ObjectPool] Prefab is null for ID: {poolObj.id}");
+                    continue;
                 }
 
-                _poolDictionary.Add(objc.id, objectPool);
+                for (int i = 0; i < poolObj.size; i++)
+                {
+                    var obj = Instantiate(prefab);
+                    obj.SetActive(false);
+                    prefabs.Add(obj);
+                    queue.Enqueue(obj);
+                }
+
+                _poolDictionary.Add(poolObj.id, queue);
+                _spawned.Add(poolObj.id, prefabs);
+                _referenceCounters[poolObj.id] = 0;
             }
         }
 
-        public GameObject SpawnFromPool(string id, Vector3 position, Quaternion rotation, bool set)
+
+        #endregion
+
+
+        #region spawn & return
+
+        public GameObject GetReferenceFromPool(string id, int counter, Vector3 pos, Quaternion rot, bool setTransform)
         {
-            if (!_poolDictionary.TryGetValue(id, out var objectPool))
+            if (_spawned.TryGetValue(id, out List<GameObject> prefabs))
             {
-                Debug.LogError($"No pool found for {id}");
-                return null;
+                int index = counter - 1;
+                if (index >= 0 && index < prefabs.Count)
+                {
+                    GameObject obj = prefabs[index];
+
+                    if (setTransform)
+                    {
+                        obj.transform.SetPositionAndRotation(pos, rot);
+                    }
+
+                    obj.SetActive(true); 
+                    return obj;
+                }
             }
 
-            if (objectPool.Count == 0)
-            {
-                Debug.LogError($"No pool found for {id}");
-                return null;
-            }
-
-            var objectToSpawn = objectPool.Dequeue();
-
-            if (set)
-            {
-                objectToSpawn.SetActive(true);
-                objectToSpawn.transform.position = position;
-                objectToSpawn.transform.rotation = rotation;
-            }
-
-            return objectToSpawn;
+            return null;
         }
 
-        public void ReturnToPool(string id, GameObject objectToReturn)
+
+        public void ReturnToPool(string id, GameObject obj)
         {
-            if (!_poolDictionary.TryGetValue(id, out var objectPool))
+            if (obj == null || !_poolDictionary.TryGetValue(id, out var q)) 
                 return;
-
-            objectPool.Enqueue(objectToReturn);
-            objectToReturn.SetActive(false);
+            
+            obj.SetActive(false);
+            q.Enqueue(obj);
         }
+
+        #endregion
+
+
+        #region utilidades
+        public void ResetAllPools()
+        {
+            foreach (var list in _spawned.Values)
+            {
+                foreach (var obj in list)
+                {
+                    if (obj != null)
+                        Destroy(obj);
+                }
+            }
+
+            _poolDictionary.Clear();
+            _spawned.Clear();
+            _referenceCounters.Clear();
+        }
+
+        
+        public int GetNextCounter(string id)
+        {
+            if (!_referenceCounters.ContainsKey(id))
+                _referenceCounters[id] = 0;
+
+            if (!_spawned.TryGetValue(id, out var list) || list.Count == 0)
+            {
+                Debug.LogWarning($"[ObjectPool] No spawned objects for ID: {id}");
+                return 0;
+            }
+
+            int counter = _referenceCounters[id];
+            _referenceCounters[id] = (counter + 1) % list.Count; // loop around
+            return counter;
+        }
+
+        #endregion
     }
 }

@@ -65,12 +65,9 @@ MonoBehaviour:
     - {fileID: 9109898363745289567, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 8531666819827272381, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
     action: 5
-  - instruction: Charged by holding heavy or light
-    icon: []
-    action: 6
   - instruction: 'Combo by double click heavy or light '
     icon: []
-    action: 7
+    action: 6
   - instruction: 'Double Jump by double pressing:'
     icon:
     - {fileID: 7752122263599561285, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
@@ -80,7 +77,7 @@ MonoBehaviour:
     icon:
     - {fileID: 2324525799202304566, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 418924702, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
-    action: 8
+    action: 7
   - instruction: 'Dash with:'
     icon:
     - {fileID: -5826372792910275525, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}

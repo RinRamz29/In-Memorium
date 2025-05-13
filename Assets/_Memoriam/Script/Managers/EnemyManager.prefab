@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 506660466233380244}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -598.1148, y: -29.313446, z: -3.4445019}
+  m_LocalPosition: {x: -598.38, y: -29.313446, z: -3.4445019}
   m_LocalScale: {x: 0.69080997, y: 0.33235, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2412,7 +2412,7 @@ Transform:
   m_GameObject: {fileID: 5450618382025146935}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -607.3548, y: -28.383446, z: -3.4445019}
+  m_LocalPosition: {x: -605.45, y: -29.56, z: -3.4445019}
   m_LocalScale: {x: 0.69080997, y: 0.33235, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3264,7 +3264,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3667365920071888248}
-  - component: {fileID: 3433503460372292434}
   - component: {fileID: 4020676678074504670}
   m_Layer: 0
   m_Name: EnemyManager
@@ -3407,35 +3406,6 @@ Transform:
   - {fileID: 1921752127999141122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3433503460372292434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7659872246920475734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2869e38ab5664ee886406b6a34af0349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  <ObjectsPool>k__BackingField:
-  - prefab: {fileID: 5559703034287951607, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
-    id: Enemies
-    size: 23
-  - prefab: {fileID: 5559703034287951607, guid: 886b675855ea00349b4539adb2f5631e, type: 3}
-    id: Flyers
-    size: 11
-  - prefab: {fileID: 751294390469502471, guid: 146d9510eb201234896651a87f89fe4d, type: 3}
-    id: Ranged
-    size: 9
-  - prefab: {fileID: 5559703034287951607, guid: 2bd245ae490d671469df0e4568288a7e, type: 3}
-    id: MiniBoss
-    size: 1
-  - prefab: {fileID: 122463274813769203, guid: cdda264a556bde34b963d30e63690787, type: 3}
-    id: Projectiles
-    size: 30
 --- !u!114 &4020676678074504670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3448,7 +3418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e51592021647deb38393d4768d96bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   enemiesToSpawn:
   - path:
     - {x: 2, y: 0}

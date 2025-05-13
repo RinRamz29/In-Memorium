@@ -21,19 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+      value: {fileID: 1375303811124319805, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.15
+      value: {fileID: 9174472540679567174, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.3
+      value: {fileID: 3008642471719140620, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.43333334
+      value: {fileID: -5201266943575274683, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.5833333
       value: {fileID: -5372931291514740116, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.083333336
-      value: {fileID: -4294637249472926235, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.16666667
-      value: {fileID: -4587789083957180424, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.25
-      value: {fileID: -4996694293227428518, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.33333334
-      value: {fileID: -4908034245334950008, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.41666666
-      value: {fileID: -4721173772611772174, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.5
-      value: {fileID: 5924921782999576682, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -56,19 +52,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: 1375303811124319805, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: 9174472540679567174, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: 3008642471719140620, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: -5201266943575274683, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: -5372931291514740116, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: -4294637249472926235, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: -4587789083957180424, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: -4996694293227428518, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: -4908034245334950008, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: -4721173772611772174, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: 5924921782999576682, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.59999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,21 +89,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.083333336
+  - time: 0.15
     functionName: EnableSwordCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.3
     functionName: DisableSwordCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.36666667
     functionName: CloseComboWindow
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3290793383059289941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6013798756195655471}
+  - component: {fileID: 4691656432057259267}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6013798756195655471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290793383059289941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4691656432057259267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290793383059289941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869e38ab5664ee886406b6a34af0349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  <ObjectsPool>k__BackingField:
+  - prefab: {fileID: 5559703034287951607, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
+    id: Enemies
+    size: 23
+  - prefab: {fileID: 5559703034287951607, guid: 886b675855ea00349b4539adb2f5631e, type: 3}
+    id: Flyers
+    size: 11
+  - prefab: {fileID: 751294390469502471, guid: 146d9510eb201234896651a87f89fe4d, type: 3}
+    id: Ranged
+    size: 9
+  - prefab: {fileID: 5559703034287951607, guid: 2bd245ae490d671469df0e4568288a7e, type: 3}
+    id: MiniBoss
+    size: 1
+  - prefab: {fileID: 122463274813769203, guid: cdda264a556bde34b963d30e63690787, type: 3}
+    id: Projectiles
+    size: 150
+  - prefab: {fileID: 2617550798638163866, guid: 5b8ba7352b742eb4284cbd8b91d1df6c, type: 3}
+    id: Player
+    size: 1

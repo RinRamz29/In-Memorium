@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace _Memoriam.Script.Tutorial
 {
-    public class TutorialManager : MonoBehaviour, ISaveableObject
+    public class TutorialManager : Singleton<TutorialManager>, ISaveableObject
     {
         public List<TutorialStep> steps;
         public bool isFinished;
@@ -21,15 +21,16 @@ namespace _Memoriam.Script.Tutorial
         [SerializeField] public TextMeshProUGUI instructionText;
         [SerializeField] public Image icon;
         [SerializeField] public GameObject canvas;
-        private ISaveableObject _saveableObjectImplementation;
 
-        private void Awake()
+        protected override void Awake()
         {
-            if (steps == null || steps.Count == 0)
-            {
+            base.Awake();
+            if (isFinished)
                 return;
-            }
+            
             CurrentStep = steps[CurrentStepIndex];
+            SetTutorialUI(true);
+            ShowStep();
         }
 
         private void Update()
@@ -57,12 +58,13 @@ namespace _Memoriam.Script.Tutorial
             instructionText.text = CurrentStep.instruction;
         }
 
-        private void CheckForInput()
+        public void CheckForInput()
         {
             if (InputReader.Instance.ControlTypes == InputReader.ControlType.Control)
             {
                 if (CurrentStep.icon.Count > 0)
                 {
+                    icon.rectTransform.rect.Set(CurrentStep.icon[0].rect.x, CurrentStep.icon[0].rect.y, CurrentStep.icon[0].rect.width, CurrentStep.icon[0].rect.height);
                     icon.enabled = true;
                     icon.sprite = CurrentStep.icon[0];
                 }
@@ -73,6 +75,7 @@ namespace _Memoriam.Script.Tutorial
             {
                 if (CurrentStep.icon.Count > 0)
                 {
+                    icon.rectTransform.rect.Set(CurrentStep.icon[1].rect.x, CurrentStep.icon[1].rect.y, CurrentStep.icon[1].rect.width, CurrentStep.icon[1].rect.height);
                     icon.enabled = true;
                     icon.sprite = CurrentStep.icon[1];
                 }
@@ -81,6 +84,12 @@ namespace _Memoriam.Script.Tutorial
             }
         }
 
+        public void ResetTutorial()
+        {
+            CurrentStepIndex = 0;
+            CurrentStep = steps[CurrentStepIndex];
+        }
+        
         public void SetTutorialUI(bool isOn)
         {
             canvas.SetActive(isOn);
@@ -94,8 +103,8 @@ namespace _Memoriam.Script.Tutorial
 
         public void LoadData(GameData data)
         {
-            isFinished = data.TutoData.isTutoFinished;
-            CurrentStepIndex = data.TutoData.currentTutoIndex;
+            isFinished = data.tutoData.isTutoFinished;
+            CurrentStepIndex = data.tutoData.currentTutoIndex;
             CurrentStep = steps[CurrentStepIndex];
         }
 
@@ -106,7 +115,7 @@ namespace _Memoriam.Script.Tutorial
                 isTutoFinished = isFinished,
                 currentTutoIndex = CurrentStepIndex,
             };
-            data.TutoData = tuto;
+            data.tutoData = tuto;
         }
     }
     
@@ -115,7 +124,7 @@ namespace _Memoriam.Script.Tutorial
         
         public string instruction;
         public List<Sprite> icon;
-        public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, ChargedAttack, Combo, Interact }
+        public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, Combo, Interact }
         public ActionType action;
     }
 }

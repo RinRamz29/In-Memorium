@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,21 +37,16 @@ namespace _Memoriam.Script.Menus
             }
         }
         
-        public async void LoadGame(int slot)
+        public void LoadGame(int slot)
         {
-            if (DataPersistentManager.Instance.FileDataHandler.DoesSaveExist(slot))
-            {
-                await Task.Delay(150);
-                AudioManager.Instance.PlayMusic("GameplayMusic");
-                GameLoader.newGame = false;
-                GameLoader.slotIndex = slot;
-                await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneData.LoadingSceneName);
-            }
-            else
+            if (MenuManager.Instance.NoSave)
             {
                 errorCanva.SetActive(true);
                 EventSystem.current.SetSelectedGameObject(errorButton);
+                return;
             }
+
+            MenuManager.Instance.LoadGame(slot);
         }
     }
 }

@@ -40,8 +40,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             GetComponent<Rigidbody2D>().gravityScale = 0f;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;

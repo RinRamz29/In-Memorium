@@ -61,9 +61,11 @@ namespace _Memoriam.Script.SaveLoad
 
         private List<ISaveableObject> FindAllSaveableObjects()
         {
-            var saveableObjects = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<ISaveableObject>();
+            var saveables = FindObjectsOfType<MonoBehaviour>(true)   
+                .OfType<ISaveableObject>();
+
             
-            return saveableObjects.ToList();
+            return saveables.ToList();
         }
 
         public bool DoesSaveExist(int slot)

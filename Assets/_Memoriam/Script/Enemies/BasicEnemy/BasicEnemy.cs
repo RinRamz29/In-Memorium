@@ -32,8 +32,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 

@@ -1,5 +1,6 @@
 using System;
 using _Memoriam.Script.Enemies;
+using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ namespace _Memoriam.Script.Plataformas
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+            
             if (other.TryGetComponent<IPlayer>(out var player))
             {
                 switch (typeOfTrap)
@@ -38,6 +42,9 @@ namespace _Memoriam.Script.Plataformas
 
         private void OnTriggerStay2D(Collider2D other)
         {
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+            
             if (other.TryGetComponent<IPlayer>(out var player))
             {
                 switch (typeOfTrap)

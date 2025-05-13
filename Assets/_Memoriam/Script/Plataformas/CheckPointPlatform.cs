@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,7 @@ namespace _Memoriam.Script.Plataformas
     public class CheckPointPlatform : MonoBehaviour
     {
         [SerializeField] private Transform targetToTeleport;
-        [SerializeField] private CanvasGroup fadeCanvasGroup; // Assign a full screen UI CanvasGroup for fade
+        [SerializeField] private CanvasGroup fadeCanvasGroup; 
         [SerializeField] private float fadeDuration = 1f;
         [SerializeField] private ParticleSystem tpParticles;
         [SerializeField] private ParticleSystem tpParticlesArrived;
@@ -63,7 +64,6 @@ namespace _Memoriam.Script.Plataformas
             {
                 _playerInRange = false;
                 _player = null;
-                // Hide UI prompt
             }
         }
 
@@ -75,6 +75,7 @@ namespace _Memoriam.Script.Plataformas
 
             _player.transform.position = targetToTeleport.position;
             _player.LastCheckPoint = targetToTeleport.position;
+            PlayerSpawner.Instance.PlayerSpawnPoint.transform.position = targetToTeleport.position;
             tpParticlesArrived.transform.parent = targetToTeleport;
             tpParticlesArrived.transform.localPosition = new Vector3(0f, -2f, 0f);
             tpParticlesArrived.Play();

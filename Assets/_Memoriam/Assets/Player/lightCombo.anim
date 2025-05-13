@@ -21,17 +21,25 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+      value: {fileID: 1086730433162166510, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.05
+      value: {fileID: 6246321939378002680, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.1
       value: {fileID: 5505511681362683721, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.083333336
-      value: {fileID: -3919461279598769880, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - time: 0.16666667
+      value: {fileID: -3919461279598769880, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.21666667
       value: {fileID: 6639517318438133406, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.25
+    - time: 0.26666668
       value: {fileID: -1299571477679079702, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.33333334
+    - time: 0.31666666
       value: {fileID: -5821159939822985264, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - time: 0.41666666
-      value: {fileID: 273036462552466955, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.38333333
+      value: {fileID: -8955346858042154898, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.43333334
+      value: {fileID: -5561432198312893197, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - time: 0.48333332
+      value: {fileID: 1621775844644387687, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,18 +62,22 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: 1086730433162166510, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: 6246321939378002680, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: 5505511681362683721, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: -3919461279598769880, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: 6639517318438133406, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: -1299571477679079702, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
     - {fileID: -5821159939822985264, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
-    - {fileID: 273036462552466955, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: -8955346858042154898, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: -5561432198312893197, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
+    - {fileID: 1621775844644387687, guid: 5b37c0c766a634c419544961dbcb4eab, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,22 +97,22 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.26666668
     functionName: EnableSwordCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
-    functionName: ResetComboState
+  - time: 0.31666666
+    functionName: DisableSwordCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
-    functionName: DisableSwordCollider
+  - time: 0.31666666
+    functionName: ResetComboState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

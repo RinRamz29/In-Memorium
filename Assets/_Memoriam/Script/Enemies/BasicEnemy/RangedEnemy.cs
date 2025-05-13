@@ -41,8 +41,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 
@@ -169,10 +170,12 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                     Animator.SetTrigger(AttackHash);
                     
                     // Spawn projectile
-                    GameObject projectileObj = ObjectPool.Instance.SpawnFromPool(projectilePoolId, firePoint.position, Quaternion.identity, true);
-                    if (projectileObj.TryGetComponent<Projectile>(out var projectile))
+                    int counter = ObjectPool.Instance.GetNextCounter(projectilePoolId);
+                    var projectile = ObjectPool.Instance.GetReferenceFromPool(projectilePoolId, counter, firePoint.position, Quaternion.identity, true);
+
+                    if (projectile.TryGetComponent<Projectile>(out var obj))
                     {
-                        projectile.Direction = (_playerPos - (Vector2)firePoint.position).normalized;
+                        obj.Direction = (_playerPos - (Vector2)firePoint.position).normalized;
                     }
                     
                     LastAttackTime = Time.time;

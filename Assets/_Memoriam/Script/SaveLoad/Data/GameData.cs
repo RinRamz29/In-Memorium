@@ -19,20 +19,11 @@ namespace _Memoriam.Script.SaveLoad.Data
     [Serializable]
     public class SavablePlayer
     {
-        public Vector3 position;
         public Vector3 lastCheckpoint;
-        public bool canDoubleJump;
-        public bool canDash;
+        public int level;
+        public float xp;
         public float health;
         public PlayerAbilities abilities;
-    }
-
-    [Serializable]
-    public class GamePlayMenuSaveData
-    {
-        public bool canDoubleJump;
-        public bool canDash;
-        public float health;
     }
 
     [Serializable]
@@ -40,24 +31,15 @@ namespace _Memoriam.Script.SaveLoad.Data
     {
         public int currentTutoIndex;
         public bool isTutoFinished;
+        public bool isOn;
     }
     
     [Serializable]
     public class GameData 
     {
-        public SavablePlayer player;
-        public TutorialData TutoData;
-        public SerializableDictionary<string, SavableEnemy> EnemySavable;
-        public SerializableDictionary<string, bool> pickableSavable;
-        public GamePlayMenuSaveData gamePlayMenu;        
-
-        public GameData()
-        {
-            pickableSavable = new SerializableDictionary<string, bool>();
-            TutoData = new TutorialData();
-            player = new SavablePlayer();
-            EnemySavable = new SerializableDictionary<string, SavableEnemy>();
-            gamePlayMenu = new GamePlayMenuSaveData();
-        }
+        public SavablePlayer player = new();
+        public TutorialData tutoData = new();
+        public SerializableDictionary<string, SavableEnemy> enemySavable = new();
+        public SerializableDictionary<string, bool> pickableSavable = new();
     }
 }

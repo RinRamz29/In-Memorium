@@ -164,24 +164,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChargedHeavyAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""231bdac5-aec0-4ecd-9865-ce69bc3cace9"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChargedLightAttack"",
-                    ""type"": ""Button"",
-                    ""id"": ""2f3468d9-9175-4c32-8478-7c4fed9290cc"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SaveMenu"",
                     ""type"": ""Button"",
                     ""id"": ""15abe1af-fe6e-40ca-83fb-8c6a532b3c3f"",
@@ -528,50 +510,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a2ef6cd-99d4-46d6-9dba-fee93afdf52f"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold(duration=0.2,pressPoint=0.5)"",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ChargedHeavyAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ed5fac4e-2991-4837-8a83-1ab4d4a5ddec"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": ""Hold(duration=0.2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChargedHeavyAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""36d002eb-17e9-4a23-9267-17bc7e3c4723"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold(duration=0.2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChargedLightAttack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""848c481f-af0b-4a0d-bd33-c607ed4be009"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": ""Hold(duration=0.2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChargedLightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1242,8 +1180,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_ChargedHeavyAttack = m_Player.FindAction("ChargedHeavyAttack", throwIfNotFound: true);
-        m_Player_ChargedLightAttack = m_Player.FindAction("ChargedLightAttack", throwIfNotFound: true);
         m_Player_SaveMenu = m_Player.FindAction("SaveMenu", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
@@ -1348,8 +1284,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_ChargedHeavyAttack;
-    private readonly InputAction m_Player_ChargedLightAttack;
     private readonly InputAction m_Player_SaveMenu;
     private readonly InputAction m_Player_Interact;
     /// <summary>
@@ -1395,14 +1329,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Dash".
         /// </summary>
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/ChargedHeavyAttack".
-        /// </summary>
-        public InputAction @ChargedHeavyAttack => m_Wrapper.m_Player_ChargedHeavyAttack;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/ChargedLightAttack".
-        /// </summary>
-        public InputAction @ChargedLightAttack => m_Wrapper.m_Player_ChargedLightAttack;
         /// <summary>
         /// Provides access to the underlying input action "Player/SaveMenu".
         /// </summary>
@@ -1461,12 +1387,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @ChargedHeavyAttack.started += instance.OnChargedHeavyAttack;
-            @ChargedHeavyAttack.performed += instance.OnChargedHeavyAttack;
-            @ChargedHeavyAttack.canceled += instance.OnChargedHeavyAttack;
-            @ChargedLightAttack.started += instance.OnChargedLightAttack;
-            @ChargedLightAttack.performed += instance.OnChargedLightAttack;
-            @ChargedLightAttack.canceled += instance.OnChargedLightAttack;
             @SaveMenu.started += instance.OnSaveMenu;
             @SaveMenu.performed += instance.OnSaveMenu;
             @SaveMenu.canceled += instance.OnSaveMenu;
@@ -1508,12 +1428,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @ChargedHeavyAttack.started -= instance.OnChargedHeavyAttack;
-            @ChargedHeavyAttack.performed -= instance.OnChargedHeavyAttack;
-            @ChargedHeavyAttack.canceled -= instance.OnChargedHeavyAttack;
-            @ChargedLightAttack.started -= instance.OnChargedLightAttack;
-            @ChargedLightAttack.performed -= instance.OnChargedLightAttack;
-            @ChargedLightAttack.canceled -= instance.OnChargedLightAttack;
             @SaveMenu.started -= instance.OnSaveMenu;
             @SaveMenu.performed -= instance.OnSaveMenu;
             @SaveMenu.canceled -= instance.OnSaveMenu;
@@ -1887,20 +1801,6 @@ public partial class @PlayerActionsScript: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChargedHeavyAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChargedHeavyAttack(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChargedLightAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChargedLightAttack(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "SaveMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
