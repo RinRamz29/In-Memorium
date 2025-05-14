@@ -4,23 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.Localization;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Memoriam.Script.Tutorial
 {
-    public class TutorialManager : Singleton<TutorialManager>, ISaveableObject
+    public class TutorialManager : Singleton<TutorialManager>, ISaveableObject, ILocalization
     {
         public List<TutorialStep> steps;
-        [field: SerializeField] public int CurrentStepIndex { get; private set; }
-
-        [SerializeField] public TextMeshProUGUI instructionText;
+        [field: SerializeField] public TMP_Text TextToTranslateTMP { get; set; }
         [SerializeField] public Image icon;
         [SerializeField] public GameObject canvas;
+        
+        public Languages currentLanguage = Languages.English;
+        public int CurrentStepIndex { get; private set; }
+
 
         public static event Action<TutorialStep> OnTutorialLoaded;
 
@@ -38,14 +42,13 @@ namespace _Memoriam.Script.Tutorial
             if (GameStateManager.Instance.GameCurrentState == GameStateManager.GameState.OnGameplay)
                 CheckForInput();
         }
-
+        
         public void NextStep()
         {
             if (CurrentStepIndex + 1 < steps.Count)
             {
                 CurrentStepIndex++;
-                instructionText.text = steps[CurrentStepIndex].instruction;
-                CheckForInput();
+                RefreshUI();
             }
             else
             {
@@ -57,7 +60,8 @@ namespace _Memoriam.Script.Tutorial
         {
             if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count)
             {
-                instructionText.text = steps[CurrentStepIndex].instruction;
+                steps[CurrentStepIndex].TryGetInt(currentLanguage, out var idx);
+                TextToTranslateTMP.text = steps[CurrentStepIndex].languages[idx].text;
                 CheckForInput();
             }
         }
@@ -89,6 +93,15 @@ namespace _Memoriam.Script.Tutorial
                 }
                 else
                     icon.enabled = false;
+            }
+        }
+
+        public void Translate(Languages language)
+        {
+            if (steps[CurrentStepIndex].TryGetText(language, out var translatedText))
+            {
+                currentLanguage = language;
+                TextToTranslateTMP.text = translatedText;
             }
         }
 
@@ -128,14 +141,15 @@ namespace _Memoriam.Script.Tutorial
             };
             data.tutoData = tuto;
         }
+
     }
 
     [Serializable]
     public class TutorialStep
     {
-        public string instruction;
         public List<Sprite> icon;
-
+        public List<LanguagesClass> languages;
+        
         public enum ActionType
         {
             Move,
@@ -149,5 +163,36 @@ namespace _Memoriam.Script.Tutorial
         }
 
         public ActionType action;
+        
+        public bool TryGetText(Languages languageToPass, out string textOut)
+        {
+            foreach (var lang in languages)
+            {
+                if (lang.language == languageToPass)
+                {
+                    textOut = lang.text;
+                    return true;
+                }
+            }
+
+            textOut = null;
+            return false;
+        }
+
+        public int TryGetInt(Languages languageToPass, out int index)
+        {
+            var idx = 0;
+            for (int i = 0; i < languages.Count; i++)
+            {
+                index = i;
+                if (languages[i].language == languageToPass)
+                {
+                    index = i;
+                    return idx;
+                }
+            }
+            index = 0;
+            return idx;
+        }
     }
 }

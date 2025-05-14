@@ -8,6 +8,7 @@ using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
+using _Memoriam.Script.Tutorial;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,23 +25,22 @@ namespace _Memoriam.Script.Managers
         [field: SerializeField] public Slider StaminaBar { get; private set; }
         [field: SerializeField] public Slider XpBar { get; private set; }
         [field: SerializeField] public TMP_Text LevelTxt { get; private set; }
-        
+
         [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private GameObject tutoUI;
         [SerializeField] private GameObject firstButton;
         [SerializeField] private SceneDataBase sceneData;
-
-
         [SerializeField] private List<Toggle> powerupToggles;
+        
         private void ChangeHealthValue(float health) => HealthBar.value = health;
         private void ChangeStaminaValue(float stamina) => StaminaBar.value = stamina;
-        
-        public Player.Player Player { get; set; }
 
+        public Player.Player Player { get; set; }
+        private TutorialStep _step;
+        
         private void ChangeLvl(int lvl)
         {
             LevelTxt.text = "Lvl: " + lvl.ToString(format: "0");
-            
+
             float normalized = Player.Progression.CurrentXp /
                                Player.Progression.XpToNextLevel;
 
@@ -73,16 +73,17 @@ namespace _Memoriam.Script.Managers
             InputReader.Instance.PlayerActions.Player.Pause.performed += OnPause;
             Script.Player.Player.OnHealthChanged += ChangeHealthValue;
             Script.Player.Player.OnStaminaChanged += ChangeStaminaValue;
-            Script.Player.Player.OnPowerUpPickedUp += TogglePowerUp; 
+            Script.Player.Player.OnPowerUpPickedUp += TogglePowerUp;
             PlayerProgression.OnLevelUp += ChangeLvl;
             PlayerProgression.OnXpGained += ChangeXp;
+            _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
         }
 
         private void OnPause(InputAction.CallbackContext context)
         {
             if (!context.performed)
                 return;
-            
+
             switch (GameStateManager.Instance.GameCurrentState)
             {
                 case GameStateManager.GameState.OnPause:
@@ -93,14 +94,20 @@ namespace _Memoriam.Script.Managers
                     break;
             }
         }
-        
+
         public void Resume()
         {
             AudioManager.Instance.PlayOneShotSFX("ButtonSelectSFX");
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             uiPlayer.SetActive(true);
             pauseMenu.SetActive(false);
-            tutoUI.SetActive(true);
+           
+            if (_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump)
+            {
+                return;
+            }
+            
+            TutorialManager.Instance.SetCanvas(true);
         }
 
         private void Pause()
@@ -109,9 +116,10 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
             uiPlayer.SetActive(false);
             pauseMenu.SetActive(true);
-            tutoUI.SetActive(false);
+            
+            TutorialManager.Instance.SetCanvas(false);
         }
-        
+
         public async void Menu()
         {
             await Loader.Instance.LoadLoader(false);
@@ -121,7 +129,7 @@ namespace _Memoriam.Script.Managers
         {
             Application.Quit();
         }
-        
+
         private void OnDisable()
         {
             InputReader.Instance.PlayerActions.Player.Pause.performed -= OnPause;

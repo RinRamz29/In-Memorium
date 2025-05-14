@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.Localization;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.Tutorial;
 using UnityEngine;
@@ -70,6 +71,7 @@ namespace _Memoriam.Script.Managers
                 EnemyManager.Instance.SpawnEnemies(true);
                 PlayerSpawner.Instance.SpawnPlayer(true);
                 TutorialManager.Instance.ResetTutorial();
+                LocalizationManager.Instance.ForceTranslate();
             }
             else
             {
@@ -77,8 +79,10 @@ namespace _Memoriam.Script.Managers
                 EnemyManager.Instance.SpawnEnemies(false);
                 PlayerSpawner.Instance.SpawnPlayer(false);
                 DataPersistentManager.Instance.LoadGame(slot);
+                LocalizationManager.Instance.ForceTranslate();
             }
 
+            
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
         }
 
@@ -87,7 +91,8 @@ namespace _Memoriam.Script.Managers
             SceneCleanupUtility.CleanupScene();
             ObjectPool.Instance.ResetAllPools();
             await LoadSceneAsync(sceneData.MainMenuSceneName);
-    
+            
+            LocalizationManager.Instance.ForceTranslate();
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
         }
 

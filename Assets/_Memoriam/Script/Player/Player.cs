@@ -71,6 +71,7 @@ namespace _Memoriam.Script.Player
         [Header("Particles")]
         [field: SerializeField] public ParticleSystem MovimientoParticula { get; private set; }
         [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
+        [field: SerializeField] public ParticleSystem LevelUpParticles { get; private set; }
         [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
         [field: SerializeField] public ParticleSystem SaltoIzquierda { get; private set; }
         [field: SerializeField] public ParticleSystem SaltoDerecha { get; private set; }
@@ -268,7 +269,8 @@ namespace _Memoriam.Script.Player
             Stamina = MaxStamina;
 
             Damage += 1 + newLevel * 0.2f;
-
+    
+            LevelUpParticles?.Play();
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }

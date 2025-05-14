@@ -4,6 +4,7 @@ using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
 using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
+using _Memoriam.Script.Localization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Scripting;
@@ -29,6 +30,7 @@ namespace _Memoriam.Script.Managers
         {
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
+            LocalizationManager.Instance.ForceTranslate();
         }
 
         public async void NewGame()
