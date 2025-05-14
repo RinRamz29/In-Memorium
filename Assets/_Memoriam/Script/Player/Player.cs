@@ -6,7 +6,6 @@ using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player.States;
-using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
@@ -20,14 +19,6 @@ namespace _Memoriam.Script.Player
 {
     #region Abilities
 
-    public enum AbilityType
-    {
-        Dash,
-        DoubleJump,
-        ShadowForm,
-        Grapple
-    }
-
     [Serializable]
     public class PlayerAbilities
     {
@@ -35,18 +26,6 @@ namespace _Memoriam.Script.Player
         public bool hasDoubleJump;
         public bool hasShadowForm;
         public bool hasGrapple;
-
-        public bool HasUnlocked(AbilityType type)
-        {
-            return type switch
-            {
-                AbilityType.Dash => hasDash,
-                AbilityType.DoubleJump => hasDoubleJump,
-                AbilityType.ShadowForm => hasShadowForm,
-                AbilityType.Grapple => hasGrapple,
-                _ => false
-            };
-        }
     }
 
     #endregion
@@ -54,7 +33,7 @@ namespace _Memoriam.Script.Player
     public class Player : MonoBehaviour, IPlayer, ISaveableObject
     {
         public PlayerAbilities abilities = new PlayerAbilities();
-        public StateMachineBase StateMachine { get; private set; } = new();
+        public StateMachineBase StateMachine { get; private set; }
         
         [Header("Dependencies")]
         [field: SerializeField] public Animator Animator { get; set; }
@@ -157,13 +136,18 @@ namespace _Memoriam.Script.Player
         
 
         #region UnityFlow
+
+        private void Awake()
+        {
+            ResetPlayer();
+        }
+        
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             InputReader.Instance.PlayerActions.Player.Enable();
             PlayerProgression.OnLevelUp += HandleLevelUp;
             onPlayerFirstTp += (cond) => ReachedFirstTp = cond;
-            ResetPlayer();
             Health = MaxHealth;
             Stamina = MaxStamina;
             LastCheckPoint = transform.position;
@@ -205,6 +189,8 @@ namespace _Memoriam.Script.Player
 
         public void ResetPlayer()
         {
+            StateMachine = new StateMachineBase();
+            
             if (!TryGetComponent<Rigidbody2D>(out var rb))
                 rb = gameObject.AddComponent<Rigidbody2D>();
 
@@ -263,10 +249,11 @@ namespace _Memoriam.Script.Player
             EnemyLayer = 1 << LayerMask.NameToLayer("Enemy");
             GroundMask = 1 << LayerMask.NameToLayer("Ground");
             
-            if (TutorialManager.Instance.isFinished)
-                StateMachine.ChangeState(new PlayerCombatState(this));
-            else
+            if (TutorialManager.Instance.CurrentStepIndex + 1 < TutorialManager.Instance.steps.Count)
                 StateMachine.ChangeState(new PlayerTutorialState(this));
+            else
+                StateMachine.ChangeState(new PlayerCombatState(this));
+
         }
         
         #endregion
@@ -473,25 +460,23 @@ namespace _Memoriam.Script.Player
         public bool canDoubleJump;
         public bool canDash;
         
-        public void UnlockAbility(AbilityType type)
+        public void UnlockAbility(TypeOfPickable type)
         {
             switch (type)
             {
-                case AbilityType.Dash:
+                case TypeOfPickable.Dash:
                     abilities.hasDash = true;
                     break;
-                case AbilityType.DoubleJump:
+                case TypeOfPickable.DoubleJump:
                     abilities.hasDoubleJump = true;
                     break;
-                case AbilityType.ShadowForm:
+                case TypeOfPickable.ShadowForm:
                     abilities.hasShadowForm = true;
                     break;
-                case AbilityType.Grapple:
+                case TypeOfPickable.Grapple:
                     abilities.hasGrapple = true;
                     break;
             }
-
-            OnPowerUpPickedUp?.Invoke((TypeOfPickable)type);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -501,19 +486,23 @@ namespace _Memoriam.Script.Player
                 switch (pickUp.TypeOfPickable)
                 {
                     case TypeOfPickable.Dash:
-                        UnlockAbility(AbilityType.Dash);
+                        UnlockAbility(TypeOfPickable.Dash);
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Dash);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.DoubleJump:
-                        UnlockAbility(AbilityType.DoubleJump);
+                        UnlockAbility(TypeOfPickable.DoubleJump);
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.DoubleJump);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.Grapple:
-                        UnlockAbility(AbilityType.Grapple);
+                        UnlockAbility(TypeOfPickable.Grapple);
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.Grapple);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.ShadowForm:
-                        UnlockAbility(AbilityType.ShadowForm);
+                        UnlockAbility(TypeOfPickable.ShadowForm);
+                        OnPowerUpPickedUp?.Invoke(TypeOfPickable.ShadowForm);
                         pickUp.Pick(this.gameObject);
                         break;
                     case TypeOfPickable.CheckPoint:

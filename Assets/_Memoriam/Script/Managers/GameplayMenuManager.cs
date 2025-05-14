@@ -37,7 +37,16 @@ namespace _Memoriam.Script.Managers
         
         public Player.Player Player { get; set; }
 
-        private void ChangeLvl(int lvl) => LevelTxt.text = "Lvl: " + lvl.ToString(format: "0");
+        private void ChangeLvl(int lvl)
+        {
+            LevelTxt.text = "Lvl: " + lvl.ToString(format: "0");
+            
+            float normalized = Player.Progression.CurrentXp /
+                               Player.Progression.XpToNextLevel;
+
+            XpBar.value = normalized;
+        }
+
         private void ChangeXp(float xp)
         {
             float normalized = Player.Progression.CurrentXp /

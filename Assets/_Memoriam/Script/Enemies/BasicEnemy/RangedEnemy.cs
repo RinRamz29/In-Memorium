@@ -10,7 +10,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
     {
         [SerializeField] private string projectilePoolId;
         [SerializeField] private float optimalDistance = 4f;
-        [SerializeField] private float projectileSpeed = 5f;
         [SerializeField] private Transform firePoint;
         [SerializeField] private float retreatDistance = 2f;
         

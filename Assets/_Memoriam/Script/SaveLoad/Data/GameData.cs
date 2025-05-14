@@ -30,7 +30,6 @@ namespace _Memoriam.Script.SaveLoad.Data
     public class TutorialData
     {
         public int currentTutoIndex;
-        public bool isTutoFinished;
         public bool isOn;
     }
     

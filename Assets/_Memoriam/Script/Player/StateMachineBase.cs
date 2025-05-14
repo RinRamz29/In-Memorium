@@ -1,46 +1,42 @@
 ﻿namespace _Memoriam.Script.Player
 {
-    namespace VeilOfShadows.Hea.StateMachine
+    public interface IState
     {
-        public interface IState
+        void Enter();
+        void Exit();
+        void Tick();
+        void LateTick();
+    }
+
+    public class StateMachineBase
+    {
+        private IState _currentState;
+        private IState _previousState;
+
+        public void ChangeState(IState newState)
         {
-            void Enter();
-            void Exit();
-            void Tick();
-            void LateTick();
+            _currentState?.Exit();
+            _previousState = _currentState;
+            _currentState = newState;
+            _currentState.Enter();
         }
-        
-        public class StateMachineBase
+
+        public void Tick()
         {
-            private IState _currentState;
-            private IState _previousState;
-    
-            public void ChangeState(IState newState)
+            _currentState?.Tick();
+        }
+
+        public void FixedTick()
+        {
+            _currentState?.LateTick();
+        }
+
+        public void RevertToPreviousState()
+        {
+            if (_previousState != null)
             {
-                _currentState?.Exit();
-                _previousState = _currentState;
-                _currentState = newState;
-                _currentState.Enter();
-            }
-    
-            public void Tick()
-            {
-                _currentState?.Tick();
-            }
-    
-            public void FixedTick()
-            {
-                _currentState?.LateTick();
-            }
-    
-            public void RevertToPreviousState()
-            {
-                if (_previousState != null)
-                {
-                    ChangeState(_previousState);
-                }
+                ChangeState(_previousState);
             }
         }
     }
-
 }

@@ -37,8 +37,9 @@ namespace _Memoriam.Script.Enemies.Bosses
             SetUpBehaviorTree();
         }
 
-        protected virtual void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
         }
 

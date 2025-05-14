@@ -20,10 +20,11 @@ namespace _Memoriam.Script.Powerups
                 return;
             
             //pickupParticles?.Play();
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-            StartCoroutine(WaitForParticles());
+            //GetComponent<Collider2D>().enabled = false;
+            //GetComponent<SpriteRenderer>().enabled = false;
+            //StartCoroutine(WaitForParticles());
             AudioManager.Instance.PlayOneShotSFX("Pickup");
+            gameObject.SetActive(false);
         }
 
 

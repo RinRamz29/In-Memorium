@@ -4,11 +4,11 @@ using _Memoriam.Script.Audio;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
-using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.Tutorial;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 namespace _Memoriam.Script.Player.States
 {
@@ -23,7 +23,6 @@ namespace _Memoriam.Script.Player.States
         private float _dashCooldown;
         private const float AirControlMultiplier = 0.75f;
 
-
         private float _lastStaminaUseTime = -Mathf.Infinity;
         private float _staminaRegenDelay = 2f; // seconds after last use
         private float _staminaRegenRate = 15f; // stamina per second
@@ -31,7 +30,7 @@ namespace _Memoriam.Script.Player.States
         private float _counter;
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;
-
+        
         public PlayerTutorialState(Player player)
         {
             _player = player;
@@ -40,6 +39,7 @@ namespace _Memoriam.Script.Player.States
 
         public void Enter()
         {
+            TutorialManager.OnTutorialLoaded += OnTutorialLoaded;
             Player.OnPowerUpPickedUp += PowerUpPickedUp;
             Player.onPlayerFirstTp += ReachedFirstTp;
             InputReader.Instance.PlayerActions.Player.Jump.performed += Jump;
@@ -48,9 +48,7 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.LightCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += _ => _player.ComboInputReceived = true;
             InputReader.Instance.PlayerActions.Player.Dash.performed += Dash;
-
-            var step = TutorialManager.Instance.CurrentStep;
-            Subscribe(step);
+            Debug.Log("Entering Tutorial State");
         }
 
         public void Exit()
@@ -71,47 +69,62 @@ namespace _Memoriam.Script.Player.States
             _player.CurrentAttackType = Player.AttackType.None;
         }
 
+        private void OnTutorialLoaded(TutorialStep step)
+        {
+            Subscribe(step);
+            TutorialManager.OnTutorialLoaded -= OnTutorialLoaded;
+        }
+        
         private void Subscribe(TutorialStep step)
         {
-            if (step.action == TutorialStep.ActionType.Move)
-            {
-                InputReader.Instance.PlayerActions.Player.Move.performed += OnStepCompleted;
-            }
-
             if (step.action == TutorialStep.ActionType.Jump)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.Jump.performed += OnStepCompleted;
+                return;
             }
             
             if (step.action == TutorialStep.ActionType.LightAttack)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.LightAttack.performed += OnStepCompleted;
+                return;
             }
             
             if (step.action == TutorialStep.ActionType.HeavyAttack)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += OnStepCompleted;
+                return;
             }
             
             if (step.action == TutorialStep.ActionType.Combo)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.LightCombo.performed += OnStepCompleted;
                 InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += OnStepCompleted;
+                return;
+            }
+            
+            if (step.action == TutorialStep.ActionType.Interact)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
+                return;
             }
                         
             if (step.action == TutorialStep.ActionType.DoubleJump)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.Jump.performed += OnDoubleJump;
-            }
-                        
-            if (step.action == TutorialStep.ActionType.Interact)
-            {
-                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
+                return;
             }
 
             if (step.action == TutorialStep.ActionType.Dash)
             {
+                Unsubscribe();
                 InputReader.Instance.PlayerActions.Player.Dash.performed += OnDash;
+                return;
             }
         }
 
@@ -119,51 +132,39 @@ namespace _Memoriam.Script.Player.States
         {
             if (!ctx.performed)
                 return;
-
+    
             if (TutorialManager.Instance.CurrentStepIndex + 1 >= TutorialManager.Instance.steps.Count)
             {
-                AdvanceIfCorrect();
-                return;
-            }
-            
-            var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
-            
-            if (next.action == TutorialStep.ActionType.DoubleJump && !_player.abilities.hasDoubleJump)
-            {
-                AdvanceIfCorrect();
-                TutorialManager.Instance.SetTutorialUI(false);
-                return;
-            }
-            
-            if (next.action == TutorialStep.ActionType.Interact && !_player.ReachedFirstTp)
-            {
-                AdvanceIfCorrect();
-                TutorialManager.Instance.SetTutorialUI(false);
+                TutorialManager.Instance.EndTutorial();
                 return;
             }
 
-            if (next.action == TutorialStep.ActionType.Dash && !_player.abilities.hasDash)
+            var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
+
+            if (next.action == TutorialStep.ActionType.DoubleJump ||
+                next.action == TutorialStep.ActionType.Interact ||
+                next.action == TutorialStep.ActionType.Dash)
             {
-                AdvanceIfCorrect();
-                TutorialManager.Instance.SetTutorialUI(false);
-                return;
+                TutorialManager.Instance.SetCanvas(false);
             }
-            
+
             AdvanceIfCorrect();
         }
+
 
         private void PowerUpPickedUp(TypeOfPickable powerUpType)
         {
             if (powerUpType != TypeOfPickable.DoubleJump && powerUpType != TypeOfPickable.Dash)
                 return;
-            TutorialManager.Instance.SetTutorialUI(true);
+            
+            TutorialManager.Instance.SetCanvas(true);
         }
 
         private void ReachedFirstTp(bool condition)
         {
-            if (TutorialManager.Instance.CurrentStep.action == TutorialStep.ActionType.Interact && condition)
+            if (TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex].action == TutorialStep.ActionType.Interact && condition)
             {
-                TutorialManager.Instance.SetTutorialUI(true);
+                TutorialManager.Instance.SetCanvas(true);
             }
         }
         
@@ -172,7 +173,7 @@ namespace _Memoriam.Script.Player.States
             if (!ctx.performed || !_player.canDoubleJump)
                 return;
                 
-            TutorialManager.Instance.SetTutorialUI(false);
+            TutorialManager.Instance.SetCanvas(false);
             AdvanceIfCorrect();
         }
 
@@ -181,15 +182,15 @@ namespace _Memoriam.Script.Player.States
             if (!ctx.performed || !_player.canDash)
                 return;
             
-            TutorialManager.Instance.SetTutorialUI(false);
+            TutorialManager.Instance.SetCanvas(false);
             AdvanceIfCorrect();
         }
 
         private void Unsubscribe()
         {
-            InputReader.Instance.PlayerActions.Player.Move.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
+            InputReader.Instance.PlayerActions.Player.Dash.performed -= OnDash;
             InputReader.Instance.PlayerActions.Player.LightAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.LightCombo.performed -= OnStepCompleted;
@@ -197,24 +198,6 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.Interact.performed -= OnStepCompleted;
         }
         
-        private void AdvanceIfCorrect()
-        {
-            Unsubscribe();             
-            TutorialManager.Instance.NextStep();   
-            var step = TutorialManager.Instance.CurrentStep;
-            
-            if (!TutorialManager.Instance.isFinished)
-            {
-                Subscribe(step);   
-                TutorialManager.Instance.ShowStep();
-            }
-            else
-            {
-                TutorialManager.Instance.SetTutorialUI(false);
-                _player.StateMachine.ChangeState(new PlayerCombatState(_player));
-            }
-        }
-
         #region UnityFlow
 
         public void Tick()
@@ -527,8 +510,8 @@ namespace _Memoriam.Script.Player.States
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
-            _player.SaltoDerecha.Play();
-            _player.SaltoIzquierda.Play();
+            //_player.SaltoDerecha.Play();
+            //_player.SaltoIzquierda.Play();
         }
 
         private void Dash(InputAction.CallbackContext context)
@@ -541,6 +524,16 @@ namespace _Memoriam.Script.Player.States
 
             _isDashing = true;
             _dashCooldown = 0.45f;
+        }
+
+        #endregion
+
+        #region Utils
+        
+        private void AdvanceIfCorrect()
+        {
+            TutorialManager.Instance.NextStep();
+            Subscribe(TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex]);
         }
 
         #endregion

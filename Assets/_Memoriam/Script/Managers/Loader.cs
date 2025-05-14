@@ -65,17 +65,17 @@ namespace _Memoriam.Script.Managers
 
             if (MenuManager.Instance.IsNewGame)
             {
+                DataPersistentManager.Instance.NewGame();
                 ObjectPool.Instance.Initialize();
                 EnemyManager.Instance.SpawnEnemies(true);
                 PlayerSpawner.Instance.SpawnPlayer(true);
                 TutorialManager.Instance.ResetTutorial();
-                DataPersistentManager.Instance.NewGame();
             }
             else
             {
                 ObjectPool.Instance.Initialize();
                 EnemyManager.Instance.SpawnEnemies(false);
-                PlayerSpawner.Instance.SpawnPlayer(true);
+                PlayerSpawner.Instance.SpawnPlayer(false);
                 DataPersistentManager.Instance.LoadGame(slot);
             }
 

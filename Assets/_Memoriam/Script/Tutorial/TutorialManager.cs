@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _Memoriam.Script.General;
@@ -15,22 +16,21 @@ namespace _Memoriam.Script.Tutorial
     public class TutorialManager : Singleton<TutorialManager>, ISaveableObject
     {
         public List<TutorialStep> steps;
-        public bool isFinished;
-        public int CurrentStepIndex { get; set; } 
-        public TutorialStep CurrentStep { get; private set; }
+        [field: SerializeField] public int CurrentStepIndex { get; private set; }
+
         [SerializeField] public TextMeshProUGUI instructionText;
         [SerializeField] public Image icon;
         [SerializeField] public GameObject canvas;
 
+        public static event Action<TutorialStep> OnTutorialLoaded;
+
         protected override void Awake()
         {
             base.Awake();
-            if (isFinished)
-                return;
-            
-            CurrentStep = steps[CurrentStepIndex];
-            SetTutorialUI(true);
-            ShowStep();
+
+            CheckForInput();
+            SetCanvas(true);
+            RefreshUI();
         }
 
         private void Update()
@@ -44,40 +44,48 @@ namespace _Memoriam.Script.Tutorial
             if (CurrentStepIndex + 1 < steps.Count)
             {
                 CurrentStepIndex++;
-                CurrentStep = steps[CurrentStepIndex];
-                ShowStep();
+                instructionText.text = steps[CurrentStepIndex].instruction;
+                CheckForInput();
             }
             else
             {
                 EndTutorial();
             }
         }
-    
-        public void ShowStep() 
+
+        private void RefreshUI()
         {
-            instructionText.text = CurrentStep.instruction;
+            if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count)
+            {
+                instructionText.text = steps[CurrentStepIndex].instruction;
+                CheckForInput();
+            }
         }
 
-        public void CheckForInput()
+        private void CheckForInput()
         {
             if (InputReader.Instance.ControlTypes == InputReader.ControlType.Control)
             {
-                if (CurrentStep.icon.Count > 0)
+                if (steps[CurrentStepIndex].icon.Count > 0)
                 {
-                    icon.rectTransform.rect.Set(CurrentStep.icon[0].rect.x, CurrentStep.icon[0].rect.y, CurrentStep.icon[0].rect.width, CurrentStep.icon[0].rect.height);
+                    var sprite = steps[CurrentStepIndex].icon[0];
+                    icon.sprite = sprite;
                     icon.enabled = true;
-                    icon.sprite = CurrentStep.icon[0];
+                    icon.rectTransform.sizeDelta = new Vector2(sprite.rect.width, sprite.rect.height);
+                    icon.rectTransform.sizeDelta *= 5;
                 }
                 else
                     icon.enabled = false;
             }
             else if (InputReader.Instance.ControlTypes == InputReader.ControlType.KeyboardMouse)
             {
-                if (CurrentStep.icon.Count > 0)
+                if (steps[CurrentStepIndex].icon.Count > 0)
                 {
-                    icon.rectTransform.rect.Set(CurrentStep.icon[1].rect.x, CurrentStep.icon[1].rect.y, CurrentStep.icon[1].rect.width, CurrentStep.icon[1].rect.height);
+                    var sprite = steps[CurrentStepIndex].icon[1];
+                    icon.sprite = sprite;
                     icon.enabled = true;
-                    icon.sprite = CurrentStep.icon[1];
+                    icon.rectTransform.sizeDelta = new Vector2(sprite.rect.width, sprite.rect.height);
+                    icon.rectTransform.sizeDelta *= 5;
                 }
                 else
                     icon.enabled = false;
@@ -87,44 +95,59 @@ namespace _Memoriam.Script.Tutorial
         public void ResetTutorial()
         {
             CurrentStepIndex = 0;
-            CurrentStep = steps[CurrentStepIndex];
+            SetCanvas(true);
+            RefreshUI();
+            OnTutorialLoaded?.Invoke(steps[CurrentStepIndex]);
         }
-        
-        public void SetTutorialUI(bool isOn)
+
+        public void SetCanvas(bool isOn)
         {
             canvas.SetActive(isOn);
         }
-    
+
         public void EndTutorial()
         {
-            isFinished = true;
-            canvas.SetActive(false);
+            SetCanvas(false);
         }
 
         public void LoadData(GameData data)
         {
-            isFinished = data.tutoData.isTutoFinished;
             CurrentStepIndex = data.tutoData.currentTutoIndex;
-            CurrentStep = steps[CurrentStepIndex];
+
+            SetCanvas(data.tutoData.isOn);
+            RefreshUI();
+            OnTutorialLoaded?.Invoke(steps[CurrentStepIndex]);
         }
 
         public void SaveData(ref GameData data)
         {
             var tuto = new TutorialData()
             {
-                isTutoFinished = isFinished,
                 currentTutoIndex = CurrentStepIndex,
+                isOn = canvas.activeInHierarchy,
             };
             data.tutoData = tuto;
         }
     }
-    
+
     [Serializable]
-    public class TutorialStep {
-        
+    public class TutorialStep
+    {
         public string instruction;
         public List<Sprite> icon;
-        public enum ActionType { Move, Jump, Dash, DoubleJump, LightAttack, HeavyAttack, Combo, Interact }
+
+        public enum ActionType
+        {
+            Move,
+            Jump,
+            Dash,
+            DoubleJump,
+            LightAttack,
+            HeavyAttack,
+            Combo,
+            Interact
+        }
+
         public ActionType action;
     }
 }

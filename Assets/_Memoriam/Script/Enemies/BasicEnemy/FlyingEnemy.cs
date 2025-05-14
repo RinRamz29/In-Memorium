@@ -193,14 +193,12 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (distance < AttackDistance)
             {
-                Debug.Log("Reached player");
                 return Node.Status.Success;
             }
             var diff = _playerPos.x - transform.position.x;
             
             if (distance > 5f)
             {
-                Debug.Log("Too far, returning");
                 EnemyDetected = false;
                 return Node.Status.Failure;
             }

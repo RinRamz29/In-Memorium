@@ -3,7 +3,6 @@ using _Memoriam.Script.Audio;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
-using _Memoriam.Script.Player.VeilOfShadows.Hea.StateMachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -373,8 +372,8 @@ namespace _Memoriam.Script.Player.States
             _player.Rigidbody2D.linearVelocity = new Vector2(_player.Rigidbody2D.linearVelocity.x, 0f);
             _player.Rigidbody2D.AddForce(Vector2.up * (_player.JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
-            _player.SaltoDerecha.Play();
-            _player.SaltoIzquierda.Play();
+            //_player.SaltoDerecha.Play();
+            //_player.SaltoIzquierda.Play();
         }
 
         private void Dash(InputAction.CallbackContext context)

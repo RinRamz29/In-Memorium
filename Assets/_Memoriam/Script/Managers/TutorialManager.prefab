@@ -44,12 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d601f606b145a7a29eb8d787590a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   steps:
-  - instruction: 'Move with: '
-    icon:
-    - {fileID: 3998864616719496319, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
-    - {fileID: 5762481801186481368, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
-    action: 0
   - instruction: 'Jump with:'
     icon:
     - {fileID: -737011211277047346, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
@@ -83,7 +79,6 @@ MonoBehaviour:
     - {fileID: -5826372792910275525, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: -934109011, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
     action: 2
-  isFinished: 0
   instructionText: {fileID: 0}
   icon: {fileID: 0}
   canvas: {fileID: 0}

@@ -61,7 +61,7 @@ namespace _Memoriam.Script.SaveLoad
 
         private List<ISaveableObject> FindAllSaveableObjects()
         {
-            var saveables = FindObjectsOfType<MonoBehaviour>(true)   
+            var saveables = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None)   
                 .OfType<ISaveableObject>();
 
             
