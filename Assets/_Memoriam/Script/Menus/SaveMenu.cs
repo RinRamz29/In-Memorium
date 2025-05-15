@@ -56,7 +56,7 @@ namespace _Memoriam.Script.Menus
         
         public void LoadGame(int slot)
         {
-            if (MenuManager.Instance.NoSave)
+            if (!DataPersistentManager.Instance.DoesSaveExist(slot))
             {
                 errorCanva.SetActive(true);
                 EventSystem.current.SetSelectedGameObject(errorButton);

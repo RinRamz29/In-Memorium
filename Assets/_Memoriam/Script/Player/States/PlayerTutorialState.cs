@@ -24,8 +24,8 @@ namespace _Memoriam.Script.Player.States
         private const float AirControlMultiplier = 0.75f;
 
         private float _lastStaminaUseTime = -Mathf.Infinity;
-        private float _staminaRegenDelay = 2f; // seconds after last use
-        private float _staminaRegenRate = 15f; // stamina per second
+        private float _staminaRegenDelay = 1f; // seconds after last use
+        private float _staminaRegenRate = 20f; // stamina per second
         
         private float _counter;
         private Vector2 _currentVelocity = Vector2.zero;
@@ -145,6 +145,7 @@ namespace _Memoriam.Script.Player.States
                 next.action == TutorialStep.ActionType.Interact ||
                 next.action == TutorialStep.ActionType.Dash)
             {
+                TutorialManager.Instance.TutoActive = false;
                 TutorialManager.Instance.SetCanvas(false);
             }
 
@@ -158,6 +159,7 @@ namespace _Memoriam.Script.Player.States
                 return;
             
             TutorialManager.Instance.SetCanvas(true);
+            TutorialManager.Instance.TutoActive = true;
         }
 
         private void ReachedFirstTp(bool condition)
@@ -165,6 +167,7 @@ namespace _Memoriam.Script.Player.States
             if (TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex].action == TutorialStep.ActionType.Interact && condition)
             {
                 TutorialManager.Instance.SetCanvas(true);
+                TutorialManager.Instance.TutoActive = true;
             }
         }
         
@@ -174,6 +177,7 @@ namespace _Memoriam.Script.Player.States
                 return;
                 
             TutorialManager.Instance.SetCanvas(false);
+            TutorialManager.Instance.TutoActive = false;
             AdvanceIfCorrect();
         }
 
@@ -183,6 +187,7 @@ namespace _Memoriam.Script.Player.States
                 return;
             
             TutorialManager.Instance.SetCanvas(false);
+            TutorialManager.Instance.TutoActive = false;
             AdvanceIfCorrect();
         }
 

@@ -19,8 +19,8 @@ namespace _Memoriam.Script.Player.States
         private const float AirControlMultiplier = 0.75f;
 
         private float _lastStaminaUseTime = -Mathf.Infinity;
-        private float _staminaRegenDelay = 2f; // seconds after last use
-        private float _staminaRegenRate = 15f; // stamina per second
+        private float _staminaRegenDelay = 1f; // seconds after last use
+        private float _staminaRegenRate = 20f; // stamina per second
 
         private Vector2 _currentVelocity = Vector2.zero;
         private Vector3 _targetOffset;

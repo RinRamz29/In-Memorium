@@ -24,6 +24,8 @@ namespace _Memoriam.Script.Tutorial
         
         public Languages currentLanguage = Languages.English;
         public int CurrentStepIndex { get; private set; }
+        public bool TutoActive { get; set; }
+
 
 
         public static event Action<TutorialStep> OnTutorialLoaded;

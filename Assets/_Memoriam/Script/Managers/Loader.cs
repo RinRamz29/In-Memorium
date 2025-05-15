@@ -16,6 +16,7 @@ namespace _Memoriam.Script.Managers
         [SerializeField] private Slider slider;
         [SerializeField] private SceneDataBase sceneData;
         private bool _isLoading = false;
+        public bool IsNewGame { get; set; }
 
         public async Task LoadLoader(bool loadGame, int slot = 0)
         {
@@ -64,7 +65,7 @@ namespace _Memoriam.Script.Managers
         {
             await LoadSceneAsync(sceneData.GameSceneName);
 
-            if (MenuManager.Instance.IsNewGame)
+            if (IsNewGame)
             {
                 DataPersistentManager.Instance.NewGame();
                 ObjectPool.Instance.Initialize();

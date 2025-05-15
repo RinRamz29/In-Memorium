@@ -101,8 +101,9 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             uiPlayer.SetActive(true);
             pauseMenu.SetActive(false);
-           
-            if (_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump)
+            
+            _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
+            if ((_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump) && !TutorialManager.Instance.TutoActive)
             {
                 return;
             }
