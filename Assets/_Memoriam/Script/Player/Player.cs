@@ -840,6 +840,7 @@ namespace _Memoriam.Script.Player
 
             IsDashing = true;
             DashCooldown = 0.45f;
+            AudioManager.Instance.PlayOneShotSFX("PlayerDash");
         }
 
         #endregion
