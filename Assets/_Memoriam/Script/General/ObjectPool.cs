@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace _Memoriam.Script.General
@@ -100,7 +101,7 @@ namespace _Memoriam.Script.General
 
 
         #region utilidades
-        public void ResetAllPools()
+        public async Task ResetAllPools()
         {
             foreach (var list in _spawned.Values)
             {
@@ -111,11 +112,14 @@ namespace _Memoriam.Script.General
                 }
             }
 
-            _poolDictionary.Clear();
-            _spawned.Clear();
-            _referenceCounters.Clear();
-        }
+            await Task.Yield(); // Allow Unity to process Destroy calls
 
+            _poolDictionary.Clear();
+            _spawned.Clear();           // You must clear BEFORE checking count
+            _referenceCounters.Clear();
+
+            Debug.Log("All pools reset.");
+        }
         
         public int GetNextCounter(string id)
         {

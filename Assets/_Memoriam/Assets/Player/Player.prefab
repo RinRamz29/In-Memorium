@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 3287767970091132824}
   - component: {fileID: 5154092201584303558}
   - component: {fileID: 3071495023306118291}
+  - component: {fileID: 3963145913926564672}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -199,7 +200,7 @@ MonoBehaviour:
   <CameraJumpYOffset>k__BackingField: 1.5
   <CameraOffsetLerpSpeed>k__BackingField: 1
   <MovimientoParticula>k__BackingField: {fileID: 2604817382203496568}
-  <ParticlesHeal>k__BackingField: {fileID: 730322197651254432, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+  <ParticlesHeal>k__BackingField: {fileID: 2553483298219482401}
   <LevelUpParticles>k__BackingField: {fileID: 7905583003210444701}
   <CaidaParticula>k__BackingField: {fileID: 7267484499818499716}
   <SaltoIzquierda>k__BackingField: {fileID: 3982080562535779823}
@@ -209,6 +210,8 @@ MonoBehaviour:
   knockbackForce: 10
   canDoubleJump: 0
   canDash: 0
+  <StaminaRegenDelay>k__BackingField: 1
+  <StaminaRegenRate>k__BackingField: 20
 --- !u!95 &6382465138541805993
 Animator:
   serializedVersion: 7
@@ -362,6 +365,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee738152ddd8714eba54fac829a9fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &3963145913926564672
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617550798638163866}
+  m_Enabled: 1
 --- !u!1 &4888445375247080529
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +741,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+--- !u!198 &2553483298219482401 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 730322197651254432, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+  m_PrefabInstance: {fileID: 2976153318341357953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7383796336520468926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5707723228600084543, guid: ee628b92c3eef3441a3440e22940e020, type: 3}

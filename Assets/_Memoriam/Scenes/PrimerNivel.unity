@@ -606,17 +606,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607287}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &9919194 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8503845336493589303, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &10199977
 GameObject:
   m_ObjectHideFlags: 0
@@ -44082,7 +44071,7 @@ GameObject:
   - component: {fileID: 53945125}
   m_Layer: 3
   m_Name: Blood Temple Tileset_149 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46294,7 +46283,7 @@ GameObject:
   - component: {fileID: 160943281}
   m_Layer: 3
   m_Name: Blood Temple Tileset_144 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46428,7 +46417,7 @@ GameObject:
   - component: {fileID: 166371371}
   m_Layer: 3
   m_Name: Blood Temple Tileset_145 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46883,7 +46872,7 @@ GameObject:
   - component: {fileID: 172896607}
   m_Layer: 3
   m_Name: Blood Temple Tileset_133 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47580,6 +47569,135 @@ Transform:
   - {fileID: 919489053}
   - {fileID: 662122440}
   - {fileID: 403039106}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &184347322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184347324}
+  - component: {fileID: 184347323}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &184347323
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184347322}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 07558db1b90b08c46ab0d513b7a65c3d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 07558db1b90b08c46ab0d513b7a65c3d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2.0294933
+  MaxDistance: 4.812767
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &184347324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184347322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.32, y: 17.65, z: 0.008887956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &184877287
@@ -53031,7 +53149,7 @@ GameObject:
   - component: {fileID: 200380256}
   m_Layer: 3
   m_Name: Blood Temple Tileset_144 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56239,7 +56357,7 @@ GameObject:
   - component: {fileID: 226230818}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137 (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56669,7 +56787,7 @@ Transform:
   m_GameObject: {fileID: 234463117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 315.1584, y: 106.36226, z: -4.3654857}
+  m_LocalPosition: {x: 315.1584, y: 106.36226, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57567,7 +57685,7 @@ Transform:
   m_GameObject: {fileID: 278806427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 221.85669, y: 106.40167, z: -4.3654857}
+  m_LocalPosition: {x: 221.85669, y: 106.40167, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57702,7 +57820,7 @@ Transform:
   m_GameObject: {fileID: 281082151}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.35, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163370,7 +163488,7 @@ GameObject:
   - component: {fileID: 282707977}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163666,7 +163784,7 @@ GameObject:
   - component: {fileID: 287694173}
   m_Layer: 3
   m_Name: Blood Temple Tileset_146 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164676,7 +164794,7 @@ GameObject:
   - component: {fileID: 338473626}
   m_Layer: 3
   m_Name: Blood Temple Tileset_146
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165317,7 +165435,7 @@ GameObject:
   - component: {fileID: 370884375}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171624,6 +171742,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &440689623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2430652997468577655, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+  m_PrefabInstance: {fileID: 799160469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &440689624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440689623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 4137496032202808209, guid: b8cffab8f8f5a7c4784664a7ee789508, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &440689625
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440689623}
+  m_CullTransparentMesh: 1
 --- !u!1 &456894659
 GameObject:
   m_ObjectHideFlags: 0
@@ -171651,7 +171812,7 @@ Transform:
   m_GameObject: {fileID: 456894659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 256.69745, y: 106.702286, z: -9.992205}
+  m_LocalPosition: {x: 256.69745, y: 106.702286, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -192556,7 +192717,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505198027}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &505198031
 Camera:
   m_ObjectHideFlags: 0
@@ -192987,7 +193148,7 @@ GameObject:
   - component: {fileID: 513351513}
   m_Layer: 3
   m_Name: Blood Temple Tileset_136 (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193648,7 +193809,7 @@ Transform:
   m_GameObject: {fileID: 526150535}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 269.78784, y: 106.702286, z: -9.992205}
+  m_LocalPosition: {x: 269.78784, y: 106.702286, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -194587,7 +194748,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2060550432}
     m_Modifications:
     - target: {fileID: 3170461746567996248, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: playerUI
@@ -194603,15 +194764,15 @@ PrefabInstance:
       objectReference: {fileID: 368586072}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 333.6
+      value: -349.25443
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 114.1
+      value: 63.14414
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06864667
+      value: 0.85233724
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -194619,15 +194780,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -194650,6 +194811,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
+--- !u!4 &596666714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3916516287745108118, guid: af47636b140c7954f8dcc2865bbb4d67, type: 3}
+  m_PrefabInstance: {fileID: 596666713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &601841531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+  m_PrefabInstance: {fileID: 799160469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &605199209
 GameObject:
   m_ObjectHideFlags: 0
@@ -194663,7 +194840,7 @@ GameObject:
   - component: {fileID: 605199212}
   m_Layer: 3
   m_Name: Blood Temple Tileset_136 (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195685,7 +195862,7 @@ GameObject:
   - component: {fileID: 663053147}
   m_Layer: 3
   m_Name: Blood Temple Tileset_150 (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196075,42 +196252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &685070888 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 985360311352233966, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &685070889 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9028903969161763166, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685070888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &685070890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685070888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e72c11202a4ae8891110589eaffab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languages:
-  - language: 0
-    text: 'Choose which slot to save into:'
-  - language: 1
-    text: 'Escoja en que slot guardar:'
-  - language: 2
-    text: 'Escolha em qual slot deseja salvar:'
-  <TextToTranslateTMP>k__BackingField: {fileID: 685070889}
 --- !u!1 &686434942
 GameObject:
   m_ObjectHideFlags: 0
@@ -206342,7 +206483,7 @@ GameObject:
   - component: {fileID: 721686875}
   m_Layer: 3
   m_Name: Blood Temple Tileset_133
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212884,6 +213025,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 683738818491057014, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 683738818491057014, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 683738818491057014, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 683738818491057014, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -749.9391
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 799160473}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 75528341}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetSelectedGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1896625438}
+    - target: {fileID: 831481404955780850, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 885800968089691793, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -212908,6 +213109,50 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 440689623}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 75528341}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetSelectedGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1774825712}
+    - target: {fileID: 1416101148264379709, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1420149565196711668, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -212931,6 +213176,22 @@ PrefabInstance:
     - target: {fileID: 2470115757869261037, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470451602856009948, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470451602856009948, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470451602856009948, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470451602856009948, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -469.9391
       objectReference: {fileID: 0}
     - target: {fileID: 2581625563157062460, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
@@ -212956,12 +213217,64 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3516005911438621920, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563353743982003788, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2023620696}
+    - target: {fileID: 3882352437513379821, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2023620696}
     - target: {fileID: 4217706188647183779, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2023620696}
+    - target: {fileID: 4217706188647183779, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 4371433956388953050, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885032163884200145, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4959850765762276215, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
@@ -212996,6 +213309,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6348064576111675513, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348064576111675513, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348064576111675513, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348064576111675513, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -329.9391
+      objectReference: {fileID: 0}
     - target: {fileID: 7363194934170277836, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -213012,6 +213341,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7439915762256241107, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439915762256241107, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439915762256241107, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439915762256241107, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -609.9391
+      objectReference: {fileID: 0}
     - target: {fileID: 8683635672709278792, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -213028,25 +213373,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 449592519503122516, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5849739527040066649, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2110523214}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4710950803042310002, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 2430652997468577655, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 906875711}
-    - targetCorrespondingSourceObject: {fileID: 1155210900911923462, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+      addedObject: {fileID: 440689625}
+    - targetCorrespondingSourceObject: {fileID: 2430652997468577655, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 906875710}
-    - targetCorrespondingSourceObject: {fileID: 8487369395207200873, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 906875709}
-    - targetCorrespondingSourceObject: {fileID: 985360311352233966, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 685070890}
+      addedObject: {fileID: 440689624}
   m_SourcePrefab: {fileID: 100100000, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
 --- !u!114 &799160470 stripped
 MonoBehaviour:
@@ -213115,7 +213455,7 @@ GameObject:
   - component: {fileID: 801129860}
   m_Layer: 3
   m_Name: Blood Temple Tileset_143 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215428,7 +215768,7 @@ GameObject:
   - component: {fileID: 853946987}
   m_Layer: 3
   m_Name: Blood Temple Tileset_136
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215562,7 +215902,7 @@ GameObject:
   - component: {fileID: 854462221}
   m_Layer: 3
   m_Name: Blood Temple Tileset_144 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221814,92 +222154,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.4375, y: 1.0892963}
   m_EdgeRadius: 0
---- !u!1 &906875705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8487369395207200873, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &906875706 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1155210900911923462, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &906875707 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4710950803042310002, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &906875708 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 99982020769896744, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &906875709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e72c11202a4ae8891110589eaffab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languages:
-  - language: 0
-    text: Quit
-  - language: 1
-    text: Salir
-  - language: 2
-    text: Desistir
-  <TextToTranslateTMP>k__BackingField: {fileID: 1085546444}
---- !u!114 &906875710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e72c11202a4ae8891110589eaffab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languages:
-  - language: 0
-    text: Menu
-  - language: 1
-    text: Menu
-  - language: 2
-    text: Menu
-  <TextToTranslateTMP>k__BackingField: {fileID: 9919194}
---- !u!114 &906875711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e72c11202a4ae8891110589eaffab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languages:
-  - language: 0
-    text: Resume
-  - language: 1
-    text: Continuar
-  - language: 2
-    text: Retomar
-  <TextToTranslateTMP>k__BackingField: {fileID: 906875708}
 --- !u!1 &909163441
 GameObject:
   m_ObjectHideFlags: 0
@@ -233007,7 +233261,7 @@ GameObject:
   - component: {fileID: 986050951}
   m_Layer: 3
   m_Name: Blood Temple Tileset_133 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238079,7 +238333,7 @@ Transform:
   m_GameObject: {fileID: 1058734257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 197.10837, y: 106.47847, z: -4.3654857}
+  m_LocalPosition: {x: 197.10837, y: 106.47847, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -244421,17 +244675,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 893042888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1085546444 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5139073106325241222, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
-  m_PrefabInstance: {fileID: 799160469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906875705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1088322939
 GameObject:
   m_ObjectHideFlags: 0
@@ -244445,7 +244688,7 @@ GameObject:
   - component: {fileID: 1088322942}
   m_Layer: 3
   m_Name: Blood Temple Tileset_136 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245641,7 +245884,7 @@ GameObject:
   - component: {fileID: 1130771864}
   m_Layer: 3
   m_Name: Blood Temple Tileset_138
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245819,7 +246062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140801686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Columnas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246510,7 +246753,7 @@ GameObject:
   - component: {fileID: 1190900505}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137 (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246649,7 +246892,7 @@ GameObject:
   - component: {fileID: 1202039586}
   m_Layer: 3
   m_Name: Blood Temple Tileset_133 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247888,7 +248131,7 @@ GameObject:
   - component: {fileID: 1260253387}
   m_Layer: 3
   m_Name: Blood Temple Tileset_134
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248446,7 +248689,7 @@ GameObject:
   - component: {fileID: 1296132110}
   m_Layer: 3
   m_Name: Blood Temple Tileset_146 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249538,7 +249781,7 @@ GameObject:
   - component: {fileID: 1356598511}
   m_Layer: 3
   m_Name: Blood Temple Tileset_149 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250447,7 +250690,7 @@ GameObject:
   - component: {fileID: 1450733840}
   m_Layer: 3
   m_Name: Blood Temple Tileset_143
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251422,184 +251665,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11632770}
     - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: instructionText
-      value: 
-      objectReference: {fileID: 683552779}
+      propertyPath: steps.Array.data[0].action
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: languages.Array.size
+      propertyPath: steps.Array.data[1].action
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: steps.Array.data[2].action
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: steps.Array.data[3].action
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: steps.Array.data[4].action
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: steps.Array.data[5].action
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: steps.Array.data[6].action
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
       propertyPath: <TextToTranslateTMP>k__BackingField
       value: 
       objectReference: {fileID: 683552779}
     - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[3].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.data[0].text
-      value: 'Jump with:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.data[1].text
-      value: 'Salta con:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.data[2].text
-      value: 'Salte com:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.data[0].text
-      value: 'Light Attack with:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.data[1].text
-      value: 'Ataque ligero con:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.data[2].text
-      value: 'Ataque Leve com:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.data[0].text
-      value: 'Heavy Attack with:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.data[1].text
-      value: 'Ataque Pesado con:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.data[2].text
-      value: 'Ataque Pesado com:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[3].languages.Array.data[0].text
-      value: Combo by double clicking heavy or light
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
       propertyPath: steps.Array.data[3].languages.Array.data[1].text
-      value: Como clickeando dos veces ligero o pesado
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[3].languages.Array.data[2].text
-      value: Combo clicando duas vezes em pesado ou leve
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.data[0].text
-      value: 'Double Jump by double clicking:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.data[1].text
-      value: 'Doble salto presionando dos veces:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.data[2].text
-      value: 'Salto duplo com clique duplo:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.data[0].text
-      value: 'Interact with:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.data[1].text
-      value: 'Interactua con:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.data[2].text
-      value: 'Interaja com:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.data[0].text
-      value: 'Dash with:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.data[1].text
-      value: 'Sprintea con:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.data[2].text
-      value: "Tra\xE7o com:"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[0].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[1].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[2].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[3].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[3].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[4].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[5].languages.Array.data[2].language
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.data[1].language
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
-      propertyPath: steps.Array.data[6].languages.Array.data[2].language
-      value: 2
+      value: Combo clickeando dos veces ligero o pesado
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -252358,7 +252457,7 @@ GameObject:
   - component: {fileID: 1515038376}
   m_Layer: 3
   m_Name: Blood Temple Tileset_145
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253296,7 +253395,7 @@ Transform:
   m_GameObject: {fileID: 1553352945}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.888355, y: 58.35167, z: -9.992205}
+  m_LocalPosition: {x: 63.888355, y: 58.35167, z: 15}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254902,7 +255001,7 @@ Transform:
   m_GameObject: {fileID: 1593529116}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 290.57837, y: 106.75227, z: -4.3654857}
+  m_LocalPosition: {x: 290.57837, y: 106.75227, z: 15}
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -264767,6 +264866,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2060550432}
     m_Modifications:
+    - target: {fileID: 1921752127999141122, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -495.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -264807,6 +264910,198 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.data[0].id
+      value: 4b593d21-c53b-4e55-a27a-94603561ba5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[0].id
+      value: 8d22ec7f-d3d3-4063-b5fd-08bd56883591
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[1].id
+      value: 9be349bb-7c31-4733-ba16-8e3fa057b73c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[2].id
+      value: 5cdc1cf3-cbd6-4af5-92c9-abb90a0dbe09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[3].id
+      value: 8ad47b19-8620-4416-8858-5a57d96d5e14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[4].id
+      value: 3b7820f6-ca14-4c92-afc9-30fc85f42b7f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[5].id
+      value: 3ab283ca-f7b3-436f-8bed-9edc271ab788
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[6].id
+      value: b704492b-bc67-409d-a66b-59dd809537ba
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[7].id
+      value: c4fc6c9f-d0e0-4d54-9791-1fa2accf80a4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[8].id
+      value: 58eb3d27-1d43-4ee4-ba25-3749546e39e2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[9].id
+      value: 7217b76c-f80b-4409-af64-0068848ec633
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[0].id
+      value: 5b9644e3-bf9c-4298-9845-4c5025ac127c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[1].id
+      value: 56f61884-f150-4025-bd26-367a5c7cc557
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[2].id
+      value: a0b35452-e594-41ce-8606-b522e08157a2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[3].id
+      value: da28a4cf-f9fb-4793-8062-884fc3cd586f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[4].id
+      value: 03314e2e-88b4-4227-8240-7a6de24b9b67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[5].id
+      value: f5da417a-dd7f-413b-b431-733e669377a0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[6].id
+      value: 6301e794-6c4a-47db-a35c-c2ca0197bc5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: rangedEnemies.Array.data[7].id
+      value: 2d5b4361-a14c-4275-ae78-e9aca2415490
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.data[0].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043710}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[0].id
+      value: 6a3c4813-ea71-4b5d-bb55-86a00e41d863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[1].id
+      value: 6291323e-19ed-4db0-bb57-3a930ea14f1c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[2].id
+      value: 327ef55b-702b-41dc-96bb-8adf407b62a0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[3].id
+      value: c6fbab88-7cf4-4c01-831c-a43ff1c04b60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[4].id
+      value: d9177f0e-2a78-4a2d-8b56-cb15284a856c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[5].id
+      value: 614ce87e-f16a-47e8-af55-2f8849a79219
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[6].id
+      value: 28f6ca28-b712-468f-82f7-9042ac3a4a51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[7].id
+      value: 0e6bfa08-686b-4495-8cd1-1cdb1bc8d461
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[8].id
+      value: 928b37af-d82f-4c8a-9b1c-5d189ca7d841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[9].id
+      value: 7fe1bff6-a270-4d38-a7df-814029f1a96b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.data[10].id
+      value: 03b7f7a0-e253-47c3-a350-68afd9817867
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[10].id
+      value: 05a55fe4-5ed5-465e-8f47-d28fca78f3bf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[11].id
+      value: 237d42b6-3422-4c28-9eb3-7fc4897c9174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[12].id
+      value: 0c3c72e8-b6be-4a16-8fcc-8bf1d57e37b6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[13].id
+      value: 8e66d21f-d488-4d58-b824-205d456e773e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[14].id
+      value: 9b8c7e92-1eb3-4dbc-b091-6e3f698978a2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[15].id
+      value: 3cf32e92-adc9-44ee-a9e8-a692b66cd960
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[16].id
+      value: bd6c1f20-334c-4829-a52f-fb201aa23ff8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[17].id
+      value: 494373b5-ada7-467e-9c5b-6719be34713e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[18].id
+      value: f633d2d2-75f0-457f-98bd-1da8d7a61e4d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[19].id
+      value: 1fbc23aa-c5d9-473a-9a95-0c98e191f6d8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[20].id
+      value: 73f99610-d7ba-45c8-b09d-4cc0ee912340
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[21].id
+      value: fbb582bf-5121-41f5-922f-a83f9de3d44a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemiesToSpawn.Array.data[22].id
+      value: e658901f-1ba4-494a-be16-f8c4510149e6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.data[0].path.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.data[0].path.Array.data[0].x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: bosses.Array.data[0].path.Array.data[1].x
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 7659872246920475734, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: m_Name
       value: EnemyManager
@@ -264819,6 +265114,11 @@ PrefabInstance:
 --- !u!4 &1632043709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1921752127999141122, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
   m_PrefabInstance: {fileID: 1632043708}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1639346122
@@ -264984,7 +265284,7 @@ GameObject:
   - component: {fileID: 1648656564}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137 (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265118,7 +265418,7 @@ GameObject:
   - component: {fileID: 1648873453}
   m_Layer: 3
   m_Name: Blood Temple Tileset_146 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278620,7 +278920,7 @@ GameObject:
   - component: {fileID: 1735676880}
   m_Layer: 3
   m_Name: Blood Temple Tileset_137 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288361,6 +288661,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 893042888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1774825712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8061942875023349985, guid: 4f33acfe274d1d643b209c1b877e7856, type: 3}
+  m_PrefabInstance: {fileID: 799160469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1780438583
 GameObject:
   m_ObjectHideFlags: 0
@@ -301557,7 +301862,7 @@ GameObject:
   - component: {fileID: 1978237877}
   m_Layer: 3
   m_Name: Blood Temple Tileset_148 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307057,7 +307362,7 @@ GameObject:
   - component: {fileID: 2000797719}
   m_Layer: 3
   m_Name: Blood Temple Tileset_145 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313287,6 +313592,7 @@ Transform:
   - {fileID: 1108186086}
   - {fileID: 1481220094}
   - {fileID: 1632043709}
+  - {fileID: 596666714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063134655
@@ -318382,7 +318688,7 @@ GameObject:
   - component: {fileID: 2075290723}
   m_Layer: 3
   m_Name: Blood Temple Tileset_150 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318760,7 +319066,7 @@ Transform:
   m_GameObject: {fileID: 2084711837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 210.08835, y: 106.702286, z: -9.992205}
+  m_LocalPosition: {x: 210.08835, y: 106.702286, z: 15}
   m_LocalScale: {x: 2.5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325650,9 +325956,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 799160473}
     - target: {fileID: 2775167584749202887, guid: b133a9dbd3130a042b602e769f04e24e, type: 3}
+      propertyPath: uiSettings
+      value: 
+      objectReference: {fileID: 440689623}
+    - target: {fileID: 2775167584749202887, guid: b133a9dbd3130a042b602e769f04e24e, type: 3}
       propertyPath: firstButton
       value: 
       objectReference: {fileID: 1896625438}
+    - target: {fileID: 2775167584749202887, guid: b133a9dbd3130a042b602e769f04e24e, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775167584749202887, guid: b133a9dbd3130a042b602e769f04e24e, type: 3}
+      propertyPath: settingsButton
+      value: 
+      objectReference: {fileID: 601841531}
     - target: {fileID: 2775167584749202887, guid: b133a9dbd3130a042b602e769f04e24e, type: 3}
       propertyPath: <XpBar>k__BackingField
       value: 
@@ -334951,6 +335269,6 @@ SceneRoots:
   - {fileID: 271050888}
   - {fileID: 1453127975}
   - {fileID: 2137213365}
-  - {fileID: 596666713}
   - {fileID: 998683462}
   - {fileID: 1479474250}
+  - {fileID: 184347324}

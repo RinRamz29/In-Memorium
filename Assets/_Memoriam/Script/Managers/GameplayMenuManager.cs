@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
+using _Memoriam.Script.Menus;
 using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
@@ -21,6 +22,7 @@ namespace _Memoriam.Script.Managers
     public class GameplayMenuManager : MonoBehaviour, ISaveableObject
     {
         [SerializeField] private GameObject uiPlayer;
+        [SerializeField] private GameObject uiSettings;
         [field: SerializeField] public Slider HealthBar { get; private set; }
         [field: SerializeField] public Slider StaminaBar { get; private set; }
         [field: SerializeField] public Slider XpBar { get; private set; }
@@ -101,12 +103,23 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             uiPlayer.SetActive(true);
             pauseMenu.SetActive(false);
-           
-            if (_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump)
+            
+            if (uiSettings.activeInHierarchy)
+            {
+                uiSettings.SetActive(false);
+            }
+
+            if (!Loader.Instance.SetTutorial)
             {
                 return;
             }
             
+            _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
+            if ((_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump) && !TutorialManager.Instance.TutoActive)
+            {
+                return;
+            }
+
             TutorialManager.Instance.SetCanvas(true);
         }
 

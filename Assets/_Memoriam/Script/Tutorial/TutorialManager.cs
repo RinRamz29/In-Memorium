@@ -24,7 +24,7 @@ namespace _Memoriam.Script.Tutorial
         
         public Languages currentLanguage = Languages.English;
         public int CurrentStepIndex { get; private set; }
-
+        public bool TutoActive { get; set; }
 
         public static event Action<TutorialStep> OnTutorialLoaded;
 
@@ -45,9 +45,10 @@ namespace _Memoriam.Script.Tutorial
         
         public void NextStep()
         {
-            if (CurrentStepIndex + 1 < steps.Count)
+            if (CurrentStepIndex + 1 < steps.Count - 1)
             {
                 CurrentStepIndex++;
+                Debug.Log(CurrentStepIndex);
                 RefreshUI();
             }
             else
@@ -58,7 +59,7 @@ namespace _Memoriam.Script.Tutorial
 
         private void RefreshUI()
         {
-            if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count)
+            if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count - 1)
             {
                 steps[CurrentStepIndex].TryGetInt(currentLanguage, out var idx);
                 TextToTranslateTMP.text = steps[CurrentStepIndex].languages[idx].text;
@@ -105,14 +106,14 @@ namespace _Memoriam.Script.Tutorial
             }
         }
 
-        public void ResetTutorial()
+        public void ResetTutorial(bool isOn)
         {
             CurrentStepIndex = 0;
-            SetCanvas(true);
+            SetCanvas(isOn);
             RefreshUI();
             OnTutorialLoaded?.Invoke(steps[CurrentStepIndex]);
         }
-
+        
         public void SetCanvas(bool isOn)
         {
             canvas.SetActive(isOn);
@@ -126,9 +127,10 @@ namespace _Memoriam.Script.Tutorial
         public void LoadData(GameData data)
         {
             CurrentStepIndex = data.tutoData.currentTutoIndex;
-
+            Debug.Log("Lenght" + steps.Count);
             SetCanvas(data.tutoData.isOn);
             RefreshUI();
+            
             OnTutorialLoaded?.Invoke(steps[CurrentStepIndex]);
         }
 
@@ -152,7 +154,6 @@ namespace _Memoriam.Script.Tutorial
         
         public enum ActionType
         {
-            Move,
             Jump,
             Dash,
             DoubleJump,

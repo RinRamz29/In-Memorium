@@ -16,9 +16,7 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
-        public bool IsNewGame { get; private set; } = false;
-        public bool NoSave { get; private set; } = false;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -35,7 +33,7 @@ namespace _Memoriam.Script.Managers
 
         public async void NewGame()
         {
-            IsNewGame = true;
+            Loader.Instance.IsNewGame = true;
             AudioManager.Instance.PlayMusic("GameplayMusic");
             await Loader.Instance.LoadLoader(true);
         }
@@ -44,14 +42,9 @@ namespace _Memoriam.Script.Managers
         {
             if (DataPersistentManager.Instance.FileDataHandler.DoesSaveExist(slot))
             {
-                IsNewGame = false;
-                NoSave = false;
+                Loader.Instance.IsNewGame = false;
                 AudioManager.Instance.PlayMusic("GameplayMusic");
                 await Loader.Instance.LoadLoader(true, slot); 
-            }
-            else
-            {
-                NoSave = true;
             }
         }
         

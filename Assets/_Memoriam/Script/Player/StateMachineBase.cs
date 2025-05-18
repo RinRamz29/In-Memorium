@@ -1,4 +1,6 @@
-﻿namespace _Memoriam.Script.Player
+﻿using UnityEngine;
+
+namespace _Memoriam.Script.Player
 {
     public interface IState
     {
@@ -11,14 +13,12 @@
     public class StateMachineBase
     {
         private IState _currentState;
-        private IState _previousState;
 
         public void ChangeState(IState newState)
         {
             _currentState?.Exit();
-            _previousState = _currentState;
             _currentState = newState;
-            _currentState.Enter();
+            _currentState?.Enter();
         }
 
         public void Tick()
@@ -31,12 +31,10 @@
             _currentState?.LateTick();
         }
 
-        public void RevertToPreviousState()
+        public void ForceTerminate()
         {
-            if (_previousState != null)
-            {
-                ChangeState(_previousState);
-            }
+            Debug.Log("I was force terminated");
+            _currentState?.Exit();
         }
     }
 }

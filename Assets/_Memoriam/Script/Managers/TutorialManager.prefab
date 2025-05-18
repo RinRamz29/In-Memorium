@@ -46,39 +46,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   steps:
-  - instruction: 'Jump with:'
-    icon:
+  - icon:
     - {fileID: -737011211277047346, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 253902772, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Jump with:'
+    - language: 1
+      text: 'Salta con:'
+    - language: 2
+      text: 'Salte com:'
     action: 1
-  - instruction: 'Light Attack with:'
-    icon:
+  - icon:
     - {fileID: 8603364596459411821, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 417424752226488098, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Light Attack with:'
+    - language: 1
+      text: 'Ataque ligero con:'
+    - language: 2
+      text: 'Ataque Leve com:'
     action: 4
-  - instruction: 'Heavy Attack with:'
-    icon:
+  - icon:
     - {fileID: 9109898363745289567, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 8531666819827272381, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Heavy Attack with:'
+    - language: 1
+      text: 'Ataque Pesado con:'
+    - language: 2
+      text: 'Ataque Pesado com:'
     action: 5
-  - instruction: 'Combo by double click heavy or light '
-    icon: []
+  - icon: []
+    languages:
+    - language: 0
+      text: Combo by double clicking heavy or light
+    - language: 1
+      text: Como clickeando dos veces ligero o pesado
+    - language: 2
+      text: Combo clicando duas vezes em pesado ou leve
     action: 6
-  - instruction: 'Double Jump by double pressing:'
-    icon:
+  - icon:
     - {fileID: 7752122263599561285, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 253902772, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Double Jump by double clicking:'
+    - language: 1
+      text: 'Doble salto presionando dos veces:'
+    - language: 2
+      text: 'Salto duplo com clique duplo:'
     action: 3
-  - instruction: 'Interact with:'
-    icon:
+  - icon:
     - {fileID: 2324525799202304566, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 418924702, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Interact with:'
+    - language: 1
+      text: 'Interactua con:'
+    - language: 2
+      text: 'Interaja com:'
     action: 7
-  - instruction: 'Dash with:'
-    icon:
+  - icon:
     - {fileID: -5826372792910275525, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
-    - {fileID: -934109011, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    - {fileID: 6375187842209239333, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    languages:
+    - language: 0
+      text: 'Dash with:'
+    - language: 1
+      text: 'Sprintea con:'
+    - language: 2
+      text: "Tra\xE7o com:"
     action: 2
-  instructionText: {fileID: 0}
+  <TextToTranslateTMP>k__BackingField: {fileID: 0}
   icon: {fileID: 0}
   canvas: {fileID: 0}
+  currentLanguage: 0
