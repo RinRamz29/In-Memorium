@@ -12,6 +12,7 @@ using _Memoriam.Script.SaveLoad.Data;
 using _Memoriam.Script.Tutorial;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -34,9 +35,11 @@ namespace _Memoriam.Script.Player
     {
         public PlayerAbilities abilities = new PlayerAbilities();
         public StateMachineBase StateMachine { get; private set; }
-        
+
         [Header("Dependencies")]
-        [field: SerializeField] public Animator Animator { get; set; }
+        [field: SerializeField]
+        public Animator Animator { get; set; }
+
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; set; }
         [field: SerializeField] public CinemachineCamera CineMachineCamera { get; set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; set; }
@@ -49,35 +52,42 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public float WallCheckDistance { get; set; } = 0.2f;
         [field: SerializeField] public float WallSlideSpeed { get; set; } = 2f;
         [field: SerializeField] public CinemachineFollow CinemachineFollow { get; set; }
-        public bool IsTouchingWall { get; set; }
 
         [Header("Stats")]
         [field: SerializeField] public float Health { get; set; }
-        [field: SerializeField] public float MaxHealth { get;  set; }
+
+        [field: SerializeField] public float MaxHealth { get; set; }
         [field: SerializeField] public float Stamina { get; set; }
-        [field: SerializeField] public float MaxStamina { get;  set; }
+        [field: SerializeField] public float MaxStamina { get; set; }
         [field: SerializeField] public float JumpForce { get; private set; } = 10f;
         [field: SerializeField] public float DashForce { get; private set; } = 2f;
         [field: SerializeField] public float Damage { get; set; } = 10f;
-        [field: SerializeField] public PlayerProgression Progression { get; set; }  = new PlayerProgression();
-        [field: SerializeField, Range(5f, 30f)] public float Speed { get; private set; }
+        [field: SerializeField] public PlayerProgression Progression { get; set; } = new PlayerProgression();
+
+        [field: SerializeField, Range(5f, 30f)]
+        public float Speed { get; private set; }
+
         [field: SerializeField] public float LighAttackStamina { get; private set; } = 25f;
         [field: SerializeField] public float HeavyAttackStamina { get; private set; } = 35f;
         [field: SerializeField] public float CameraHorizontalOffset { get; private set; } = 3f;
         [field: SerializeField] public float CameraFallYOffset { get; private set; } = -2f;
         [field: SerializeField] public float CameraJumpYOffset { get; private set; } = 1.5f;
         [field: SerializeField] public float CameraOffsetLerpSpeed { get; private set; } = 5f;
-        
+
         [Header("Particles")]
-        [field: SerializeField] public ParticleSystem MovimientoParticula { get; private set; }
+        [field: SerializeField]
+        public ParticleSystem MovimientoParticula { get; private set; }
+
         [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
         [field: SerializeField] public ParticleSystem LevelUpParticles { get; private set; }
         [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
         [field: SerializeField] public ParticleSystem SaltoIzquierda { get; private set; }
         [field: SerializeField] public ParticleSystem SaltoDerecha { get; private set; }
-        
-        [field: SerializeField, Range(0,10)] public int OccurAfterVelocity { get; private set; }
-        [field: SerializeField, Range(0,0.2f)] public float DustFormationPeriod { get; private set; }
+
+        [field: SerializeField, Range(0, 10)] public int OccurAfterVelocity { get; private set; }
+
+        [field: SerializeField, Range(0, 0.2f)]
+        public float DustFormationPeriod { get; private set; }
 
         public static Action<bool> onPlayerFirstTp;
         public bool ReachedFirstTp { get; set; }
@@ -85,56 +95,26 @@ namespace _Memoriam.Script.Player
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
         private const float BlinkInterval = 0.1f;
-
-
-        //Delegates
-        private void OnStateChanged(GameStateManager.GameState state)
-        {
-            switch (state)
-            {
-                case GameStateManager.GameState.OnGameplay:
-                    ResumePhysics();
-                    break;
-                case GameStateManager.GameState.OnPause:
-                    PausePhysics();
-                    break;
-            }
-        }
         
         private Vector3 _savedVelocity;
         private float _savedAngularVelocity;
 
-        private void PausePhysics()
-        {
-            Animator.SetFloat(SpeedXHash, 0);
-            _savedVelocity = Rigidbody2D.linearVelocity;
-            _savedAngularVelocity = Rigidbody2D.angularVelocity;
-            Rigidbody2D.angularVelocity = 0f;
-            Rigidbody2D.linearVelocity = Vector2.zero;
-            Rigidbody2D.gravityScale = 0f;
-        }
-        
-        private void ResumePhysics()
-        {
-            Rigidbody2D.gravityScale = 2f;
-            Rigidbody2D.linearVelocity = _savedVelocity;
-            Rigidbody2D.angularVelocity = _savedAngularVelocity;
-        }
-
 
         // Animation hashes
-        public int LightAttackHash { get; } = Animator.StringToHash("Light");
-        public int HeavyAttackHash { get; } = Animator.StringToHash("Heavy");
-        public int Combo1AttackHash { get; } = Animator.StringToHash("Combo1");
-        public int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
-        public int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
-        public int SpeedXHash { get; } = Animator.StringToHash("SpeedX");
-        public int SpeedYHash { get; } = Animator.StringToHash("SpeedY");
+        private int LightAttackHash { get; } = Animator.StringToHash("Light");
+        private int HeavyAttackHash { get; } = Animator.StringToHash("Heavy");
+        private int Combo1AttackHash { get; } = Animator.StringToHash("Combo1");
+        private int Combo2AttackHash { get; } = Animator.StringToHash("Combo2");
+        private int ComboTriggeredHash { get; } = Animator.StringToHash("ComboTriggered");
+        private int SpeedXHash { get; } = Animator.StringToHash("SpeedX");
+        private int SpeedYHash { get; } = Animator.StringToHash("SpeedY");
 
         // Movement parameters
-        public Vector2 Movement { get; set; }
-        public bool IsGrounded { get; set; }
-        
+        private Vector2 Movement { get; set; }
+        private bool IsGrounded { get; set; }
+        private bool IsTouchingWall { get; set; }
+
+
 
         #region UnityFlow
 
@@ -142,7 +122,7 @@ namespace _Memoriam.Script.Player
         {
             ResetPlayer();
         }
-        
+
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
@@ -191,7 +171,7 @@ namespace _Memoriam.Script.Player
         public void ResetPlayer()
         {
             StateMachine = new StateMachineBase();
-            
+
             if (!TryGetComponent<Rigidbody2D>(out var rb))
                 rb = gameObject.AddComponent<Rigidbody2D>();
 
@@ -212,10 +192,10 @@ namespace _Memoriam.Script.Player
                 sword.SetActive(false);
                 SwordCollider = sword;
             }
-            
+
             if (!TryGetComponent<Animator>(out var animator))
                 animator = gameObject.AddComponent<Animator>();
-            
+
             animator.Rebind();
             animator.Update(0);
             Animator = animator;
@@ -246,20 +226,20 @@ namespace _Memoriam.Script.Player
             cam.Follow = transform;
             CineMachineCamera = cam;
             CinemachineFollow = cam?.GetComponent<CinemachineFollow>();
-            
+
             EnemyLayer = 1 << LayerMask.NameToLayer("Enemy");
             GroundMask = 1 << LayerMask.NameToLayer("Ground");
-            
+
             if (TutorialManager.Instance.CurrentStepIndex + 1 < TutorialManager.Instance.steps.Count)
                 StateMachine.ChangeState(new PlayerTutorialState(this));
             else
                 StateMachine.ChangeState(new PlayerCombatState(this));
-
         }
-        
+
         #endregion
 
         #region LevelUpLogic
+
         private void HandleLevelUp(int newLevel)
         {
             MaxHealth += 10 + newLevel * 0.5f;
@@ -269,11 +249,12 @@ namespace _Memoriam.Script.Player
             Stamina = MaxStamina;
 
             Damage += 1 + newLevel * 0.2f;
-    
+
             LevelUpParticles?.Play();
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
         }
+
         #endregion
 
         #region HealDamageLogic
@@ -301,6 +282,7 @@ namespace _Memoriam.Script.Player
                 StartCoroutine(KnockbackAndInvulnerability(damageSource));
             }
         }
+
         public void PlayFootstep()
         {
             AudioManager.Instance.PlayRandomSFX("PlayerWalk");
@@ -350,7 +332,7 @@ namespace _Memoriam.Script.Player
             var clampedHealth = Health / MaxHealth;
             OnHealthChanged?.Invoke(clampedHealth);
         }
-        
+
         private void Die()
         {
             //TO DO
@@ -458,10 +440,10 @@ namespace _Memoriam.Script.Player
         #endregion
 
         #region PowerUpsLogic
-        
+
         public bool canDoubleJump;
         public bool canDash;
-        
+
         public void UnlockAbility(TypeOfPickable type)
         {
             switch (type)
@@ -543,6 +525,504 @@ namespace _Memoriam.Script.Player
                 xp = Progression.CurrentXp,
             };
             data.player = player;
+        }
+
+        #endregion
+
+        #region AttackLogic
+
+        public bool IsFlipped { get; set; }
+        public Vector2 Direction { get; set; }
+
+        public bool IsDashing { get; set; }
+        public float DashCooldown { get; set; }
+        public float AirControlMultiplier { get; set; } = 0.75f;
+
+        public float LastStaminaUseTime { get; set; } = -Mathf.Infinity;
+        [field: SerializeField] public float StaminaRegenDelay { get; set; } = 1f;
+        [field: SerializeField] public float StaminaRegenRate { get; set; } = 20f;
+
+        private float _counter;
+        private Vector2 _currentVelocity = Vector2.zero;
+        private Vector3 _targetOffset;
+
+        public void LightAttack(InputAction.CallbackContext context)
+        {
+            if (Animator == null)
+                return;
+
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+
+            if (!context.performed)
+                return;
+
+            if (Stamina < LighAttackStamina)
+            {
+                return;
+            }
+
+            if (!IsAttacking)
+            {
+                IsAttacking = true;
+                SetAttack(Player.AttackStrength.Light);
+                CurrentAttackType = Player.AttackType.Light;
+
+                Stamina -= LighAttackStamina;
+                Player.OnStaminaChanged?.Invoke(Stamina / MaxStamina);
+                LastStaminaUseTime = Time.time;
+                CheckForSwordCollisions();
+                Animator.SetBool(LightAttackHash, true);
+                AudioManager.Instance.PlayRandomSFX("PlayerLightAttack");
+            }
+        }
+
+        public void HeavyAttack(InputAction.CallbackContext context)
+        {
+            if (Animator == null)
+                return;
+
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+
+            if (!context.performed)
+                return;
+
+            if (Stamina < HeavyAttackStamina)
+            {
+                return;
+            }
+
+            if (!IsAttacking)
+            {
+                IsAttacking = true;
+                SetAttack(Player.AttackStrength.Heavy);
+                CurrentAttackType = Player.AttackType.Heavy;
+
+                Stamina -= HeavyAttackStamina;
+                Player.OnStaminaChanged?.Invoke(Stamina / MaxStamina);
+                LastStaminaUseTime = Time.time;
+                CheckForSwordCollisions();
+                Animator.SetBool(HeavyAttackHash, true);
+                AudioManager.Instance.PlayRandomSFX("PlayerHeavyAttack");
+            }
+        }
+
+        public void ExecuteCombo()
+        {
+            if (Animator == null)
+                return;
+
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+
+            ComboInputReceived = false;
+            ComboWindowOpen = false;
+
+            CheckForSwordCollisions();
+            Animator.SetBool(ComboTriggeredHash, true);
+            AudioManager.Instance.PlayRandomSFX("PlayerLightAttack");
+            if (CurrentAttackType == Player.AttackType.Light)
+            {
+                SetAttack(Player.AttackStrength.ComboLight);
+                Animator.SetBool(LightAttackHash, false);
+                Animator.SetTrigger(Combo1AttackHash);
+            }
+            else if (CurrentAttackType == Player.AttackType.Heavy)
+            {
+                SetAttack(Player.AttackStrength.ComboHeavy);
+                Animator.SetBool(HeavyAttackHash, false);
+                Animator.SetTrigger(Combo2AttackHash);
+            }
+        }
+
+        private void CheckForSwordCollisions()
+        {
+            if (SwordCollider is null || SwordCollider == null)
+                return;
+
+            SwordCollider.transform.localPosition = IsFlipped
+                ? new Vector3(-1f, SwordCollider.transform.localPosition.y,
+                    SwordCollider.transform.localPosition.z)
+                : new Vector3(1f, SwordCollider.transform.localPosition.y,
+                    SwordCollider.transform.localPosition.z);
+        }
+
+        #endregion
+
+        #region MoveLogic
+
+        public void Move()
+        {
+            Movement = InputReader.Instance.PlayerActions.Player.Move.ReadValue<Vector2>();
+            // Actualiza grounded antes de calcular si aterrizó
+            var wasGrounded = IsGrounded;
+
+            IsGrounded =
+                Physics2D.OverlapCircle(GroundCheck.position, GroundDistance, GroundMask);
+            IsTouchingWall = false;
+
+            foreach (var check in WallCheck)
+            {
+                var direction = IsFlipped ? Vector2.left : Vector2.right;
+                var hit = Physics2D.Raycast(check.position, direction, WallCheckDistance, GroundMask);
+                Debug.DrawRay(check.position, direction * WallCheckDistance, Color.red);
+
+                if (hit.collider != null)
+                {
+                    IsTouchingWall = true;
+
+                    if (!IsGrounded || Rigidbody2D.linearVelocity.y > 0)
+                        IsGrounded = false;
+
+                    break;
+                }
+            }
+
+            // Detectar aterrizaje
+            bool justLanded = !wasGrounded && IsGrounded;
+            if (justLanded && Mathf.Abs(Rigidbody2D.linearVelocity.y) > 1f)
+            {
+                AudioManager.Instance.PlayOneShotSFX("PlayerLand");
+                CaidaParticula.Play();
+            }
+
+            float targetSpeedX = Movement.x * Speed;
+            float smoothedX =
+                Mathf.SmoothDamp(Rigidbody2D.linearVelocity.x, targetSpeedX, ref _currentVelocity.x, 0.1f);
+            float verticalSpeed = Rigidbody2D.linearVelocity.y;
+
+            if (IsGrounded)
+            {
+                Rigidbody2D.linearVelocity = new Vector2(smoothedX, verticalSpeed);
+                Animator.SetFloat(SpeedXHash, Mathf.Abs(Movement.x));
+
+                if (Mathf.Abs(Rigidbody2D.linearVelocity.x) > OccurAfterVelocity)
+                {
+                    _counter += Time.deltaTime;
+
+                    if (_counter > DustFormationPeriod)
+                    {
+                        MovimientoParticula.Play();
+                        _counter = 0;
+                    }
+                }
+            }
+            else if (IsTouchingWall && !IsGrounded)
+            {
+                verticalSpeed = Mathf.Max(Rigidbody2D.linearVelocity.y, -WallSlideSpeed);
+                Rigidbody2D.linearVelocity = new Vector2(0f, verticalSpeed);
+            }
+            else
+            {
+                float airSpeedX = Mathf.SmoothDamp(Rigidbody2D.linearVelocity.x,
+                    Movement.x * AirControlMultiplier * Speed, ref _currentVelocity.x, 0.15f);
+                Rigidbody2D.linearVelocity = new Vector2(airSpeedX, verticalSpeed);
+                Animator.SetFloat(SpeedXHash, 0);
+            }
+
+            if (IsDashing)
+            {
+                Rigidbody2D.linearVelocity =
+                    new Vector2(Rigidbody2D.linearVelocity.x, Rigidbody2D.linearVelocity.y);
+                Direction = IsFlipped ? Vector2.left : Vector2.right;
+                Rigidbody2D.AddForce(Direction * DashForce, ForceMode2D.Impulse);
+
+                if ((Direction.x < -0.1f && Movement.x > 0.1f) ||
+                    (Direction.x > 0.1f && Movement.x < -0.1f))
+                {
+                    IsDashing = false;
+                    canDash = false;
+                }
+
+                DashCooldown -= Time.deltaTime;
+                if (DashCooldown <= 0)
+                {
+                    IsDashing = false;
+                    canDash = false;
+                }
+            }
+
+            if (!canDoubleJump && IsGrounded && abilities.hasDoubleJump)
+            {
+                canDoubleJump = true;
+            }
+
+            if (!canDash && IsGrounded && abilities.hasDash)
+            {
+                canDash = true;
+            }
+
+            UpdateCameraOffset();
+
+            var moveX = Movement.normalized.x;
+
+            // Horizontal offset based on direction
+            if (moveX > 0.1f)
+            {
+                SpriteRenderer.flipX = false;
+                IsFlipped = false;
+            }
+            else if (moveX < -0.1f)
+            {
+                SpriteRenderer.flipX = true;
+                IsFlipped = true;
+            }
+
+            float yVelocity = Rigidbody2D.linearVelocity.y;
+            if (yVelocity > 0.1f)
+                Animator.SetFloat(SpeedYHash, 1);
+            else if (yVelocity < -0.1f)
+                Animator.SetFloat(SpeedYHash, -1);
+            else
+                Animator.SetFloat(SpeedYHash, 0);
+        }
+
+        public void UpdateCameraOffset()
+        {
+            var moveX = Movement.x;
+
+            switch (moveX)
+            {
+                // Horizontal offset based on direction
+                case > 0.9f:
+                    _targetOffset.x = CameraHorizontalOffset;
+                    break;
+                case < -0.8f:
+                    _targetOffset.x = -CameraHorizontalOffset;
+                    break;
+            }
+
+            _targetOffset.y = CinemachineFollow.FollowOffset.y;
+            _targetOffset.z = CinemachineFollow.FollowOffset.z;
+
+            // Lerp for smooth transition
+            Vector3 currentOffset = CinemachineFollow.FollowOffset;
+            CinemachineFollow.FollowOffset = Vector3.Lerp(currentOffset, _targetOffset,
+                Time.deltaTime * CameraOffsetLerpSpeed);
+        }
+
+
+        public void Jump(InputAction.CallbackContext context)
+        {
+            if (Rigidbody2D == null || Animator == null)
+                return;
+
+            if (!context.performed ||
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+
+            if (context.performed && IsGrounded)
+            {
+                Rigidbody2D.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+                AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            }
+
+            if (!context.performed || IsGrounded || !canDoubleJump)
+                return;
+
+            canDoubleJump = false;
+            // Reset vertical velocity before double jump
+            Rigidbody2D.linearVelocity = new Vector2(Rigidbody2D.linearVelocity.x, 0f);
+            Rigidbody2D.AddForce(Vector2.up * (JumpForce * 1.1f), ForceMode2D.Impulse);
+            AudioManager.Instance.PlayRandomSFX("PlayerJump");
+            //SaltoDerecha.Play();
+            //SaltoIzquierda.Play();
+        }
+
+        public void Dash(InputAction.CallbackContext context)
+        {
+            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+                return;
+
+            if (!context.performed || !canDash)
+                return;
+
+            IsDashing = true;
+            DashCooldown = 0.45f;
+        }
+
+        #endregion
+
+        #region TutoLogic
+
+        public void OnTutorialLoaded(TutorialStep step)
+        {
+            Subscribe(step);
+            TutorialManager.OnTutorialLoaded -= OnTutorialLoaded;
+        }
+
+        public void Subscribe(TutorialStep step)
+        {
+            if (step.action == TutorialStep.ActionType.Jump)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.Jump.performed += OnStepCompleted;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.LightAttack)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.LightAttack.performed += OnStepCompleted;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.HeavyAttack)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += OnStepCompleted;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.Combo)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.LightCombo.performed += OnStepCompleted;
+                InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += OnStepCompleted;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.Interact)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.DoubleJump)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.Jump.performed += OnDoubleJump;
+                return;
+            }
+
+            if (step.action == TutorialStep.ActionType.Dash)
+            {
+                Unsubscribe();
+                InputReader.Instance.PlayerActions.Player.Dash.performed += OnDash;
+                return;
+            }
+        }
+
+        public void OnStepCompleted(InputAction.CallbackContext ctx)
+        {
+            if (!ctx.performed)
+                return;
+
+            if (TutorialManager.Instance.CurrentStepIndex + 1 >= TutorialManager.Instance.steps.Count)
+            {
+                TutorialManager.Instance.EndTutorial();
+                return;
+            }
+
+            var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
+
+            if (next.action == TutorialStep.ActionType.DoubleJump ||
+                next.action == TutorialStep.ActionType.Interact ||
+                next.action == TutorialStep.ActionType.Dash)
+            {
+                TutorialManager.Instance.TutoActive = false;
+                TutorialManager.Instance.SetCanvas(false);
+            }
+
+            AdvanceIfCorrect();
+        }
+
+
+        public void PowerUpPickedUp(TypeOfPickable powerUpType)
+        {
+            if (powerUpType != TypeOfPickable.DoubleJump && powerUpType != TypeOfPickable.Dash)
+                return;
+
+            TutorialManager.Instance.SetCanvas(true);
+            TutorialManager.Instance.TutoActive = true;
+        }
+
+        public void ReachedFirstTeleport(bool condition)
+        {
+            if (TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex].action ==
+                TutorialStep.ActionType.Interact && condition)
+            {
+                TutorialManager.Instance.SetCanvas(true);
+                TutorialManager.Instance.TutoActive = true;
+            }
+        }
+
+        public void OnDoubleJump(InputAction.CallbackContext ctx)
+        {
+            if (!ctx.performed || !canDoubleJump)
+                return;
+
+            TutorialManager.Instance.SetCanvas(false);
+            TutorialManager.Instance.TutoActive = false;
+            AdvanceIfCorrect();
+        }
+
+        public void OnDash(InputAction.CallbackContext ctx)
+        {
+            if (!ctx.performed || !canDash)
+                return;
+
+            TutorialManager.Instance.SetCanvas(false);
+            TutorialManager.Instance.TutoActive = false;
+            AdvanceIfCorrect();
+        }
+
+        public void AdvanceIfCorrect()
+        {
+            TutorialManager.Instance.NextStep();
+            Subscribe(TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex]);
+        }
+
+        public void Unsubscribe()
+        {
+            InputReader.Instance.PlayerActions.Player.Jump.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
+            InputReader.Instance.PlayerActions.Player.Dash.performed -= OnDash;
+            InputReader.Instance.PlayerActions.Player.LightAttack.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.LightCombo.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.HeavyCombo.performed -= OnStepCompleted;
+            InputReader.Instance.PlayerActions.Player.Interact.performed -= OnStepCompleted;
+        }
+
+        #endregion
+
+        #region PhysicsLogic
+
+        private void PausePhysics()
+        {
+            Animator.SetFloat(SpeedXHash, 0);
+            _savedVelocity = Rigidbody2D.linearVelocity;
+            _savedAngularVelocity = Rigidbody2D.angularVelocity;
+            Rigidbody2D.angularVelocity = 0f;
+            Rigidbody2D.linearVelocity = Vector2.zero;
+            Rigidbody2D.gravityScale = 0f;
+        }
+
+        private void ResumePhysics()
+        {
+            Rigidbody2D.gravityScale = 2f;
+            Rigidbody2D.linearVelocity = _savedVelocity;
+            Rigidbody2D.angularVelocity = _savedAngularVelocity;
+        }
+
+        #endregion
+
+        #region Delegates
+
+        private void OnStateChanged(GameStateManager.GameState state)
+        {
+            switch (state)
+            {
+                case GameStateManager.GameState.OnGameplay:
+                    ResumePhysics();
+                    break;
+                case GameStateManager.GameState.OnPause:
+                    PausePhysics();
+                    break;
+            }
         }
 
         #endregion
