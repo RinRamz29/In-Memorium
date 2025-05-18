@@ -8,7 +8,7 @@ namespace _Memoriam.Script.Plataformas
 {
     public class DamageTrigger : MonoBehaviour
     {
-        private const float Damage = 15f;
+        private const float Damage = 25f;
         [SerializeField] private TypeOfTrap typeOfTrap;
 
         private void OnTriggerEnter2D(Collider2D other)
