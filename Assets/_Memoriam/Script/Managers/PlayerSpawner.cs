@@ -19,9 +19,19 @@ namespace _Memoriam.Script.Managers
             var player = ObjectPool.Instance.GetReferenceFromPool("Player", 1, PlayerSpawnPoint.transform.position, PlayerSpawnPoint.transform.rotation, newGame); 
 
             var script = player?.GetComponent<Player.Player>();
+            SetState(newGame, script);
+            script?.ResetPlayer();
             GameplayMenuManager.Player = script;
 
             return player;
+        }
+
+        private void SetState(bool newGame, Player.Player player)
+        {
+            if (newGame && !Loader.Instance.SetTutorial)
+            {
+                player.ForceCombat = true;
+            }
         }
     }
 }

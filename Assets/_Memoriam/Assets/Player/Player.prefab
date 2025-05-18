@@ -200,7 +200,7 @@ MonoBehaviour:
   <CameraJumpYOffset>k__BackingField: 1.5
   <CameraOffsetLerpSpeed>k__BackingField: 1
   <MovimientoParticula>k__BackingField: {fileID: 2604817382203496568}
-  <ParticlesHeal>k__BackingField: {fileID: 730322197651254432, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+  <ParticlesHeal>k__BackingField: {fileID: 2553483298219482401}
   <LevelUpParticles>k__BackingField: {fileID: 7905583003210444701}
   <CaidaParticula>k__BackingField: {fileID: 7267484499818499716}
   <SaltoIzquierda>k__BackingField: {fileID: 3982080562535779823}
@@ -210,6 +210,8 @@ MonoBehaviour:
   knockbackForce: 10
   canDoubleJump: 0
   canDash: 0
+  <StaminaRegenDelay>k__BackingField: 1
+  <StaminaRegenRate>k__BackingField: 20
 --- !u!95 &6382465138541805993
 Animator:
   serializedVersion: 7
@@ -739,6 +741,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+--- !u!198 &2553483298219482401 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 730322197651254432, guid: ee628b92c3eef3441a3440e22940e020, type: 3}
+  m_PrefabInstance: {fileID: 2976153318341357953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7383796336520468926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5707723228600084543, guid: ee628b92c3eef3441a3440e22940e020, type: 3}

@@ -1,29 +1,48 @@
+using System.Threading.Tasks;
 using _Memoriam.Script.Enemies;
+using _Memoriam.Script.General;
+using _Memoriam.Script.Plataformas;
+using _Memoriam.Script.Player;
 using _Memoriam.Script.Powerups;
 using UnityEngine;
 
 namespace _Memoriam.Script.Managers
 {
-    public static class SceneCleanupUtility
+    public class SceneCleanupUtility : Singleton<SceneCleanupUtility>
     {
-        public static void CleanupScene()
+        public async Task CleanupScene()
         {
-            foreach (var player in Object.FindObjectsByType<Player.Player>(FindObjectsInactive.Include,
-                         FindObjectsSortMode.None))
+            Debug.Log("Scene cleanup");
+
+            var players = FindObjectsByType<Player.Player>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            Debug.Log("Cleaning Players: " + players.Length);
+            foreach (var player in players)
             {
-                Object.Destroy(player.gameObject);
-            }
-            
-            foreach (var enemy in Object.FindObjectsByType<BaseEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-            {
-                Object.Destroy(enemy.gameObject);
+                player.StateMachine.ForceTerminate();
+                Destroy(player.gameObject);
             }
 
-            foreach (var projectile in GameObject.FindGameObjectsWithTag("Projectile"))
+            var enemies = FindObjectsByType<BaseEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            Debug.Log("Cleaning Enemies: " + enemies.Length);
+            foreach (var enemy in enemies)
+                Destroy(enemy.gameObject);
+
+            var projectiles = FindObjectsByType<Projectile>(FindObjectsInactive.Include, FindObjectsSortMode.None);;
+            foreach (var projectile in projectiles)
+                Destroy(projectile.gameObject);
+
+            await Task.Yield();
+
+            while (FindObjectsByType<Player.Player>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length > 0 ||
+                   FindObjectsByType<BaseEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length > 0 ||
+                   FindObjectsByType<Projectile>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length > 0)
             {
-                Object.Destroy(projectile);
+                await Task.Yield();
             }
+
+            Debug.Log("Scene cleanup complete");
         }
+
     }
 
 }

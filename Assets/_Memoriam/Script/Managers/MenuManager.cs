@@ -16,6 +16,7 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
+        
         protected override void Awake()
         {
             base.Awake();

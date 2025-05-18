@@ -22,6 +22,7 @@ namespace _Memoriam.Script.Player.States
 
         public void Enter()
         {
+            Debug.Log("Enter to Combat State");
             InputReader.Instance.PlayerActions.Player.LightAttack.performed += _player.LightAttack;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += _player.HeavyAttack;
             InputReader.Instance.PlayerActions.Player.Dash.performed += _player.Dash;
@@ -70,6 +71,7 @@ namespace _Memoriam.Script.Player.States
 
             _player.Move();
         }
+
 
         #endregion
     }

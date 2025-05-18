@@ -82,6 +82,8 @@ namespace _Memoriam.Script.Plataformas
 
             yield return StartCoroutine(Fade(0f));
 
+            tpParticlesArrived.Stop();
+            tpParticles.Stop();
             _isTeleporting = false;
         }
 

@@ -5,6 +5,7 @@ using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
+using _Memoriam.Script.Plataformas;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
@@ -90,7 +91,6 @@ namespace _Memoriam.Script.Player
         public float DustFormationPeriod { get; private set; }
 
         public static Action<bool> onPlayerFirstTp;
-        public bool ReachedFirstTp { get; set; }
         private bool _isInvulnerable = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
@@ -114,21 +114,16 @@ namespace _Memoriam.Script.Player
         private bool IsGrounded { get; set; }
         private bool IsTouchingWall { get; set; }
 
+        public bool ForceCombat { get; set; }
 
 
         #region UnityFlow
-
-        private void Awake()
-        {
-            ResetPlayer();
-        }
-
         private void OnEnable()
         {
             GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
             InputReader.Instance.PlayerActions.Player.Enable();
             PlayerProgression.OnLevelUp += HandleLevelUp;
-            onPlayerFirstTp += (cond) => ReachedFirstTp = cond;
+          
             Health = MaxHealth;
             Stamina = MaxStamina;
             LastCheckPoint = transform.position;
@@ -230,10 +225,14 @@ namespace _Memoriam.Script.Player
             EnemyLayer = 1 << LayerMask.NameToLayer("Enemy");
             GroundMask = 1 << LayerMask.NameToLayer("Ground");
 
-            if (TutorialManager.Instance.CurrentStepIndex + 1 < TutorialManager.Instance.steps.Count)
-                StateMachine.ChangeState(new PlayerTutorialState(this));
+            if (ForceCombat)
+            {
+                StateMachine?.ChangeState(new PlayerCombatState(this));
+            }
             else
-                StateMachine.ChangeState(new PlayerCombatState(this));
+            {
+                StateMachine?.ChangeState(new PlayerTutorialState(this));
+            }
         }
 
         #endregion
@@ -358,8 +357,6 @@ namespace _Memoriam.Script.Player
         {
             Light,
             Heavy,
-            ChargedHeavy,
-            ChargedLight,
             ComboLight,
             ComboHeavy
         }
@@ -494,6 +491,10 @@ namespace _Memoriam.Script.Player
                         pickUp.Pick(this.gameObject);
                         break;
                 }
+            }
+            else if (TryGetComponent<CheckPointPlatform>(out var checkPoint))
+            {
+                onPlayerFirstTp?.Invoke(true);
             }
         }
 
@@ -841,151 +842,6 @@ namespace _Memoriam.Script.Player
             IsDashing = true;
             DashCooldown = 0.45f;
             AudioManager.Instance.PlayOneShotSFX("PlayerDash");
-        }
-
-        #endregion
-
-        #region TutoLogic
-
-        public void OnTutorialLoaded(TutorialStep step)
-        {
-            Subscribe(step);
-            TutorialManager.OnTutorialLoaded -= OnTutorialLoaded;
-        }
-
-        public void Subscribe(TutorialStep step)
-        {
-            if (step.action == TutorialStep.ActionType.Jump)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.Jump.performed += OnStepCompleted;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.LightAttack)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.LightAttack.performed += OnStepCompleted;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.HeavyAttack)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += OnStepCompleted;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.Combo)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.LightCombo.performed += OnStepCompleted;
-                InputReader.Instance.PlayerActions.Player.HeavyCombo.performed += OnStepCompleted;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.Interact)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.DoubleJump)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.Jump.performed += OnDoubleJump;
-                return;
-            }
-
-            if (step.action == TutorialStep.ActionType.Dash)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.Dash.performed += OnDash;
-                return;
-            }
-        }
-
-        public void OnStepCompleted(InputAction.CallbackContext ctx)
-        {
-            if (!ctx.performed)
-                return;
-
-            if (TutorialManager.Instance.CurrentStepIndex + 1 >= TutorialManager.Instance.steps.Count)
-            {
-                TutorialManager.Instance.EndTutorial();
-                return;
-            }
-
-            var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
-
-            if (next.action == TutorialStep.ActionType.DoubleJump ||
-                next.action == TutorialStep.ActionType.Interact ||
-                next.action == TutorialStep.ActionType.Dash)
-            {
-                TutorialManager.Instance.TutoActive = false;
-                TutorialManager.Instance.SetCanvas(false);
-            }
-
-            AdvanceIfCorrect();
-        }
-
-
-        public void PowerUpPickedUp(TypeOfPickable powerUpType)
-        {
-            if (powerUpType != TypeOfPickable.DoubleJump && powerUpType != TypeOfPickable.Dash)
-                return;
-
-            TutorialManager.Instance.SetCanvas(true);
-            TutorialManager.Instance.TutoActive = true;
-        }
-
-        public void ReachedFirstTeleport(bool condition)
-        {
-            if (TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex].action ==
-                TutorialStep.ActionType.Interact && condition)
-            {
-                TutorialManager.Instance.SetCanvas(true);
-                TutorialManager.Instance.TutoActive = true;
-            }
-        }
-
-        public void OnDoubleJump(InputAction.CallbackContext ctx)
-        {
-            if (!ctx.performed || !canDoubleJump)
-                return;
-
-            TutorialManager.Instance.SetCanvas(false);
-            TutorialManager.Instance.TutoActive = false;
-            AdvanceIfCorrect();
-        }
-
-        public void OnDash(InputAction.CallbackContext ctx)
-        {
-            if (!ctx.performed || !canDash)
-                return;
-
-            TutorialManager.Instance.SetCanvas(false);
-            TutorialManager.Instance.TutoActive = false;
-            AdvanceIfCorrect();
-        }
-
-        public void AdvanceIfCorrect()
-        {
-            TutorialManager.Instance.NextStep();
-            Subscribe(TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex]);
-        }
-
-        public void Unsubscribe()
-        {
-            InputReader.Instance.PlayerActions.Player.Jump.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
-            InputReader.Instance.PlayerActions.Player.Dash.performed -= OnDash;
-            InputReader.Instance.PlayerActions.Player.LightAttack.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.HeavyAttack.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.LightCombo.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.HeavyCombo.performed -= OnStepCompleted;
-            InputReader.Instance.PlayerActions.Player.Interact.performed -= OnStepCompleted;
         }
 
         #endregion

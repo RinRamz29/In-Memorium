@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using _Memoriam.Script.Enemies;
 using _Memoriam.Script.General;
@@ -17,25 +18,31 @@ namespace _Memoriam.Script.Managers
         [SerializeField] private SceneDataBase sceneData;
         private bool _isLoading = false;
         public bool IsNewGame { get; set; }
+        public bool SetTutorial { get; set; } = true;
 
         public async Task LoadLoader(bool loadGame, int slot = 0)
         {
-            if (_isLoading) 
+            if (_isLoading)
                 return;
-            
+
             _isLoading = true;
-            
+
+            if (!loadGame)
+            {
+                await AwaitForCleanUp();
+            }
+
             await LoadSceneAsync(sceneData.LoadingSceneName);
-            
+
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnLoading);
             InputReader.Instance.PlayerActions.Disable();
 
-            slider = GameObject.FindWithTag("LoadingCanvas")?      
+            slider = GameObject.FindWithTag("LoadingCanvas")?
                 .GetComponentInChildren<Slider>();
-
+            
             if (slider == null)
                 Debug.LogWarning("[Loader] Slider no encontrado en LoadingScene.");
-
+            
             if (loadGame)
                 await LoadGamePlay(slot);
             else
@@ -45,7 +52,7 @@ namespace _Memoriam.Script.Managers
             _isLoading = false;
             InputReader.Instance.PlayerActions.Enable();
         }
-        
+
         private async Task LoadSceneAsync(string sceneName)
         {
             var op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
@@ -58,7 +65,9 @@ namespace _Memoriam.Script.Managers
 
             op.allowSceneActivation = true;
             while (!op.isDone)
+            {
                 await Task.Yield();
+            }
         }
 
         private async Task LoadGamePlay(int slot)
@@ -71,7 +80,7 @@ namespace _Memoriam.Script.Managers
                 ObjectPool.Instance.Initialize();
                 EnemyManager.Instance.SpawnEnemies(true);
                 PlayerSpawner.Instance.SpawnPlayer(true);
-                TutorialManager.Instance.ResetTutorial();
+                TutorialManager.Instance.ResetTutorial(SetTutorial);
                 LocalizationManager.Instance.ForceTranslate();
             }
             else
@@ -83,19 +92,22 @@ namespace _Memoriam.Script.Managers
                 LocalizationManager.Instance.ForceTranslate();
             }
 
-            
+
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
         }
 
         private async Task LoadMenu()
         {
-            SceneCleanupUtility.CleanupScene();
-            ObjectPool.Instance.ResetAllPools();
             await LoadSceneAsync(sceneData.MainMenuSceneName);
-            
+
             LocalizationManager.Instance.ForceTranslate();
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
         }
 
+        private async Task AwaitForCleanUp()
+        {
+            await SceneCleanupUtility.Instance.CleanupScene();
+            await ObjectPool.Instance.ResetAllPools();
+        }
     }
 }

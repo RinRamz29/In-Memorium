@@ -19,7 +19,18 @@ namespace _Memoriam.Script.Menus
         [SerializeField] private Slider masterVolumeSlider;
         [SerializeField] private AudioMixer masterMixer;
 
+        #region UnityFlow
         private void OnEnable()
+        {
+            Initialize();
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribe();
+        }
+
+        private void Initialize()
         {
             EventSystem.current.SetSelectedGameObject(firstToSelect);
             
@@ -39,7 +50,7 @@ namespace _Memoriam.Script.Menus
             RefreshUI();
         }
 
-        private void OnDisable()
+        private void UnSubscribe()
         {
             acceptButton.onClick.RemoveListener(ConfirmSettings);
             sfxVolumeSlider.onValueChanged.RemoveListener(SetSfxVolume);
@@ -49,6 +60,8 @@ namespace _Memoriam.Script.Menus
             languageDropdown.onValueChanged.RemoveListener(SetLanguage);
         }
 
+        #endregion
+        
         private void ConfirmSettings()
         {
             SaveSettings();
