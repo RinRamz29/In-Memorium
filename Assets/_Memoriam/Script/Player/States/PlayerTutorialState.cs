@@ -28,6 +28,7 @@ namespace _Memoriam.Script.Player.States
         {
             Debug.Log("Enter to Tutorial State");
             TutorialManager.OnTutorialLoaded += OnTutorialLoaded;
+            TutorialManager.OnTutorialEnded += OnTutorialEnded;
             Player.OnPowerUpPickedUp += PowerUpPickedUp;
             Player.OnPlayerFirstTp += ReachedFirstTeleport;
             InputReader.Instance.PlayerActions.Player.Jump.performed += _player.Jump;
@@ -87,17 +88,22 @@ namespace _Memoriam.Script.Player.States
 
         #region TutoLogic
 
-        private void OnTutorialLoaded(TutorialStep step)
+        private void OnTutorialLoaded(int currentStepIndex)
         {
-            if (TutorialManager.Instance.CurrentStepIndex + 1 > TutorialManager.Instance.steps.Count - 1)
+            if (TutorialManager.Instance.CheckIfCompleted())
             {
-                TutorialManager.Instance.EndTutorial();
-                _player.StateMachine.ChangeState(new PlayerCombatState(_player));
+                OnTutorialEnded();
                 return;
             }
-            
-            Subscribe(step);
+
+            Subscribe(TutorialManager.Instance.steps[currentStepIndex]);
             TutorialManager.OnTutorialLoaded -= OnTutorialLoaded;
+        }
+
+        private void OnTutorialEnded()
+        {
+            Debug.Log("Tutorial is completed, changing state");
+            _player.StateMachine.ChangeState(new PlayerCombatState(_player));
         }
 
         private void Subscribe(TutorialStep step)
@@ -159,24 +165,20 @@ namespace _Memoriam.Script.Player.States
             if (!ctx.performed)
                 return;
 
-            if (TutorialManager.Instance.CurrentStepIndex + 1 > TutorialManager.Instance.steps.Count - 1)
+            if (TutorialManager.Instance.CurrentStepIndex + 1 <= TutorialManager.Instance.steps.Count - 1)
             {
-                TutorialManager.Instance.EndTutorial();
-                _player.StateMachine.ChangeState(new PlayerCombatState(_player));
-                return;
+                var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
+
+                if (next.action == TutorialStep.ActionType.DoubleJump ||
+                    next.action == TutorialStep.ActionType.Interact ||
+                    next.action == TutorialStep.ActionType.Dash)
+                {
+                    TutorialManager.Instance.TutoActive = false;
+                    TutorialManager.Instance.SetCanvas(false);
+                }
+
+                AdvanceIfCorrect();
             }
-
-            var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
-
-            if (next.action == TutorialStep.ActionType.DoubleJump ||
-                next.action == TutorialStep.ActionType.Interact ||
-                next.action == TutorialStep.ActionType.Dash)
-            {
-                TutorialManager.Instance.TutoActive = false;
-                TutorialManager.Instance.SetCanvas(false);
-            }
-
-            AdvanceIfCorrect();
         }
 
         private void PowerUpPickedUp(TypeOfPickable powerUpType)
@@ -221,20 +223,21 @@ namespace _Memoriam.Script.Player.States
 
         private void AdvanceIfCorrect()
         {
-            if (TutorialManager.Instance.CurrentStepIndex + 1 > TutorialManager.Instance.steps.Count - 1)
+            TutorialManager.Instance.NextStep();
+            
+            if (TutorialManager.Instance.CheckIfCompleted())
             {
-                TutorialManager.Instance.EndTutorial();
-                _player.StateMachine.ChangeState(new PlayerCombatState(_player));
+                OnTutorialEnded();
                 return;
             }
-            
-            TutorialManager.Instance.NextStep();
+
             Subscribe(TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex]);
         }
 
         private void Unsubscribe()
-        {            
+        {
             TutorialManager.OnTutorialLoaded -= OnTutorialLoaded;
+            TutorialManager.OnTutorialEnded -= OnTutorialEnded;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= OnStepCompleted;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= OnDoubleJump;
             InputReader.Instance.PlayerActions.Player.Dash.performed -= OnDash;

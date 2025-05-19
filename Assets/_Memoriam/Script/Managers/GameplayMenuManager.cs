@@ -32,13 +32,13 @@ namespace _Memoriam.Script.Managers
         [SerializeField] private GameObject firstButton;
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] private List<Toggle> powerupToggles;
-        
+
         private void ChangeHealthValue(float health) => HealthBar.value = health;
         private void ChangeStaminaValue(float stamina) => StaminaBar.value = stamina;
 
         public Player.Player Player { get; set; }
         private TutorialStep _step;
-        
+
         private void ChangeLvl(int lvl)
         {
             LevelTxt.text = "Lvl: " + lvl.ToString(format: "0");
@@ -103,19 +103,28 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             uiPlayer.SetActive(true);
             pauseMenu.SetActive(false);
-            
+
             if (uiSettings.activeInHierarchy)
             {
                 uiSettings.SetActive(false);
             }
+            
+            TutoUILogic();
+        }
 
+        private void TutoUILogic()
+        {
+            if (TutorialManager.Instance.CheckIfCompleted())
+                return;
+            
             if (!Loader.Instance.SetTutorial)
             {
                 return;
             }
-            
+
             _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
-            if ((_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash or TutorialStep.ActionType.DoubleJump) && !TutorialManager.Instance.TutoActive)
+            if ((_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash
+                    or TutorialStep.ActionType.DoubleJump) && !TutorialManager.Instance.TutoActive)
             {
                 return;
             }
@@ -129,7 +138,7 @@ namespace _Memoriam.Script.Managers
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
             uiPlayer.SetActive(false);
             pauseMenu.SetActive(true);
-            
+
             TutorialManager.Instance.SetCanvas(false);
         }
 

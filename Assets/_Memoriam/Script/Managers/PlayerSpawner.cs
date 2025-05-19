@@ -32,6 +32,10 @@ namespace _Memoriam.Script.Managers
             {
                 player.ForceCombat = true;
             }
+            else
+            {
+                player.ForceCombat = false;
+            }
         }
     }
 }
