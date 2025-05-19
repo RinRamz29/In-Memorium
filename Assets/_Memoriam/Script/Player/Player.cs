@@ -90,7 +90,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField, Range(0, 0.2f)]
         public float DustFormationPeriod { get; private set; }
 
-        public static Action<bool> onPlayerFirstTp;
+        public static event Action<bool> OnPlayerFirstTp;
         private bool _isInvulnerable = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
@@ -492,9 +492,9 @@ namespace _Memoriam.Script.Player
                         break;
                 }
             }
-            else if (TryGetComponent<CheckPointPlatform>(out var checkPoint))
+            else if (other.gameObject.TryGetComponent<CheckPointPlatform>(out var checkPoint))
             {
-                onPlayerFirstTp?.Invoke(true);
+                OnPlayerFirstTp?.Invoke(true);
             }
         }
 

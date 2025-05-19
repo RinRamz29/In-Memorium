@@ -45,7 +45,7 @@ namespace _Memoriam.Script.Tutorial
         
         public void NextStep()
         {
-            if (CurrentStepIndex + 1 < steps.Count - 1)
+            if (CurrentStepIndex + 1 <= steps.Count - 1)
             {
                 CurrentStepIndex++;
                 Debug.Log(CurrentStepIndex);
@@ -59,7 +59,7 @@ namespace _Memoriam.Script.Tutorial
 
         private void RefreshUI()
         {
-            if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count - 1)
+            if (CurrentStepIndex >= 0 && CurrentStepIndex < steps.Count)
             {
                 steps[CurrentStepIndex].TryGetInt(currentLanguage, out var idx);
                 TextToTranslateTMP.text = steps[CurrentStepIndex].languages[idx].text;
@@ -127,7 +127,6 @@ namespace _Memoriam.Script.Tutorial
         public void LoadData(GameData data)
         {
             CurrentStepIndex = data.tutoData.currentTutoIndex;
-            Debug.Log("Lenght" + steps.Count);
             SetCanvas(data.tutoData.isOn);
             RefreshUI();
             

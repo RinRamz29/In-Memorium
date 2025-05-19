@@ -29,7 +29,7 @@ namespace _Memoriam.Script.Player.States
             Debug.Log("Enter to Tutorial State");
             TutorialManager.OnTutorialLoaded += OnTutorialLoaded;
             Player.OnPowerUpPickedUp += PowerUpPickedUp;
-            Player.onPlayerFirstTp += ReachedFirstTeleport;
+            Player.OnPlayerFirstTp += ReachedFirstTeleport;
             InputReader.Instance.PlayerActions.Player.Jump.performed += _player.Jump;
             InputReader.Instance.PlayerActions.Player.LightAttack.performed += _player.LightAttack;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += _player.HeavyAttack;
@@ -74,7 +74,7 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.Dash.performed -= _player.Dash;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= _player.Jump;
             Player.OnPowerUpPickedUp -= PowerUpPickedUp;
-            Player.onPlayerFirstTp -= ReachedFirstTeleport;
+            Player.OnPlayerFirstTp -= ReachedFirstTeleport;
 
             // Reset attack state
             _player.IsAttacking = false;
@@ -195,6 +195,7 @@ namespace _Memoriam.Script.Player.States
             {
                 TutorialManager.Instance.SetCanvas(true);
                 TutorialManager.Instance.TutoActive = true;
+                Player.OnPlayerFirstTp -= ReachedFirstTeleport;
             }
         }
 

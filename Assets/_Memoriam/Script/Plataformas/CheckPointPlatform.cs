@@ -54,7 +54,6 @@ namespace _Memoriam.Script.Plataformas
                 _player = player;
                 _playerInRange = true;
                 AudioManager.Instance.PlayOneShotSFX("PlayerTeleport");
-                Player.Player.onPlayerFirstTp?.Invoke(true);
             }
         }
 
