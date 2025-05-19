@@ -2,13 +2,12 @@ using System;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.SaveLoad;
-using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.Localization;
+using _Memoriam.Script.Menus;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 using UnityEngine.Scripting;
-using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
@@ -16,6 +15,7 @@ namespace _Memoriam.Script.Managers
     public class MenuManager : Singleton<MenuManager>
     {
         [SerializeField] private SceneDataBase sceneData;
+        [SerializeField] private SettingsMenu settingsMenu;
         
         protected override void Awake()
         {
@@ -29,6 +29,7 @@ namespace _Memoriam.Script.Managers
             InputReader.Instance.OnControlTypeChanged += SwitchCursorMode;
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
             LocalizationManager.Instance.ForceTranslate();
+            settingsMenu.SetSettings();
         }
 
         public async void NewGame()
@@ -69,7 +70,7 @@ namespace _Memoriam.Script.Managers
                     throw new ArgumentOutOfRangeException();
             }
         }
-
+        
         private void OnDisable()
         {
             InputReader.Instance.OnControlTypeChanged -= SwitchCursorMode;

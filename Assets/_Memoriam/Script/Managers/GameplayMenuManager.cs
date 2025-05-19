@@ -81,6 +81,18 @@ namespace _Memoriam.Script.Managers
             _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
         }
 
+        private void OnEnable()
+        {
+            StartCoroutine(ForceSelectNextFrame()); 
+        }
+
+        private IEnumerator ForceSelectNextFrame()
+        {
+            yield return null;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstButton);
+        }
+
         private void OnPause(InputAction.CallbackContext context)
         {
             if (!context.performed)

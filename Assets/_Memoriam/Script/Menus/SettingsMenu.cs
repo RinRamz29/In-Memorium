@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _Memoriam.Script.Localization;
 using TMPro;
 using UnityEngine;
@@ -28,11 +29,15 @@ namespace _Memoriam.Script.Menus
         private void OnDisable()
         {
             UnSubscribe();
+            SaveSettings();
         }
 
         private void Initialize()
         {
+            UnSubscribe();
+            
             EventSystem.current.SetSelectedGameObject(firstToSelect);
+            Debug.Log(EventSystem.current.currentSelectedGameObject);
             
             acceptButton.onClick.AddListener(ConfirmSettings);
             sfxVolumeSlider.onValueChanged.AddListener(SetSfxVolume);
@@ -46,10 +51,19 @@ namespace _Memoriam.Script.Menus
             {
                 languageDropdown.options.Add(new TMP_Dropdown.OptionData(lang.ToString()));
             }
-
+            
             RefreshUI();
+            StartCoroutine(ForceSelectNextFrame()); 
         }
 
+        private IEnumerator ForceSelectNextFrame()
+        {
+            yield return null;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstToSelect);
+        }
+        
+        
         private void UnSubscribe()
         {
             acceptButton.onClick.RemoveListener(ConfirmSettings);
@@ -135,6 +149,29 @@ namespace _Memoriam.Script.Menus
             PlayerPrefs.SetInt("ResolutionSelection", resolutionDropdown.value);
             PlayerPrefs.SetInt("LanguageSelection", languageDropdown.value);
             PlayerPrefs.Save();
+        }
+        
+        public void SetSettings()
+        {
+            if (PlayerPrefs.HasKey("MusicVolume"))
+            {
+                masterMixer.SetFloat("MusicVolume", VolumeToDecibels(PlayerPrefs.GetFloat("MusicVolume")));
+            }
+
+            if (PlayerPrefs.HasKey("SFXVolume"))
+            {
+                masterMixer.SetFloat("SFXVolume", VolumeToDecibels(PlayerPrefs.GetFloat("SFXVolume")));
+            }
+
+            if (PlayerPrefs.HasKey("MasterVolume"))
+            {
+                masterMixer.SetFloat("MasterVolume", VolumeToDecibels(PlayerPrefs.GetFloat("MasterVolume")));
+            }
+
+            if (PlayerPrefs.HasKey("ResolutionSelection"))
+            {
+                SetResolution(PlayerPrefs.GetInt("ResolutionSelection"));
+            }
         }
 
         public static float VolumeToDecibels(float volume)

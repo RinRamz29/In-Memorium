@@ -49,20 +49,5 @@ namespace _Memoriam.Script.General
                 }
             }
         }
-
-        /*private void OnTriggerStay2D(Collider2D collision)
-        {
-            if (collision.transform.TryGetComponent<Player.Player>(out var player))
-            {
-                if (cinemachineCamera.Lens.OrthographicSize <= zoomIn)
-                {
-                    ChangeZoom(zoomOut);
-                }
-                else
-                {
-                    ChangeZoom(zoomIn);
-                }
-            }
-        }*/
     }
 }
