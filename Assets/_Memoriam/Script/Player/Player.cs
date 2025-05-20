@@ -82,8 +82,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public ParticleSystem ParticlesHeal { get; private set; }
         [field: SerializeField] public ParticleSystem LevelUpParticles { get; private set; }
         [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
-        [field: SerializeField] public ParticleSystem SaltoIzquierda { get; private set; }
-        [field: SerializeField] public ParticleSystem SaltoDerecha { get; private set; }
+        [field: SerializeField] public ParticleSystem DashParticle { get; private set; }
 
         [field: SerializeField, Range(0, 10)] public int OccurAfterVelocity { get; private set; }
 
@@ -827,8 +826,6 @@ namespace _Memoriam.Script.Player
             Rigidbody2D.linearVelocity = new Vector2(Rigidbody2D.linearVelocity.x, 0f);
             Rigidbody2D.AddForce(Vector2.up * (JumpForce * 1.1f), ForceMode2D.Impulse);
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
-            //SaltoDerecha.Play();
-            //SaltoIzquierda.Play();
         }
 
         public void Dash(InputAction.CallbackContext context)
@@ -841,6 +838,17 @@ namespace _Memoriam.Script.Player
 
             IsDashing = true;
             DashCooldown = 0.45f;
+            if (IsFlipped)
+            {
+                DashParticle.transform.localScale = new Vector3(-1f, DashParticle.transform.localScale.y, DashParticle.transform.localScale.z);
+            }
+            else
+            {
+                DashParticle.transform.localScale = new Vector3(1f, DashParticle.transform.localScale.y, DashParticle.transform.localScale.z);
+            }
+            
+            DashParticle.Play();
+
             AudioManager.Instance.PlayOneShotSFX("PlayerDash");
         }
 
