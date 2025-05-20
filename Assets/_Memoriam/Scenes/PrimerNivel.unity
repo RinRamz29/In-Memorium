@@ -251759,6 +251759,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 683552779}
     - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: 'steps.Array.data[1].icon.Array.data[1]'
+      value: 
+      objectReference: {fileID: -6923039587354793595, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
+      propertyPath: 'steps.Array.data[2].icon.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7862308179615364747, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    - target: {fileID: 3407061722215676684, guid: 286780c378f715745b2e8b9a4016b138, type: 3}
       propertyPath: steps.Array.data[3].languages.Array.data[1].text
       value: Combo clickeando dos veces ligero o pesado
       objectReference: {fileID: 0}
@@ -264974,11 +264982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: bosses.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: bosses.Array.data[0].id
       value: 4b593d21-c53b-4e55-a27a-94603561ba5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: flyersToSpawn.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: flyersToSpawn.Array.data[0].id
