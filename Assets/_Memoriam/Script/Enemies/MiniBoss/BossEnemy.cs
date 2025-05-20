@@ -1,180 +1,224 @@
-using System.Collections.Generic;
-using UnityEngine;
+using _Memoriam.Script.Audio;
 using _Memoriam.Script.Enemies.BT;
-using _Memoriam.Script.Enemies.MiniBoss;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Player;
+using UnityEngine;
 
-namespace _Memoriam.Script.Enemies.Bosses
+namespace _Memoriam.Script.Enemies.MiniBoss
 {
     public abstract class BossEnemy : BaseEnemy
     {
-        [Header("Phase Logic")]
-        [SerializeField] protected float phaseTransitionHealthThreshold = 0.5f;
+        [Header("Boss Phase Logic")]
+        [SerializeField] protected float phaseTransitionHealthThresholdPercentage = 0.5f; 
         [SerializeField] protected float buffedDamageMultiplier = 1.5f;
         [SerializeField] protected float buffedSpeedMultiplier = 1.3f;
-        protected bool IsBuffed;
-        protected bool IsTransitioning;
-        protected float OriginalDamage;
-        protected float OriginalSpeed;
+        protected bool IsBuffed { get; set; }
+        protected bool IsTransitioningPhase { get; private set; } 
+        protected float OriginalBossDamage { get; private set; } 
+        protected float OriginalBossSpeed { get; private set; } 
 
-        [Header("Combat Logic")]
-        [SerializeField] protected float globalAttackCooldown = 1.5f;
-        protected new float LastAttackTime;
-
-        [SerializeField] protected MiniBossAttacks attackData;
+        [Header("Boss Combat Logic")]
+        [SerializeField] protected float globalAbilityCooldown = 3f;
+        [SerializeField] protected MiniBossAttacks attackData; 
+        
         protected Parallel BehaviourTree;
+        protected float LastBossAbilityTime = -Mathf.Infinity; 
+        protected readonly int BuffAnimationHash = Animator.StringToHash("PhaseTransition");
 
-        protected readonly int BuffHash = Animator.StringToHash("PhaseTransition");
-
-        protected virtual void Awake()
+        protected override void Awake()
         {
-            Health = MaxHealth;
-            LastAttackTime = -AttackTimeOut;
-            InitialAttackTimer = -AttackTimeOut;
+            base.Awake();
+
+            if (Stats != null)
+            {
+                OriginalBossDamage = Stats.Damage;
+                OriginalBossSpeed = Stats.Speed;
+            }
 
             SetUpBehaviorTree();
         }
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
-        }
-
-        protected virtual void OnDisable()
-        {
-            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
-        }
-
         protected virtual void Update()
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
-                return;
-
-            BehaviourTree?.Process();
-
-            if (Health <= 0)
+            if (GameStateManager.Instance != null &&
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
             {
-                Die();
+                if (Rb) 
+                    Rb.linearVelocity = Vector2.zero; 
+                EnemyAnimator?.SetHorizontalMovement(0f);
+                return;
+            }
+
+            if (this.enabled && BehaviourTree != null && Stats != null && Stats.CurrentHealth > 0)
+            {
+                BehaviourTree.Process();
             }
         }
 
         protected virtual void SetUpBehaviorTree()
         {
-            BehaviourTree = new Parallel("BossBehavior");
+            BehaviourTree = new Parallel("BossBehavior_BT_Parallel");
 
-            var detectionLeaf = new Leaf("DetectPlayer", new Stretegies.ActionStrategy(Detect), 3);
-            BehaviourTree.AddChild(detectionLeaf);
+            var detectionNode = new Leaf("DetectPlayerContinuously", new Stretegies.ActionStrategy(base.Detect), 3);
+            BehaviourTree.AddChild(detectionNode);
 
-            var behaviorSelector = new PrioritySelector("BehaviorSelector");
+            var mainBehaviorSelector = new PrioritySelector("MainBehaviorSelector");
 
             var combatSequence = new Sequence("CombatSequence");
-            combatSequence.AddChild(new Leaf("CheckDetected", new Stretegies.Condition(() => EnemyDetected), 2));
-            combatSequence.AddChild(new Leaf("PhaseLogic", new Stretegies.ActionStrategy(HandlePhaseLogic), 2));
-            combatSequence.AddChild(new Leaf("MoveTowardsPlayer", new Stretegies.ActionStrategy(MoveTowards), 2));
-            combatSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(PerformAttack), 2));
+            combatSequence.AddChild(new Leaf("Condition_IsPlayerDetected", new Stretegies.Condition(() => base.IsPlayerDetected), 2)); // Usa propiedad de BaseEnemy
+            combatSequence.AddChild(new Leaf("Node_HandlePhaseLogic", new Stretegies.ActionStrategy(HandlePhaseLogic), 2));
+            combatSequence.AddChild(new Leaf("Node_MoveTowardsPlayer", new Stretegies.ActionStrategy(base.MoveTowards), 2)); // Usa BaseEnemy.MoveTowards (terrestre por defecto)
+            combatSequence.AddChild(new Leaf("Node_PerformBossAttack", new Stretegies.ActionStrategy(PerformAttackWrapper), 2)); // Llama al método abstracto PerformAttack
 
-            behaviorSelector.AddChild(combatSequence);
-            BehaviourTree.AddChild(behaviorSelector);
+            mainBehaviorSelector.AddChild(combatSequence);
+            BehaviourTree.AddChild(mainBehaviorSelector);
+        }
+
+        protected virtual Node.Status PerformAttackWrapper()
+        {
+            if (Time.time < LastBossAbilityTime + globalAbilityCooldown)
+            {
+                return Node.Status.Running;
+            }
+            
+            Node.Status attackStatus = PerformAttack();
+            
+            if (attackStatus == Node.Status.Success)
+            {
+                LastBossAbilityTime = Time.time; 
+            }
+            return attackStatus;
         }
 
         protected virtual Node.Status HandlePhaseLogic()
         {
-            if (IsTransitioning)
-                return Node.Status.Running;
-
-            if (!IsBuffed && Health <= MaxHealth * phaseTransitionHealthThreshold)
+            if (IsTransitioningPhase)
             {
-                StartPhaseTransition();
-                return Node.Status.Success;
+                return Node.Status.Running; 
             }
 
-            return Node.Status.Success;
+            if (!IsBuffed && Stats.CurrentHealth <= Stats.MaxHealth * phaseTransitionHealthThresholdPercentage)
+            {
+                StartPhaseTransition();
+                return IsTransitioningPhase ? Node.Status.Running : Node.Status.Success; 
+            }
+            return Node.Status.Success; 
         }
 
         protected virtual void StartPhaseTransition()
         {
-            IsTransitioning = true;
+            IsTransitioningPhase = true;
+
+            if(!IsBuffed) 
+            {
+              OriginalBossDamage = Stats.Damage;
+              OriginalBossSpeed = Stats.Speed;
+            }
+
+            Stats.Damage = OriginalBossDamage * buffedDamageMultiplier;
+            Stats.Speed = OriginalBossSpeed * buffedSpeedMultiplier;
             IsBuffed = true;
 
-            OriginalDamage = Damage;
-            OriginalSpeed = Speed;
+            EnemyAnimator.Anim.SetTrigger(BuffAnimationHash); 
 
-            Damage *= buffedDamageMultiplier;
-            Speed *= buffedSpeedMultiplier;
+            OnPhaseTransition(); 
 
-            Animator.SetTrigger(BuffHash);
-
-            OnPhaseTransition(); // hook para hijos
-            IsTransitioning = false;
+            IsTransitioningPhase = false; 
         }
 
         protected virtual void OnPhaseTransition() { }
 
         protected abstract Node.Status PerformAttack();
 
-        protected void ExecuteAttack(int index)
+        protected void ExecuteAttackFromData(int attackIndexInSo)
         {
-            if (attackData == null || attackData.attacks.Length <= index)
+            if (attackData == null || attackData.attacks == null || attackIndexInSo < 0 || attackIndexInSo >= attackData.attacks.Length)
                 return;
 
-            var attack = attackData.attacks[index];
+            var attack = attackData.attacks[attackIndexInSo];
 
-            // Animación
-            Animator.SetTrigger(Animator.StringToHash(attack.animationTrigger));
+            if(CurrentTarget != null)
+                 Movement.FlipTowards(CurrentTargetPosition);
 
-            // Sonido
-            if (attack.attackSfx != null)
-                AudioSource.PlayClipAtPoint(attack.attackSfx, transform.position);
+            if (!string.IsNullOrEmpty(attack.animationTrigger))
+            {
+                EnemyAnimator.Anim.SetTrigger(Animator.StringToHash(attack.animationTrigger));
+            }
 
-            // Efecto visual
-            if (attack.effectPrefab != null)
-                Instantiate(attack.effectPrefab, AttackPoint.transform.position, Quaternion.identity);
+            if (attack.attackSfx != null && AudioManager.Instance != null) 
+            {
+                 AudioManager.Instance.PlayOneShotSFX("Ataque");
+            }
+            else if (attack.attackSfx != null)
+            {
+                var localAudio = GetComponent<AudioSource>();
+                if (localAudio == null) localAudio = gameObject.AddComponent<AudioSource>();
+                localAudio.PlayOneShot(attack.attackSfx);
+            }
 
-            // Hit detection
+            var finalDamage = attack.damage * (IsBuffed ? buffedDamageMultiplier : 1f);
+
             if (attack.type == MiniBossAttack.AttackType.Circle)
             {
-                var hits = Physics2D.OverlapCircleAll(AttackPoint.transform.position, attack.range, PlayerLayer);
+                var hits = Physics2D.OverlapCircleAll(Combat.attackOriginPoint.position, attack.range, Stats.PlayerLayer);
                 foreach (var hit in hits)
                 {
                     if (hit.TryGetComponent<IPlayer>(out var player))
-                        player.ReceiveDamage(attack.damage * (IsBuffed ? buffedDamageMultiplier : 1f), transform.position);
+                        player.ReceiveDamage(finalDamage, transform.position);
                 }
             }
             else if (attack.type == MiniBossAttack.AttackType.Box)
             {
-                var size = new Vector2(attack.range, attack.width);
-                var hits = Physics2D.OverlapBoxAll(AttackPoint.transform.position, size, 0f, PlayerLayer);
+                var boxSize = new Vector2(attack.range, attack.width);
+                var hits = Physics2D.OverlapBoxAll(Combat.attackOriginPoint.position, boxSize, Combat.attackOriginPoint.eulerAngles.z, Stats.PlayerLayer);
                 foreach (var hit in hits)
                 {
                     if (hit.TryGetComponent<IPlayer>(out var player))
-                        player.ReceiveDamage(attack.damage * (IsBuffed ? buffedDamageMultiplier : 1f), transform.position);
+                        player.ReceiveDamage(finalDamage, transform.position);
                 }
             }
         }
         
-        protected virtual void Die()
+        protected virtual void HandleBossDefeatSequence()
         {
-            Animator.SetTrigger(DieHash);
-            BehaviourTree = null;
+            BehaviourTree = null; // Detener IA
 
-            if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            if (CurrentTarget != null && CurrentTarget is Player.Player realPlayer && Stats != null)
             {
-                if (_player != null && _player is Player.Player realPlayer)
-                {
-                    realPlayer.Progression.GainXp(50); 
-                }
-                
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForMiniBoss, gameObject);
+                realPlayer.Progression.GainXp(Stats.Experience); 
             }
         }
 
-        public override void ReceiveDamage(float damage)
+        public override void ReceiveDamage(float damage) 
         {
-            Animator.SetTrigger(DamagedHash);
-            Health -= damage;
+            if (Stats.CurrentHealth <= 0) return;
+
+            base.ReceiveDamage(damage);
+
+             if (!IsBuffed && !IsTransitioningPhase && Stats.CurrentHealth <= Stats.MaxHealth * phaseTransitionHealthThresholdPercentage)
+             {
+                 StartPhaseTransition();
+             }
+        }
+        
+        public virtual void FinalizeBossDeath() 
+        {
+            if (Stats != null && CurrentTarget != null && CurrentTarget is Player.Player realPlayer)
+            {
+                realPlayer.Progression.GainXp(Stats.Experience);
+            }
+            
+            string poolIdToUse = SaveLoad?.id;
+            if (string.IsNullOrEmpty(poolIdToUse) && EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForMiniBoss))
+            {
+                poolIdToUse = EnemyManager.Instance.idForMiniBoss;
+            }
+            
+            if (!string.IsNullOrEmpty(poolIdToUse) && ObjectPool.Instance != null)
+            {
+                ObjectPool.Instance.ReturnToPool(poolIdToUse, this.gameObject);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace _Memoriam.Script.Plataformas
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private float damage;
+        [field: SerializeField] public float Damage { get; set; }
         [SerializeField] private string iDForPool;
         [SerializeField] private float projectileSpeed = 8f;
         [SerializeField] private Rigidbody2D rb;
@@ -18,7 +18,7 @@ namespace _Memoriam.Script.Plataformas
         {
             if (other.transform.TryGetComponent<IPlayer>(out var player))
             {
-                player.ReceiveDamage(damage, this.transform.position);
+                player.ReceiveDamage(Damage, this.transform.position);
             }
             
             ObjectPool.Instance.ReturnToPool(iDForPool, this.gameObject);

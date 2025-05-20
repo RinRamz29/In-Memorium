@@ -6,230 +6,233 @@ using UnityEngine;
 
 namespace _Memoriam.Script.Enemies.BasicEnemy
 {
-    public class FlyingEnemy : BaseEnemy
+   public class FlyingEnemy : BaseEnemy
     {
         private Parallel _behaviourTree;
-        [SerializeField] private float hoverHeight = 3f;
-        [SerializeField] private float floatAmplitude = 0.3f;
 
-        private int _currentPatrolIndex = 0;
-        private float _waitTimer = 0f;
-        
-        public ParticleSystem Blood;
-        
-        public delegate void MonsterDefeated(int exp);
-        public static event MonsterDefeated OnMonsterDefeated;
+        [Header("Flying Enemy Specifics")] [SerializeField]
+        private float hoverHeight = 2f; 
 
-        private void Awake()
+        [SerializeField] private float floatAmplitude = 0.25f; 
+        [SerializeField] private float floatSpeed = 2f;
+        [SerializeField] private ParticleSystem bloodParticleEffect;
+
+        private int _flyingPatrolIndex = 0;
+        private float _flyingWaitTimer = 0f;
+        private float _flyingReturnToPatrolPointTimer = 0f; 
+        private bool _wasChasingPlayer = false; 
+
+        protected override void Awake()
         {
-            Health = MaxHealth;
-            LastAttackTime = -AttackTimeOut;
-            InitialAttackTimer = -AttackTimeOut;
-            Experience = Experience;
-            SetUpBehaviorSelector();
+            base.Awake(); 
+            SetUpBehaviorTree();
         }
-
-        private void Start()
-        {
-            PatrolPoints.Add(transform.position);
-            foreach (var offset in OffsetPoints)
-            {
-                var offsetX = (transform.position.x + offset.x);
-                var offsetY = (transform.position.y + offset.y);
-                PatrolPoints.Add(new Vector2(offsetX, offsetY));
-            }
-        }
-
         protected override void OnEnable()
         {
             base.OnEnable();
-            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
-            GetComponent<Rigidbody2D>().gravityScale = 0f;
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            if (Rb != null)
+            {
+                Rb.gravityScale = 0f;
+                Rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            _wasChasingPlayer = false;
+            _flyingReturnToPatrolPointTimer = 0f;
         }
 
-        private void SetUpBehaviorSelector()
+        private void SetUpBehaviorTree()
         {
-            _behaviourTree = new Parallel("FlyerEnemySelector");
+            _behaviourTree = new Parallel("FlyerEnemy_BT_Parallel");
 
-            // Continuous Detection Branch
-            var detectionLeaf = new Leaf("ContinuousDetection", new Stretegies.ActionStrategy(base.Detect), 3);
-            _behaviourTree.AddChild(detectionLeaf);
+            var detectionNode = new Leaf("DetectPlayerContinuously", new Stretegies.ActionStrategy(base.Detect), 3);
+            _behaviourTree.AddChild(detectionNode);
 
-            // Main Behavior Branch
-            var behaviorSelector = new PrioritySelector("BehaviorSelector");
+            var mainBehaviorSelector = new PrioritySelector("MainBehaviorSelector");
 
-            // Chase Logic without attack
-            var chaseSequence = new Sequence("ChaseSequence");
-            chaseSequence.AddChild(new Leaf("CheckIfDetected", new Stretegies.Condition(() => EnemyDetected), 2));
-            chaseSequence.AddChild(new Leaf("MoveTowardsEnemy", new Stretegies.ActionStrategy(this.MoveTowards), 2));
-            chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(base.Attack), 2));  
-            behaviorSelector.AddChild(chaseSequence);
+            var chaseAndAttackSequence = new Sequence("ChaseAndAttackSequence");
+            chaseAndAttackSequence.AddChild(new Leaf("Condition_IsPlayerDetected",
+                new Stretegies.Condition(() => base.IsPlayerDetected), 2));
+            chaseAndAttackSequence.AddChild(new Leaf("Action_MoveTowardsPlayer",
+                new Stretegies.ActionStrategy(this.MoveTowards), 2)); 
+            chaseAndAttackSequence.AddChild(new Leaf("Action_AttackPlayer",
+                new Stretegies.ActionStrategy(base.Attack), 2)); 
+            mainBehaviorSelector.AddChild(chaseAndAttackSequence);
 
-            // Regular Patrol Logic
-            var patrolSequence = new Sequence("PatrolSelector");
-            patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
-            patrolSequence.AddChild(new Leaf("Patrol", new Stretegies.ActionStrategy(this.Patrol), 1));
-            behaviorSelector.AddChild(patrolSequence);
+            var patrolSequence = new Sequence("PatrolSequence");
+            patrolSequence.AddChild(new Leaf("Condition_PlayerNotDetected",
+                new Stretegies.Condition(() => !base.IsPlayerDetected), 1));
+            patrolSequence.AddChild(new Leaf("Action_Patrol", new Stretegies.ActionStrategy(this.Patrol),
+                1)); // Usa FlyingEnemy.Patrol
+            mainBehaviorSelector.AddChild(patrolSequence);
 
-            _behaviourTree.AddChild(behaviorSelector);
+            _behaviourTree.AddChild(mainBehaviorSelector);
         }
 
         private void Update()
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
-                return;
-
-            _behaviourTree?.Process();
-
-            if (Health <= 0)
+            if (GameStateManager.Instance != null &&
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
             {
-                Die();
+                if (Rb) 
+                    Rb.linearVelocity = Vector2.zero;
+                
+                EnemyAnimator?.SetHorizontalMovement(0f);
+                return;
+            }
+
+            if (this.enabled && _behaviourTree != null && Stats.CurrentHealth > 0)
+            {
+                _behaviourTree.Process();
             }
         }
 
         public override void ReceiveDamage(float damage)
         {
-            Animator.SetTrigger(DamagedHash);
-            Health -= damage;
-            Instantiate(Blood, transform.position, Quaternion.identity);
+            base.ReceiveDamage(damage);
+
+            if (bloodParticleEffect != null)
+            {
+                Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
+            }
         }
 
-        private void Die()
+        // Call this in animation event
+        public void FinalizeDeath() 
         {
-            Animator.SetTrigger(DieHash);
-            _behaviourTree = null;
-
-            if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            if (CurrentTarget != null && CurrentTarget is Player.Player realPlayer)
             {
-                OnMonsterDefeated?.Invoke(Experience);
-                if (_player != null && _player is Player.Player realPlayer)
-                {
-                    realPlayer.Progression.GainXp(25); 
-                }
+                realPlayer.Progression.GainXp(Stats.Experience); 
+            }
+
+            if (bloodParticleEffect != null)
+            {
+                Instantiate(bloodParticleEffect, transform.position, Quaternion.identity); // Partículas finales
+            }
+
+            if (EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForFlyerEnemies) &&
+                ObjectPool.Instance != null)
+            {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForFlyerEnemies, this.gameObject);
-                Instantiate(Blood, transform.position, Quaternion.identity);
             }
         }
 
         public override Node.Status Patrol()
         {
             if (PatrolPoints == null || PatrolPoints.Count == 0)
+            {
+                EnemyAnimator.SetHorizontalMovement(0f);
                 return Node.Status.Failure;
+            }
 
-            var currentPoint = PatrolPoints[_currentPatrolIndex];
-            // Add hovering effect to patrol point
-            var targetPos = currentPoint;
-            targetPos.y += hoverHeight + Mathf.Sin(Time.time) * floatAmplitude;
-
-            float distance = Vector2.Distance(transform.position, targetPos);
-
-            if (_waitTimer > 0)
+            if (_wasChasingPlayer && !base.IsPlayerDetected)
             {
-                _waitTimer -= Time.deltaTime;
+                _flyingPatrolIndex = 0;
+                _wasChasingPlayer = false;
+                base.IsInAttackRangeState = false;
+            }
+
+            var currentTargetPoint = PatrolPoints[_flyingPatrolIndex];
+            var hoverTargetPosition = currentTargetPoint +
+                                          new Vector2(0,
+                                              hoverHeight + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude);
+
+            if (_flyingWaitTimer > 0)
+            {
+                _flyingWaitTimer -= Time.deltaTime;
+                EnemyAnimator.SetHorizontalMovement(0f); 
                 return Node.Status.Running;
             }
 
-            // Return to initial patrol point when losing player
-            if (WasChasing && !EnemyDetected)
+            Vector2 direction = (hoverTargetPosition - (Vector2)transform.position).normalized;
+            float distanceToHoverTarget = Vector2.Distance(transform.position, hoverTargetPosition);
+
+            Rb.linearVelocity = direction * Stats.Speed; 
+
+            if (Mathf.Abs(direction.x) > 0.01f)
             {
-                _currentPatrolIndex = 0;
-                IsInAttackRange = false;
-                WasChasing = false;
+                Movement.FlipTowards(
+                    hoverTargetPosition);
             }
 
-            // Smooth flying movement towards patrol point
-            Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                targetPos,
-                Speed * Time.deltaTime
-            );
+            EnemyAnimator.SetHorizontalMovement(Mathf.Abs(direction.x) +
+                                                Mathf.Abs(direction.y));
 
-            // Update sprite facing and animation
-            SpriteRenderer.flipX = direction.x < 0;
-            Animator.SetFloat(MoveXHash, Mathf.Abs(direction.x));
-
-            if (distance < 0.5f)
+            if (distanceToHoverTarget < Stats.MovementStopThreshold * 2f) 
             {
-                _waitTimer = WaitTimeAtPoint;
-                _currentPatrolIndex = (_currentPatrolIndex + 1) % PatrolPoints.Count;
-            }
-            
-            if (distance > 3f)
-            {
-                _returnToSpawnTimer += Time.deltaTime;
-                
-                SpriteRenderer.flipX = transform.position.x - currentPoint.x < 0f;
-                
-                if (currentPoint.x - transform.position.x > 0)
-                {
-                    transform.position += transform.right * (Speed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.position -= transform.right * (Speed * Time.deltaTime);
-                }
-                
-                // If taking too long to return, teleport back
-                if (_returnToSpawnTimer >= ReturnToSpawnTimeout)
-                {
-                    transform.position = currentPoint;
-                    _returnToSpawnTimer = 0f;
-                }
-                return Node.Status.Running;
+                _flyingWaitTimer = Stats.WaitTimeAtPatrolPoint;
+                _flyingPatrolIndex = (_flyingPatrolIndex + 1) % PatrolPoints.Count;
+                _flyingReturnToPatrolPointTimer = 0f;
+                Rb.linearVelocity = Vector2.zero; 
             }
 
-            _returnToSpawnTimer = 0f;
+            float distanceToRawPatrolPoint = Vector2.Distance(transform.position, currentTargetPoint);
+            if (distanceToRawPatrolPoint > Stats.MaxChaseDistance / 1.5f) 
+            {
+                _flyingReturnToPatrolPointTimer += Time.deltaTime;
+                if (_flyingReturnToPatrolPointTimer > Stats.ReturnToPatrolTimeout)
+                {
+                    transform.position = currentTargetPoint; 
+                    Rb.linearVelocity = Vector2.zero;
+                    _flyingReturnToPatrolPointTimer = 0f;
+                }
+            }
+            else
+            {
+                _flyingReturnToPatrolPointTimer = 0f;
+            }
+
             return Node.Status.Running;
         }
 
         public override Node.Status MoveTowards()
         {
-            if (_player == null)
-                return Node.Status.Failure;
-
-            var distance = Vector2.Distance(transform.position, _playerPos);
-
-            if (distance < AttackDistance)
+            if (CurrentTarget == null || !IsPlayerDetected) 
             {
-                return Node.Status.Success;
-            }
-            var diff = _playerPos.x - transform.position.x;
-            
-            if (distance > 5f)
-            {
-                EnemyDetected = false;
+                Rb.linearVelocity =
+                    new Vector2(Rb.linearVelocity.x * 0.5f, Rb.linearVelocity.y * 0.5f);
+                EnemyAnimator.SetHorizontalMovement(0f);
+                _wasChasingPlayer = false;
                 return Node.Status.Failure;
             }
 
-            if (Mathf.Abs(diff) > MovementThreshold)
+            _wasChasingPlayer = true;
+            var targetPosition =
+                CurrentTargetPosition + new Vector2(0, hoverHeight);
+            targetPosition.y += Mathf.Sin(Time.time * floatSpeed) * floatAmplitude; 
+
+            var distance = Vector2.Distance(transform.position, targetPosition);
+
+            if (distance < Stats.AttackDistance) 
             {
-                transform.position = Vector2.MoveTowards(
-                    transform.position,
-                    _playerPos,
-                    Speed * Time.deltaTime
-                );
-                
-                if (diff > 0)
-                {
-                    SpriteRenderer.flipX = false;
-                    _isFlipped = false;
-                }
-                else
-                {
-                    SpriteRenderer.flipX = true;
-                    _isFlipped = true;
-                }
+                Rb.linearVelocity = Vector2.zero; 
+                EnemyAnimator.SetHorizontalMovement(0f);
+                base.IsInAttackRangeState = true;
+                return Node.Status.Success; 
             }
 
-            WasChasing = true;
+            base.IsInAttackRangeState = false;
+
+            if (distance > Stats.MaxChaseDistance)
+            {
+                IsPlayerDetected = false;
+                CurrentTarget = null;
+                Rb.linearVelocity = Vector2.zero;
+                EnemyAnimator.SetHorizontalMovement(0f);
+                _wasChasingPlayer = false;
+                return Node.Status.Failure;
+            }
+
+            var direction = (targetPosition - (Vector2)transform.position).normalized;
+            Rb.linearVelocity = direction * Stats.Speed;
+
+            if (Mathf.Abs(direction.x) > 0.01f)
+            {
+                Movement.FlipTowards(CurrentTargetPosition);
+            }
+
+            EnemyAnimator.SetHorizontalMovement(Mathf.Abs(direction.x) + Mathf.Abs(direction.y));
+
             return Node.Status.Running;
-        }
-
-        private void OnDisable()
-        {
-            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
         }
     }
 }

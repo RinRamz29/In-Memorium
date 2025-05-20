@@ -1,215 +1,218 @@
+using UnityEngine;
 using _Memoriam.Script.Enemies.BT;
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.Plataformas;
-using UnityEngine;
 
 namespace _Memoriam.Script.Enemies.BasicEnemy
 {
     public class RangedEnemy : BaseEnemy
     {
-        [SerializeField] private string projectilePoolId;
-        [SerializeField] private float optimalDistance = 4f;
+        [Header("Ranged Enemy Specifics")] [SerializeField]
+        private string projectilePoolId = "EnemyProjectile";
+
+        [SerializeField] private float optimalDistance = 5f;
+        [SerializeField] private float retreatDistance = 2.5f;
+        [SerializeField] private float maxChaseDistanceRanged = 12f;
         [SerializeField] private Transform firePoint;
-        [SerializeField] private float retreatDistance = 2f;
-        
-        public ParticleSystem Blood;
-        
-        public delegate void MonsterDefeated(int exp);
-        public static event MonsterDefeated OnMonsterDefeated;
-        
+        [SerializeField] private ParticleSystem bloodParticleEffect;
+        [SerializeField] private float retreatCooldown = 2.0f;
+
         private Parallel _behaviourTree;
-        
-        private void Awake()
+        private float _lastProjectileAttackTime = -Mathf.Infinity;
+        private float _lastRetreatActionTime = -Mathf.Infinity;
+
+        protected override void Awake()
         {
-            Health = MaxHealth;
-            LastAttackTime = -AttackTimeOut;
-            InitialAttackTimer = -AttackTimeOut;
-            Experience = Experience;
-            SetUpBehaviorSelector();
+            base.Awake();
+            SetUpBehaviorTree();
         }
 
-        private void Start()
+        private void SetUpBehaviorTree()
         {
-            PatrolPoints.Add(transform.position);
-            foreach (var offset in OffsetPoints)
-            {
-                var offsetX = (transform.position.x + offset.x);
-                var offsetY = (transform.position.y + offset.y);
-                PatrolPoints.Add(new Vector2(offsetX, offsetY));
-            }
-        }
+            _behaviourTree = new Parallel("RangedEnemy_BT_Parallel");
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
-        }
+            var detectionNode = new Leaf("DetectPlayerContinuously", new Stretegies.ActionStrategy(base.Detect), 3);
+            _behaviourTree.AddChild(detectionNode);
 
-        private void SetUpBehaviorSelector()
-        {
-            _behaviourTree = new Parallel("BaseEnemySelector");
-            
-            // Continuous Detection Branch
-            var detectionLeaf = new Leaf("ContinuousDetection", new Stretegies.ActionStrategy(Detect), 3);
-            _behaviourTree.AddChild(detectionLeaf);
-            
-            // Main Behavior Branch
-            var behaviorSelector = new PrioritySelector("BehaviorSelector");
-            
-            // Chase Logic
-            var chaseSequence = new Sequence("ChaseSequence");
-            chaseSequence.AddChild(new Leaf("CheckIfDetected", new Stretegies.Condition(() => EnemyDetected), 2));
-            chaseSequence.AddChild(new Leaf("MoveTowardsEnemy", new Stretegies.ActionStrategy(MoveTowards), 2));
-            chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(Attack), 2));  
-            behaviorSelector.AddChild(chaseSequence);
+            var mainBehaviorSelector = new PrioritySelector("MainBehaviorSelector");
 
-            // Regular Patrol Logic
-            var patrolSequence = new Sequence("PatrolSelector");
-            patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
-            patrolSequence.AddChild(new Leaf("Patrol", new Stretegies.ActionStrategy(Patrol), 1));
-            behaviorSelector.AddChild(patrolSequence);
-            
-            _behaviourTree.AddChild(behaviorSelector);
-        }
+            var engageSequence = new Sequence("EngageSequence");
+            engageSequence.AddChild(new Leaf("Condition_IsPlayerDetected",
+                new Stretegies.Condition(() => base.IsPlayerDetected), 2));
+            engageSequence.AddChild(new Leaf("Action_MaintainDistance", new Stretegies.ActionStrategy(this.MoveTowards),
+                2)); // this.MoveTowards es la lógica de kiting
+            engageSequence.AddChild(new Leaf("Action_RangedAttack", new Stretegies.ActionStrategy(this.Attack),
+                2)); // this.Attack es el ataque con proyectil
+            mainBehaviorSelector.AddChild(engageSequence);
 
-        public override Node.Status MoveTowards()
-        {
-            if (_player == null)
-                return Node.Status.Failure;
+            var patrolSequence = new Sequence("PatrolSequence");
+            patrolSequence.AddChild(new Leaf("Condition_PlayerNotDetected",
+                new Stretegies.Condition(() => !base.IsPlayerDetected), 1));
+            patrolSequence.AddChild(new Leaf("Action_Patrol", new Stretegies.ActionStrategy(base.Patrol),
+                1)); // Usa BaseEnemy.Patrol (terrestre)
+            mainBehaviorSelector.AddChild(patrolSequence);
 
-            var distance = Vector2.Distance(transform.position, _playerPos);
-
-            // If too far away, return failure
-            if (distance > 8f)
-            {
-                EnemyDetected = false;
-                return Node.Status.Failure;
-            }
-
-            // If at optimal distance, stop moving
-            if (Mathf.Abs(distance - optimalDistance) < 0.5f)
-            {
-                Animator.SetFloat(MoveXHash, 0f);
-                return Node.Status.Success;
-            }
-
-            // If too close, back away
-            if (distance < retreatDistance)
-            {
-                var diff = _playerPos.x - transform.position.x;
-                
-                if (diff > 0)
-                {
-                    transform.position -= transform.right * (Speed * Time.deltaTime);
-                    SpriteRenderer.flipX = false;
-                    _isFlipped = false;
-                }
-                else
-                {
-                    transform.position += transform.right * (Speed * Time.deltaTime);
-                    SpriteRenderer.flipX = true;
-                    _isFlipped = true;
-                }
-                
-                Animator.SetFloat(MoveXHash, 1f);
-                return Node.Status.Running;
-            }
-
-            // If too far, move closer
-            if (distance > optimalDistance)
-            {
-                var diff = _playerPos.x - transform.position.x;
-                
-                if (diff > 0)
-                {
-                    transform.position += transform.right * (Speed * Time.deltaTime);
-                    SpriteRenderer.flipX = false;
-                    _isFlipped = false;
-                }
-                else
-                {
-                    transform.position -= transform.right * (Speed * Time.deltaTime);
-                    SpriteRenderer.flipX = true;
-                    _isFlipped = true;
-                }
-                
-                Animator.SetFloat(MoveXHash, 1f);
-            }
-
-            return Node.Status.Running;
+            _behaviourTree.AddChild(mainBehaviorSelector);
         }
 
         private void Update()
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
-                return;
-            
-            _behaviourTree?.Process();
-            
-            if (Health <= 0)
+            if (GameStateManager.Instance != null &&
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
             {
-                Die();
+                if (Rb)
+                    Rb.linearVelocity = Vector2.zero;
+
+                EnemyAnimator?.SetHorizontalMovement(0f);
+                return;
+            }
+
+            if (this.enabled && _behaviourTree != null && Stats.CurrentHealth > 0)
+            {
+                _behaviourTree.Process();
             }
         }
-        
-        public override Node.Status Attack()
+
+        public override Node.Status MoveTowards()
         {
-            if (_player == null)
-                return Node.Status.Failure;
-
-            var distance = Vector2.Distance(transform.position, _playerPos);
-
-            // Only attack if within optimal range
-            if (distance < optimalDistance * 1.5f && distance > retreatDistance)
+            if (CurrentTarget == null || !IsPlayerDetected)
             {
-                // Wait for attack cooldown
-                if (Time.time - LastAttackTime > AttackTimeOut)
-                {
-                    Animator.SetTrigger(AttackHash);
-                    
-                    // Spawn projectile
-                    int counter = ObjectPool.Instance.GetNextCounter(projectilePoolId);
-                    var projectile = ObjectPool.Instance.GetReferenceFromPool(projectilePoolId, counter, firePoint.position, Quaternion.identity, true);
+                Movement.StopMovement(); // Usa el método del componente Movement para detenerse
+                return Node.Status.Failure;
+            }
 
-                    if (projectile.TryGetComponent<Projectile>(out var obj))
+            Vector2 currentPosition = transform.position;
+            Vector2 playerPosition = CurrentTargetPosition; // Propiedad de BaseEnemy
+            float distanceToPlayer = Vector2.Distance(currentPosition, playerPosition);
+
+            // Voltear hacia el jugador
+            Movement.FlipTowards(playerPosition); // Usa el componente Movement para voltear
+
+            if (distanceToPlayer < retreatDistance)
+            {
+                if (Time.time > _lastRetreatActionTime + retreatCooldown)
+                {
+                    var retreatDirection = (currentPosition - playerPosition).normalized;
+
+                    if (Movement.IsGroundAhead())
                     {
-                        obj.Direction = (_playerPos - (Vector2)firePoint.position).normalized;
+                        Movement.StopMovement();
+                        EnemyAnimator.SetHorizontalMovement(1f);
+                        _lastRetreatActionTime = Time.time;
+                        return Node.Status.Running;
                     }
-                    
-                    LastAttackTime = Time.time;
+
+                    Movement.StopMovement();
+                    EnemyAnimator.SetHorizontalMovement(0f);
+                    return Node.Status.Success;
+                }
+
+                Movement.StopMovement();
+                EnemyAnimator.SetHorizontalMovement(0f);
+                return Node.Status.Running;
+            }
+
+            if (distanceToPlayer > optimalDistance + 0.5f)
+            {
+                if (Movement.IsGroundAhead())
+                {
+                    EnemyAnimator.SetHorizontalMovement(1f);
+                    return Node.Status.Running;
+                }
+                
+                if (!Movement.IsGroundAhead())
+                {
+                    Movement.StopMovement();
+                    EnemyAnimator.SetHorizontalMovement(0f);
+                    return Node.Status.Running;
                 }
             }
+
+            Movement.StopMovement();
+            EnemyAnimator.SetHorizontalMovement(0f);
             return Node.Status.Success;
         }
 
-        public override void ReceiveDamage(float damage)
+
+        public override Node.Status Attack()
         {
-            Animator.SetTrigger(DamagedHash);
-            Health -= damage;
-            Instantiate(Blood, transform.position, Quaternion.identity);
+            if (CurrentTarget == null || !IsPlayerDetected || firePoint == null)
+            {
+                return Node.Status.Failure;
+            }
+
+            Movement.FlipTowards(CurrentTargetPosition);
+
+            var distanceToPlayer = Vector2.Distance(transform.position, CurrentTargetPosition);
+
+            if (distanceToPlayer < (optimalDistance * 1.8f) && distanceToPlayer > (retreatDistance - 0.5f))
+            {
+                if (Time.time >= _lastProjectileAttackTime + Stats.AttackCooldown) 
+                {
+                    EnemyAnimator.TriggerAttack();
+
+                    SpawnProjectile();
+
+                    _lastProjectileAttackTime = Time.time; 
+                    return Node.Status.Success;
+                }
+
+                return Node.Status.Running; 
+            }
+
+            return Node.Status.Failure; 
         }
 
-        private void Die()
+        public void FireProjectileEvent()
         {
-            Animator.SetTrigger(DieHash);
-            _behaviourTree = null;
+            SpawnProjectile();
+        }
 
-            if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        private void SpawnProjectile()
+        {
+            if (CurrentTarget == null || firePoint == null) return;
+
+            var counter = ObjectPool.Instance.GetNextCounter(projectilePoolId);
+            var projectileGo =
+                ObjectPool.Instance.GetReferenceFromPool(projectilePoolId, counter, firePoint.position, Quaternion.identity,
+                    true);
+
+            if (projectileGo == null || !projectileGo.TryGetComponent<Projectile>(out var projectileComponent)) 
+                return;
+            
+            var direction = (CurrentTargetPosition - (Vector2)firePoint.position).normalized;
+            projectileComponent.Direction = direction;
+            projectileComponent.Damage = Stats.Damage;
+        }
+
+        public override void ReceiveDamage(float damage, Vector2 damageSourcePosition)
+        {
+            base.ReceiveDamage(damage, damageSourcePosition);
+
+            if (bloodParticleEffect != null)
             {
-                OnMonsterDefeated?.Invoke(Experience);
-                if (_player != null && _player is Player.Player realPlayer)
-                {
-                    realPlayer.Progression.GainXp(25); 
-                }
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
-                Instantiate(Blood, transform.position, Quaternion.identity);
+                Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
             }
         }
 
-        private void OnDisable()
+        public void FinalizeDeath()
         {
-            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
+            if (CurrentTarget != null && CurrentTarget is Player.Player realPlayer)
+            {
+                realPlayer.Progression.GainXp(Stats.Experience);
+            }
+
+            if (bloodParticleEffect != null)
+            {
+                Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
+            }
+
+            if (EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForRangedEnemies) &&
+                ObjectPool.Instance != null) 
+            {
+                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForRangedEnemies, this.gameObject);
+            }
         }
     }
 }

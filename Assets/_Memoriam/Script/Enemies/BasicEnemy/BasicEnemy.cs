@@ -2,109 +2,84 @@
 using _Memoriam.Script.General;
 using _Memoriam.Script.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Memoriam.Script.Enemies.BasicEnemy
 {
     public class BasicEnemy : BaseEnemy
     {
         private Parallel _behaviourTree;
-        public delegate void MonsterDefeated(int exp);
-        public static event MonsterDefeated OnMonsterDefeated;
+        [SerializeField] private ParticleSystem bloodParticleEffect;
 
-        public ParticleSystem Blood;
-        
-        private void Awake()
+        protected override void Awake()
         {
-            Health = MaxHealth;
-            LastAttackTime = -AttackTimeOut;
-            InitialAttackTimer = -AttackTimeOut;
-            SetUpBehaviorSelector();
+            base.Awake();
+            SetUpBehaviorTree();
         }
 
-        private void Start()
+         private void SetUpBehaviorTree()
         {
-            PatrolPoints.Add(transform.position);
-            foreach (var offset in OffsetPoints)
-            {
-                var offsetX = (transform.position.x + offset.x);
-                var offsetY = (transform.position.y + offset.y);
-                PatrolPoints.Add(new Vector2(offsetX, offsetY));
-            }
+            _behaviourTree = new Parallel("BasicEnemy_MainParallelBT");
+
+            var detectionNode = new Leaf("DetectPlayerContinuously", new Stretegies.ActionStrategy(base.Detect), 3);
+            _behaviourTree.AddChild(detectionNode);
+
+            var mainBehaviorSelector = new PrioritySelector("MainBehaviorSelector");
+
+            var chaseAndAttackSequence = new Sequence("ChaseAndAttackSequence");
+            chaseAndAttackSequence.AddChild(new Leaf("Condition_IsPlayerDetected", new Stretegies.Condition(() => base.IsPlayerDetected), 2));
+            chaseAndAttackSequence.AddChild(new Leaf("Action_MoveTowardsPlayer", new Stretegies.ActionStrategy(base.MoveTowards), 2));
+            chaseAndAttackSequence.AddChild(new Leaf("Action_AttackPlayer", new Stretegies.ActionStrategy(base.Attack), 2));
+            mainBehaviorSelector.AddChild(chaseAndAttackSequence);
+
+            var patrolSequence = new Sequence("PatrolSequence");
+            patrolSequence.AddChild(new Leaf("Condition_PlayerNotDetected", new Stretegies.Condition(() => !base.IsPlayerDetected), 1));
+            patrolSequence.AddChild(new Leaf("Action_Patrol", new Stretegies.ActionStrategy(base.Patrol), 1));
+            mainBehaviorSelector.AddChild(patrolSequence);
+            
+            _behaviourTree.AddChild(mainBehaviorSelector);
         }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            GameStateManager.Instance.OnGameStateChanged += OnStateChanged;
-        }
-
-        private void SetUpBehaviorSelector()
-        {
-            _behaviourTree = new Parallel("BaseEnemySelector");
-            
-            // Continuous Detection Branch
-            var detectionLeaf = new Leaf("ContinuousDetection", new Stretegies.ActionStrategy(Detect), 3);
-            _behaviourTree.AddChild(detectionLeaf);
-            
-            // Main Behavior Branch
-            var behaviorSelector = new PrioritySelector("BehaviorSelector");
-            
-            // Chase Logic
-            var chaseSequence = new Sequence("ChaseSequence");
-            chaseSequence.AddChild(new Leaf("CheckIfDetected", new Stretegies.Condition(() => 
-                EnemyDetected), 2));
-            chaseSequence.AddChild(new Leaf("MoveTowardsEnemy", new Stretegies.ActionStrategy(MoveTowards), 2));
-            chaseSequence.AddChild(new Leaf("Attack", new Stretegies.ActionStrategy(Attack), 2));  
-            behaviorSelector.AddChild(chaseSequence);
-
-            // Regular Patrol Logic
-            var patrolSequence = new Sequence("PatrolSelector");
-            patrolSequence.AddChild(new Leaf("CheckNotDetected", new Stretegies.Condition(() => !EnemyDetected), 1));
-            patrolSequence.AddChild(new Leaf("Patrol", new Stretegies.ActionStrategy(Patrol), 1));
-            behaviorSelector.AddChild(patrolSequence);
-            
-            _behaviourTree.AddChild(behaviorSelector);
-        }
-
+         
         private void Update()
         {
-            if (GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            if (GameStateManager.Instance != null &&
+                GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
+            {
+                if (Rb) 
+                    Rb.linearVelocity = Vector2.zero;
+                
+                EnemyAnimator?.SetHorizontalMovement(0f);
                 return;
-            
-            _behaviourTree?.Process();
-            
-            if (Health <= 0)
+            }
+
+            if (this.enabled && _behaviourTree != null && Stats.CurrentHealth > 0)
             {
-                Die();
+                _behaviourTree.Process();
             }
         }
 
-        public override void ReceiveDamage(float damage)
+        public override void ReceiveDamage(float damage, Vector2 position)
         {
-            Animator.SetTrigger(DamagedHash);
-            Health -= damage;
-            Instantiate(Blood, transform.position, Quaternion.identity);
+            base.ReceiveDamage(damage, position);
+
+            if (bloodParticleEffect != null)
+            {
+                Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
+            }
         }
 
-        private void Die()
+        //Call this in an animation event
+        public void FinalizeDeath()
         {
-            Animator.SetTrigger(DieHash);
-            _behaviourTree = null;
-            if (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            if (Stats != null && CurrentTarget != null && CurrentTarget is Player.Player realPlayer)
             {
-                OnMonsterDefeated?.Invoke(Experience);
-                if (_player != null && _player is Player.Player realPlayer)
-                {
-                    realPlayer.Progression.GainXp(25); 
-                }
+                realPlayer.Progression.GainXp(Stats.Experience);
+            }
+            
+            if (EnemyManager.Instance != null && ObjectPool.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForBasicEnemies))
+            {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
-                Instantiate(Blood, transform.position, Quaternion.identity);
             }
-        }
-
-        private void OnDisable()
-        {
-            GameStateManager.Instance.OnGameStateChanged -= OnStateChanged;
         }
     }
 }

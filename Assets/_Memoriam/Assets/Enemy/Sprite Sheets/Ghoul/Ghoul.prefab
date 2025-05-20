@@ -45,6 +45,12 @@ GameObject:
   - component: {fileID: 6540252712236085843}
   - component: {fileID: 6953529492705737273}
   - component: {fileID: 3801244046312491248}
+  - component: {fileID: 7708145989034141899}
+  - component: {fileID: 7681302752904667260}
+  - component: {fileID: 2551257556366437037}
+  - component: {fileID: 6357347119183872510}
+  - component: {fileID: 3219118182011099156}
+  - component: {fileID: 5099968635435307619}
   m_Layer: 7
   m_Name: Ghoul
   m_TagString: Enemy
@@ -82,31 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea65cf14d134d19adffb84ab11f86e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <id>k__BackingField: 
-  <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 30
-  <Speed>k__BackingField: 5
-  <Damage>k__BackingField: 15
-  <Experience>k__BackingField: 100
-  <AttackDistance>k__BackingField: 1
-  <WaitTimeAtPoint>k__BackingField: 1
-  <AttackTimeOut>k__BackingField: 1
-  <MovementThreshold>k__BackingField: 0.1
-  <ReturnToSpawnTimeout>k__BackingField: 2
-  <OffsetPoints>k__BackingField:
-  - {x: 5, y: 0}
-  - {x: 4, y: 0}
-  <SpriteRenderer>k__BackingField: {fileID: 6936911284584182044}
-  <Rigidbody2D>k__BackingField: {fileID: 0}
-  <AttackPoint>k__BackingField: {fileID: 7122204583798220164}
-  <DetectPoint>k__BackingField: {fileID: 3900861639517482836}
-  <DetectRadius>k__BackingField: {x: 7, y: 3}
-  <PlayerLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 64
-  <Animator>k__BackingField: {fileID: 6540252712236085843}
-  <PatrolPoints>k__BackingField: []
-  Blood: {fileID: 6412098639230409489}
+  bloodParticleEffect: {fileID: 6412098639230409489}
 --- !u!212 &6936911284584182044
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -248,6 +230,108 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 5
+--- !u!114 &7708145989034141899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d469e686c7054d53b3a98479d54a4ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 6540252712236085843}
+--- !u!114 &7681302752904667260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadf422b5d8f4554927480e29abc1266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackOriginPoint: {fileID: 5429234177173492715}
+--- !u!114 &2551257556366437037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603fcbc6aafb4ea9a83d3783ba20dd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6357347119183872510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3318dcb17a6429e9e0eef7724291db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3219118182011099156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f19df708c77481bbc44190cd13e7836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: 
+--- !u!114 &5099968635435307619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5559703034287951607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3330e317224535b67de11ca3231f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
+  <Speed>k__BackingField: 3
+  <Damage>k__BackingField: 10
+  <Experience>k__BackingField: 10
+  <PlayerDetectionRadius>k__BackingField: 5
+  <PlayerDetectionBoxSize>k__BackingField: {x: 5, y: 2}
+  <PlayerLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  <ObstacleLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
+  <LineOfSightDistance>k__BackingField: 7
+  <AttackDistance>k__BackingField: 1.5
+  <AttackCooldown>k__BackingField: 2
+  <AttackHitboxSizeY>k__BackingField: 1
+  <WaitTimeAtPatrolPoint>k__BackingField: 2
+  <MovementStopThreshold>k__BackingField: 0.1
+  <FlipThreshold>k__BackingField: 0.2
+  <MaxChaseDistance>k__BackingField: 10
+  <ReturnToPatrolTimeout>k__BackingField: 5
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundCheckDistance: 0.5
+  EdgeCheckHorizontalOffset: 0.5
+  EdgeCheckVerticalOffset: 0.1
 --- !u!1 &7122204583798220164
 GameObject:
   m_ObjectHideFlags: 0

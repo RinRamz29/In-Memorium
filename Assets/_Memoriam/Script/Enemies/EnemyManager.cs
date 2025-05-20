@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using _Memoriam.Script.Enemies.Bosses;
+using _Memoriam.Script.Enemies.MiniBoss;
 using _Memoriam.Script.General;
 using UnityEngine;
-using UnityEngine.Scripting;
-using UnityEngine.Serialization;
 
 namespace _Memoriam.Script.Enemies
 {
-    [Preserve]
     public class EnemyManager : Singleton<EnemyManager>
     {
         [SerializeField] private List<EnemyToSpawn> enemiesToSpawn = new List<EnemyToSpawn>();
@@ -49,8 +46,8 @@ namespace _Memoriam.Script.Enemies
 
                 if (spawnedEnemy.TryGetComponent(out BaseEnemy enemyBase))
                 {
-                    enemyBase.OffsetPoints = spawn.path;
-                    enemyBase.id = spawn.id;
+                    enemyBase.PatrolPoints = spawn.path;
+                    enemyBase.SaveLoad.id = spawn.id;
                 }
             }
 
@@ -64,8 +61,8 @@ namespace _Memoriam.Script.Enemies
 
                 if (spawnedEnemy.TryGetComponent(out BaseEnemy enemyBase))
                 {
-                    enemyBase.OffsetPoints = flyers.path;
-                    enemyBase.id = flyers.id;
+                    enemyBase.PatrolPoints = flyers.path;
+                    enemyBase.SaveLoad.id = flyers.id;
                 }
             }
 
@@ -78,8 +75,8 @@ namespace _Memoriam.Script.Enemies
 
                 if (spawnedEnemy.TryGetComponent(out BaseEnemy enemyBase))
                 {
-                    enemyBase.OffsetPoints = ranged.path;
-                    enemyBase.id = ranged.id;
+                    enemyBase.PatrolPoints = ranged.path;
+                    enemyBase.SaveLoad.id = ranged.id;
                 }
             }
 
@@ -92,7 +89,7 @@ namespace _Memoriam.Script.Enemies
 
                 if (spawnedEnemy.TryGetComponent<BossEnemy>(out var bossEnemy))
                 {
-                    bossEnemy.id = boss.id;
+                    bossEnemy.SaveLoad.id  = boss.id;
                 }
             }
         }

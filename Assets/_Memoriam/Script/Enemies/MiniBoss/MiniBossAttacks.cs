@@ -10,7 +10,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss
         public float damage;
         public float cooldown;
         public float range;
-        public float width; // Solo si tipo = box
+        public float width; 
         public AttackType type;
         public string animationTrigger;
         public AudioClip attackSfx;
