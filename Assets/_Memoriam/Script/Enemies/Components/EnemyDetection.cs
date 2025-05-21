@@ -9,10 +9,12 @@ namespace _Memoriam.Script.Enemies.Components
         private BaseEnemy _baseEnemy;
         private EnemyStats _stats;
         private Transform _detectionOrigin; 
+        private EnemyMovement _movement;
 
         public void Initialize(BaseEnemy baseEnemy)
         {
             _baseEnemy = baseEnemy;
+            _movement = baseEnemy.Movement;
             _stats = baseEnemy.Stats;
             _detectionOrigin = _baseEnemy.transform;
         }
@@ -43,14 +45,16 @@ namespace _Memoriam.Script.Enemies.Components
 
         private bool HasLineOfSight(Transform target)
         {
-            if (_stats.ObstacleLayer == 0) return true;
-
+            if (!_movement.IsGroundAhead())
+                return false;
+            
             Vector2 directionToTarget = (target.position - _detectionOrigin.position).normalized;
             float distanceToTarget = Vector2.Distance(_detectionOrigin.position, target.position);
 
-            if (distanceToTarget > _stats.LineOfSightDistance) return false;
-
-            RaycastHit2D hit = Physics2D.Raycast(_detectionOrigin.position, directionToTarget, distanceToTarget,
+            if (distanceToTarget > _stats.LineOfSightDistance) 
+                return false;
+            
+            var hit = Physics2D.Raycast(_detectionOrigin.position, directionToTarget, distanceToTarget,
                 _stats.ObstacleLayer);
 
             Debug.DrawRay(_detectionOrigin.position, directionToTarget * distanceToTarget,

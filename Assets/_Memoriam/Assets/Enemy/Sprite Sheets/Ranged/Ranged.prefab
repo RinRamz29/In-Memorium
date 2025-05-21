@@ -14,13 +14,19 @@ GameObject:
   - component: {fileID: 1191389614256145505}
   - component: {fileID: 6705191429272253767}
   - component: {fileID: 1859171563268027707}
+  - component: {fileID: 6604284468243243655}
+  - component: {fileID: 2506534457934713958}
+  - component: {fileID: 6735696820352607985}
+  - component: {fileID: 765759113725898110}
+  - component: {fileID: 858895725962369086}
+  - component: {fileID: 7703525151594957743}
   m_Layer: 7
   m_Name: Ranged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8549841013516257099
 Transform:
   m_ObjectHideFlags: 0
@@ -36,6 +42,7 @@ Transform:
   m_Children:
   - {fileID: 3357128798742742153}
   - {fileID: 4318374460351733342}
+  - {fileID: 955890966711272344}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3724389050625209847
@@ -50,33 +57,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0784165a91b3462aabbeb656f3a8f41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <id>k__BackingField: 
-  <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 30
-  <Speed>k__BackingField: 8
-  <Damage>k__BackingField: 10
-  <Experience>k__BackingField: 20
-  <AttackDistance>k__BackingField: 8
-  <WaitTimeAtPoint>k__BackingField: 2
-  <AttackTimeOut>k__BackingField: 1
-  <MovementThreshold>k__BackingField: 0.6
-  <ReturnToSpawnTimeout>k__BackingField: 5
-  <OffsetPoints>k__BackingField: []
-  <SpriteRenderer>k__BackingField: {fileID: 1202147627469764132}
-  <Rigidbody2D>k__BackingField: {fileID: 1859171563268027707}
-  <AttackPoint>k__BackingField: {fileID: 1955100505581822587}
-  <DetectPoint>k__BackingField: {fileID: 7219848484933043965}
-  <DetectRadius>k__BackingField: {x: 8, y: 8}
-  <PlayerLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 64
-  <Animator>k__BackingField: {fileID: 6705191429272253767}
   <PatrolPoints>k__BackingField: []
   projectilePoolId: Projectiles
   optimalDistance: 4
-  firePoint: {fileID: 4318374460351733342}
   retreatDistance: 2
-  Blood: {fileID: 2615265372504516880, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+  maxChaseDistanceRanged: 12
+  firePoint: {fileID: 4318374460351733342}
+  bloodParticleEffect: {fileID: 4460953581590577563}
+  retreatCooldown: 2
 --- !u!212 &1202147627469764132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -217,7 +205,109 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
+--- !u!114 &6604284468243243655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3330e317224535b67de11ca3231f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 50
+  <Speed>k__BackingField: 80
+  <Damage>k__BackingField: 30
+  <Experience>k__BackingField: 30
+  <PlayerDetectionRadius>k__BackingField: 10
+  <PlayerDetectionBoxSize>k__BackingField: {x: 10, y: 10}
+  <PlayerLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  <ObstacleLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
+  <LineOfSightDistance>k__BackingField: 10
+  <AttackDistance>k__BackingField: 10
+  <AttackCooldown>k__BackingField: 2
+  <AttackHitboxSizeY>k__BackingField: 1
+  <WaitTimeAtPatrolPoint>k__BackingField: 2
+  <MovementStopThreshold>k__BackingField: 0.1
+  <FlipThreshold>k__BackingField: 0.2
+  <MaxChaseDistance>k__BackingField: 20
+  <ReturnToPatrolTimeout>k__BackingField: 5
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundCheckDistance: 2
+  EdgeCheckHorizontalOffset: 1
+  EdgeCheckVerticalOffset: 0.5
+--- !u!114 &2506534457934713958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603fcbc6aafb4ea9a83d3783ba20dd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6735696820352607985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3318dcb17a6429e9e0eef7724291db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &765759113725898110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadf422b5d8f4554927480e29abc1266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackOriginPoint: {fileID: 4318374460351733342}
+--- !u!114 &858895725962369086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d469e686c7054d53b3a98479d54a4ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 6705191429272253767}
+--- !u!114 &7703525151594957743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751294390469502471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f19df708c77481bbc44190cd13e7836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: 
 --- !u!1 &1955100505581822587
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,3 +370,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8549841013516257099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1847381457043220619
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8549841013516257099}
+    m_Modifications:
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40.302414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 53.356583
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.28383777
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834977189176466386, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+      propertyPath: m_Name
+      value: Blood Particles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+--- !u!4 &955890966711272344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1506232389500726035, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+  m_PrefabInstance: {fileID: 1847381457043220619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4460953581590577563 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2615265372504516880, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+  m_PrefabInstance: {fileID: 1847381457043220619}
+  m_PrefabAsset: {fileID: 0}

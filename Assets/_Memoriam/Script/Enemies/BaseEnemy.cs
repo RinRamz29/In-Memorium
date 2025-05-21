@@ -26,11 +26,12 @@ namespace _Memoriam.Script.Enemies
 
         public IPlayer CurrentTarget { get; set; }
         public Vector2 CurrentTargetPosition { get; set; }
+        public Vector2 SpawnPosition { get; set; }
         public bool IsPlayerDetected { get; set; }
         public bool IsInAttackRangeState { get; set; } 
-        public List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
-        
-        public bool IsPerformingSpecialMovement { get; set; }
+        [field: SerializeField] public List<Vector2> PatrolPoints { get; set; } = new List<Vector2>();
+
+        public bool IsPerformingSpecialMovement { get; set; } = false;
 
         protected virtual void Awake()
         {
@@ -50,7 +51,6 @@ namespace _Memoriam.Script.Enemies
             Movement.Initialize(this);
             Combat.Initialize(this);
             EnemyAnimator.Initialize(this);
-            SaveLoad.Initialize(this);
             
             if (GameStateManager.Instance != null)
             {

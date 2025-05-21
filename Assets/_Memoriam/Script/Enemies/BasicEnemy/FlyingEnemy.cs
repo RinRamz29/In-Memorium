@@ -131,7 +131,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 base.IsInAttackRangeState = false;
             }
 
-            var currentTargetPoint = PatrolPoints[_flyingPatrolIndex];
+            var currentTargetPoint = SpawnPosition + PatrolPoints[_flyingPatrolIndex];
             var hoverTargetPosition = currentTargetPoint +
                                           new Vector2(0,
                                               hoverHeight + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude);

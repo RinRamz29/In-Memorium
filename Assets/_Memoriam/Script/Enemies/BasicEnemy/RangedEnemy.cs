@@ -78,60 +78,79 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         {
             if (CurrentTarget == null || !IsPlayerDetected)
             {
-                Movement.StopMovement(); // Usa el método del componente Movement para detenerse
+                Movement.StopMovement();
                 return Node.Status.Failure;
             }
 
             Vector2 currentPosition = transform.position;
-            Vector2 playerPosition = CurrentTargetPosition; // Propiedad de BaseEnemy
+            Vector2 playerPosition = CurrentTargetPosition;
             float distanceToPlayer = Vector2.Distance(currentPosition, playerPosition);
 
-            // Voltear hacia el jugador
-            Movement.FlipTowards(playerPosition); // Usa el componente Movement para voltear
+            Movement.FlipTowards(playerPosition);
+
+            if (distanceToPlayer > maxChaseDistanceRanged)
+            {
+                Movement.StopMovement();
+                IsPlayerDetected = false;
+                return Node.Status.Failure;
+            }
 
             if (distanceToPlayer < retreatDistance)
             {
                 if (Time.time > _lastRetreatActionTime + retreatCooldown)
                 {
-                    var retreatDirection = (currentPosition - playerPosition).normalized;
-
-                    if (Movement.IsGroundAhead())
+                    Vector2 retreatDirection = (currentPosition - playerPosition).normalized;
+                    if (retreatDirection == Vector2.zero)
                     {
-                        Movement.StopMovement();
+                        retreatDirection =
+                            Movement.IsFlipped
+                                ? Vector2.right
+                                : Vector2.left;
+                    }
+
+                    if (Movement.IsGroundInDirection(retreatDirection, true))
+                    {
+                        Movement.SetMovementIntent(retreatDirection);
                         EnemyAnimator.SetHorizontalMovement(1f);
                         _lastRetreatActionTime = Time.time;
                         return Node.Status.Running;
                     }
-
+                    else
+                    {
+                        Movement.StopMovement();
+                        EnemyAnimator.SetHorizontalMovement(0f);
+                        return Node.Status.Success;
+                    }
+                }
+                else
+                {
                     Movement.StopMovement();
                     EnemyAnimator.SetHorizontalMovement(0f);
-                    return Node.Status.Success;
+                    return Node.Status.Running;
                 }
-
-                Movement.StopMovement();
-                EnemyAnimator.SetHorizontalMovement(0f);
-                return Node.Status.Running;
             }
-
-            if (distanceToPlayer > optimalDistance + 0.5f)
+            else if (distanceToPlayer > optimalDistance + 0.5f)
             {
-                if (Movement.IsGroundAhead())
+                Vector2 approachDirection = (playerPosition - currentPosition).normalized;
+                if (Movement.IsGroundInDirection(approachDirection, false))
                 {
+                    Movement.SetMovementIntent(approachDirection);
                     EnemyAnimator.SetHorizontalMovement(1f);
                     return Node.Status.Running;
                 }
-                
-                if (!Movement.IsGroundAhead())
+                else
                 {
                     Movement.StopMovement();
                     EnemyAnimator.SetHorizontalMovement(0f);
                     return Node.Status.Running;
                 }
             }
-
-            Movement.StopMovement();
-            EnemyAnimator.SetHorizontalMovement(0f);
-            return Node.Status.Success;
+            else
+            {
+                Movement.StopMovement();
+                EnemyAnimator.SetHorizontalMovement(0f);
+                return Node.Status.Success;
+            }
         }
 
 
@@ -148,20 +167,20 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (distanceToPlayer < (optimalDistance * 1.8f) && distanceToPlayer > (retreatDistance - 0.5f))
             {
-                if (Time.time >= _lastProjectileAttackTime + Stats.AttackCooldown) 
+                if (Time.time >= _lastProjectileAttackTime + Stats.AttackCooldown)
                 {
                     EnemyAnimator.TriggerAttack();
 
                     SpawnProjectile();
 
-                    _lastProjectileAttackTime = Time.time; 
+                    _lastProjectileAttackTime = Time.time;
                     return Node.Status.Success;
                 }
 
-                return Node.Status.Running; 
+                return Node.Status.Running;
             }
 
-            return Node.Status.Failure; 
+            return Node.Status.Failure;
         }
 
         public void FireProjectileEvent()
@@ -175,12 +194,13 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             var counter = ObjectPool.Instance.GetNextCounter(projectilePoolId);
             var projectileGo =
-                ObjectPool.Instance.GetReferenceFromPool(projectilePoolId, counter, firePoint.position, Quaternion.identity,
+                ObjectPool.Instance.GetReferenceFromPool(projectilePoolId, counter, firePoint.position,
+                    Quaternion.identity,
                     true);
 
-            if (projectileGo == null || !projectileGo.TryGetComponent<Projectile>(out var projectileComponent)) 
+            if (projectileGo == null || !projectileGo.TryGetComponent<Projectile>(out var projectileComponent))
                 return;
-            
+
             var direction = (CurrentTargetPosition - (Vector2)firePoint.position).normalized;
             projectileComponent.Direction = direction;
             projectileComponent.Damage = Stats.Damage;
@@ -209,7 +229,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             }
 
             if (EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForRangedEnemies) &&
-                ObjectPool.Instance != null) 
+                ObjectPool.Instance != null)
             {
                 ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForRangedEnemies, this.gameObject);
             }

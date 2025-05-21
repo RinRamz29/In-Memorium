@@ -9,10 +9,12 @@ namespace _Memoriam.Script.Player
     {
         private float _damage;
         private readonly HashSet<IEnemy> _alreadyHit = new();
-
+        private Player _player;
+        
         private void OnEnable()
         {
-            _alreadyHit.Clear(); 
+            _alreadyHit.Clear();
+            _player = gameObject.GetComponentInParent<Player>();
         }
 
         public void SetData(float damage)
@@ -24,7 +26,7 @@ namespace _Memoriam.Script.Player
         {
             if (other.TryGetComponent<IEnemy>(out var enemy) && !_alreadyHit.Contains(enemy))
             {
-                enemy.ReceiveDamage(_damage);
+                enemy.ReceiveDamage(_damage, _player.transform.position);
                 _alreadyHit.Add(enemy);
             }
         }

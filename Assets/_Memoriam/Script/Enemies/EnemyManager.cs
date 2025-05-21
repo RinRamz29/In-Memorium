@@ -48,6 +48,7 @@ namespace _Memoriam.Script.Enemies
                 {
                     enemyBase.PatrolPoints = spawn.path;
                     enemyBase.SaveLoad.id = spawn.id;
+                    enemyBase.SpawnPosition = spawn.spawnPoint.position;
                 }
             }
 
@@ -63,6 +64,7 @@ namespace _Memoriam.Script.Enemies
                 {
                     enemyBase.PatrolPoints = flyers.path;
                     enemyBase.SaveLoad.id = flyers.id;
+                    enemyBase.SpawnPosition = flyers.spawnPoint.position;
                 }
             }
 
@@ -77,6 +79,7 @@ namespace _Memoriam.Script.Enemies
                 {
                     enemyBase.PatrolPoints = ranged.path;
                     enemyBase.SaveLoad.id = ranged.id;
+                    enemyBase.SpawnPosition = ranged.spawnPoint.position;
                 }
             }
 
@@ -90,6 +93,7 @@ namespace _Memoriam.Script.Enemies
                 if (spawnedEnemy.TryGetComponent<BossEnemy>(out var bossEnemy))
                 {
                     bossEnemy.SaveLoad.id  = boss.id;
+                    bossEnemy.SpawnPosition = boss.spawnPoint.position;
                 }
             }
         }

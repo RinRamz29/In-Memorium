@@ -57,7 +57,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1465173353742932187
 Transform:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea65cf14d134d19adffb84ab11f86e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PatrolPoints>k__BackingField: []
   bloodParticleEffect: {fileID: 6412098639230409489}
 --- !u!212 &6936911284584182044
 SpriteRenderer:
@@ -229,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &7708145989034141899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,21 +306,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3330e317224535b67de11ca3231f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
-  <Speed>k__BackingField: 3
-  <Damage>k__BackingField: 10
-  <Experience>k__BackingField: 10
+  <MaxHealth>k__BackingField: 50
+  <Speed>k__BackingField: 90
+  <Damage>k__BackingField: 30
+  <Experience>k__BackingField: 25
   <PlayerDetectionRadius>k__BackingField: 5
-  <PlayerDetectionBoxSize>k__BackingField: {x: 5, y: 2}
+  <PlayerDetectionBoxSize>k__BackingField: {x: 5, y: 5}
   <PlayerLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
   <ObstacleLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <LineOfSightDistance>k__BackingField: 7
-  <AttackDistance>k__BackingField: 1.5
-  <AttackCooldown>k__BackingField: 2
+  <LineOfSightDistance>k__BackingField: 5
+  <AttackDistance>k__BackingField: 1
+  <AttackCooldown>k__BackingField: 1
   <AttackHitboxSizeY>k__BackingField: 1
   <WaitTimeAtPatrolPoint>k__BackingField: 2
   <MovementStopThreshold>k__BackingField: 0.1
@@ -329,9 +330,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  GroundCheckDistance: 0.5
-  EdgeCheckHorizontalOffset: 0.5
-  EdgeCheckVerticalOffset: 0.1
+  GroundCheckDistance: 2
+  EdgeCheckHorizontalOffset: 1
+  EdgeCheckVerticalOffset: 0.5
 --- !u!1 &7122204583798220164
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 7122204583798220164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.241, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

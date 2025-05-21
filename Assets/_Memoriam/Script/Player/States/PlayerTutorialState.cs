@@ -92,6 +92,7 @@ namespace _Memoriam.Script.Player.States
         {
             if (TutorialManager.Instance.CheckIfCompleted())
             {
+                _player.StateMachine.ChangeState(new PlayerCombatState(_player));
                 OnTutorialEnded();
                 return;
             }
