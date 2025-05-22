@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3900861639517482836
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5720688178118009281}
-  m_Layer: 7
-  m_Name: DetecPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5720688178118009281
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3900861639517482836}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1465173353742932187}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5559703034287951607
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +41,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5429234177173492715}
-  - {fileID: 5720688178118009281}
   - {fileID: 7516549413040953618}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,7 +151,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -202,7 +170,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1, y: 1.3}
+  m_Size: {x: 0.6, y: 1.3}
   m_Direction: 0
 --- !u!50 &3801244046312491248
 Rigidbody2D:
@@ -226,7 +194,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -307,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 50
-  <Speed>k__BackingField: 90
+  <Speed>k__BackingField: 5
   <Damage>k__BackingField: 30
   <Experience>k__BackingField: 25
   <PlayerDetectionRadius>k__BackingField: 5
@@ -319,17 +287,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   <LineOfSightDistance>k__BackingField: 5
-  <AttackDistance>k__BackingField: 1
+  <AttackDistance>k__BackingField: 2
   <AttackCooldown>k__BackingField: 1
   <AttackHitboxSizeY>k__BackingField: 1
   <WaitTimeAtPatrolPoint>k__BackingField: 2
-  <MovementStopThreshold>k__BackingField: 0.1
+  <MovementStopThreshold>k__BackingField: 0.3
   <FlipThreshold>k__BackingField: 0.2
   <MaxChaseDistance>k__BackingField: 10
   <ReturnToPatrolTimeout>k__BackingField: 5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
+  TrapLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   GroundCheckDistance: 2
   EdgeCheckHorizontalOffset: 1
   EdgeCheckVerticalOffset: 0.5
@@ -358,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 7122204583798220164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.241, y: 0, z: 0}
+  m_LocalPosition: {x: 0.495, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

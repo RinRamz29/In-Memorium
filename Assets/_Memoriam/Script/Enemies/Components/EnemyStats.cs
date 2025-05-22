@@ -38,16 +38,13 @@ namespace _Memoriam.Script.Enemies.Components
         
         [Header("Ground/Edge Detection")]
         [SerializeField] public LayerMask GroundLayer;
+        [SerializeField] public LayerMask TrapLayer;
         [SerializeField] public float GroundCheckDistance = 0.5f; 
         [SerializeField] public float EdgeCheckHorizontalOffset = 0.5f; 
-        [SerializeField] public float EdgeCheckVerticalOffset = 0.1f; // Ligeramente arriba del pivote
-
-        // Referencia a BaseEnemy si se necesita para callbacks o acceso a otros componentes no directos.
-        // protected BaseEnemy baseEnemy;
+        [SerializeField] public float EdgeCheckVerticalOffset = 0.1f;
 
         public void Initialize(BaseEnemy enemy)
         {
-            // this.baseEnemy = enemy;
             CurrentHealth = MaxHealth;
         }
     }

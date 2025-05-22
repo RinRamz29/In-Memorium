@@ -142,7 +142,7 @@ namespace _Memoriam.Script.Tutorial
         {
             var tuto = new TutorialData()
             {
-                currentTutoIndex = CurrentStepIndex,
+                currentTutoIndex = CurrentStepIndex == 0 ? steps.Count : CurrentStepIndex,
                 isOn = canvas.activeInHierarchy,
             };
             data.tutoData = tuto;

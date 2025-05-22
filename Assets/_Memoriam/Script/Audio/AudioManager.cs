@@ -46,6 +46,11 @@ namespace _Memoriam.Script.Audio
             }
         }
 
+        public void PlayOneShotSFX(AudioClip audioClip)
+        {
+            sfxAudioSource.PlayOneShot(audioClip);
+        }
+
         public void PlayRandomSFX(string audioName)
         {
             AudioData audioData = audioDatabase.GetAudio(audioName);

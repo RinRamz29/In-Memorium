@@ -77,16 +77,16 @@ namespace _Memoriam.Script.Managers
             if (IsNewGame)
             {
                 DataPersistentManager.Instance.NewGame();
-                ObjectPool.Instance.Initialize();
-                EnemyManager.Instance.SpawnEnemies(true);
+                await ObjectPool.Instance.Initialize();
+                await EnemySpawner.Instance.SpawnEnemies(true);
                 PlayerSpawner.Instance.SpawnPlayer(true);
                 TutorialManager.Instance.ResetTutorial(SetTutorial);
                 LocalizationManager.Instance.ForceTranslate();
             }
             else
             {
-                ObjectPool.Instance.Initialize();
-                EnemyManager.Instance.SpawnEnemies(false);
+                await ObjectPool.Instance.Initialize();
+                await EnemySpawner.Instance.SpawnEnemies(false);
                 PlayerSpawner.Instance.SpawnPlayer(false);
                 DataPersistentManager.Instance.LoadGame(slot);
                 LocalizationManager.Instance.ForceTranslate();

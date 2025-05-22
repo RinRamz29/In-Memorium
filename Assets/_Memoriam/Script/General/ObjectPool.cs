@@ -27,7 +27,7 @@ namespace _Memoriam.Script.General
 
         #region creación de pools
 
-        public void Initialize()
+        public async Task Initialize()
         {
             _poolDictionary.Clear();
             _spawned.Clear();
@@ -56,6 +56,7 @@ namespace _Memoriam.Script.General
                 _poolDictionary.Add(poolObj.id, queue);
                 _spawned.Add(poolObj.id, prefabs);
                 _referenceCounters[poolObj.id] = 0;
+                await Task.Yield();
             }
         }
 
@@ -83,7 +84,8 @@ namespace _Memoriam.Script.General
                     return obj;
                 }
             }
-
+            
+            Debug.LogWarning($"[ObjectPool] No reference found for ID: {id}");
             return null;
         }
 

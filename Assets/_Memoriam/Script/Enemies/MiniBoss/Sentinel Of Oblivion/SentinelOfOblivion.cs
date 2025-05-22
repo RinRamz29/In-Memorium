@@ -18,6 +18,8 @@ namespace _Memoriam.Script.Enemies.MiniBoss.Sentinel_Of_Oblivion
         private float _lastAbilityDashTime = -Mathf.Infinity;
 
         [SerializeField] private float phaseDashDuration = 0.3f;
+        
+        private readonly int _phaseHash = Animator.StringToHash("PhaseTransition");
 
         protected override void Awake()
         {
@@ -65,7 +67,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss.Sentinel_Of_Oblivion
             phaseTwoCombatSequence.AddChild(new Leaf("Node_P2_MoveTowardsPlayer",
                 new Stretegies.ActionStrategy(base.MoveTowards), 5));
             phaseTwoCombatSequence.AddChild(new Leaf("Node_P2_PerformBossAttack",
-                new Stretegies.ActionStrategy(PerformAttackWrapper), 5)); 
+                new Stretegies.ActionStrategy(PerformAttack), 5)); 
             phaseTwoActionSelector.AddChild(phaseTwoCombatSequence);
 
             phaseTwoRootSelector.AddChild(phaseTwoActionSelector); 
@@ -81,7 +83,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss.Sentinel_Of_Oblivion
             phaseOneCombatSequence.AddChild(new Leaf("Node_P1_MoveTowardsPlayer",
                 new Stretegies.ActionStrategy(base.MoveTowards), 3));
             phaseOneCombatSequence.AddChild(new Leaf("Node_P1_PerformBossAttack",
-                new Stretegies.ActionStrategy(PerformAttackWrapper), 3));
+                new Stretegies.ActionStrategy(PerformAttack), 3));
             mainBehaviorSelector.AddChild(phaseOneCombatSequence);
 
             var patrolWhenNotDetectedSequence = new Sequence("PatrolWhenNotDetected_Sequence");
@@ -129,6 +131,7 @@ namespace _Memoriam.Script.Enemies.MiniBoss.Sentinel_Of_Oblivion
             Stats.Damage = OriginalBossDamage * buffedDamageMultiplier;
             Stats.Speed = OriginalBossSpeed * buffedSpeedMultiplier;
             IsBuffed = true;
+            EnemyAnimator.Anim.SetTrigger(_phaseHash);
 
             for (int i = 0; i < _lastSpecificAttackTimes.Length; i++)
                 _lastSpecificAttackTimes[i] = -Mathf.Infinity;

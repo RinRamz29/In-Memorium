@@ -45,9 +45,6 @@ namespace _Memoriam.Script.Enemies.Components
 
         private bool HasLineOfSight(Transform target)
         {
-            if (!_movement.IsGroundAhead())
-                return false;
-            
             Vector2 directionToTarget = (target.position - _detectionOrigin.position).normalized;
             float distanceToTarget = Vector2.Distance(_detectionOrigin.position, target.position);
 

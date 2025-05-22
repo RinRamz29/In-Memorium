@@ -59,12 +59,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PatrolPoints>k__BackingField: []
   projectilePoolId: Projectiles
-  optimalDistance: 4
-  retreatDistance: 2
+  optimalDistance: 5
+  retreatDistance: 4
   maxChaseDistanceRanged: 12
   firePoint: {fileID: 4318374460351733342}
   bloodParticleEffect: {fileID: 4460953581590577563}
-  retreatCooldown: 2
 --- !u!212 &1202147627469764132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -136,7 +135,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -201,7 +200,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -219,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 50
-  <Speed>k__BackingField: 80
+  <Speed>k__BackingField: 8
   <Damage>k__BackingField: 30
   <Experience>k__BackingField: 30
   <PlayerDetectionRadius>k__BackingField: 10
@@ -235,13 +234,16 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 2
   <AttackHitboxSizeY>k__BackingField: 1
   <WaitTimeAtPatrolPoint>k__BackingField: 2
-  <MovementStopThreshold>k__BackingField: 0.1
+  <MovementStopThreshold>k__BackingField: 0.3
   <FlipThreshold>k__BackingField: 0.2
-  <MaxChaseDistance>k__BackingField: 20
+  <MaxChaseDistance>k__BackingField: 10
   <ReturnToPatrolTimeout>k__BackingField: 5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
+  TrapLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   GroundCheckDistance: 2
   EdgeCheckHorizontalOffset: 1
   EdgeCheckVerticalOffset: 0.5

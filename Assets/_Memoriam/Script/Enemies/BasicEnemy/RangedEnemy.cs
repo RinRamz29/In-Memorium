@@ -16,7 +16,6 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         [SerializeField] private float maxChaseDistanceRanged = 12f;
         [SerializeField] private Transform firePoint;
         [SerializeField] private ParticleSystem bloodParticleEffect;
-        [SerializeField] private float retreatCooldown = 2.0f;
 
         private Parallel _behaviourTree;
         private float _lastProjectileAttackTime = -Mathf.Infinity;
@@ -41,16 +40,16 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             engageSequence.AddChild(new Leaf("Condition_IsPlayerDetected",
                 new Stretegies.Condition(() => base.IsPlayerDetected), 2));
             engageSequence.AddChild(new Leaf("Action_MaintainDistance", new Stretegies.ActionStrategy(this.MoveTowards),
-                2)); // this.MoveTowards es la lógica de kiting
+                2));
             engageSequence.AddChild(new Leaf("Action_RangedAttack", new Stretegies.ActionStrategy(this.Attack),
-                2)); // this.Attack es el ataque con proyectil
+                2));
             mainBehaviorSelector.AddChild(engageSequence);
 
             var patrolSequence = new Sequence("PatrolSequence");
             patrolSequence.AddChild(new Leaf("Condition_PlayerNotDetected",
                 new Stretegies.Condition(() => !base.IsPlayerDetected), 1));
             patrolSequence.AddChild(new Leaf("Action_Patrol", new Stretegies.ActionStrategy(base.Patrol),
-                1)); // Usa BaseEnemy.Patrol (terrestre)
+                1));
             mainBehaviorSelector.AddChild(patrolSequence);
 
             _behaviourTree.AddChild(mainBehaviorSelector);
@@ -97,60 +96,42 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             if (distanceToPlayer < retreatDistance)
             {
-                if (Time.time > _lastRetreatActionTime + retreatCooldown)
+                Vector2 retreatDirection = (currentPosition - playerPosition).normalized;
+                if (retreatDirection == Vector2.zero)
                 {
-                    Vector2 retreatDirection = (currentPosition - playerPosition).normalized;
-                    if (retreatDirection == Vector2.zero)
-                    {
-                        retreatDirection =
-                            Movement.IsFlipped
-                                ? Vector2.right
-                                : Vector2.left;
-                    }
-
-                    if (Movement.IsGroundInDirection(retreatDirection, true))
-                    {
-                        Movement.SetMovementIntent(retreatDirection);
-                        EnemyAnimator.SetHorizontalMovement(1f);
-                        _lastRetreatActionTime = Time.time;
-                        return Node.Status.Running;
-                    }
-                    else
-                    {
-                        Movement.StopMovement();
-                        EnemyAnimator.SetHorizontalMovement(0f);
-                        return Node.Status.Success;
-                    }
+                    retreatDirection = Movement.IsFlipped ? Vector2.right : Vector2.left;
                 }
-                else
+
+                if (Movement.IsGroundInDirection(retreatDirection, true))
                 {
-                    Movement.StopMovement();
-                    EnemyAnimator.SetHorizontalMovement(0f);
+                    Movement.SetMovementIntent(retreatDirection);
+                    EnemyAnimator.SetHorizontalMovement(1f);
                     return Node.Status.Running;
                 }
+
+                Movement.StopMovement();
+                EnemyAnimator.SetHorizontalMovement(0f);
+                return Node.Status.Success;
             }
-            else if (distanceToPlayer > optimalDistance + 0.5f)
+
+            if (distanceToPlayer > optimalDistance + 0.5f)
             {
-                Vector2 approachDirection = (playerPosition - currentPosition).normalized;
+                var approachDirection = (playerPosition - currentPosition).normalized;
                 if (Movement.IsGroundInDirection(approachDirection, false))
                 {
                     Movement.SetMovementIntent(approachDirection);
                     EnemyAnimator.SetHorizontalMovement(1f);
                     return Node.Status.Running;
                 }
-                else
-                {
-                    Movement.StopMovement();
-                    EnemyAnimator.SetHorizontalMovement(0f);
-                    return Node.Status.Running;
-                }
-            }
-            else
-            {
+
                 Movement.StopMovement();
                 EnemyAnimator.SetHorizontalMovement(0f);
                 return Node.Status.Success;
             }
+
+            Movement.StopMovement();
+            EnemyAnimator.SetHorizontalMovement(0f);
+            return Node.Status.Success;
         }
 
 
@@ -228,11 +209,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 Instantiate(bloodParticleEffect, transform.position, Quaternion.identity);
             }
 
-            if (EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForRangedEnemies) &&
-                ObjectPool.Instance != null)
-            {
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForRangedEnemies, this.gameObject);
-            }
+            
+            ObjectPool.Instance.ReturnToPool("RangedEnemies", this.gameObject);
         }
     }
 }

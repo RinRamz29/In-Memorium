@@ -32,8 +32,14 @@ namespace _Memoriam.Script.Enemies.Components
                 position = transform.position,
             };
             
-            data.enemySavable.Add(id, instance);
-            data.enemySavable[id] = instance;
+            if (data.enemySavable.ContainsKey(id))
+            {
+                data.enemySavable[id] = instance;
+            }
+            else
+            {
+                data.enemySavable.Add(id, instance);
+            }
         }
     }
 }

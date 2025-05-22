@@ -48,15 +48,12 @@ MonoBehaviour:
   <ObjectsPool>k__BackingField:
   - prefab: {fileID: 5559703034287951607, guid: 80a7eb716fc7c3246a77f1088594f9ae, type: 3}
     id: Enemies
-    size: 23
-  - prefab: {fileID: 5559703034287951607, guid: 886b675855ea00349b4539adb2f5631e, type: 3}
-    id: Flyers
-    size: 11
+    size: 29
   - prefab: {fileID: 751294390469502471, guid: 146d9510eb201234896651a87f89fe4d, type: 3}
-    id: Ranged
-    size: 9
+    id: RangedEnemies
+    size: 10
   - prefab: {fileID: 5559703034287951607, guid: 2bd245ae490d671469df0e4568288a7e, type: 3}
-    id: MiniBoss
+    id: Miniboss
     size: 1
   - prefab: {fileID: 122463274813769203, guid: cdda264a556bde34b963d30e63690787, type: 3}
     id: Projectiles

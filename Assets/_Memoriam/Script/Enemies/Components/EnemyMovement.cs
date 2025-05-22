@@ -20,7 +20,6 @@ namespace _Memoriam.Script.Enemies.Components
         private bool _shouldMove;
         private float _lastFlipTime;
         private const float FlipCooldown = 0.25f;
-        private bool _isMoveSafe;
 
         public void Initialize(BaseEnemy baseEnemy)
         {
@@ -35,44 +34,33 @@ namespace _Memoriam.Script.Enemies.Components
         {
             if (_shouldMove)
             {
-                _isMoveSafe = IsGroundAhead();
-                if (!_isMoveSafe)
-                {
-                    StopMovement();
-                    return;
-                }
-            }
-            else
-            {
-                _isMoveSafe = true;
-            }
-
-            if (_shouldMove && _isMoveSafe)
-            {
-                _rb.linearVelocity = _movementIntent * (_stats.Speed * Time.deltaTime);
+                var currentVelocity = _rb.linearVelocity;
+                var targetVelocity = new Vector2(_movementIntent.x * _stats.Speed, currentVelocity.y);
+                _rb.linearVelocity = targetVelocity;
             }
             else
             {
                 _rb.linearVelocity = new Vector2(0, _rb.linearVelocity.y);
                 StopMovement();
             }
+            _shouldMove = false;
         }
 
         public bool IsGroundInDirection(Vector2 moveDirection, bool isRetreating = false)
         {
             if (_stats.GroundLayer == 0)
-                return true; 
+                return true;
             if (Mathf.Approximately(moveDirection.x, 0f))
-                return true; 
+                return true;
 
-            Vector2 checkDirection = moveDirection.normalized; // Usar la dirección normalizada del intent
+            Vector2 checkDirection = moveDirection.normalized;
 
             float horizontalOffsetForRay = _stats.EdgeCheckHorizontalOffset;
             if (isRetreating)
             {
                 horizontalOffsetForRay *= Mathf.Sign(checkDirection.x);
             }
-            else 
+            else
             {
                 horizontalOffsetForRay *= (_sr.flipX ? -1f : 1f);
             }
@@ -83,10 +71,15 @@ namespace _Memoriam.Script.Enemies.Components
 
             RaycastHit2D hit =
                 Physics2D.Raycast(rayOrigin, Vector2.down, _stats.GroundCheckDistance, _stats.GroundLayer);
+            
+            if (Physics2D.Raycast(rayOrigin, Vector2.down, _stats.GroundCheckDistance, _stats.TrapLayer))
+            {
+                return false;
+            }
 
 #if UNITY_EDITOR
             Debug.DrawRay(rayOrigin, Vector2.down * _stats.GroundCheckDistance,
-                hit.collider != null ? Color.cyan : Color.yellow, 0.1f);
+                hit.collider != null ? Color.cyan : Color.white, 0.1f);
 #endif
 
             return hit.collider != null;
@@ -109,8 +102,8 @@ namespace _Memoriam.Script.Enemies.Components
                 return Node.Status.Failure;
             }
 
-            Vector2 targetPos = _baseEnemy.CurrentTargetPosition;
-            float distanceToTarget = Vector2.Distance(transform.position, targetPos);
+            var targetPos = _baseEnemy.CurrentTargetPosition;
+            var distanceToTarget = Vector2.Distance(transform.position, targetPos);
 
             FlipTowards(targetPos);
 
@@ -133,16 +126,24 @@ namespace _Memoriam.Script.Enemies.Components
             if (!IsGroundAhead())
             {
                 StopMovement();
-                _baseEnemy.IsPlayerDetected = false;
-                return Node.Status.Failure;
+                return Node.Status.Running;
             }
 
-            float diffX = targetPos.x - transform.position.x;
+            var diffX = targetPos.x - transform.position.x;
             if (Mathf.Abs(diffX) > _stats.MovementStopThreshold)
             {
-                _movementIntent = new Vector2(Mathf.Sign(diffX), 0);
-                _shouldMove = true;
-                _enemyAnimator.SetHorizontalMovement(Mathf.Abs(_movementIntent.x));
+                var intent = new Vector2(Mathf.Sign(diffX), 0);
+                
+                if (IsGroundInDirection(intent))
+                {
+                    _movementIntent = intent;
+                    _shouldMove = true;
+                    _enemyAnimator.SetHorizontalMovement(Mathf.Abs(_movementIntent.x));
+                }
+                else
+                {
+                    StopMovement();
+                }
             }
             else
             {
@@ -184,7 +185,7 @@ namespace _Memoriam.Script.Enemies.Components
                 return Node.Status.Running;
             }
 
-            if (!IsGroundAhead() && !IsFalling())
+            if ((!IsGroundAhead() && !IsFalling()))
             {
                 StopMovement();
                 _waitTimer = _stats.WaitTimeAtPatrolPoint / 2f;
@@ -251,16 +252,22 @@ namespace _Memoriam.Script.Enemies.Components
         public bool IsGroundAhead()
         {
             if (_stats.GroundLayer == 0) return true;
+            
 
             Vector2 rayOrigin = (Vector2)transform.position +
                                 (_sr.flipX ? Vector2.left : Vector2.right) * _stats.EdgeCheckHorizontalOffset +
                                 Vector2.up * _stats.EdgeCheckVerticalOffset;
 
-            RaycastHit2D hit =
-                Physics2D.Raycast(rayOrigin, Vector2.down, _stats.GroundCheckDistance, _stats.GroundLayer);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, _stats.GroundCheckDistance, _stats.GroundLayer);
+
+            if (Physics2D.Raycast(rayOrigin, Vector2.down, _stats.GroundCheckDistance, _stats.TrapLayer))
+            {
+                return false;
+            }
+            
             return hit.collider != null;
         }
-
+        
         private bool IsFalling()
         {
             return _rb.linearVelocity.y < -0.1f;
@@ -278,12 +285,12 @@ namespace _Memoriam.Script.Enemies.Components
 
             // Gizmo para IsGroundAhead
             Gizmos.color = Color.green;
-            Vector2 rayOrigin = (Vector2)transform.position +
+            var rayOrigin = (Vector2)transform.position +
                                 (_sr != null && _sr.flipX ? Vector2.left : Vector2.right) *
                                 _stats.EdgeCheckHorizontalOffset +
                                 Vector2.up * _stats.EdgeCheckVerticalOffset;
             Gizmos.DrawLine(rayOrigin, rayOrigin + Vector2.down * _stats.GroundCheckDistance);
-
+            
             // Gizmos para puntos de patrulla
             if (patrolPoints != null)
             {

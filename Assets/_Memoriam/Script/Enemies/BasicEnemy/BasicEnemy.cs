@@ -76,10 +76,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 realPlayer.Progression.GainXp(Stats.Experience);
             }
             
-            if (EnemyManager.Instance != null && ObjectPool.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForBasicEnemies))
-            {
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForBasicEnemies, this.gameObject);
-            }
+            
+            ObjectPool.Instance.ReturnToPool("Enemies", this.gameObject);
         }
     }
 }

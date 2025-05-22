@@ -88,7 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff177665ffa4e51946f12e6b770f814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PatrolPoints>k__BackingField: []
+  <PatrolPoints>k__BackingField:
+  - {x: 6, y: 0}
+  - {x: -6, y: 0}
   phaseTransitionHealthThresholdPercentage: 0.5
   buffedDamageMultiplier: 1.5
   buffedSpeedMultiplier: 1.3
@@ -97,7 +99,7 @@ MonoBehaviour:
   bloodParticleEffect: {fileID: 8584268258359624032}
   abilityDashSpeed: 18
   abilityDashDuration: 0.25
-  abilityDashCooldown: 5
+  abilityDashCooldown: 1
   phaseDashDuration: 0.3
 --- !u!212 &6936911284584182044
 SpriteRenderer:
@@ -221,14 +223,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5559703034287951607}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -239,7 +241,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &6167570958338610301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 150
   <Speed>k__BackingField: 3
-  <Damage>k__BackingField: 10
+  <Damage>k__BackingField: 60
   <Experience>k__BackingField: 50
   <PlayerDetectionRadius>k__BackingField: 15
   <PlayerDetectionBoxSize>k__BackingField: {x: 15, y: 15}
@@ -269,16 +271,19 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 2
   <AttackHitboxSizeY>k__BackingField: 1
   <WaitTimeAtPatrolPoint>k__BackingField: 2
-  <MovementStopThreshold>k__BackingField: 0.1
+  <MovementStopThreshold>k__BackingField: 0.3
   <FlipThreshold>k__BackingField: 0.2
   <MaxChaseDistance>k__BackingField: 15
   <ReturnToPatrolTimeout>k__BackingField: 5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  GroundCheckDistance: 0.5
-  EdgeCheckHorizontalOffset: 0.5
-  EdgeCheckVerticalOffset: -0.5
+  TrapLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  GroundCheckDistance: 2
+  EdgeCheckHorizontalOffset: 1
+  EdgeCheckVerticalOffset: 0.5
 --- !u!114 &8621703650983320663
 MonoBehaviour:
   m_ObjectHideFlags: 0

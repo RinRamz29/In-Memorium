@@ -6,27 +6,28 @@ using UnityEngine;
 
 namespace _Memoriam.Script.Enemies.BasicEnemy
 {
-   public class FlyingEnemy : BaseEnemy
+    public class FlyingEnemy : BaseEnemy
     {
         private Parallel _behaviourTree;
 
         [Header("Flying Enemy Specifics")] [SerializeField]
-        private float hoverHeight = 2f; 
+        private float hoverHeight = 2f;
 
-        [SerializeField] private float floatAmplitude = 0.25f; 
+        [SerializeField] private float floatAmplitude = 0.25f;
         [SerializeField] private float floatSpeed = 2f;
         [SerializeField] private ParticleSystem bloodParticleEffect;
 
         private int _flyingPatrolIndex = 0;
         private float _flyingWaitTimer = 0f;
-        private float _flyingReturnToPatrolPointTimer = 0f; 
-        private bool _wasChasingPlayer = false; 
+        private float _flyingReturnToPatrolPointTimer = 0f;
+        private bool _wasChasingPlayer = false;
 
         protected override void Awake()
         {
-            base.Awake(); 
+            base.Awake();
             SetUpBehaviorTree();
         }
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -36,6 +37,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 Rb.gravityScale = 0f;
                 Rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
+
             _wasChasingPlayer = false;
             _flyingReturnToPatrolPointTimer = 0f;
         }
@@ -53,9 +55,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             chaseAndAttackSequence.AddChild(new Leaf("Condition_IsPlayerDetected",
                 new Stretegies.Condition(() => base.IsPlayerDetected), 2));
             chaseAndAttackSequence.AddChild(new Leaf("Action_MoveTowardsPlayer",
-                new Stretegies.ActionStrategy(this.MoveTowards), 2)); 
+                new Stretegies.ActionStrategy(this.MoveTowards), 2));
             chaseAndAttackSequence.AddChild(new Leaf("Action_AttackPlayer",
-                new Stretegies.ActionStrategy(base.Attack), 2)); 
+                new Stretegies.ActionStrategy(base.Attack), 2));
             mainBehaviorSelector.AddChild(chaseAndAttackSequence);
 
             var patrolSequence = new Sequence("PatrolSequence");
@@ -73,9 +75,9 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             if (GameStateManager.Instance != null &&
                 GameStateManager.Instance.GameCurrentState != GameStateManager.GameState.OnGameplay)
             {
-                if (Rb) 
+                if (Rb)
                     Rb.linearVelocity = Vector2.zero;
-                
+
                 EnemyAnimator?.SetHorizontalMovement(0f);
                 return;
             }
@@ -97,11 +99,11 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
         }
 
         // Call this in animation event
-        public void FinalizeDeath() 
+        public void FinalizeDeath()
         {
             if (CurrentTarget != null && CurrentTarget is Player.Player realPlayer)
             {
-                realPlayer.Progression.GainXp(Stats.Experience); 
+                realPlayer.Progression.GainXp(Stats.Experience);
             }
 
             if (bloodParticleEffect != null)
@@ -109,11 +111,8 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
                 Instantiate(bloodParticleEffect, transform.position, Quaternion.identity); // Partículas finales
             }
 
-            if (EnemyManager.Instance != null && !string.IsNullOrEmpty(EnemyManager.Instance.idForFlyerEnemies) &&
-                ObjectPool.Instance != null)
-            {
-                ObjectPool.Instance.ReturnToPool(EnemyManager.Instance.idForFlyerEnemies, this.gameObject);
-            }
+
+            ObjectPool.Instance.ReturnToPool("FlyerEnemies", this.gameObject);
         }
 
         public override Node.Status Patrol()
@@ -133,20 +132,20 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
             var currentTargetPoint = SpawnPosition + PatrolPoints[_flyingPatrolIndex];
             var hoverTargetPosition = currentTargetPoint +
-                                          new Vector2(0,
-                                              hoverHeight + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude);
+                                      new Vector2(0,
+                                          hoverHeight + Mathf.Sin(Time.time * floatSpeed) * floatAmplitude);
 
             if (_flyingWaitTimer > 0)
             {
                 _flyingWaitTimer -= Time.deltaTime;
-                EnemyAnimator.SetHorizontalMovement(0f); 
+                EnemyAnimator.SetHorizontalMovement(0f);
                 return Node.Status.Running;
             }
 
             Vector2 direction = (hoverTargetPosition - (Vector2)transform.position).normalized;
             float distanceToHoverTarget = Vector2.Distance(transform.position, hoverTargetPosition);
 
-            Rb.linearVelocity = direction * Stats.Speed; 
+            Rb.linearVelocity = direction * Stats.Speed;
 
             if (Mathf.Abs(direction.x) > 0.01f)
             {
@@ -157,21 +156,21 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             EnemyAnimator.SetHorizontalMovement(Mathf.Abs(direction.x) +
                                                 Mathf.Abs(direction.y));
 
-            if (distanceToHoverTarget < Stats.MovementStopThreshold * 2f) 
+            if (distanceToHoverTarget < Stats.MovementStopThreshold * 2f)
             {
                 _flyingWaitTimer = Stats.WaitTimeAtPatrolPoint;
                 _flyingPatrolIndex = (_flyingPatrolIndex + 1) % PatrolPoints.Count;
                 _flyingReturnToPatrolPointTimer = 0f;
-                Rb.linearVelocity = Vector2.zero; 
+                Rb.linearVelocity = Vector2.zero;
             }
 
             float distanceToRawPatrolPoint = Vector2.Distance(transform.position, currentTargetPoint);
-            if (distanceToRawPatrolPoint > Stats.MaxChaseDistance / 1.5f) 
+            if (distanceToRawPatrolPoint > Stats.MaxChaseDistance / 1.5f)
             {
                 _flyingReturnToPatrolPointTimer += Time.deltaTime;
                 if (_flyingReturnToPatrolPointTimer > Stats.ReturnToPatrolTimeout)
                 {
-                    transform.position = currentTargetPoint; 
+                    transform.position = currentTargetPoint;
                     Rb.linearVelocity = Vector2.zero;
                     _flyingReturnToPatrolPointTimer = 0f;
                 }
@@ -186,7 +185,7 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
 
         public override Node.Status MoveTowards()
         {
-            if (CurrentTarget == null || !IsPlayerDetected) 
+            if (CurrentTarget == null || !IsPlayerDetected)
             {
                 Rb.linearVelocity =
                     new Vector2(Rb.linearVelocity.x * 0.5f, Rb.linearVelocity.y * 0.5f);
@@ -198,16 +197,16 @@ namespace _Memoriam.Script.Enemies.BasicEnemy
             _wasChasingPlayer = true;
             var targetPosition =
                 CurrentTargetPosition + new Vector2(0, hoverHeight);
-            targetPosition.y += Mathf.Sin(Time.time * floatSpeed) * floatAmplitude; 
+            targetPosition.y += Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
 
             var distance = Vector2.Distance(transform.position, targetPosition);
 
-            if (distance < Stats.AttackDistance) 
+            if (distance < Stats.AttackDistance)
             {
-                Rb.linearVelocity = Vector2.zero; 
+                Rb.linearVelocity = Vector2.zero;
                 EnemyAnimator.SetHorizontalMovement(0f);
                 base.IsInAttackRangeState = true;
-                return Node.Status.Success; 
+                return Node.Status.Success;
             }
 
             base.IsInAttackRangeState = false;

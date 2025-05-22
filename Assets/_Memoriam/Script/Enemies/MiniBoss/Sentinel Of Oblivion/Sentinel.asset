@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - name: Spectral Slam
-    damage: 10
-    cooldown: 4.5
+    damage: 30
+    cooldown: 1
     range: 3.5
     width: 0
     type: 0
@@ -23,11 +23,20 @@ MonoBehaviour:
     attackSfx: {fileID: 8300000, guid: 90bce4480d02d2a48b638b2f74da36f5, type: 3}
     effectPrefab: {fileID: 2834977189176466386, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
   - name: Shadow Cleave
-    damage: 18
-    cooldown: 6.5
+    damage: 40
+    cooldown: 2
     range: 5
     width: 1.2
     type: 1
     animationTrigger: Attack1
+    attackSfx: {fileID: 8300000, guid: 13607df116a0bbf4a8c54039d1a45209, type: 3}
+    effectPrefab: {fileID: 2834977189176466386, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}
+  - name: Attack3
+    damage: 50
+    cooldown: 2
+    range: 10
+    width: 2
+    type: 1
+    animationTrigger: Attack3
     attackSfx: {fileID: 8300000, guid: 13607df116a0bbf4a8c54039d1a45209, type: 3}
     effectPrefab: {fileID: 2834977189176466386, guid: 780cbea09b1ebab43943bf88e8f1ec0b, type: 3}

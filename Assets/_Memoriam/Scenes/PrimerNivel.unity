@@ -44534,7 +44534,7 @@ GameObject:
   - component: {fileID: 64572963}
   - component: {fileID: 64572967}
   - component: {fileID: 64572966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44705,7 +44705,7 @@ GameObject:
   - component: {fileID: 65927084}
   - component: {fileID: 65927088}
   - component: {fileID: 65927087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45533,7 +45533,7 @@ GameObject:
   - component: {fileID: 113925520}
   - component: {fileID: 113925524}
   - component: {fileID: 113925523}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46556,7 +46556,7 @@ GameObject:
   - component: {fileID: 171457885}
   - component: {fileID: 171457889}
   - component: {fileID: 171457888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47095,7 +47095,7 @@ GameObject:
   - component: {fileID: 177819048}
   - component: {fileID: 177819047}
   - component: {fileID: 177819046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47266,7 +47266,7 @@ GameObject:
   - component: {fileID: 178615231}
   - component: {fileID: 178615230}
   - component: {fileID: 178615229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48068,7 +48068,7 @@ GameObject:
   - component: {fileID: 194007941}
   - component: {fileID: 194007945}
   - component: {fileID: 194007944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56191,7 +56191,7 @@ GameObject:
   - component: {fileID: 225514310}
   - component: {fileID: 225514314}
   - component: {fileID: 225514313}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59365,8 +59365,8 @@ Tilemap:
   - first: {x: 38, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59375,8 +59375,8 @@ Tilemap:
   - first: {x: 39, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59395,8 +59395,8 @@ Tilemap:
   - first: {x: 41, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59405,8 +59405,8 @@ Tilemap:
   - first: {x: 42, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59415,8 +59415,8 @@ Tilemap:
   - first: {x: 43, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59435,8 +59435,8 @@ Tilemap:
   - first: {x: 45, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59445,8 +59445,8 @@ Tilemap:
   - first: {x: 46, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -59455,8 +59455,8 @@ Tilemap:
   - first: {x: 47, y: 46, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66495,8 +66495,8 @@ Tilemap:
   - first: {x: 57, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66505,8 +66505,8 @@ Tilemap:
   - first: {x: 58, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66515,8 +66515,8 @@ Tilemap:
   - first: {x: 59, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66525,8 +66525,8 @@ Tilemap:
   - first: {x: 60, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66535,8 +66535,8 @@ Tilemap:
   - first: {x: 61, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66545,8 +66545,8 @@ Tilemap:
   - first: {x: 62, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66555,8 +66555,8 @@ Tilemap:
   - first: {x: 63, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66565,8 +66565,8 @@ Tilemap:
   - first: {x: 64, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66575,8 +66575,8 @@ Tilemap:
   - first: {x: 65, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66585,8 +66585,8 @@ Tilemap:
   - first: {x: 66, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66595,8 +66595,8 @@ Tilemap:
   - first: {x: 67, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66605,8 +66605,8 @@ Tilemap:
   - first: {x: 68, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66615,8 +66615,8 @@ Tilemap:
   - first: {x: 69, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66625,8 +66625,8 @@ Tilemap:
   - first: {x: 70, y: 73, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71675,8 +71675,8 @@ Tilemap:
   - first: {x: 61, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71705,8 +71705,8 @@ Tilemap:
   - first: {x: 64, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71715,8 +71715,8 @@ Tilemap:
   - first: {x: 65, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71735,8 +71735,8 @@ Tilemap:
   - first: {x: 67, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 37
-      m_TileSpriteIndex: 37
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71745,8 +71745,8 @@ Tilemap:
   - first: {x: 68, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71775,8 +71775,8 @@ Tilemap:
   - first: {x: 79, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71785,8 +71785,8 @@ Tilemap:
   - first: {x: 80, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71805,8 +71805,8 @@ Tilemap:
   - first: {x: 82, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71815,8 +71815,8 @@ Tilemap:
   - first: {x: 83, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 36
-      m_TileSpriteIndex: 36
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71825,8 +71825,8 @@ Tilemap:
   - first: {x: 84, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -71845,8 +71845,8 @@ Tilemap:
   - first: {x: 86, y: 86, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 9
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -97228,7 +97228,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9a6cdebc4505382418e4acf9444d418e, type: 2}
   - m_RefCount: 22
     m_Data: {fileID: 11400000, guid: 20e225d0b9cae0945a5acf1c1419445e, type: 2}
-  - m_RefCount: 64
+  - m_RefCount: 97
     m_Data: {fileID: 11400000, guid: c72977a2631449445a1dca6c5e38dd26, type: 2}
   - m_RefCount: 84
     m_Data: {fileID: 11400000, guid: 289e807e31403a04cba29eb92018a643, type: 2}
@@ -97246,7 +97246,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0af9ec86051c0b84fa12af2f1544603e, type: 2}
   - m_RefCount: 2056
     m_Data: {fileID: 11400000, guid: 8fab4bdc5ee354c4e8ef17f550807656, type: 2}
-  - m_RefCount: 59
+  - m_RefCount: 50
     m_Data: {fileID: 11400000, guid: 588195a5a176ac2419a661804dd82d21, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 038faf7edadc7c7488c8c1dc053ddefa, type: 2}
@@ -97296,11 +97296,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4f28cbc1e9da9aa48bd67928f24e6f03, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 15ad0d6545c63874ca047b2d6b453bd5, type: 2}
-  - m_RefCount: 9
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: e799de561d10e4b4aac44596d6ed7fc4, type: 2}
-  - m_RefCount: 13
+  - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: 5d75e3294df931a4482c4859e3f24830, type: 2}
-  - m_RefCount: 19
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: fdaa3cdb358e12c46829f8af98205f71, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1f873b1873ccdc54cb9024e0a9daab10, type: 2}
@@ -97319,7 +97319,7 @@ Tilemap:
     m_Data: {fileID: 3564629826652714872, guid: 84ea9b8a96f3c2c448fca5bbada5d6ef, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: -4888849635880523790, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 64
+  - m_RefCount: 97
     m_Data: {fileID: -2433410116568821609, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -2570341242259067441, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
@@ -97333,7 +97333,7 @@ Tilemap:
     m_Data: {fileID: 3919842511363967868, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 2056
     m_Data: {fileID: -8394685579119890973, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 59
+  - m_RefCount: 50
     m_Data: {fileID: 3155726596349114720, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 8009086277340485293, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
@@ -97387,11 +97387,11 @@ Tilemap:
     m_Data: {fileID: -3355482727788753432, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6186407684633675615, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 3
     m_Data: {fileID: -1029458720090273071, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 13
+  - m_RefCount: 12
     m_Data: {fileID: 5126420255858107750, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
-  - m_RefCount: 19
+  - m_RefCount: 2
     m_Data: {fileID: 9109669214595291606, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 8067465526957313400, guid: cfbcf565ae1d5f74597ee457df2aa2b0, type: 3}
@@ -164403,7 +164403,7 @@ GameObject:
   - component: {fileID: 323177083}
   - component: {fileID: 323177086}
   - component: {fileID: 323177085}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192657,7 +192657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 505198032}
   - component: {fileID: 505198031}
-  - component: {fileID: 505198030}
   - component: {fileID: 505198028}
   - component: {fileID: 505198033}
   m_Layer: 0
@@ -192699,14 +192698,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!81 &505198030
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505198027}
-  m_Enabled: 0
 --- !u!20 &505198031
 Camera:
   m_ObjectHideFlags: 0
@@ -195037,41 +195028,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 271050888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &610613004
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 610613005}
-  m_Layer: 0
-  m_Name: spawners
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &610613005
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610613004}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.7617, y: 121.418396, z: -0.09480448}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 877172707}
-  - {fileID: 1349054115}
-  - {fileID: 900059692}
-  - {fileID: 1522103340}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &614741373
 GameObject:
   m_ObjectHideFlags: 0
@@ -195085,7 +195041,7 @@ GameObject:
   - component: {fileID: 614741374}
   - component: {fileID: 614741378}
   - component: {fileID: 614741377}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195588,7 +195544,7 @@ GameObject:
   - component: {fileID: 626633768}
   - component: {fileID: 626633767}
   - component: {fileID: 626633766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206939,7 +206895,7 @@ GameObject:
   - component: {fileID: 731909020}
   - component: {fileID: 731909024}
   - component: {fileID: 731909023}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212752,7 +212708,7 @@ GameObject:
   - component: {fileID: 782469957}
   - component: {fileID: 782469961}
   - component: {fileID: 782469960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214027,7 +213983,7 @@ GameObject:
   - component: {fileID: 815136320}
   - component: {fileID: 815136323}
   - component: {fileID: 815136322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214198,7 +214154,7 @@ GameObject:
   - component: {fileID: 816114094}
   - component: {fileID: 816114098}
   - component: {fileID: 816114097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216103,7 +216059,7 @@ GameObject:
   - component: {fileID: 857298940}
   - component: {fileID: 857298944}
   - component: {fileID: 857298943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221593,37 +221549,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 998683462}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &877172706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 877172707}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &877172707
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877172706}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -199.8074, y: -73.48949, z: -4.4451957}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 610613005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881551855
 GameObject:
   m_ObjectHideFlags: 0
@@ -222019,37 +221944,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &900059691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 900059692}
-  m_Layer: 0
-  m_Name: Spawner (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &900059692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900059691}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -186.42943, y: -62.283604, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 610613005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902446954
 GameObject:
   m_ObjectHideFlags: 0
@@ -222063,7 +221957,7 @@ GameObject:
   - component: {fileID: 902446955}
   - component: {fileID: 902446959}
   - component: {fileID: 902446958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223179,7 +223073,7 @@ GameObject:
   - component: {fileID: 957119193}
   - component: {fileID: 957119196}
   - component: {fileID: 957119195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245438,7 +245332,7 @@ GameObject:
   - component: {fileID: 1109356949}
   - component: {fileID: 1109356953}
   - component: {fileID: 1109356952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245609,7 +245503,7 @@ GameObject:
   - component: {fileID: 1119443348}
   - component: {fileID: 1119443352}
   - component: {fileID: 1119443351}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245780,7 +245674,7 @@ GameObject:
   - component: {fileID: 1123136651}
   - component: {fileID: 1123136655}
   - component: {fileID: 1123136654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246368,7 +246262,7 @@ GameObject:
   - component: {fileID: 1160085100}
   - component: {fileID: 1160085099}
   - component: {fileID: 1160085098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247456,7 +247350,7 @@ GameObject:
   - component: {fileID: 1226177540}
   - component: {fileID: 1226177544}
   - component: {fileID: 1226177543}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248972,7 +248866,7 @@ GameObject:
   - component: {fileID: 1309189916}
   - component: {fileID: 1309189920}
   - component: {fileID: 1309189919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249715,37 +249609,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1349054114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1349054115}
-  m_Layer: 0
-  m_Name: Spawner (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1349054115
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349054114}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -194.9047, y: -73.41289, z: -4.4451957}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 610613005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1350797046
 GameObject:
   m_ObjectHideFlags: 0
@@ -251995,7 +251858,7 @@ GameObject:
   - component: {fileID: 1493816298}
   - component: {fileID: 1493816301}
   - component: {fileID: 1493816300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252897,37 +252760,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7932671266352273675, guid: 7d7db71bf34c7ee4eb7a34045689ab70, type: 3}
   m_PrefabInstance: {fileID: 1521420009}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1522103339
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1522103340}
-  m_Layer: 0
-  m_Name: SpawnPointPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1522103340
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522103339}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200.1262, y: -97.2184, z: 1.491282}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 610613005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1523240110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7932671266352273675, guid: 7d7db71bf34c7ee4eb7a34045689ab70, type: 3}
@@ -253033,7 +252865,7 @@ GameObject:
   - component: {fileID: 1538681911}
   - component: {fileID: 1538681910}
   - component: {fileID: 1538681909}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253844,7 +253676,7 @@ GameObject:
   - component: {fileID: 1565644105}
   - component: {fileID: 1565644108}
   - component: {fileID: 1565644107}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254165,7 +253997,7 @@ GameObject:
   - component: {fileID: 1580295077}
   - component: {fileID: 1580295076}
   - component: {fileID: 1580295075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254881,7 +254713,7 @@ GameObject:
   - component: {fileID: 1590947401}
   - component: {fileID: 1590947405}
   - component: {fileID: 1590947404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoMorado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264936,6 +264768,330 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2060550432}
     m_Modifications:
+    - target: {fileID: 925493208413629861, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 58.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889251044862184438, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -444.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889251044862184438, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 57.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.size
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[4].id
+      value: 259ecb02-5e6b-4e7c-a7e6-cafa201fb6d2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[5].id
+      value: d6e45c57-e65d-40b1-859b-5e8cab968715
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[6].id
+      value: 3931b947-79a3-4bb8-afb6-94525018ef73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[7].id
+      value: dc8a3f3e-0dcc-481e-be11-c6f59bd4c2be
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[8].id
+      value: e4ac9ff6-8b50-4449-915a-20042f9c84fe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[9].id
+      value: 408b2c34-755d-4c60-855d-80d71e604ac9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[10].id
+      value: 879d80fe-da91-4cd7-8ac6-3ed2d9a9af46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[11].id
+      value: 2a556b87-352d-49d7-9999-bf733d485775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[12].id
+      value: cd9067d4-b1fa-4059-9df3-9fc0a0b75ab0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[13].id
+      value: 0bccf5b4-6039-439e-8576-9a2ae900e5fe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[14].id
+      value: cbdb894e-869d-4314-8e6d-6d88dcc6cbcc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[15].id
+      value: 47bb28dc-db0c-4919-9f53-7182ae9397c5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[16].id
+      value: 143b80bd-2888-44f5-bd2c-155c0790fb55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[17].id
+      value: 6d4d6967-c28a-4221-9fdf-6df3367e8f06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[18].id
+      value: ed7139c9-3808-43da-b91e-605d4569c941
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[19].id
+      value: 5d398065-7dc6-4eaa-8f1c-5d2815a662fc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[20].id
+      value: ff4bd286-edfb-4d65-a59b-4b5b53c589df
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[21].id
+      value: 4cf1a5a6-848f-419a-b1d2-b1305e940117
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[22].id
+      value: b15c26c2-40fa-4687-b6f8-6c8466573ff5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[23].id
+      value: 18400fca-6bcb-490a-a34e-f7bcd6a18356
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[24].id
+      value: a989b86b-f37c-47eb-b9cb-1195a3cf990e
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[25].id
+      value: 0505173a-dd58-4617-9115-7bbd6bdf3e3e
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[26].id
+      value: 11d59439-9b0f-4a22-b89e-ffdfc61c2c1e
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[27].id
+      value: 621dbcd1-be55-4a46-81d1-9f929ec0caee
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[28].id
+      value: d5358c96-a89c-49c8-a98e-7e28985c4969
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[29].id
+      value: 36557f23-8b2a-49af-acd3-829b55d3f632
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[30].id
+      value: 39015ba4-2403-4206-b59b-ab6363fb24a7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[31].id
+      value: 0f770731-9883-4272-90a0-5e89d66e91d6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[32].id
+      value: 0a6ee5df-1e10-459d-8498-6d55d4be4387
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[33].id
+      value: af6af1e7-7780-46b9-aad1-ea2d6d9e68e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[34].id
+      value: af6af1e7-7780-46b9-aad1-ea2d6d9e68e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[35].id
+      value: de618991-8dfc-4537-af16-fb746c02373f
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[36].id
+      value: 0f770731-9883-4272-90a0-5e89d66e91d6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[37].id
+      value: 0a6ee5df-1e10-459d-8498-6d55d4be4387
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[38].id
+      value: af6af1e7-7780-46b9-aad1-ea2d6d9e68e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[9].enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[10].enemyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[4].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043743}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[5].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043742}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[6].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043741}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[7].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043740}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[8].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043739}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[9].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043744}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[10].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043738}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[11].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043737}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[12].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043736}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[13].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043735}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[14].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043734}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[15].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043733}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[16].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043732}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[17].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043731}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[18].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043730}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[19].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043729}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[20].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043728}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[21].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043727}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[22].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043726}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[23].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043725}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[24].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043724}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[25].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043723}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[26].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043722}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[27].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043721}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[28].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043720}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[29].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043717}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[30].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043716}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[31].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043712}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[32].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043711}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[33].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043710}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[34].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043710}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[35].spawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[36].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043712}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[37].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043711}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[38].spawnPoint
+      value: 
+      objectReference: {fileID: 1632043710}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[9].path.Array.data[0].x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[9].path.Array.data[1].x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[10].path.Array.data[0].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107399732313358273, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: enemies.Array.data[10].path.Array.data[1].x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470450677442668479, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -439.88
+      objectReference: {fileID: 0}
     - target: {fileID: 3667365920071888248, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -264976,272 +265132,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.size
-      value: 1
+    - target: {fileID: 5980757549397628352, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -498.67
       objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.data[0].id
-      value: 6a07f366-297e-46f4-a93a-b5b0e23558f1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[0].id
-      value: e19eb991-51b8-47e2-9496-7d1b7a7e31e1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[1].id
-      value: 79273472-3697-4db3-811f-72b4b01ef511
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[2].id
-      value: e4f8b56a-8008-4cb9-bfa3-c7b44668e81f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[3].id
-      value: 79e0350a-489d-4d19-abb8-813a385dc548
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[4].id
-      value: cccb1c2f-efda-4369-a581-4e16d0fdb2dd
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[5].id
-      value: 88d44e67-8920-4461-97c4-b80604a1dd21
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[6].id
-      value: 8e1736b2-68fb-46a1-9b89-fca5ff2ec941
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[7].id
-      value: 0c51a68f-1dd7-4e15-9141-cfea324a0211
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[8].id
-      value: d952e5cb-4f30-461f-82cf-f500129764f4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[9].id
-      value: f0b352a7-a1e8-459c-9d75-6ea8ca405cee
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[0].id
-      value: 4e452d67-2f1c-4092-8628-ee40cced706f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[1].id
-      value: 1cf9df9c-81ab-454f-aa39-31893e4b005f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[2].id
-      value: 640ce97e-6178-4ba8-9e87-0e2082579541
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[3].id
-      value: adbdd65a-8c56-4fac-b509-938b2dfd039f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[4].id
-      value: 2c6d255f-689a-410e-8939-e35fc864a94b
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[5].id
-      value: 68c2fc4b-3eba-43cd-8cc7-7e00143350a0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[6].id
-      value: b4333bfe-6db8-41bb-ac01-422ad00bb659
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[7].id
-      value: 4348ae11-f7b8-41d6-8354-13b9de4fc309
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.data[0].spawnPoint
-      value: 
-      objectReference: {fileID: 1632043710}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[0].id
-      value: 9aedf23a-cd58-42d0-91e2-e6a856b9b760
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[1].id
-      value: 003d81c0-6e59-4acd-a56f-803604986317
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[2].id
-      value: 3fc37c20-3018-4164-b700-5391169748f3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[3].id
-      value: e1e66c2f-67ef-41f3-ada1-23c590eee9e4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[4].id
-      value: 8be00108-49e5-4091-9605-4e2f6831ddd1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[5].id
-      value: 19383651-fa59-4c81-a490-2d99ea31e8ae
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[6].id
-      value: 225edd88-04e9-4742-9cdf-7dbf51c17a7f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[7].id
-      value: 4577a549-e77e-4bcb-8269-a0e596a55116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[8].id
-      value: da404839-c430-44cb-90ba-78b0457e638a
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[9].id
-      value: a3b01b65-2e08-4668-a5f9-20437eda74e8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: flyersToSpawn.Array.data[10].id
-      value: d2e196aa-3ba4-443b-bd8c-c2d2aa6dbea4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[10].id
-      value: b04883b2-c678-4b17-989b-b8bdc38b414a
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[11].id
-      value: c244723a-940f-4ff7-911c-769aafbda8aa
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[12].id
-      value: ae15e0f6-9041-4ea9-8aac-e862ae286744
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[13].id
-      value: 5acf651f-caa8-4486-9cab-cae019255a1f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[14].id
-      value: 158f0575-88c9-4da2-aa77-a516489c9390
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[15].id
-      value: 478c1243-76a2-42c8-bce3-b54b111fe5b3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[16].id
-      value: d1859583-83ef-473a-9d4a-952f94fcb46b
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[17].id
-      value: 5170b0a9-3e0d-4bd0-93ea-6eeac52491fa
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[18].id
-      value: 58497c1e-817a-426c-a67d-146d88b5f995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[19].id
-      value: 66618cc8-f897-41bd-ba1a-915c92ef6e17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[20].id
-      value: 5bcfd107-4726-40da-8138-61383640b363
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[21].id
-      value: 1c1ff3a4-ae42-4b5c-a784-957d8d75719f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: enemiesToSpawn.Array.data[22].id
-      value: c9e07d90-5e6d-4eac-a99d-de0bc19625b3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.data[0].path.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.data[0].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: bosses.Array.data[0].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[0].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[0].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[1].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[1].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[2].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[2].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[3].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[3].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[4].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[4].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[5].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[5].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[6].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[6].path.Array.data[1].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[7].path.Array.data[0].x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020676678074504670, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
-      propertyPath: rangedEnemies.Array.data[7].path.Array.data[1].x
-      value: -6
+    - target: {fileID: 5980757549397628352, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 57.98
       objectReference: {fileID: 0}
     - target: {fileID: 7659872246920475734, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2089219724751329169, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+    - {fileID: 3146133553244350420, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+    - {fileID: 8665453025969734082, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+    - {fileID: 5493759054248908714, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+    - {fileID: 8808943738719002347, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+    - {fileID: 4315224467330200827, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
@@ -265251,6 +265161,151 @@ Transform:
   m_PrefabInstance: {fileID: 1632043708}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1632043710 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2302076716778417710, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8159034583153085758, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2470450677442668479, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6898134388767031031, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 514921307735608150, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5659503157756110088, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6917083282235408945, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 32178473260192484, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043723 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7993940896305541212, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1515092717949802702, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1099032611110775617, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4976603573906053032, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8301176726527458921, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2881110080563705393, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1424128360210178397, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043730 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2408968329614939602, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 720658542774068105, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1877343556162280226, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5371016323752365171, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043734 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3473032415652757888, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4879393552756273109, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043736 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 84111334195207418, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043737 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3199547558018423732, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3028082930249030558, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1889251044862184438, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043740 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 925493208413629861, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043741 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5980757549397628352, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3006081376438595100, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7462752239398402175, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
+  m_PrefabInstance: {fileID: 1632043708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1632043744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1921752127999141122, guid: e4db1b42f77d9bd4fbdc81c98202bd39, type: 3}
   m_PrefabInstance: {fileID: 1632043708}
@@ -266096,7 +266151,7 @@ GameObject:
   - component: {fileID: 1658722041}
   - component: {fileID: 1658722044}
   - component: {fileID: 1658722043}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289115,7 +289170,7 @@ GameObject:
   - component: {fileID: 1789160286}
   - component: {fileID: 1789160289}
   - component: {fileID: 1789160288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289460,7 +289515,7 @@ GameObject:
   - component: {fileID: 1800906728}
   - component: {fileID: 1800906727}
   - component: {fileID: 1800906726}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301733,7 +301788,7 @@ GameObject:
   - component: {fileID: 1964734706}
   - component: {fileID: 1964734705}
   - component: {fileID: 1964734704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308476,7 +308531,7 @@ GameObject:
   - component: {fileID: 2050146714}
   - component: {fileID: 2050146718}
   - component: {fileID: 2050146717}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAmarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319315,7 +319370,7 @@ GameObject:
   - component: {fileID: 2098081285}
   - component: {fileID: 2098081289}
   - component: {fileID: 2098081288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319486,7 +319541,7 @@ GameObject:
   - component: {fileID: 2107990901}
   - component: {fileID: 2107990904}
   - component: {fileID: 2107990903}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319828,7 +319883,7 @@ GameObject:
   - component: {fileID: 2121807552}
   - component: {fileID: 2121807556}
   - component: {fileID: 2121807555}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319999,7 +320054,7 @@ GameObject:
   - component: {fileID: 2127496031}
   - component: {fileID: 2127496030}
   - component: {fileID: 2127496029}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FuegoAzul (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325488,7 +325543,7 @@ GameObject:
   - component: {fileID: 8217445781175184286}
   - component: {fileID: 1200508646721347431}
   - component: {fileID: 8217445781175184287}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325508,7 +325563,7 @@ GameObject:
   - component: {fileID: 8242537381695193873}
   - component: {fileID: 1207047392981219304}
   - component: {fileID: 8242537381695193874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325565,7 +325620,7 @@ GameObject:
   - component: {fileID: 8621113063522182299}
   - component: {fileID: 1515306797821251682}
   - component: {fileID: 8621113063522182300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325600,7 +325655,7 @@ GameObject:
   - component: {fileID: 8605893481217846531}
   - component: {fileID: 1571032383089547770}
   - component: {fileID: 8605893481217846532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325812,7 +325867,7 @@ GameObject:
   - component: {fileID: 3575341216919316051}
   - component: {fileID: 4297737618493246734}
   - component: {fileID: 6293244209464163455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327004,7 +327059,7 @@ GameObject:
   - component: {fileID: 6327896553420674710}
   - component: {fileID: 3851175012642333295}
   - component: {fileID: 8927897446563829292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327105,7 +327160,7 @@ GameObject:
   - component: {fileID: 5468400480370701231}
   - component: {fileID: 2972519124845250390}
   - component: {fileID: 7481849302953833235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327256,10 +327311,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 4991277462175414531, guid: df7be54bb90563b4895a3860a2c30d0b, type: 3}
-      propertyPath: <PlayerSpawnPoint>k__BackingField
-      value: 
-      objectReference: {fileID: 1522103339}
     - target: {fileID: 4991277462175414531, guid: df7be54bb90563b4895a3860a2c30d0b, type: 3}
       propertyPath: <GameplayMenuManager>k__BackingField
       value: 
@@ -329149,7 +329200,7 @@ GameObject:
   - component: {fileID: 5750709781817615920}
   - component: {fileID: 3273425565830124233}
   - component: {fileID: 7204025596364023438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329585,7 +329636,7 @@ GameObject:
   - component: {fileID: 344389088501185775}
   - component: {fileID: 1059338740204700810}
   - component: {fileID: 8668981232675991651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector blue 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329774,7 +329825,7 @@ GameObject:
   - component: {fileID: 4607314684824148502}
   - component: {fileID: 6724810396529897199}
   - component: {fileID: 8503248658939342944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329794,7 +329845,7 @@ GameObject:
   - component: {fileID: 4602257725663844557}
   - component: {fileID: 6736727680631925812}
   - component: {fileID: 8516134089420092037}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332200,7 +332251,7 @@ GameObject:
   - component: {fileID: 1672060280947198218}
   - component: {fileID: 2107784693766287727}
   - component: {fileID: 8660304070578851213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector blue 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332220,7 +332271,7 @@ GameObject:
   - component: {fileID: 3324161594724088890}
   - component: {fileID: 5513215722200795331}
   - component: {fileID: 7480523555441038964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332240,7 +332291,7 @@ GameObject:
   - component: {fileID: 3409002534426020432}
   - component: {fileID: 5614896476975562409}
   - component: {fileID: 7403590612682383386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332402,7 +332453,7 @@ GameObject:
   - component: {fileID: 2417271167377731017}
   - component: {fileID: 4839386592876501296}
   - component: {fileID: 7528396248442783617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332467,7 +332518,7 @@ GameObject:
   - component: {fileID: 1798245825756455902}
   - component: {fileID: 1333247976706857915}
   - component: {fileID: 8642243103963998041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector blue 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332616,7 +332667,7 @@ GameObject:
   - component: {fileID: 2832689451678240038}
   - component: {fileID: 5038568293122832863}
   - component: {fileID: 7979920995555223408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332666,7 +332717,7 @@ GameObject:
   - component: {fileID: 1998934512897732203}
   - component: {fileID: 8727570906818239122}
   - component: {fileID: 8727570906818239123}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332686,7 +332737,7 @@ GameObject:
   - component: {fileID: 1952785996408952803}
   - component: {fileID: 8771494348374598426}
   - component: {fileID: 8771494348374598427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332706,7 +332757,7 @@ GameObject:
   - component: {fileID: 1818529774161266581}
   - component: {fileID: 8908010211973559148}
   - component: {fileID: 8908010211973559149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332726,7 +332777,7 @@ GameObject:
   - component: {fileID: 2832842905277352019}
   - component: {fileID: 3252801146525249590}
   - component: {fileID: 7179057616954352775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector blue 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332892,7 +332943,7 @@ GameObject:
   - component: {fileID: 4942750583544833178}
   - component: {fileID: 5666272721556541383}
   - component: {fileID: 7366580179130978933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332993,7 +333044,7 @@ GameObject:
   - component: {fileID: 5034104478340781735}
   - component: {fileID: 5757345432357502458}
   - component: {fileID: 7457907701754290250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333026,7 +333077,7 @@ GameObject:
   - component: {fileID: 5034104478219057880}
   - component: {fileID: 5757345432529621381}
   - component: {fileID: 7457907701867170871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333059,7 +333110,7 @@ GameObject:
   - component: {fileID: 5034104478257004267}
   - component: {fileID: 5757345432575432118}
   - component: {fileID: 1815532411}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333079,7 +333130,7 @@ GameObject:
   - component: {fileID: 5034104478566280284}
   - component: {fileID: 5757345432853481217}
   - component: {fileID: 7457907702181075635}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333112,7 +333163,7 @@ GameObject:
   - component: {fileID: 5034104478547477375}
   - component: {fileID: 5757345432868022306}
   - component: {fileID: 7457907702195615122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333145,7 +333196,7 @@ GameObject:
   - component: {fileID: 5034104478535252339}
   - component: {fileID: 5757345432814326318}
   - component: {fileID: 7457907702216888222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333178,7 +333229,7 @@ GameObject:
   - component: {fileID: 5034104478537411022}
   - component: {fileID: 5757345432816222867}
   - component: {fileID: 7457907702219317025}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333211,7 +333262,7 @@ GameObject:
   - component: {fileID: 5034104477886480780}
   - component: {fileID: 5757345433013119697}
   - component: {fileID: 7457907702340188003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333244,7 +333295,7 @@ GameObject:
   - component: {fileID: 5034104477684724543}
   - component: {fileID: 5757345433077651554}
   - component: {fileID: 7457907702406809042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333277,7 +333328,7 @@ GameObject:
   - component: {fileID: 5034104477724177835}
   - component: {fileID: 5757345433108455158}
   - component: {fileID: 7457907702513107782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333310,7 +333361,7 @@ GameObject:
   - component: {fileID: 5034104478064809979}
   - component: {fileID: 5757345433149504678}
   - component: {fileID: 7457907702552060182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333343,7 +333394,7 @@ GameObject:
   - component: {fileID: 5034104478074250953}
   - component: {fileID: 5757345433156832660}
   - component: {fileID: 7457907702561493032}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333376,7 +333427,7 @@ GameObject:
   - component: {fileID: 5034104477970306876}
   - component: {fileID: 5757345433328942177}
   - component: {fileID: 7457907702658621907}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333409,7 +333460,7 @@ GameObject:
   - component: {fileID: 5034104477916668970}
   - component: {fileID: 5757345433302814583}
   - component: {fileID: 7457907702705902277}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333442,7 +333493,7 @@ GameObject:
   - component: {fileID: 5034104478034638519}
   - component: {fileID: 5757345433385131498}
   - component: {fileID: 7457907702723199066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333475,7 +333526,7 @@ GameObject:
   - component: {fileID: 5034104478041950486}
   - component: {fileID: 5757345433394520651}
   - component: {fileID: 7457907702730506233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333508,7 +333559,7 @@ GameObject:
   - component: {fileID: 5034104477551095469}
   - component: {fileID: 5757345431603676656}
   - component: {fileID: 7457907703078230084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333541,7 +333592,7 @@ GameObject:
   - component: {fileID: 5034104477418968342}
   - component: {fileID: 5757345431731617355}
   - component: {fileID: 7457907703214547961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333574,7 +333625,7 @@ GameObject:
   - component: {fileID: 5034104477506788694}
   - component: {fileID: 5757345431783257611}
   - component: {fileID: 7457907703268813753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333607,7 +333658,7 @@ GameObject:
   - component: {fileID: 5034104477484874163}
   - component: {fileID: 5757345431804056302}
   - component: {fileID: 7457907703280701278}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333640,7 +333691,7 @@ GameObject:
   - component: {fileID: 5034104476745925685}
   - component: {fileID: 5757345431872040808}
   - component: {fileID: 7457907703347114716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333673,7 +333724,7 @@ GameObject:
   - component: {fileID: 5034104476713670703}
   - component: {fileID: 5757345431838176114}
   - component: {fileID: 7457907703381929666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333706,7 +333757,7 @@ GameObject:
   - component: {fileID: 5034104476832342555}
   - component: {fileID: 5757345431916759366}
   - component: {fileID: 7457907703399699702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333739,7 +333790,7 @@ GameObject:
   - component: {fileID: 5034104476818324689}
   - component: {fileID: 5757345431933933452}
   - component: {fileID: 7457907703419488832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333772,7 +333823,7 @@ GameObject:
   - component: {fileID: 5034104476788061606}
   - component: {fileID: 5757345431880310523}
   - component: {fileID: 7457907703422485321}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333805,7 +333856,7 @@ GameObject:
   - component: {fileID: 5034104476780478808}
   - component: {fileID: 5757345431904463365}
   - component: {fileID: 7457907703448745911}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333838,7 +333889,7 @@ GameObject:
   - component: {fileID: 5034104476600248327}
   - component: {fileID: 5757345431950476122}
   - component: {fileID: 7457907703503150826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333871,7 +333922,7 @@ GameObject:
   - component: {fileID: 5034104476579323103}
   - component: {fileID: 5757345431971477378}
   - component: {fileID: 7457907703515753010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333904,7 +333955,7 @@ GameObject:
   - component: {fileID: 5034104477050949952}
   - component: {fileID: 5757345432166808093}
   - component: {fileID: 7457907703718946735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333937,7 +333988,7 @@ GameObject:
   - component: {fileID: 5034104476842211439}
   - component: {fileID: 5757345432228614962}
   - component: {fileID: 7457907703778659970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333970,7 +334021,7 @@ GameObject:
   - component: {fileID: 5034104476953978394}
   - component: {fileID: 5757345432315219271}
   - component: {fileID: 7457907703789768949}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334003,7 +334054,7 @@ GameObject:
   - component: {fileID: 5034104476968375351}
   - component: {fileID: 5757345432320687978}
   - component: {fileID: 7457907703804142298}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334036,7 +334087,7 @@ GameObject:
   - component: {fileID: 5034104476935123600}
   - component: {fileID: 5757345432287943117}
   - component: {fileID: 7457907703837983871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334233,7 +334284,7 @@ GameObject:
   - component: {fileID: 1184652848993701399}
   - component: {fileID: 8274115664416504558}
   - component: {fileID: 8274115664416504559}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334360,7 +334411,7 @@ GameObject:
   - component: {fileID: 1489873981190518052}
   - component: {fileID: 8506793201457414621}
   - component: {fileID: 8506793201457414622}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334485,7 +334536,7 @@ GameObject:
   - component: {fileID: 5932736924313652620}
   - component: {fileID: 6372550315267942097}
   - component: {fileID: 8139733095781596003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Ejector 16x32_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334638,7 +334689,7 @@ GameObject:
   - component: {fileID: 713476951834852364}
   - component: {fileID: 7729844539265747189}
   - component: {fileID: 8309992358521298454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334857,7 +334908,7 @@ GameObject:
   - component: {fileID: 1006464967994567492}
   - component: {fileID: 8022183796450664381}
   - component: {fileID: 8593553128427931998}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke Flame Ejector red 16x32_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335294,10 +335345,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 799160469}
+  - {fileID: 75528342}
   - {fileID: 617029003}
   - {fileID: 2060550432}
-  - {fileID: 610613005}
-  - {fileID: 75528342}
   - {fileID: 896082344}
   - {fileID: 505198032}
   - {fileID: 1132446567}

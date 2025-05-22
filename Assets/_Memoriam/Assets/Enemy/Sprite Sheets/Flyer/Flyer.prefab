@@ -263,13 +263,16 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 2
   <AttackHitboxSizeY>k__BackingField: 1
   <WaitTimeAtPatrolPoint>k__BackingField: 2
-  <MovementStopThreshold>k__BackingField: 0.1
+  <MovementStopThreshold>k__BackingField: 0.3
   <FlipThreshold>k__BackingField: 0.2
   <MaxChaseDistance>k__BackingField: 10
   <ReturnToPatrolTimeout>k__BackingField: 5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
+  TrapLayer:
+    serializedVersion: 2
+    m_Bits: 0
   GroundCheckDistance: 0.5
   EdgeCheckHorizontalOffset: 0.5
   EdgeCheckVerticalOffset: 0.1
