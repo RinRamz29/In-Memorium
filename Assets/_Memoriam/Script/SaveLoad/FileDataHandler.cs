@@ -44,6 +44,21 @@ namespace _Memoriam.Script.SaveLoad
             return loadedData;
         }
 
+        public void EraseSaveData(int slot)
+        {
+            var fullPath = Path.Combine(_dataDirthPath, string.Format(_baseFileName, slot));
+
+            try
+            {
+                File.Delete(fullPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public void SaveData(GameData data, int slot)
         {
             var fullPath = Path.Combine(_dataDirthPath, string.Format(_baseFileName, slot));

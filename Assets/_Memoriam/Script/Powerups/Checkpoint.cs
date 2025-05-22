@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _Memoriam.Script.Managers;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
@@ -21,9 +22,8 @@ namespace _Memoriam.Script.Powerups
             {
                 playerController.LastCheckPoint = transform.position;
             }
-
-            GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnPause);
-            saveMenu.SetActive(true);
+            
+            DataPersistentManager.Instance.SaveGame(DataPersistentManager.Instance.SelectedSlot);
             gameObject.SetActive(false);
         }
 

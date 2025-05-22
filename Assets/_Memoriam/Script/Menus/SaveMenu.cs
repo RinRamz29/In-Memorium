@@ -8,6 +8,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace _Memoriam.Script.Menus
 {
@@ -19,11 +20,15 @@ namespace _Memoriam.Script.Menus
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] public GameObject errorCanva;
         [SerializeField] public GameObject errorButton;
+        [SerializeField] private Toggle tutoToggle;
         public TMP_Text TextToTranslateTMP { get; set; }
-        
+        private int _slot;
+
         private void OnEnable()
         {
             EventSystem.current.SetSelectedGameObject(firstToSelect);
+            tutoToggle.onValueChanged.AddListener(SetRepeatTutorial);
+            tutoToggle.isOn = Loader.Instance.SetTutorial;
         }
 
         private void UpdateSlotUI(string text, string textNoSave)
@@ -40,7 +45,7 @@ namespace _Memoriam.Script.Menus
                 }
             }
         }
-        
+
         public void Translate(Languages language)
         {
             foreach (var lang in languages)
@@ -53,19 +58,37 @@ namespace _Memoriam.Script.Menus
                 }
             }
         }
-        
+
         public void LoadGame(int slot)
         {
-            if (!DataPersistentManager.Instance.DoesSaveExist(slot))
+            if (DataPersistentManager.Instance.DoesSaveExist(slot))
             {
-                errorCanva.SetActive(true);
-                EventSystem.current.SetSelectedGameObject(errorButton);
+                ConfirmLoad(slot);
                 return;
             }
 
-            MenuManager.Instance.LoadGame(slot);
+            MenuManager.Instance.NewGame();
+            DataPersistentManager.Instance.SelectedSlot = slot;
         }
 
+
+        public void ConfirmSave()
+        {
+            DataPersistentManager.Instance.SelectedSlot = _slot;
+            DataPersistentManager.Instance.OverWriteSave(_slot);
+            MenuManager.Instance.NewGame();
+        }
+
+        public void ConfirmLoad(int slot)
+        {
+            _slot = slot;
+            DataPersistentManager.Instance.SelectedSlot = slot;
+            MenuManager.Instance.LoadGame(_slot);
+        }
         
+        private void SetRepeatTutorial(bool value)
+        {
+            Loader.Instance.SetTutorial = value;
+        }
     }
 }

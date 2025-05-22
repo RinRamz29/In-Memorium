@@ -73,7 +73,11 @@ namespace _Memoriam.Script.Managers
         private async Task LoadGamePlay(int slot)
         {
             await LoadSceneAsync(sceneData.GameSceneName);
+            await WaitForLoadToComplete(slot);
+        }
 
+        private async Task WaitForLoadToComplete(int slot)
+        {
             if (IsNewGame)
             {
                 DataPersistentManager.Instance.NewGame();
@@ -91,11 +95,10 @@ namespace _Memoriam.Script.Managers
                 DataPersistentManager.Instance.LoadGame(slot);
                 LocalizationManager.Instance.ForceTranslate();
             }
-
-
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
+            await GameplayMenuManager.Instance.Fade(0f, 5f);
         }
-
+        
         private async Task LoadMenu()
         {
             await LoadSceneAsync(sceneData.MainMenuSceneName);

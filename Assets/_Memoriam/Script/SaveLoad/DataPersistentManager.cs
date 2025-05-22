@@ -14,6 +14,7 @@ namespace _Memoriam.Script.SaveLoad
         private int _currentSlot = 1;
         private List<ISaveableObject> _saveableObjects;
         public FileDataHandler FileDataHandler { get; private set; }
+        public int SelectedSlot { get; set; }
         
         protected override void Awake()
         {
@@ -24,6 +25,12 @@ namespace _Memoriam.Script.SaveLoad
 
         public void NewGame()
         {
+            _gameData = new GameData();
+        }
+        
+        public void OverWriteSave(int slot)
+        {
+            FileDataHandler.EraseSaveData(slot);
             _gameData = new GameData();
         }
 

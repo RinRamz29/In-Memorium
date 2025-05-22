@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
 using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
@@ -19,7 +20,7 @@ using UnityEngine.UI;
 
 namespace _Memoriam.Script.Managers
 {
-    public class GameplayMenuManager : MonoBehaviour, ISaveableObject
+    public class GameplayMenuManager : Singleton<GameplayMenuManager>, ISaveableObject
     {
         [SerializeField] private GameObject uiPlayer;
         [SerializeField] private GameObject uiSettings;
@@ -32,6 +33,8 @@ namespace _Memoriam.Script.Managers
         [SerializeField] private GameObject firstButton;
         [SerializeField] private SceneDataBase sceneData;
         [SerializeField] private List<Toggle> powerupToggles;
+        [SerializeField] private CanvasGroup fadeCanvas;
+
 
         private void ChangeHealthValue(float health) => HealthBar.value = health;
         private void ChangeStaminaValue(float stamina) => StaminaBar.value = stamina;
@@ -70,8 +73,10 @@ namespace _Memoriam.Script.Managers
             }
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             InputReader.Instance.PlayerActions.Player.Pause.performed += OnPause;
             Script.Player.Player.OnHealthChanged += ChangeHealthValue;
             Script.Player.Player.OnStaminaChanged += ChangeStaminaValue;
@@ -122,6 +127,21 @@ namespace _Memoriam.Script.Managers
             }
             
             TutoUILogic();
+        }
+
+        public async Task Fade(float targetAlpha, float fadeDuration)
+        {
+            var startAlpha = fadeCanvas.alpha;
+            var elapsed = 0f;
+
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                fadeCanvas.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsed / fadeDuration);
+                await Task.Yield();
+            };
+            
+            fadeCanvas.alpha = targetAlpha;
         }
 
         private void TutoUILogic()
