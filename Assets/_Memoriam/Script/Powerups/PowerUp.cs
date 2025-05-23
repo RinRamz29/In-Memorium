@@ -19,12 +19,8 @@ namespace _Memoriam.Script.Powerups
             if (player == null)
                 return;
             
-            //pickupParticles?.Play();
-            //GetComponent<Collider2D>().enabled = false;
-            //GetComponent<SpriteRenderer>().enabled = false;
-            //StartCoroutine(WaitForParticles());
             AudioManager.Instance.PlayOneShotSFX("Pickup");
-            gameObject.SetActive(false);
+            StartCoroutine(WaitForParticles());
         }
 
 
@@ -36,6 +32,9 @@ namespace _Memoriam.Script.Powerups
 
         private IEnumerator WaitForParticles()
         {
+            pickupParticles?.Play();
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
             yield return new WaitForSeconds(1f);
             gameObject.SetActive(false);
         }

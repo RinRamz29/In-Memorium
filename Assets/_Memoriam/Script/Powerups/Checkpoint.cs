@@ -24,13 +24,22 @@ namespace _Memoriam.Script.Powerups
             }
             
             DataPersistentManager.Instance.SaveGame(DataPersistentManager.Instance.SelectedSlot);
-            gameObject.SetActive(false);
+            StartCoroutine(WaitForParticles());
         }
 
         [ContextMenu("Generate ID")]
         public void GenerateID()
         {
             ID = Guid.NewGuid().ToString();
+        }
+
+        private IEnumerator WaitForParticles()
+        {
+            pickupParticles?.Play();
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
         }
 
         public void LoadData(GameData data)

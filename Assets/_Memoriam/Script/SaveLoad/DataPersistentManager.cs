@@ -28,10 +28,9 @@ namespace _Memoriam.Script.SaveLoad
             _gameData = new GameData();
         }
         
-        public void OverWriteSave(int slot)
+        public void DeleteSave(int slot)
         {
             FileDataHandler.EraseSaveData(slot);
-            _gameData = new GameData();
         }
 
         public void LoadGame(int slot)

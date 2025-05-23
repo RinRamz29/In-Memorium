@@ -31,7 +31,7 @@ namespace _Memoriam.Script.SaveLoad
                         }
                     }
                     
-                    //dataToLoad = Encrypt(dataToLoad);
+                    dataToLoad = Encrypt(dataToLoad);
                     
                     loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
                 }
@@ -68,7 +68,7 @@ namespace _Memoriam.Script.SaveLoad
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
                 var dataToStore = JsonUtility.ToJson(data, true);
-                //dataToStore = Encrypt(dataToStore);
+                dataToStore = Encrypt(dataToStore);
 
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {

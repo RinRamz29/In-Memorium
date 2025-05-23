@@ -22,7 +22,7 @@ namespace _Memoriam.Script.Menus
         [SerializeField] public GameObject errorButton;
         [SerializeField] private Toggle tutoToggle;
         public TMP_Text TextToTranslateTMP { get; set; }
-        private int _slot;
+        private Languages _selectedLanguage;
 
         private void OnEnable()
         {
@@ -54,6 +54,7 @@ namespace _Memoriam.Script.Menus
                 {
                     var splitted = txt.Split("/");
                     UpdateSlotUI(splitted[0], splitted[1]);
+                    _selectedLanguage = language;
                     break;
                 }
             }
@@ -63,7 +64,8 @@ namespace _Memoriam.Script.Menus
         {
             if (DataPersistentManager.Instance.DoesSaveExist(slot))
             {
-                ConfirmLoad(slot);
+                DataPersistentManager.Instance.SelectedSlot = slot;
+                MenuManager.Instance.LoadGame(slot);
                 return;
             }
 
@@ -71,19 +73,11 @@ namespace _Memoriam.Script.Menus
             DataPersistentManager.Instance.SelectedSlot = slot;
         }
 
-
-        public void ConfirmSave()
+        public void DeleteSave(int slot)
         {
-            DataPersistentManager.Instance.SelectedSlot = _slot;
-            DataPersistentManager.Instance.OverWriteSave(_slot);
-            MenuManager.Instance.NewGame();
-        }
-
-        public void ConfirmLoad(int slot)
-        {
-            _slot = slot;
             DataPersistentManager.Instance.SelectedSlot = slot;
-            MenuManager.Instance.LoadGame(_slot);
+            DataPersistentManager.Instance.DeleteSave(slot);
+            Translate(_selectedLanguage);
         }
         
         private void SetRepeatTutorial(bool value)

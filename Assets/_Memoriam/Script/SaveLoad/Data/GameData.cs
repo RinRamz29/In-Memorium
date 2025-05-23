@@ -23,6 +23,10 @@ namespace _Memoriam.Script.SaveLoad.Data
         public int level;
         public float xp;
         public float health;
+        public float maxHealth;
+        public float damage;
+        public float stamina;
+        public float maxStamina;
         public PlayerAbilities abilities;
     }
 

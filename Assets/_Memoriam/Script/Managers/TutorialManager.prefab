@@ -56,10 +56,10 @@ MonoBehaviour:
       text: 'Salta con:'
     - language: 2
       text: 'Salte com:'
-    action: 1
+    action: 0
   - icon:
     - {fileID: 8603364596459411821, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
-    - {fileID: 417424752226488098, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    - {fileID: -6923039587354793595, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
     languages:
     - language: 0
       text: 'Light Attack with:'
@@ -67,10 +67,10 @@ MonoBehaviour:
       text: 'Ataque ligero con:'
     - language: 2
       text: 'Ataque Leve com:'
-    action: 4
+    action: 3
   - icon:
     - {fileID: 9109898363745289567, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
-    - {fileID: 8531666819827272381, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
+    - {fileID: 7862308179615364747, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
     languages:
     - language: 0
       text: 'Heavy Attack with:'
@@ -78,16 +78,16 @@ MonoBehaviour:
       text: 'Ataque Pesado con:'
     - language: 2
       text: 'Ataque Pesado com:'
-    action: 5
+    action: 4
   - icon: []
     languages:
     - language: 0
       text: Combo by double clicking heavy or light
     - language: 1
-      text: Como clickeando dos veces ligero o pesado
+      text: Combo clickeando dos veces ligero o pesado
     - language: 2
       text: Combo clicando duas vezes em pesado ou leve
-    action: 6
+    action: 5
   - icon:
     - {fileID: 7752122263599561285, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 253902772, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
@@ -98,7 +98,7 @@ MonoBehaviour:
       text: 'Doble salto presionando dos veces:'
     - language: 2
       text: 'Salto duplo com clique duplo:'
-    action: 3
+    action: 2
   - icon:
     - {fileID: 2324525799202304566, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 418924702, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
@@ -109,7 +109,7 @@ MonoBehaviour:
       text: 'Interactua con:'
     - language: 2
       text: 'Interaja com:'
-    action: 7
+    action: 6
   - icon:
     - {fileID: -5826372792910275525, guid: dabf85a4501463c4eb1cca23aa2c9ec7, type: 3}
     - {fileID: 6375187842209239333, guid: d6efe1cd47ee69544b9239e2c1d47abd, type: 3}
@@ -120,7 +120,7 @@ MonoBehaviour:
       text: 'Sprintea con:'
     - language: 2
       text: "Tra\xE7o com:"
-    action: 2
+    action: 1
   <TextToTranslateTMP>k__BackingField: {fileID: 0}
   icon: {fileID: 0}
   canvas: {fileID: 0}

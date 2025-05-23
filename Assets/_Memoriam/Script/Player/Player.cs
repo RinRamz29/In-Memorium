@@ -83,6 +83,7 @@ namespace _Memoriam.Script.Player
         [field: SerializeField] public ParticleSystem LevelUpParticles { get; private set; }
         [field: SerializeField] public ParticleSystem CaidaParticula { get; private set; }
         [field: SerializeField] public ParticleSystem DashParticle { get; private set; }
+        [field: SerializeField] public ParticleSystem JumpParticle { get; private set; }
 
         [field: SerializeField, Range(0, 10)] public int OccurAfterVelocity { get; private set; }
 
@@ -506,9 +507,13 @@ namespace _Memoriam.Script.Player
             transform.position = data.player.lastCheckpoint;
             LastCheckPoint = data.player.lastCheckpoint;
             abilities = data.player.abilities;
+            MaxHealth = data.player.maxHealth;
             Health = data.player.health;
             Progression.Level = data.player.level;
             Progression.CurrentXp = data.player.xp;
+            MaxStamina = data.player.maxStamina;
+            Stamina = data.player.stamina;
+            Damage = data.player.damage;
 
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
@@ -520,9 +525,13 @@ namespace _Memoriam.Script.Player
             {
                 lastCheckpoint = LastCheckPoint,
                 abilities = abilities,
+                maxHealth = MaxHealth,
                 health = Health,
                 level = Progression.Level,
                 xp = Progression.CurrentXp,
+                maxStamina = MaxStamina,
+                stamina = Stamina,
+                damage = Damage,
             };
             data.player = player;
         }
@@ -651,6 +660,9 @@ namespace _Memoriam.Script.Player
         #endregion
 
         #region MoveLogic
+        
+        private float _dashCooldown = 3f;
+        private float _lastDash = -Mathf.Infinity;
 
         public void Move()
         {
@@ -721,16 +733,15 @@ namespace _Memoriam.Script.Player
                 Animator.SetFloat(SpeedXHash, 0);
             }
 
-            if (IsDashing)
+            if (Time.time > _lastDash + _dashCooldown && IsDashing)
             {
-                Rigidbody2D.linearVelocity =
-                    new Vector2(Rigidbody2D.linearVelocity.x, Rigidbody2D.linearVelocity.y);
                 Direction = IsFlipped ? Vector2.left : Vector2.right;
                 Rigidbody2D.AddForce(Direction * DashForce, ForceMode2D.Impulse);
 
                 if ((Direction.x < -0.1f && Movement.x > 0.1f) ||
                     (Direction.x > 0.1f && Movement.x < -0.1f))
                 {
+                    _lastDash = Time.time + _dashCooldown;
                     IsDashing = false;
                     canDash = false;
                 }
@@ -738,6 +749,7 @@ namespace _Memoriam.Script.Player
                 DashCooldown -= Time.deltaTime;
                 if (DashCooldown <= 0)
                 {
+                    _lastDash = Time.time + _dashCooldown;
                     IsDashing = false;
                     canDash = false;
                 }
@@ -825,6 +837,7 @@ namespace _Memoriam.Script.Player
             // Reset vertical velocity before double jump
             Rigidbody2D.linearVelocity = new Vector2(Rigidbody2D.linearVelocity.x, 0f);
             Rigidbody2D.AddForce(Vector2.up * (JumpForce * 1.1f), ForceMode2D.Impulse);
+            JumpParticle.Play();
             AudioManager.Instance.PlayRandomSFX("PlayerJump");
         }
 
@@ -834,10 +847,16 @@ namespace _Memoriam.Script.Player
                 return;
 
             if (!context.performed || !canDash)
+            {
                 return;
+            }
 
+            if (IsDashing || Time.time < _lastDash + _dashCooldown)
+                return;
+            
             IsDashing = true;
             DashCooldown = 0.45f;
+            
             if (IsFlipped)
             {
                 DashParticle.transform.localScale = new Vector3(-1f, DashParticle.transform.localScale.y, DashParticle.transform.localScale.z);
@@ -848,7 +867,6 @@ namespace _Memoriam.Script.Player
             }
             
             DashParticle.Play();
-
             AudioManager.Instance.PlayOneShotSFX("PlayerDash");
         }
 

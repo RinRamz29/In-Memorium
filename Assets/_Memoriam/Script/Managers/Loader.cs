@@ -96,7 +96,7 @@ namespace _Memoriam.Script.Managers
                 LocalizationManager.Instance.ForceTranslate();
             }
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
-            await GameplayMenuManager.Instance.Fade(0f, 5f);
+            await GameplayMenuManager.Instance.Fade(0f, 2f);
         }
         
         private async Task LoadMenu()

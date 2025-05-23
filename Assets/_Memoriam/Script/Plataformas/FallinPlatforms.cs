@@ -28,16 +28,17 @@ public class FallinPlatforms : MonoBehaviour
     IEnumerator PlatformDrop()
     {
         yield return new WaitForSeconds(fallDelay);
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb2d.bodyType = RigidbodyType2D.Dynamic;
         yield return new WaitForSeconds(respawnTime);
         Reset();
-
     }
 
     private void Reset()
     {
         rb2d.bodyType = RigidbodyType2D.Static;
         transform.position = defaultPos;
+        transform.rotation = Quaternion.identity;
     }
     
 }

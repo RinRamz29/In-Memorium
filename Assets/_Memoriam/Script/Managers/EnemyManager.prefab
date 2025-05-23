@@ -93,37 +93,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4414624705550831074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2089219724751329169
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1737531178322605078}
-  m_Layer: 0
-  m_Name: Ranged2 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1737531178322605078
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089219724751329169}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -639.02, y: 57.93, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1322035115460861459}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119882504947046525
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,13 +141,8 @@ Transform:
   - {fileID: 32178473260192484}
   - {fileID: 6917083282235408945}
   - {fileID: 5659503157756110088}
-  - {fileID: 2818040574630738038}
-  - {fileID: 7828522320476453240}
   - {fileID: 514921307735608150}
   - {fileID: 6898134388767031031}
-  - {fileID: 2289591272986918120}
-  - {fileID: 244625952769881594}
-  - {fileID: 1364577435483147056}
   - {fileID: 2470450677442668479}
   - {fileID: 8159034583153085758}
   - {fileID: 2302076716778417710}
@@ -339,37 +303,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4414624705550831074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3146133553244350420
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1364577435483147056}
-  m_Layer: 0
-  m_Name: Ghoul (26)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1364577435483147056
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146133553244350420}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -448.93, y: 57.89, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4414624705550831074}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3255259606527640576
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 3392839436325923723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -523.2, y: 60.2, z: 0}
+  m_LocalPosition: {x: -498.67, y: 57.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,7 +429,6 @@ Transform:
   - {fileID: 8579375080707318312}
   - {fileID: 3638327384154189759}
   - {fileID: 3071932222879963944}
-  - {fileID: 1737531178322605078}
   - {fileID: 7462752239398402175}
   - {fileID: 3006081376438595100}
   - {fileID: 5980757549397628352}
@@ -561,37 +493,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -605.89, y: 23.72, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4414624705550831074}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4315224467330200827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2818040574630738038}
-  m_Layer: 0
-  m_Name: Ghoul (20)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2818040574630738038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4315224467330200827}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -619.19, y: 59.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -684,7 +585,7 @@ Transform:
   m_GameObject: {fileID: 4777108567743279583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -515.1, y: 59.6, z: 0}
+  m_LocalPosition: {x: -515.1, y: 58.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -747,37 +648,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -505.51, y: 27.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4414624705550831074}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5493759054248908714
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 244625952769881594}
-  m_Layer: 0
-  m_Name: Ghoul (25)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &244625952769881594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5493759054248908714}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -516.72003, y: 59.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1107,12 +977,6 @@ MonoBehaviour:
   - path:
     - {x: 6, y: 0}
     - {x: -6, y: 0}
-    spawnPoint: {fileID: 1737531178322605078}
-    enemyType: 1
-    id: 93842651-f289-4ab5-974a-f866f841fa29
-  - path:
-    - {x: 6, y: 0}
-    - {x: -6, y: 0}
     spawnPoint: {fileID: 7462752239398402175}
     enemyType: 1
     id: 259ecb02-5e6b-4e7c-a7e6-cafa201fb6d2
@@ -1263,18 +1127,6 @@ MonoBehaviour:
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
-    spawnPoint: {fileID: 2818040574630738038}
-    enemyType: 0
-    id: 70a2e233-baec-44dc-b1ed-923930bb3dfc
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
-    spawnPoint: {fileID: 7828522320476453240}
-    enemyType: 0
-    id: 27e39eae-88c8-425e-8549-12377a6f33a3
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
     spawnPoint: {fileID: 514921307735608150}
     enemyType: 0
     id: 36557f23-8b2a-49af-acd3-829b55d3f632
@@ -1284,24 +1136,6 @@ MonoBehaviour:
     spawnPoint: {fileID: 6898134388767031031}
     enemyType: 0
     id: 39015ba4-2403-4206-b59b-ab6363fb24a7
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
-    spawnPoint: {fileID: 2289591272986918120}
-    enemyType: 0
-    id: ec8c4ce0-91ba-4db6-aa59-e401dcaf350d
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
-    spawnPoint: {fileID: 244625952769881594}
-    enemyType: 0
-    id: 4336de3a-d50e-4b8b-a39b-4a3b6ecf7346
-  - path:
-    - {x: 2, y: 0}
-    - {x: -2, y: 0}
-    spawnPoint: {fileID: 1364577435483147056}
-    enemyType: 0
-    id: de618991-8dfc-4537-af16-fb746c02373f
   - path:
     - {x: 2, y: 0}
     - {x: -2, y: 0}
@@ -1535,73 +1369,11 @@ Transform:
   m_GameObject: {fileID: 8522216466860894055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -442.74, y: 58.4, z: 0}
+  m_LocalPosition: {x: -444.1, y: 57.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322035115460861459}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8665453025969734082
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7828522320476453240}
-  m_Layer: 0
-  m_Name: Ghoul (21)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7828522320476453240
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8665453025969734082}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -525.38, y: 58.65, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4414624705550831074}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8808943738719002347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2289591272986918120}
-  m_Layer: 0
-  m_Name: Ghoul (24)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2289591272986918120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8808943738719002347}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -512.4, y: 58.94, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4414624705550831074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9208278062818777014
 GameObject:
@@ -1628,7 +1400,7 @@ Transform:
   m_GameObject: {fileID: 9208278062818777014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -438.2, y: 57.21, z: 0}
+  m_LocalPosition: {x: -439.88, y: 57.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
