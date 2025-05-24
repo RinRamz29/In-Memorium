@@ -163,7 +163,6 @@ namespace _Memoriam.Script.Tutorial
             LightAttack,
             HeavyAttack,
             Combo,
-            Interact
         }
 
         public ActionType action;

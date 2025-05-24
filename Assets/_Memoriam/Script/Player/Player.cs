@@ -90,7 +90,6 @@ namespace _Memoriam.Script.Player
         [field: SerializeField, Range(0, 0.2f)]
         public float DustFormationPeriod { get; private set; }
 
-        public static event Action<bool> OnPlayerFirstTp;
         private bool _isInvulnerable = false;
         private const float InvulnerabilityTime = 1.5f;
         [SerializeField] private float knockbackForce = 10f;
@@ -141,6 +140,11 @@ namespace _Memoriam.Script.Player
             if (GameStateManager.Instance.GameCurrentState == GameStateManager.GameState.OnGameplay)
             {
                 StateMachine?.Tick();
+                
+                if (abilities.hasDash && Time.time < _lastDash + DashTimeOut)
+                {
+                    Timer = Mathf.Clamp01((Time.time - _lastDash) / DashTimeOut);
+                }
             }
 
             if (Health <= 0)
@@ -221,7 +225,7 @@ namespace _Memoriam.Script.Player
             cam.Follow = transform;
             CineMachineCamera = cam;
             CinemachineFollow = cam?.GetComponent<CinemachineFollow>();
-
+            
             EnemyLayer = 1 << LayerMask.NameToLayer("Enemy");
             GroundMask = 1 << LayerMask.NameToLayer("Ground");
 
@@ -492,10 +496,6 @@ namespace _Memoriam.Script.Player
                         break;
                 }
             }
-            else if (other.gameObject.TryGetComponent<CheckPointPlatform>(out var checkPoint))
-            {
-                OnPlayerFirstTp?.Invoke(true);
-            }
         }
 
         #endregion
@@ -660,8 +660,9 @@ namespace _Memoriam.Script.Player
         #endregion
 
         #region MoveLogic
-        
-        private float _dashCooldown = 3f;
+
+        public float DashTimeOut { get; private set; }  = 3f;
+        public float Timer { get; private set; } = 3f;
         private float _lastDash = -Mathf.Infinity;
 
         public void Move()
@@ -732,16 +733,17 @@ namespace _Memoriam.Script.Player
                 Rigidbody2D.linearVelocity = new Vector2(airSpeedX, verticalSpeed);
                 Animator.SetFloat(SpeedXHash, 0);
             }
-
-            if (Time.time > _lastDash + _dashCooldown && IsDashing)
+            
+            
+            if (Time.time > _lastDash + DashTimeOut && IsDashing)
             {
                 Direction = IsFlipped ? Vector2.left : Vector2.right;
                 Rigidbody2D.AddForce(Direction * DashForce, ForceMode2D.Impulse);
-
+                
                 if ((Direction.x < -0.1f && Movement.x > 0.1f) ||
                     (Direction.x > 0.1f && Movement.x < -0.1f))
                 {
-                    _lastDash = Time.time + _dashCooldown;
+                    _lastDash = Time.time;
                     IsDashing = false;
                     canDash = false;
                 }
@@ -749,12 +751,12 @@ namespace _Memoriam.Script.Player
                 DashCooldown -= Time.deltaTime;
                 if (DashCooldown <= 0)
                 {
-                    _lastDash = Time.time + _dashCooldown;
+                    _lastDash = Time.time;
                     IsDashing = false;
                     canDash = false;
                 }
             }
-
+            
             if (!canDoubleJump && IsGrounded && abilities.hasDoubleJump)
             {
                 canDoubleJump = true;
@@ -851,11 +853,12 @@ namespace _Memoriam.Script.Player
                 return;
             }
 
-            if (IsDashing || Time.time < _lastDash + _dashCooldown)
+            if (IsDashing || Time.time < _lastDash + DashTimeOut)
                 return;
             
             IsDashing = true;
             DashCooldown = 0.45f;
+            Timer = 0f;
             
             if (IsFlipped)
             {

@@ -20,6 +20,8 @@ namespace _Memoriam.Script.Plataformas
         private bool _playerInRange;
         private bool _isTeleporting;
         private bool _interactPressed;
+        public static event Action<bool> OnInteractReached;
+
 
         private void OnInteractPressed(InputAction.CallbackContext ctx)
         {
@@ -54,6 +56,7 @@ namespace _Memoriam.Script.Plataformas
                 _player = player;
                 _playerInRange = true;
                 AudioManager.Instance.PlayOneShotSFX("PlayerTeleport");
+                OnInteractReached?.Invoke(true);
             }
         }
 
@@ -63,6 +66,7 @@ namespace _Memoriam.Script.Plataformas
             {
                 _playerInRange = false;
                 _player = null;
+                OnInteractReached?.Invoke(false);
             }
         }
 

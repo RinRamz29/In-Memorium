@@ -155,7 +155,7 @@ namespace _Memoriam.Script.Managers
             }
 
             _step = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex];
-            if ((_step.action is TutorialStep.ActionType.Interact or TutorialStep.ActionType.Dash
+            if ((_step.action is TutorialStep.ActionType.Dash
                     or TutorialStep.ActionType.DoubleJump) && !TutorialManager.Instance.TutoActive)
             {
                 return;

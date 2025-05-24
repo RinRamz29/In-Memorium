@@ -30,7 +30,6 @@ namespace _Memoriam.Script.Player.States
             TutorialManager.OnTutorialLoaded += OnTutorialLoaded;
             TutorialManager.OnTutorialEnded += OnTutorialEnded;
             Player.OnPowerUpPickedUp += PowerUpPickedUp;
-            Player.OnPlayerFirstTp += ReachedFirstTeleport;
             InputReader.Instance.PlayerActions.Player.Jump.performed += _player.Jump;
             InputReader.Instance.PlayerActions.Player.LightAttack.performed += _player.LightAttack;
             InputReader.Instance.PlayerActions.Player.HeavyAttack.performed += _player.HeavyAttack;
@@ -75,7 +74,6 @@ namespace _Memoriam.Script.Player.States
             InputReader.Instance.PlayerActions.Player.Dash.performed -= _player.Dash;
             InputReader.Instance.PlayerActions.Player.Jump.performed -= _player.Jump;
             Player.OnPowerUpPickedUp -= PowerUpPickedUp;
-            Player.OnPlayerFirstTp -= ReachedFirstTeleport;
 
             // Reset attack state
             _player.IsAttacking = false;
@@ -139,13 +137,6 @@ namespace _Memoriam.Script.Player.States
                 return;
             }
 
-            if (step.action == TutorialStep.ActionType.Interact)
-            {
-                Unsubscribe();
-                InputReader.Instance.PlayerActions.Player.Interact.performed += OnStepCompleted;
-                return;
-            }
-
             if (step.action == TutorialStep.ActionType.DoubleJump)
             {
                 Unsubscribe();
@@ -171,7 +162,6 @@ namespace _Memoriam.Script.Player.States
                 var next = TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex + 1];
 
                 if (next.action == TutorialStep.ActionType.DoubleJump ||
-                    next.action == TutorialStep.ActionType.Interact ||
                     next.action == TutorialStep.ActionType.Dash)
                 {
                     TutorialManager.Instance.TutoActive = false;
@@ -189,17 +179,6 @@ namespace _Memoriam.Script.Player.States
 
             TutorialManager.Instance.SetCanvas(true);
             TutorialManager.Instance.TutoActive = true;
-        }
-
-        private void ReachedFirstTeleport(bool condition)
-        {
-            if (TutorialManager.Instance.steps[TutorialManager.Instance.CurrentStepIndex].action ==
-                TutorialStep.ActionType.Interact && condition)
-            {
-                TutorialManager.Instance.SetCanvas(true);
-                TutorialManager.Instance.TutoActive = true;
-                Player.OnPlayerFirstTp -= ReachedFirstTeleport;
-            }
         }
 
         private void OnDoubleJump(InputAction.CallbackContext ctx)

@@ -19,6 +19,8 @@ namespace _Memoriam.Script.Managers
         private bool _isLoading = false;
         public bool IsNewGame { get; set; }
         public bool SetTutorial { get; set; } = true;
+        
+        public event Action OnSceneLoaded; 
 
         public async Task LoadLoader(bool loadGame, int slot = 0)
         {
@@ -95,6 +97,7 @@ namespace _Memoriam.Script.Managers
                 DataPersistentManager.Instance.LoadGame(slot);
                 LocalizationManager.Instance.ForceTranslate();
             }
+            OnSceneLoaded?.Invoke();
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnGameplay);
             await GameplayMenuManager.Instance.Fade(0f, 2f);
         }
@@ -102,7 +105,7 @@ namespace _Memoriam.Script.Managers
         private async Task LoadMenu()
         {
             await LoadSceneAsync(sceneData.MainMenuSceneName);
-
+            OnSceneLoaded?.Invoke();
             LocalizationManager.Instance.ForceTranslate();
             GameStateManager.Instance.SetGameState(GameStateManager.GameState.OnMenu);
         }
