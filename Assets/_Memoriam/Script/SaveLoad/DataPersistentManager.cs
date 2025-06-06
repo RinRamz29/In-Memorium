@@ -51,6 +51,16 @@ namespace _Memoriam.Script.SaveLoad
                 savedObj.LoadData(_gameData);
             }
         }
+
+        public GameData GetSlotData(int slot)
+        {
+            if (FileDataHandler.DoesSaveExist(slot) == false)
+                return null;
+            
+            var data = FileDataHandler.LoadData(slot);
+            
+            return data;
+        }
         
         public void SaveGame(int slot)
         {
@@ -61,6 +71,7 @@ namespace _Memoriam.Script.SaveLoad
             {
                 savedObj.SaveData(ref _gameData);
             }
+            
             
             FileDataHandler.SaveData(_gameData, slot);
         }

@@ -21,7 +21,6 @@ namespace _Memoriam.Script.Powerups
 
         private Player.Player _player;
         private bool _playerInRange;
-        private bool _isTeleporting;
         
         private void OnEnable()
         {
@@ -40,8 +39,16 @@ namespace _Memoriam.Script.Powerups
                 _player.LastCheckPoint = transform.position;
                 DataPersistentManager.Instance.SaveGame(DataPersistentManager.Instance.SelectedSlot);
                 pickupParticlesReversed.Play();
+                StartCoroutine(DisableCheckpoint());
             } 
-        } 
+        }
+
+        private IEnumerator DisableCheckpoint()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _playerInRange = false;
+            gameObject.SetActive(false);
+        }
 
         
         private void OnTriggerEnter2D(Collider2D other)

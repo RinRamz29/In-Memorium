@@ -1,21 +1,15 @@
 using System;
 using System.Collections;
-using System.Linq;
 using _Memoriam.Script.Audio;
-using _Memoriam.Script.General;
 using _Memoriam.Script.InputLogic;
 using _Memoriam.Script.Managers;
-using _Memoriam.Script.Plataformas;
 using _Memoriam.Script.Player.States;
 using _Memoriam.Script.Powerups;
 using _Memoriam.Script.SaveLoad;
 using _Memoriam.Script.SaveLoad.Data;
-using _Memoriam.Script.Tutorial;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace _Memoriam.Script.Player
 {
@@ -342,6 +336,7 @@ namespace _Memoriam.Script.Player
             //Implement animation trigger
             this.transform.position = LastCheckPoint;
             Health = MaxHealth / 2;
+            Stamina = MaxStamina;
             OnHealthChanged.Invoke(Health / MaxHealth);
             CineMachineCamera.Lens.OrthographicSize = 6f;
         }
@@ -517,6 +512,7 @@ namespace _Memoriam.Script.Player
 
             OnHealthChanged?.Invoke(Health / MaxHealth);
             OnStaminaChanged?.Invoke(Stamina / MaxStamina);
+            Progression.RefreshXp(Progression.CurrentXp);
         }
 
         public void SaveData(ref GameData data)
@@ -533,6 +529,17 @@ namespace _Memoriam.Script.Player
                 stamina = Stamina,
                 damage = Damage,
             };
+
+            var slotData = new PlayerData()
+            {
+                playerHealth = Health,
+                playerPosition = LastCheckPoint,
+                hasDash = abilities.hasDash,
+                hasDoubleJump = abilities.hasDoubleJump,
+                SaveDate = DateTime.Now,
+            };
+            
+            data.playerData = slotData;
             data.player = player;
         }
 
@@ -661,8 +668,8 @@ namespace _Memoriam.Script.Player
 
         #region MoveLogic
 
-        public float DashTimeOut { get; private set; }  = 3f;
-        public float Timer { get; private set; } = 3f;
+        public float DashTimeOut { get; private set; }  = 1f;
+        public float Timer { get; private set; } = 1f;
         private float _lastDash = -Mathf.Infinity;
 
         public void Move()

@@ -186,7 +186,7 @@ MonoBehaviour:
   <MaxStamina>k__BackingField: 100
   <JumpForce>k__BackingField: 10
   <DashForce>k__BackingField: 2
-  <Damage>k__BackingField: 10
+  <Damage>k__BackingField: 20
   <Progression>k__BackingField:
     maxLevel: 30
     minXpToLevelUp: 100
@@ -208,7 +208,7 @@ MonoBehaviour:
   <JumpParticle>k__BackingField: {fileID: 7506830110104975074}
   <OccurAfterVelocity>k__BackingField: 2
   <DustFormationPeriod>k__BackingField: 0.02
-  knockbackForce: 10
+  knockbackForce: 5
   canDoubleJump: 0
   canDash: 0
   <StaminaRegenDelay>k__BackingField: 1

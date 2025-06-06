@@ -52,5 +52,10 @@ namespace _Memoriam.Script.Player
                 else break;
             }
         }
+
+        public void RefreshXp(float xp)
+        {
+            OnXpGained?.Invoke(xp);
+        }
     }
 }

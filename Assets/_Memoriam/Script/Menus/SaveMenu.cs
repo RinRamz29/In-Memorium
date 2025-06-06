@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using _Memoriam.Script.Audio;
@@ -12,15 +13,16 @@ using UnityEngine.UI;
 
 namespace _Memoriam.Script.Menus
 {
-    public class SaveMenu : MonoBehaviour, ILocalization
+    public class SaveMenu : MonoBehaviour
     {
-        [SerializeField] private TMPro.TextMeshProUGUI[] slotTexts;
         [SerializeField] private GameObject firstToSelect;
+        [SerializeField] private GameObject[] saveDataPanel = new GameObject[3];
         [SerializeField] private List<LanguagesClass> languages;
         [SerializeField] private SceneDataBase sceneData;
-        [SerializeField] public GameObject errorCanva;
-        [SerializeField] public GameObject errorButton;
         [SerializeField] private Toggle tutoToggle;
+        [SerializeField] private SlotData[] slotData = new SlotData[3];
+
+        
         public TMP_Text TextToTranslateTMP { get; set; }
         private Languages _selectedLanguage;
 
@@ -29,33 +31,34 @@ namespace _Memoriam.Script.Menus
             EventSystem.current.SetSelectedGameObject(firstToSelect);
             tutoToggle.onValueChanged.AddListener(SetRepeatTutorial);
             tutoToggle.isOn = Loader.Instance.SetTutorial;
+            UpdateSlotUI();
         }
 
-        private void UpdateSlotUI(string text, string textNoSave)
+        private void UpdateSlotUI()
         {
             for (int i = 0; i < 3; i++)
             {
                 if (DataPersistentManager.Instance.DoesSaveExist(i + 1))
                 {
-                    slotTexts[i].text = text;
+                    var data = DataPersistentManager.Instance.GetSlotData(i + 1);
+
+                    if (data != null)
+                    {
+                        slotData[i].dateText.text = data.playerData.saveDate;
+                        slotData[i].hasDoubleJump.isOn = data.playerData.hasDoubleJump;
+                        slotData[i].hasDash.isOn = data.playerData.hasDash;
+                        slotData[i].playerHealthText.text = data.playerData.playerHealth.ToString("N0");
+                    }
+                    else
+                    {
+                        Debug.LogError($"There is no save data for {i + 1}");
+                        saveDataPanel[i].SetActive(false);
+                        return;
+                    }
                 }
                 else
                 {
-                    slotTexts[i].text = textNoSave;
-                }
-            }
-        }
-
-        public void Translate(Languages language)
-        {
-            foreach (var lang in languages)
-            {
-                if (lang.TryGetText(language, out var txt))
-                {
-                    var splitted = txt.Split("/");
-                    UpdateSlotUI(splitted[0], splitted[1]);
-                    _selectedLanguage = language;
-                    break;
+                    saveDataPanel[i].SetActive(false);
                 }
             }
         }
@@ -77,12 +80,22 @@ namespace _Memoriam.Script.Menus
         {
             DataPersistentManager.Instance.SelectedSlot = slot;
             DataPersistentManager.Instance.DeleteSave(slot);
-            Translate(_selectedLanguage);
+            UpdateSlotUI();
         }
         
         private void SetRepeatTutorial(bool value)
         {
             Loader.Instance.SetTutorial = value;
         }
+    }
+
+    [Serializable]
+    public class SlotData
+    {
+        [Header("Save Slot Data")]
+        public TMP_Text playerHealthText;
+        public TMP_Text dateText;
+        public Toggle hasDoubleJump;
+        public Toggle hasDash;
     }
 }

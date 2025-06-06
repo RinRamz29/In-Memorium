@@ -38,10 +38,27 @@ namespace _Memoriam.Script.SaveLoad.Data
     }
     
     [Serializable]
+    public class PlayerData
+    {
+        public string saveDate; 
+        public DateTime SaveDate 
+        { 
+            get => DateTime.Parse(saveDate);
+            set => saveDate = value.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+        public float playerHealth;
+        public Vector3 playerPosition;
+        public bool hasDoubleJump;
+        public bool hasDash;
+    }
+
+    
+    [Serializable]
     public class GameData 
     {
         public SavablePlayer player = new();
         public TutorialData tutoData = new();
+        public PlayerData playerData = new();
         public SerializableDictionary<string, SavableEnemy> enemySavable = new();
         public SerializableDictionary<string, bool> pickableSavable = new();
     }

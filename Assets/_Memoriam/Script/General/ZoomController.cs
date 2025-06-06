@@ -11,6 +11,7 @@ namespace _Memoriam.Script.General
         [SerializeField] private float zoomIn = 2;
         [SerializeField] private float zoomOut = 4;
         [SerializeField] private float zoomSpeed = 1.5f;
+        [SerializeField] private bool shouldZoomIn = true;
 
         private bool _isZooming = false;
 
@@ -39,13 +40,13 @@ namespace _Memoriam.Script.General
         {
             if (collision.transform.TryGetComponent<Player.Player>(out var player))
             {
-                if (cinemachineCamera.Lens.OrthographicSize <= zoomIn)
+                if (shouldZoomIn)
                 {
-                    ChangeZoom(zoomOut);
+                    ChangeZoom(zoomIn);
                 }
                 else
                 {
-                    ChangeZoom(zoomIn);
+                    ChangeZoom(zoomOut);
                 }
             }
         }
